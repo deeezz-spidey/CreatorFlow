@@ -1,0 +1,2029 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>CreatorFlow — Creator Toolkit</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #070a09;
+    color: #f4f7f5;
+    min-height: 100vh;
+}
+
+/* HEADER */
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    height: 70px;
+    padding: 0 6%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(7, 10, 9, 0.94);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid #1b2720;
+}
+
+.logo {
+    font-size: 23px;
+    font-weight: 800;
+    color: #6dff9b;
+}
+
+.logo span {
+    color: white;
+}
+
+nav {
+    display: flex;
+    gap: 5px;
+}
+
+nav button {
+    border: none;
+    background: transparent;
+    color: #89958e;
+    padding: 10px 13px;
+    border-radius: 9px;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+nav button:hover,
+nav button.active {
+    background: #122219;
+    color: #6dff9b;
+}
+
+/* MAIN */
+
+main {
+    width: 88%;
+    max-width: 1150px;
+    margin: auto;
+}
+
+/* SECTIONS */
+
+.section {
+    display: none;
+    padding: 45px 0 80px;
+}
+
+.section.active {
+    display: block;
+}
+
+/* HOME */
+
+.hero {
+    text-align: center;
+    padding: 75px 15px 55px;
+}
+
+.badge {
+    display: inline-block;
+    padding: 8px 15px;
+    margin-bottom: 20px;
+    border: 1px solid #285c3a;
+    background: #102217;
+    color: #6dff9b;
+    border-radius: 30px;
+    font-size: 13px;
+}
+
+.hero h1 {
+    font-size: clamp(42px, 8vw, 78px);
+    line-height: 1;
+    margin-bottom: 22px;
+}
+
+.hero h1 span {
+    color: #6dff9b;
+}
+
+.hero p {
+    max-width: 650px;
+    margin: auto;
+    color: #8b9690;
+    line-height: 1.7;
+    font-size: 17px;
+}
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+.feature {
+    padding: 25px;
+    background: #0d1310;
+    border: 1px solid #1b2720;
+    border-radius: 17px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.feature:hover {
+    transform: translateY(-4px);
+    border-color: #397b50;
+}
+
+.feature-icon {
+    font-size: 30px;
+    margin-bottom: 16px;
+}
+
+.feature h3 {
+    margin-bottom: 9px;
+}
+
+.feature p {
+    color: #78837d;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+/* SECTION TITLE */
+
+.section-title {
+    margin-bottom: 25px;
+}
+
+.section-title h2 {
+    font-size: 32px;
+    margin-bottom: 8px;
+}
+
+.section-title p {
+    color: #7d8982;
+}
+
+/* CARD */
+
+.card {
+    background: #0d1310;
+    border: 1px solid #1b2720;
+    border-radius: 18px;
+    padding: 25px;
+}
+
+/* FORMS */
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+.full {
+    grid-column: 1 / -1;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: #aeb8b2;
+    font-size: 13px;
+}
+
+input,
+textarea,
+select {
+    width: 100%;
+    padding: 13px;
+    border-radius: 10px;
+    border: 1px solid #29362e;
+    background: #080c0a;
+    color: white;
+    outline: none;
+    font-size: 14px;
+}
+
+textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    border-color: #6dff9b;
+}
+
+.generate {
+    width: 100%;
+    margin-top: 20px;
+    padding: 14px;
+    border: none;
+    border-radius: 10px;
+    background: #6dff9b;
+    color: #07100a;
+    font-weight: 800;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.generate:hover {
+    background: #8affae;
+}
+
+/* RESULTS */
+
+.results {
+    display: grid;
+    gap: 12px;
+    margin-top: 25px;
+}
+
+.result {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    padding: 17px;
+    background: #111914;
+    border: 1px solid #25342b;
+    border-radius: 12px;
+}
+
+.result-text {
+    line-height: 1.6;
+    color: #e8eee9;
+}
+
+.result-number {
+    color: #6dff9b;
+    font-weight: bold;
+}
+
+.copy {
+    flex-shrink: 0;
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px solid #31513d;
+    background: #18241d;
+    color: #6dff9b;
+    cursor: pointer;
+}
+
+.copy:hover {
+    background: #22352a;
+}
+
+/* IDEAS */
+
+.idea-result {
+    align-items: flex-start;
+}
+
+.idea-result .result-text {
+    width: 100%;
+}
+
+.idea-label {
+    color: #6dff9b;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* PLANNER */
+
+.planner-inputs {
+    display: grid;
+    grid-template-columns: 150px 1fr 160px auto;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.add-btn {
+    border: none;
+    border-radius: 10px;
+    padding: 0 20px;
+    background: #6dff9b;
+    color: #07100a;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.add-btn:hover {
+    background: #8affae;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.stat {
+    background: #111914;
+    border: 1px solid #25342b;
+    padding: 18px;
+    border-radius: 12px;
+}
+
+.stat-number {
+    font-size: 25px;
+    color: #6dff9b;
+    font-weight: bold;
+}
+
+.stat-label {
+    color: #7d8982;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.plans {
+    display: grid;
+    gap: 12px;
+}
+
+.plan {
+    display: grid;
+    grid-template-columns: 110px 1fr 130px auto;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    background: #0e1511;
+    border: 1px solid #1c2921;
+    border-radius: 12px;
+}
+
+.plan-date {
+    color: #6dff9b;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+.plan-info h4 {
+    margin-bottom: 5px;
+}
+
+.plan-info small {
+    color: #7d8982;
+}
+
+.status {
+    padding: 7px;
+    border-radius: 7px;
+    border: 1px solid #29362e;
+    background: #080c0a;
+    color: white;
+}
+
+.delete {
+    border: none;
+    background: transparent;
+    color: #ff7777;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.empty {
+    text-align: center;
+    padding: 40px;
+    color: #657169;
+}
+
+/* FOOTER */
+
+footer {
+    border-top: 1px solid #19231e;
+    text-align: center;
+    padding: 30px;
+    color: #59645e;
+    font-size: 13px;
+}
+
+/* MOBILE */
+
+@media (max-width: 850px) {
+
+    .feature-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .planner-inputs {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .add-btn {
+        padding: 13px;
+    }
+
+    .plan {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+
+    header {
+        padding: 0 4%;
+    }
+
+    .logo {
+        font-size: 18px;
+    }
+
+    nav {
+        gap: 0;
+    }
+
+    nav button {
+        padding: 7px;
+        font-size: 10px;
+    }
+
+    main {
+        width: 92%;
+    }
+
+    .feature-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .full {
+        grid-column: auto;
+    }
+
+    .planner-inputs {
+        grid-template-columns: 1fr;
+    }
+
+    .stats {
+        grid-template-columns: 1fr;
+    }
+
+    .hero {
+        padding-top: 50px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+        Creator<span>Flow</span>
+    </div>
+
+    <nav>
+        <button class="active" onclick="showSection('home', this)">Home</button>
+        <button onclick="showSection('titles', this)">Titles</button>
+        <button onclick="showSection('captions', this)">Captions</button>
+        <button onclick="showSection('ideas', this)">Ideas</button>
+        <button onclick="showSection('planner', this)">Planner</button>
+    </nav>
+
+</header>
+
+
+<main>
+
+<!-- HOME -->
+
+<section id="home" class="section active">
+
+    <div class="hero">
+
+        <div class="badge">
+            ⚡ Creator Toolkit
+        </div>
+
+        <h1>
+            Create better.<br>
+            <span>Post smarter.</span>
+        </h1>
+
+        <p>
+            Generate titles, captions and content ideas,
+            then organize everything with your personal content planner.
+        </p>
+
+    </div>
+
+
+    <div class="feature-grid">
+
+        <div class="feature" onclick="openTool('titles')">
+            <div class="feature-icon">🎯</div>
+            <h3>Title Generator</h3>
+            <p>
+                Create attention-grabbing titles for YouTube,
+                TikTok and Instagram.
+            </p>
+        </div>
+
+
+        <div class="feature" onclick="openTool('captions')">
+            <div class="feature-icon">✍️</div>
+            <h3>Caption Generator</h3>
+            <p>
+                Create captions with different tones and styles.
+            </p>
+        </div>
+
+
+        <div class="feature" onclick="openTool('ideas')">
+            <div class="feature-icon">💡</div>
+            <h3>Reel Ideas</h3>
+            <p>
+                Generate hooks, concepts and CTAs for your next video.
+            </p>
+        </div>
+
+
+        <div class="feature" onclick="openTool('planner')">
+            <div class="feature-icon">📊</div>
+            <h3>Content Planner</h3>
+            <p>
+                Plan your content and track your posting schedule.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- TITLES -->
+
+<section id="titles" class="section">
+
+    <div class="section-title">
+        <h2>🎯 Title Generator</h2>
+        <p>Create clickable titles for your content.</p>
+    </div>
+
+
+    <div class="card">
+
+        <div class="form-grid">
+
+            <div class="full">
+
+                <label>
+                    What is your video about?
+                </label>
+
+                <input
+                    id="titleTopic"
+                    placeholder="Example: 5 hidden Android apps"
+                >
+
+            </div>
+
+
+            <div>
+
+                <label>
+                    Platform
+                </label>
+
+                <select id="titlePlatform">
+                    <option>YouTube</option>
+                    <option>TikTok</option>
+                    <option>Instagram Reels</option>
+                </select>
+
+            </div>
+
+
+            <div>
+
+                <label>
+                    Style
+                </label>
+
+                <select id="titleStyle">
+                    <option>Viral</option>
+                    <option>Curiosity</option>
+                    <option>Emotional</option>
+                    <option>Funny</option>
+                    <option>Professional</option>
+                </select>
+
+            </div>
+
+        </div>
+
+
+        <button class="generate" onclick="generateTitles()">
+            Generate 10 Titles ⚡
+        </button>
+
+
+        <div id="titleResults" class="results"></div>
+
+    </div>
+
+</section>
+
+
+<!-- CAPTIONS -->
+
+<section id="captions" class="section">
+
+    <div class="section-title">
+        <h2>✍️ Caption Generator</h2>
+        <p>Create captions for your posts and reels.</p>
+    </div>
+
+
+    <div class="card">
+
+        <div class="form-grid">
+
+            <div class="full">
+
+                <label>
+                    Describe your content
+                </label>
+
+                <textarea
+                    id="captionTopic"
+                    placeholder="Example: Sunset beach reel in Sri Lanka"
+                ></textarea>
+
+            </div>
+
+
+            <div>
+
+                <label>
+                    Platform
+                </label>
+
+                <select id="captionPlatform">
+                    <option>Instagram</option>
+                    <option>TikTok</option>
+                    <option>YouTube</option>
+                </select>
+
+            </div>
+
+
+            <div>
+
+                <label>
+                    Tone
+                </label>
+
+                <select id="captionTone">
+                    <option>Cool</option>
+                    <option>Emotional</option>
+                    <option>Funny</option>
+                    <option>Professional</option>
+                    <option>Minimal</option>
+                </select>
+
+            </div>
+
+        </div>
+
+
+        <button class="generate" onclick="generateCaptions()">
+            Generate 10 Captions ⚡
+        </button>
+
+
+        <div id="captionResults" class="results"></div>
+
+    </div>
+
+</section>
+
+
+<!-- IDEAS -->
+
+<section id="ideas" class="section">
+
+    <div class="section-title">
+        <h2>💡 Reel Idea Generator</h2>
+        <p>Get hooks, concepts and CTAs for your next video.</p>
+    </div>
+
+
+    <div class="card">
+
+        <div class="form-grid">
+
+            <div>
+
+                <label>
+                    Niche
+                </label>
+
+                <select id="ideaNiche">
+                    <option>Technology</option>
+                    <option>Cars</option>
+                    <option>Gaming</option>
+                    <option>Fitness</option>
+                    <option>Fashion</option>
+                    <option>Motivation</option>
+                    <option>Education</option>
+                    <option>Travel</option>
+                </select>
+
+            </div>
+
+
+            <div>
+
+                <label>
+                    Video Type
+                </label>
+
+                <select id="ideaType">
+                    <option>Short Reel</option>
+                    <option>Educational</option>
+                    <option>Storytelling</option>
+                    <option>Funny</option>
+                    <option>List</option>
+                </select>
+
+            </div>
+
+        </div>
+
+
+        <button class="generate" onclick="generateIdeas()">
+            Generate 10 Ideas ⚡
+        </button>
+
+
+        <div id="ideaResults" class="results"></div>
+
+    </div>
+
+</section>
+
+
+<!-- PLANNER -->
+
+<section id="planner" class="section">
+
+    <div class="section-title">
+
+        <h2>📊 Content Planner</h2>
+
+        <p>
+            Plan your content and keep track of your posts.
+            Your plans are saved in this browser.
+        </p>
+
+    </div>
+
+
+    <div class="card">
+
+        <div class="stats">
+
+            <div class="stat">
+
+                <div
+                    class="stat-number"
+                    id="totalPlans"
+                >
+                    0
+                </div>
+
+                <div class="stat-label">
+                    Total Content
+                </div>
+
+            </div>
+
+
+            <div class="stat">
+
+                <div
+                    class="stat-number"
+                    id="plannedCount"
+                >
+                    0
+                </div>
+
+                <div class="stat-label">
+                    Planned
+                </div>
+
+            </div>
+
+
+            <div class="stat">
+
+                <div
+                    class="stat-number"
+                    id="postedCount"
+                >
+                    0
+                </div>
+
+                <div class="stat-label">
+                    Posted
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="planner-inputs">
+
+            <input
+                id="planDate"
+                type="date"
+            >
+
+
+            <input
+                id="planContent"
+                placeholder="Example: Upload car reel"
+            >
+
+
+            <select id="planPlatform">
+
+                <option>Instagram</option>
+                <option>TikTok</option>
+                <option>YouTube</option>
+
+            </select>
+
+
+            <button
+                class="add-btn"
+                onclick="addPlan()"
+            >
+                + Add
+            </button>
+
+        </div>
+
+
+        <div id="plans" class="plans"></div>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<footer>
+
+    CreatorFlow © 2026 — Built for creators 🚀
+
+</footer>
+
+
+<script>
+
+/* =========================
+   NAVIGATION
+========================= */
+
+function showSection(id, clickedButton) {
+
+    document
+        .querySelectorAll(".section")
+        .forEach(section => {
+            section.classList.remove("active");
+        });
+
+
+    document
+        .getElementById(id)
+        .classList.add("active");
+
+
+    document
+        .querySelectorAll("nav button")
+        .forEach(button => {
+            button.classList.remove("active");
+        });
+
+
+    if (clickedButton) {
+        clickedButton.classList.add("active");
+    }
+
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
+
+
+function openTool(id) {
+
+    const buttons =
+        document.querySelectorAll("nav button");
+
+    let button = null;
+
+    buttons.forEach(b => {
+
+        if (
+            b.innerText
+                .toLowerCase()
+                .includes(
+                    id === "titles"
+                        ? "titles"
+                        : id === "captions"
+                        ? "captions"
+                        : id === "ideas"
+                        ? "ideas"
+                        : "planner"
+                )
+        ) {
+            button = b;
+        }
+
+    });
+
+    showSection(id, button);
+}
+
+
+/* =========================
+   COPY
+========================= */
+
+function copyText(text, button) {
+
+    navigator.clipboard
+        .writeText(text)
+        .then(() => {
+
+            const oldText =
+                button.innerText;
+
+            button.innerText =
+                "Copied ✓";
+
+            setTimeout(() => {
+
+                button.innerText =
+                    oldText;
+
+            }, 1200);
+
+        });
+
+}
+
+
+/* =========================
+   HTML SAFETY
+========================= */
+
+function escapeHTML(text) {
+
+    return text
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+}
+
+
+/* =========================
+   TITLE GENERATOR
+========================= */
+
+function generateTitles() {
+
+    const topic =
+        document
+            .getElementById("titleTopic")
+            .value
+            .trim();
+
+
+    const style =
+        document
+            .getElementById("titleStyle")
+            .value;
+
+
+    if (!topic) {
+
+        alert(
+            "Enter your video topic first."
+        );
+
+        return;
+    }
+
+
+    let titles = [];
+
+
+    if (style === "Viral") {
+
+        titles = [
+
+            `You NEED to See This ${topic}`,
+
+            `This Changes Everything About ${topic}`,
+
+            `The ${topic} Everyone Is Talking About`,
+
+            `I Tried ${topic}... Here's What Happened`,
+
+            `Nobody Told Me About ${topic}`,
+
+            `This Might Be the Best ${topic} Ever`,
+
+            `Stop Scrolling — ${topic}`,
+
+            `The Truth About ${topic}`,
+
+            `I Can't Believe This Actually Works`,
+
+            `${topic} You Didn't Know Existed`
+
+        ];
+
+    }
+
+
+    else if (style === "Curiosity") {
+
+        titles = [
+
+            `What Nobody Tells You About ${topic}`,
+
+            `The Secret Behind ${topic}`,
+
+            `There's Something Strange About ${topic}`,
+
+            `Why Is Everyone Talking About ${topic}?`,
+
+            `I Finally Found Out Why`,
+
+            `You Probably Don't Know This About ${topic}`,
+
+            `The Hidden Side of ${topic}`,
+
+            `Wait Until You See This`,
+
+            `This Wasn't Supposed to Happen`,
+
+            `The Real Reason Behind ${topic}`
+
+        ];
+
+    }
+
+
+    else if (style === "Emotional") {
+
+        titles = [
+
+            `I Wish I Knew This Earlier`,
+
+            `Some Things About ${topic} Hit Different`,
+
+            `This One Really Changed Me`,
+
+            `A Moment I'll Never Forget`,
+
+            `Sometimes You Just Need to Start`,
+
+            `This Means More Than You Think`,
+
+            `One Small Thing Changed Everything`,
+
+            `For Anyone Who Needs This Today`,
+
+            `Maybe Someone Needs to Hear This`,
+
+            `This Is Your Sign`
+
+        ];
+
+    }
+
+
+    else if (style === "Funny") {
+
+        titles = [
+
+            `Me Trying ${topic} for the First Time 💀`,
+
+            `This Was a Terrible Idea 😂`,
+
+            `I Thought This Would Be Easy...`,
+
+            `Bro Really Thought This Would Work 💀`,
+
+            `Things Escalated Quickly 😂`,
+
+            `POV: You Discover ${topic}`,
+
+            `Nobody: Absolutely Nobody: Me:`,
+
+            `Why Did I Even Try This?`,
+
+            `My Last Brain Cell Doing This`,
+
+            `Well... That Went Wrong`
+
+        ];
+
+    }
+
+
+    else {
+
+        titles = [
+
+            `Complete Guide to ${topic}`,
+
+            `${topic}: Everything You Need to Know`,
+
+            `How to Get Started With ${topic}`,
+
+            `${topic} Explained Simply`,
+
+            `A Practical Guide to ${topic}`,
+
+            `The Beginner's Guide to ${topic}`,
+
+            `How ${topic} Actually Works`,
+
+            `5 Things to Know About ${topic}`,
+
+            `${topic}: Tips and Strategies`,
+
+            `Understanding ${topic}`
+
+        ];
+
+    }
+
+
+    displayResults(
+        "titleResults",
+        titles
+    );
+
+}
+
+
+/* =========================
+   CAPTION GENERATOR
+========================= */
+
+function generateCaptions() {
+
+    const topic =
+        document
+            .getElementById("captionTopic")
+            .value
+            .trim();
+
+
+    const tone =
+        document
+            .getElementById("captionTone")
+            .value;
+
+
+    if (!topic) {
+
+        alert(
+            "Describe your content first."
+        );
+
+        return;
+    }
+
+
+    let captions = [];
+
+
+    if (tone === "Cool") {
+
+        captions = [
+
+            `${topic}. That's the vibe. 🔥`,
+
+            `No explanation needed. Just watch. 👀`,
+
+            `Different kind of energy.`,
+
+            `Just another day creating something cool.`,
+
+            `This one deserves a replay.`,
+
+            `POV: You found your new favorite vibe.`,
+
+            `Let the content speak.`,
+
+            `Simple. Clean. Unforgettable.`,
+
+            `Currently obsessed with this.`,
+
+            `Yeah... this one hits different.`
+
+        ];
+
+    }
+
+
+    else if (tone === "Emotional") {
+
+        captions = [
+
+            `Some moments are worth remembering forever. ❤️`,
+
+            `A little moment that means a lot.`,
+
+            `Sometimes the simplest moments become our favorite memories.`,
+
+            `One day we'll look back at this moment.`,
+
+            `Keep the memories, not just the photos.`,
+
+            `Some feelings don't need an explanation.`,
+
+            `This moment will stay with me.`,
+
+            `Life is made of little moments like this.`,
+
+            `Grateful for moments like these.`,
+
+            `Maybe this is what happiness looks like.`
+
+        ];
+
+    }
+
+
+    else if (tone === "Funny") {
+
+        captions = [
+
+            `Well... that happened 😂`,
+
+            `I had a plan. It did not survive.`,
+
+            `Don't ask me how we got here 💀`,
+
+            `Mission failed successfully.`,
+
+            `My brain left the chat.`,
+
+            `I probably shouldn't have done this 😂`,
+
+            `Zero regrets. Maybe one.`,
+
+            `Everything was fine until it wasn't.`,
+
+            `Trust me, it made sense at the time.`,
+
+            `We're not talking about what happened next.`
+
+        ];
+
+    }
+
+
+    else if (tone === "Professional") {
+
+        captions = [
+
+            `Sharing a new perspective on ${topic}.`,
+
+            `Here's what I've learned about ${topic}.`,
+
+            `A closer look at ${topic} and what it means.`,
+
+            `Creating, learning and improving every day.`,
+
+            `Here's a practical look at ${topic}.`,
+
+            `What do you think about this approach?`,
+
+            `Sharing this idea with the community.`,
+
+            `A simple breakdown of something worth understanding.`,
+
+            `Learning through the process.`,
+
+            `Let's build better content together.`
+
+        ];
+
+    }
+
+
+    else {
+
+        captions = [
+
+            `${topic}.`,
+
+            `Just vibes.`,
+
+            `Less talking. More creating.`,
+
+            `Keep it simple.`,
+
+            `One moment.`,
+
+            `Nothing more. Nothing less.`,
+
+            `Create. Post. Repeat.`,
+
+            `That's it. That's the post.`,
+
+            `Simple moments.`,
+
+            `Currently creating.`
+
+        ];
+
+    }
+
+
+    displayResults(
+        "captionResults",
+        captions
+    );
+
+}
+
+
+/* =========================
+   DISPLAY RESULTS
+========================= */
+
+function displayResults(
+    id,
+    items
+) {
+
+    const container =
+        document.getElementById(id);
+
+
+    container.innerHTML = "";
+
+
+    items.forEach(
+        (item, index) => {
+
+            const div =
+                document.createElement("div");
+
+
+            div.className =
+                "result";
+
+
+            div.innerHTML = `
+
+                <div class="result-text">
+
+                    <span class="result-number">
+                        ${index + 1}.
+                    </span>
+
+                    ${escapeHTML(item)}
+
+                </div>
+
+                <button class="copy">
+                    Copy
+                </button>
+
+            `;
+
+
+            const copyButton =
+                div.querySelector(".copy");
+
+
+            copyButton.onclick = function() {
+
+                copyText(
+                    item,
+                    this
+                );
+
+            };
+
+
+            container.appendChild(div);
+
+        }
+    );
+
+}
+
+
+/* =========================
+   REEL IDEA GENERATOR
+========================= */
+
+function generateIdeas() {
+
+    const niche =
+        document
+            .getElementById("ideaNiche")
+            .value;
+
+
+    const type =
+        document
+            .getElementById("ideaType")
+            .value;
+
+
+    const ideas = [
+
+        {
+            hook:
+                `Nobody tells you this about ${niche}...`,
+
+            concept:
+                `Share one surprising fact or mistake beginners make.`,
+
+            cta:
+                `Follow for more ${niche} content.`
+        },
+
+
+        {
+            hook:
+                `3 things I wish I knew about ${niche}.`,
+
+            concept:
+                `Give three useful beginner tips.`,
+
+            cta:
+                `Save this for later.`
+        },
+
+
+        {
+            hook:
+                `Stop doing this if you're into ${niche}.`,
+
+            concept:
+                `Show a common mistake and explain a better approach.`,
+
+            cta:
+                `Send this to someone who needs it.`
+        },
+
+
+        {
+            hook:
+                `POV: You just discovered this.`,
+
+            concept:
+                `Reveal an underrated tool, trick or fact related to the niche.`,
+
+            cta:
+                `Would you try this?`
+        },
+
+
+        {
+            hook:
+                `The truth about ${niche}...`,
+
+            concept:
+                `Break down a popular misconception.`,
+
+            cta:
+                `Comment your opinion.`
+        },
+
+
+        {
+            hook:
+                `If I started ${niche} again, I'd do this.`,
+
+            concept:
+                `Share your ideal beginner roadmap.`,
+
+            cta:
+                `Save this roadmap.`
+        },
+
+
+        {
+            hook:
+                `You have 30 seconds. Learn this.`,
+
+            concept:
+                `Teach one highly useful concept quickly.`,
+
+            cta:
+                `Follow for part 2.`
+        },
+
+
+        {
+            hook:
+                `This is seriously underrated.`,
+
+            concept:
+                `Show an underrated idea, technique or resource.`,
+
+            cta:
+                `Tag a friend who should know this.`
+        },
+
+
+        {
+            hook:
+                `Can you guess what happens next?`,
+
+            concept:
+                `Create a curiosity-driven setup and reveal the answer at the end.`,
+
+            cta:
+                `Comment your guess before watching.`
+        },
+
+
+        {
+            hook:
+                `Here's something I learned the hard way.`,
+
+            concept:
+                `Tell a short story about a mistake and the lesson from it.`,
+
+            cta:
+                `Learn from my mistake.`
+        }
+
+    ];
+
+
+    const container =
+        document.getElementById(
+            "ideaResults"
+        );
+
+
+    container.innerHTML = "";
+
+
+    ideas.forEach(
+        (idea, index) => {
+
+            const text =
+
+`Idea ${index + 1}
+
+HOOK:
+${idea.hook}
+
+CONCEPT:
+${idea.concept}
+
+CTA:
+${idea.cta}`;
+
+
+            const div =
+                document.createElement("div");
+
+
+            div.className =
+                "result idea-result";
+
+
+            div.innerHTML = `
+
+                <div class="result-text">
+
+                    <strong>
+                        Idea ${index + 1}
+                    </strong>
+
+                    <br><br>
+
+                    <span class="idea-label">
+                        HOOK
+                    </span>
+
+                    <br>
+
+                    ${escapeHTML(idea.hook)}
+
+                    <br><br>
+
+                    <span class="idea-label">
+                        CONCEPT
+                    </span>
+
+                    <br>
+
+                    ${escapeHTML(idea.concept)}
+
+                    <br><br>
+
+                    <span class="idea-label">
+                        CTA
+                    </span>
+
+                    <br>
+
+                    ${escapeHTML(idea.cta)}
+
+                    <br>
+
+                    <small style="color:#66736b;">
+                        Type: ${escapeHTML(type)}
+                    </small>
+
+                </div>
+
+                <button class="copy">
+                    Copy
+                </button>
+
+            `;
+
+
+            div
+                .querySelector(".copy")
+                .onclick = function() {
+
+                    copyText(
+                        text,
+                        this
+                    );
+
+                };
+
+
+            container.appendChild(div);
+
+        }
+    );
+
+}
+
+
+/* =========================
+   CONTENT PLANNER
+========================= */
+
+let plans =
+    JSON.parse(
+        localStorage.getItem(
+            "creatorFlowPlans"
+        )
+    ) || [];
+
+
+function savePlans() {
+
+    localStorage.setItem(
+        "creatorFlowPlans",
+        JSON.stringify(plans)
+    );
+
+}
+
+
+function addPlan() {
+
+    const date =
+        document
+            .getElementById("planDate")
+            .value;
+
+
+    const content =
+        document
+            .getElementById("planContent")
+            .value
+            .trim();
+
+
+    const platform =
+        document
+            .getElementById("planPlatform")
+            .value;
+
+
+    if (!date || !content) {
+
+        alert(
+            "Choose a date and enter your content."
+        );
+
+        return;
+    }
+
+
+    plans.push({
+
+        date: date,
+
+        content: content,
+
+        platform: platform,
+
+        status: "Planned"
+
+    });
+
+
+    savePlans();
+
+
+    document
+        .getElementById("planContent")
+        .value = "";
+
+
+    renderPlans();
+
+}
+
+
+/* =========================
+   DELETE PLAN
+========================= */
+
+function deletePlan(index) {
+
+    plans.splice(
+        index,
+        1
+    );
+
+
+    savePlans();
+
+    renderPlans();
+
+}
+
+
+/* =========================
+   CHANGE STATUS
+========================= */
+
+function changeStatus(
+    index,
+    value
+) {
+
+    plans[index].status =
+        value;
+
+
+    savePlans();
+
+    renderPlans();
+
+}
+
+
+/* =========================
+   RENDER PLANS
+========================= */
+
+function renderPlans() {
+
+    const container =
+        document.getElementById(
+            "plans"
+        );
+
+
+    container.innerHTML = "";
+
+
+    if (plans.length === 0) {
+
+        container.innerHTML = `
+
+            <div class="empty">
+
+                📅 No content planned yet.
+
+                <br><br>
+
+                Add your first post above.
+
+            </div>
+
+        `;
+
+        updateStats();
+
+        return;
+    }
+
+
+    plans.sort(
+        (a, b) =>
+            new Date(a.date) -
+            new Date(b.date)
+    );
+
+
+    plans.forEach(
+        (plan, index) => {
+
+            const div =
+                document.createElement(
+                    "div"
+                );
+
+
+            div.className =
+                "plan";
+
+
+            div.innerHTML = `
+
+                <div class="plan-date">
+
+                    ${escapeHTML(
+                        formatDate(plan.date)
+                    )}
+
+                </div>
+
+
+                <div class="plan-info">
+
+                    <h4>
+                        ${escapeHTML(
+                            plan.content
+                        )}
+                    </h4>
+
+                    <small>
+                        ${escapeHTML(
+                            plan.platform
+                        )}
+                    </small>
+
+                </div>
+
+
+                <select
+                    class="status"
+                    onchange="changeStatus(${index}, this.value)"
+                >
+
+                    <option
+                        ${plan.status === "Idea"
+                            ? "selected"
+                            : ""}
+                    >
+                        Idea
+                    </option>
+
+
+                    <option
+                        ${plan.status === "Planned"
+                            ? "selected"
+                            : ""}
+                    >
+                        Planned
+                    </option>
+
+
+                    <option
+                        ${plan.status === "Posted"
+                            ? "selected"
+                            : ""}
+                    >
+                        Posted
+                    </option>
+
+                </select>
+
+
+                <button
+                    class="delete"
+                    onclick="deletePlan(${index})"
+                >
+                    🗑
+                </button>
+
+            `;
+
+
+            container.appendChild(div);
+
+        }
+    );
+
+
+    updateStats();
+
+}
+
+
+/* =========================
+   FORMAT DATE
+========================= */
+
+function formatDate(date) {
+
+    const d =
+        new Date(
+            date + "T00:00:00"
+        );
+
+
+    return d.toLocaleDateString(
+        undefined,
+        {
+            day: "2-digit",
+            month: "short",
+            year: "numeric"
+        }
+    );
+
+}
+
+
+/* =========================
+   PLANNER STATS
+========================= */
+
+function updateStats() {
+
+    document.getElementById(
+        "totalPlans"
+    ).innerText =
+        plans.length;
+
+
+    document.getElementById(
+        "plannedCount"
+    ).innerText =
+        plans.filter(
+            p => p.status === "Planned"
+        ).length;
+
+
+    document.getElementById(
+        "postedCount"
+    ).innerText =
+        plans.filter(
+            p => p.status === "Posted"
+        ).length;
+
+}
+
+
+/* =========================
+   START
+========================= */
+
+renderPlans();
+
+</script>
+
+</body>
+</html>
