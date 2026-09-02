@@ -1,2029 +1,1573 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>CreatorFlow — Creator Toolkit</title>
-
-<style>
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    background: #070a09;
-    color: #f4f7f5;
-    min-height: 100vh;
-}
-
-/* HEADER */
-
-header {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    height: 70px;
-    padding: 0 6%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: rgba(7, 10, 9, 0.94);
-    backdrop-filter: blur(15px);
-    border-bottom: 1px solid #1b2720;
-}
-
-.logo {
-    font-size: 23px;
-    font-weight: 800;
-    color: #6dff9b;
-}
-
-.logo span {
-    color: white;
-}
-
-nav {
-    display: flex;
-    gap: 5px;
-}
-
-nav button {
-    border: none;
-    background: transparent;
-    color: #89958e;
-    padding: 10px 13px;
-    border-radius: 9px;
-    cursor: pointer;
-    font-size: 13px;
-}
-
-nav button:hover,
-nav button.active {
-    background: #122219;
-    color: #6dff9b;
-}
-
-/* MAIN */
-
-main {
-    width: 88%;
-    max-width: 1150px;
-    margin: auto;
-}
-
-/* SECTIONS */
-
-.section {
-    display: none;
-    padding: 45px 0 80px;
-}
-
-.section.active {
-    display: block;
-}
-
-/* HOME */
-
-.hero {
-    text-align: center;
-    padding: 75px 15px 55px;
-}
-
-.badge {
-    display: inline-block;
-    padding: 8px 15px;
-    margin-bottom: 20px;
-    border: 1px solid #285c3a;
-    background: #102217;
-    color: #6dff9b;
-    border-radius: 30px;
-    font-size: 13px;
-}
-
-.hero h1 {
-    font-size: clamp(42px, 8vw, 78px);
-    line-height: 1;
-    margin-bottom: 22px;
-}
-
-.hero h1 span {
-    color: #6dff9b;
-}
-
-.hero p {
-    max-width: 650px;
-    margin: auto;
-    color: #8b9690;
-    line-height: 1.7;
-    font-size: 17px;
-}
-
-.feature-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 15px;
-}
-
-.feature {
-    padding: 25px;
-    background: #0d1310;
-    border: 1px solid #1b2720;
-    border-radius: 17px;
-    cursor: pointer;
-    transition: 0.2s;
-}
-
-.feature:hover {
-    transform: translateY(-4px);
-    border-color: #397b50;
-}
-
-.feature-icon {
-    font-size: 30px;
-    margin-bottom: 16px;
-}
-
-.feature h3 {
-    margin-bottom: 9px;
-}
-
-.feature p {
-    color: #78837d;
-    font-size: 13px;
-    line-height: 1.5;
-}
-
-/* SECTION TITLE */
-
-.section-title {
-    margin-bottom: 25px;
-}
-
-.section-title h2 {
-    font-size: 32px;
-    margin-bottom: 8px;
-}
-
-.section-title p {
-    color: #7d8982;
-}
-
-/* CARD */
-
-.card {
-    background: #0d1310;
-    border: 1px solid #1b2720;
-    border-radius: 18px;
-    padding: 25px;
-}
-
-/* FORMS */
-
-.form-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 18px;
-}
-
-.full {
-    grid-column: 1 / -1;
-}
-
-label {
-    display: block;
-    margin-bottom: 8px;
-    color: #aeb8b2;
-    font-size: 13px;
-}
-
-input,
-textarea,
-select {
-    width: 100%;
-    padding: 13px;
-    border-radius: 10px;
-    border: 1px solid #29362e;
-    background: #080c0a;
-    color: white;
-    outline: none;
-    font-size: 14px;
-}
-
-textarea {
-    min-height: 120px;
-    resize: vertical;
-}
-
-input:focus,
-textarea:focus,
-select:focus {
-    border-color: #6dff9b;
-}
-
-.generate {
-    width: 100%;
-    margin-top: 20px;
-    padding: 14px;
-    border: none;
-    border-radius: 10px;
-    background: #6dff9b;
-    color: #07100a;
-    font-weight: 800;
-    font-size: 15px;
-    cursor: pointer;
-}
-
-.generate:hover {
-    background: #8affae;
-}
-
-/* RESULTS */
-
-.results {
-    display: grid;
-    gap: 12px;
-    margin-top: 25px;
-}
-
-.result {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 15px;
-    padding: 17px;
-    background: #111914;
-    border: 1px solid #25342b;
-    border-radius: 12px;
-}
-
-.result-text {
-    line-height: 1.6;
-    color: #e8eee9;
-}
-
-.result-number {
-    color: #6dff9b;
-    font-weight: bold;
-}
-
-.copy {
-    flex-shrink: 0;
-    padding: 8px 12px;
-    border-radius: 8px;
-    border: 1px solid #31513d;
-    background: #18241d;
-    color: #6dff9b;
-    cursor: pointer;
-}
-
-.copy:hover {
-    background: #22352a;
-}
-
-/* IDEAS */
-
-.idea-result {
-    align-items: flex-start;
-}
-
-.idea-result .result-text {
-    width: 100%;
-}
-
-.idea-label {
-    color: #6dff9b;
-    font-size: 12px;
-    font-weight: bold;
-}
-
-/* PLANNER */
-
-.planner-inputs {
-    display: grid;
-    grid-template-columns: 150px 1fr 160px auto;
-    gap: 10px;
-    margin-bottom: 20px;
-}
-
-.add-btn {
-    border: none;
-    border-radius: 10px;
-    padding: 0 20px;
-    background: #6dff9b;
-    color: #07100a;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.add-btn:hover {
-    background: #8affae;
-}
-
-.stats {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
-    margin-bottom: 20px;
-}
-
-.stat {
-    background: #111914;
-    border: 1px solid #25342b;
-    padding: 18px;
-    border-radius: 12px;
-}
-
-.stat-number {
-    font-size: 25px;
-    color: #6dff9b;
-    font-weight: bold;
-}
-
-.stat-label {
-    color: #7d8982;
-    font-size: 12px;
-    margin-top: 5px;
-}
-
-.plans {
-    display: grid;
-    gap: 12px;
-}
-
-.plan {
-    display: grid;
-    grid-template-columns: 110px 1fr 130px auto;
-    align-items: center;
-    gap: 15px;
-    padding: 15px;
-    background: #0e1511;
-    border: 1px solid #1c2921;
-    border-radius: 12px;
-}
-
-.plan-date {
-    color: #6dff9b;
-    font-weight: bold;
-    font-size: 13px;
-}
-
-.plan-info h4 {
-    margin-bottom: 5px;
-}
-
-.plan-info small {
-    color: #7d8982;
-}
-
-.status {
-    padding: 7px;
-    border-radius: 7px;
-    border: 1px solid #29362e;
-    background: #080c0a;
-    color: white;
-}
-
-.delete {
-    border: none;
-    background: transparent;
-    color: #ff7777;
-    cursor: pointer;
-    font-size: 18px;
-}
-
-.empty {
-    text-align: center;
-    padding: 40px;
-    color: #657169;
-}
-
-/* FOOTER */
-
-footer {
-    border-top: 1px solid #19231e;
-    text-align: center;
-    padding: 30px;
-    color: #59645e;
-    font-size: 13px;
-}
-
-/* MOBILE */
-
-@media (max-width: 850px) {
-
-    .feature-grid {
-        grid-template-columns: 1fr 1fr;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>CreatorFlow — by Deeezz</title>
+  <meta name="description" content="CreatorFlow — a creator toolkit built by Dihein De Silva, aka Deeezz.">
+
+  <style>
+    :root {
+      --bg: #050706;
+      --card: #0b110d;
+      --card2: #0f1711;
+      --green: #39ff88;
+      --green2: #1ddf70;
+      --text: #f5f7f6;
+      --muted: #a6b2aa;
+      --border: rgba(57, 255, 136, 0.15);
+      --danger: #ff7777;
     }
 
-    .planner-inputs {
-        grid-template-columns: 1fr 1fr;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-    .add-btn {
-        padding: 13px;
+    html {
+      scroll-behavior: smooth;
     }
 
-    .plan {
-        grid-template-columns: 1fr;
+    body {
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top right, rgba(30, 120, 70, 0.16), transparent 35%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.6;
     }
-}
 
-@media (max-width: 600px) {
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
 
-    header {
-        padding: 0 4%;
+    button,
+    input,
+    textarea,
+    select {
+      font-family: inherit;
+    }
+
+    /* NAVBAR */
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(5, 7, 6, 0.88);
+      backdrop-filter: blur(15px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      max-width: 1150px;
+      margin: auto;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
     }
 
     .logo {
-        font-size: 18px;
+      font-size: 1.35rem;
+      font-weight: 900;
+      letter-spacing: -0.5px;
     }
 
-    nav {
-        gap: 0;
+    .logo span {
+      color: var(--green);
     }
 
-    nav button {
-        padding: 7px;
-        font-size: 10px;
+    .logo small {
+      color: var(--muted);
+      font-size: 0.7rem;
+      margin-left: 5px;
+      font-weight: 700;
     }
 
-    main {
-        width: 92%;
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
     }
 
-    .feature-grid {
-        grid-template-columns: 1fr;
+    .nav-links a {
+      color: var(--muted);
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--green);
+    }
+
+    /* HERO */
+
+    .hero {
+      max-width: 1150px;
+      margin: auto;
+      padding: 100px 20px 75px;
+      text-align: center;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 8px 15px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(57, 255, 136, 0.07);
+      color: var(--green);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+
+    .hero h1 {
+      font-size: clamp(3rem, 8vw, 6.5rem);
+      line-height: 0.95;
+      margin: 22px 0;
+      font-weight: 950;
+      letter-spacing: -5px;
+    }
+
+    .hero h1 span {
+      color: var(--green);
+    }
+
+    .hero p {
+      max-width: 720px;
+      margin: auto;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    .creator-line {
+      margin-top: 18px;
+      color: #dce5df;
+      font-size: 1rem;
+    }
+
+    .creator-line strong {
+      color: var(--green);
+    }
+
+    .hero-buttons {
+      margin-top: 30px;
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 18px;
+      border-radius: 12px;
+      font-weight: 800;
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .btn-primary {
+      background: var(--green);
+      color: #031007;
+    }
+
+    .btn-primary:hover {
+      background: #6dffa5;
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background: #0b110d;
+      color: white;
+    }
+
+    .btn-secondary:hover {
+      border-color: rgba(57, 255, 136, 0.4);
+      color: var(--green);
+    }
+
+    /* GENERAL */
+
+    .container {
+      max-width: 1150px;
+      margin: auto;
+      padding: 0 20px 80px;
+    }
+
+    .section {
+      padding: 45px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    .section-title h2 {
+      font-size: 2rem;
+      margin-bottom: 7px;
+    }
+
+    .section-title p {
+      color: var(--muted);
+    }
+
+    /* TOOLS */
+
+    .tools {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .tool-card {
+      background: linear-gradient(
+        145deg,
+        rgba(14, 24, 17, 0.95),
+        rgba(8, 13, 10, 0.95)
+      );
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 23px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .tool-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(57, 255, 136, 0.4);
+    }
+
+    .tool-icon {
+      font-size: 2rem;
+    }
+
+    .tool-card h3 {
+      margin: 12px 0 6px;
+    }
+
+    .tool-card p {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    /* TOOL AREA */
+
+    .tool-area {
+      display: none;
+    }
+
+    .tool-area.active {
+      display: block;
+    }
+
+    .back {
+      display: inline-block;
+      color: var(--green);
+      margin-bottom: 15px;
+      cursor: pointer;
+      font-weight: 800;
+    }
+
+    .panel {
+      background: linear-gradient(
+        145deg,
+        rgba(14, 24, 17, 0.95),
+        rgba(8, 13, 10, 0.95)
+      );
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 24px;
+    }
+
+    .panel h2 {
+      margin-bottom: 18px;
     }
 
     .form-grid {
-        grid-template-columns: 1fr;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
     }
 
-    .full {
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .field.full {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      color: #d9e2dc;
+      font-size: 0.86rem;
+      font-weight: 700;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      background: #070b08;
+      color: white;
+      border: 1px solid #1c2b21;
+      border-radius: 11px;
+      padding: 12px;
+      outline: none;
+      font-size: 0.95rem;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: var(--green);
+    }
+
+    textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
+
+    .generate {
+      margin-top: 16px;
+    }
+
+    /* RESULTS */
+
+    .results {
+      margin-top: 20px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .result {
+      background: #070c08;
+      border: 1px solid #18251c;
+      border-radius: 13px;
+      padding: 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .result-text {
+      flex: 1;
+    }
+
+    .result-text strong {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--green);
+    }
+
+    .copy {
+      background: #101b13;
+      border: 1px solid var(--border);
+      color: var(--green);
+      border-radius: 9px;
+      padding: 8px 11px;
+      cursor: pointer;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .copy:hover {
+      background: #16251a;
+    }
+
+    /* CREATOR */
+
+    .creator-card {
+      max-width: 850px;
+      margin: auto;
+      background: linear-gradient(
+        145deg,
+        rgba(14, 24, 17, 0.95),
+        rgba(8, 13, 10, 0.95)
+      );
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 28px;
+      display: flex;
+      align-items: center;
+      gap: 22px;
+    }
+
+    .avatar {
+      width: 80px;
+      height: 80px;
+      flex-shrink: 0;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: rgba(57, 255, 136, 0.1);
+      border: 1px solid var(--border);
+      color: var(--green);
+      font-size: 2rem;
+      font-weight: 900;
+    }
+
+    .creator-card h3 {
+      font-size: 1.4rem;
+    }
+
+    .creator-card h3 span {
+      color: var(--green);
+    }
+
+    .creator-card p {
+      color: var(--muted);
+      margin: 5px 0 15px;
+    }
+
+    /* PLANNER */
+
+    .planner-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .stat {
+      padding: 16px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: #070c08;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.6rem;
+      color: var(--green);
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    .plan-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .plan-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+      border: 1px solid #18251c;
+      padding: 15px;
+      border-radius: 13px;
+      background: #070c08;
+    }
+
+    .plan-info {
+      flex: 1;
+    }
+
+    .plan-info strong {
+      display: block;
+    }
+
+    .plan-info small {
+      color: var(--muted);
+    }
+
+    .status {
+      background: #101b13;
+      color: var(--green);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 7px;
+      outline: none;
+    }
+
+    .delete {
+      background: transparent;
+      border: 0;
+      color: var(--danger);
+      cursor: pointer;
+      font-weight: 800;
+    }
+
+    .empty {
+      color: var(--muted);
+      text-align: center;
+      padding: 25px;
+      border: 1px dashed #1c2b21;
+      border-radius: 13px;
+    }
+
+    /* FOOTER */
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 20px;
+      text-align: center;
+      color: var(--muted);
+    }
+
+    footer strong {
+      color: var(--green);
+    }
+
+    footer .footer-name {
+      margin-top: 5px;
+      font-size: 0.9rem;
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 850px) {
+      .tools {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        padding-top: 65px;
+      }
+
+      .hero h1 {
+        letter-spacing: -2px;
+      }
+
+      .tools,
+      .form-grid,
+      .planner-stats {
+        grid-template-columns: 1fr;
+      }
+
+      .field.full {
         grid-column: auto;
-    }
+      }
 
-    .planner-inputs {
-        grid-template-columns: 1fr;
-    }
+      .creator-card {
+        flex-direction: column;
+        text-align: center;
+      }
 
-    .stats {
-        grid-template-columns: 1fr;
-    }
+      .result,
+      .plan-item {
+        flex-direction: column;
+        align-items: stretch;
+      }
 
-    .hero {
-        padding-top: 50px;
+      .copy {
+        width: 100%;
+      }
     }
-}
-</style>
+  </style>
 </head>
 
 <body>
 
-<header>
+  <!-- NAVIGATION -->
 
-    <div class="logo">
+  <nav>
+    <div class="nav-inner">
+
+      <a href="#home" class="logo">
         Creator<span>Flow</span>
-    </div>
+        <small>by Deeezz</small>
+      </a>
 
-    <nav>
-        <button class="active" onclick="showSection('home', this)">Home</button>
-        <button onclick="showSection('titles', this)">Titles</button>
-        <button onclick="showSection('captions', this)">Captions</button>
-        <button onclick="showSection('ideas', this)">Ideas</button>
-        <button onclick="showSection('planner', this)">Planner</button>
-    </nav>
-
-</header>
-
-
-<main>
-
-<!-- HOME -->
-
-<section id="home" class="section active">
-
-    <div class="hero">
-
-        <div class="badge">
-            ⚡ Creator Toolkit
-        </div>
-
-        <h1>
-            Create better.<br>
-            <span>Post smarter.</span>
-        </h1>
-
-        <p>
-            Generate titles, captions and content ideas,
-            then organize everything with your personal content planner.
-        </p>
+      <div class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#tools">Tools</a>
+        <a href="#about">About</a>
+      </div>
 
     </div>
+  </nav>
 
 
-    <div class="feature-grid">
+  <!-- HERO -->
 
-        <div class="feature" onclick="openTool('titles')">
-            <div class="feature-icon">🎯</div>
-            <h3>Title Generator</h3>
-            <p>
-                Create attention-grabbing titles for YouTube,
-                TikTok and Instagram.
-            </p>
-        </div>
+  <section class="hero" id="home">
 
+    <div class="badge">
+      ⚡ BUILT BY DEEEZZ
+    </div>
 
-        <div class="feature" onclick="openTool('captions')">
-            <div class="feature-icon">✍️</div>
-            <h3>Caption Generator</h3>
-            <p>
-                Create captions with different tones and styles.
-            </p>
-        </div>
+    <h1>
+      Create better.<br>
+      <span>Post smarter.</span>
+    </h1>
 
+    <p>
+      CreatorFlow is a simple creator toolkit built by
+      <strong>Dihein De Silva</strong> — aka <strong>Deeezz</strong> —
+      to help creators make ideas, captions, titles and content plans faster.
+    </p>
 
-        <div class="feature" onclick="openTool('ideas')">
-            <div class="feature-icon">💡</div>
-            <h3>Reel Ideas</h3>
-            <p>
-                Generate hooks, concepts and CTAs for your next video.
-            </p>
-        </div>
+    <div class="creator-line">
+      CreatorFlow <strong>by Deeezz</strong>
+    </div>
 
+    <div class="hero-buttons">
 
-        <div class="feature" onclick="openTool('planner')">
-            <div class="feature-icon">📊</div>
-            <h3>Content Planner</h3>
-            <p>
-                Plan your content and track your posting schedule.
-            </p>
-        </div>
+      <a href="#tools" class="btn btn-primary">
+        🚀 Explore Tools
+      </a>
+
+      <a
+        href="https://www.instagram.com/______deeezz___/"
+        target="_blank"
+        rel="noopener"
+        class="btn btn-secondary"
+      >
+        📸 Instagram
+      </a>
 
     </div>
 
-</section>
+  </section>
 
 
-<!-- TITLES -->
+  <main class="container">
 
-<section id="titles" class="section">
+    <!-- TOOLS -->
 
-    <div class="section-title">
-        <h2>🎯 Title Generator</h2>
-        <p>Create clickable titles for your content.</p>
-    </div>
+    <section class="section" id="tools">
 
-
-    <div class="card">
-
-        <div class="form-grid">
-
-            <div class="full">
-
-                <label>
-                    What is your video about?
-                </label>
-
-                <input
-                    id="titleTopic"
-                    placeholder="Example: 5 hidden Android apps"
-                >
-
-            </div>
+      <div class="section-title">
+        <h2>Creator Tools</h2>
+        <p>Everything you need to turn an idea into content.</p>
+      </div>
 
 
-            <div>
+      <!-- TOOL MENU -->
 
-                <label>
-                    Platform
-                </label>
+      <div id="toolMenu" class="tools">
 
-                <select id="titlePlatform">
-                    <option>YouTube</option>
-                    <option>TikTok</option>
-                    <option>Instagram Reels</option>
-                </select>
-
-            </div>
-
-
-            <div>
-
-                <label>
-                    Style
-                </label>
-
-                <select id="titleStyle">
-                    <option>Viral</option>
-                    <option>Curiosity</option>
-                    <option>Emotional</option>
-                    <option>Funny</option>
-                    <option>Professional</option>
-                </select>
-
-            </div>
-
+        <div class="tool-card" onclick="openTool('titles')">
+          <div class="tool-icon">🎯</div>
+          <h3>Title Generator</h3>
+          <p>Create attention-grabbing titles for your content.</p>
         </div>
 
+        <div class="tool-card" onclick="openTool('captions')">
+          <div class="tool-icon">✍️</div>
+          <h3>Caption Generator</h3>
+          <p>Generate captions for Instagram, TikTok and YouTube.</p>
+        </div>
 
-        <button class="generate" onclick="generateTitles()">
-            Generate 10 Titles ⚡
-        </button>
+        <div class="tool-card" onclick="openTool('ideas')">
+          <div class="tool-icon">💡</div>
+          <h3>Reel Ideas</h3>
+          <p>Get fresh short-form content ideas and hooks.</p>
+        </div>
 
+        <div class="tool-card" onclick="openTool('planner')">
+          <div class="tool-icon">📊</div>
+          <h3>Content Planner</h3>
+          <p>Organize your content and keep track of your posts.</p>
+        </div>
 
-        <div id="titleResults" class="results"></div>
-
-    </div>
-
-</section>
-
-
-<!-- CAPTIONS -->
-
-<section id="captions" class="section">
-
-    <div class="section-title">
-        <h2>✍️ Caption Generator</h2>
-        <p>Create captions for your posts and reels.</p>
-    </div>
+      </div>
 
 
-    <div class="card">
+      <!-- TITLE GENERATOR -->
 
-        <div class="form-grid">
+      <div id="titles" class="tool-area">
 
-            <div class="full">
+        <div class="back" onclick="closeTools()">
+          ← Back to tools
+        </div>
 
-                <label>
-                    Describe your content
-                </label>
+        <div class="panel">
 
-                <textarea
-                    id="captionTopic"
-                    placeholder="Example: Sunset beach reel in Sri Lanka"
-                ></textarea>
+          <h2>🎯 Title Generator</h2>
 
+          <div class="form-grid">
+
+            <div class="field">
+              <label>Topic</label>
+              <input
+                id="titleTopic"
+                type="text"
+                placeholder="Example: AI tools"
+              >
             </div>
 
+            <div class="field">
+              <label>Platform</label>
 
-            <div>
-
-                <label>
-                    Platform
-                </label>
-
-                <select id="captionPlatform">
-                    <option>Instagram</option>
-                    <option>TikTok</option>
-                    <option>YouTube</option>
-                </select>
-
+              <select id="titlePlatform">
+                <option>YouTube</option>
+                <option>TikTok</option>
+                <option>Instagram</option>
+                <option>Facebook</option>
+                <option>Shorts</option>
+              </select>
             </div>
 
+            <div class="field">
+              <label>Style</label>
 
-            <div>
-
-                <label>
-                    Tone
-                </label>
-
-                <select id="captionTone">
-                    <option>Cool</option>
-                    <option>Emotional</option>
-                    <option>Funny</option>
-                    <option>Professional</option>
-                    <option>Minimal</option>
-                </select>
-
+              <select id="titleStyle">
+                <option>Curiosity</option>
+                <option>Viral</option>
+                <option>Professional</option>
+                <option>Funny</option>
+                <option>Emotional</option>
+                <option>Educational</option>
+              </select>
             </div>
+
+          </div>
+
+          <button class="btn btn-primary generate" onclick="generateTitles()">
+            Generate Titles
+          </button>
+
+          <div id="titleResults" class="results"></div>
 
         </div>
 
-
-        <button class="generate" onclick="generateCaptions()">
-            Generate 10 Captions ⚡
-        </button>
+      </div>
 
 
-        <div id="captionResults" class="results"></div>
+      <!-- CAPTION GENERATOR -->
 
-    </div>
+      <div id="captions" class="tool-area">
 
-</section>
+        <div class="back" onclick="closeTools()">
+          ← Back to tools
+        </div>
 
+        <div class="panel">
 
-<!-- IDEAS -->
+          <h2>✍️ Caption Generator</h2>
 
-<section id="ideas" class="section">
+          <div class="form-grid">
 
-    <div class="section-title">
-        <h2>💡 Reel Idea Generator</h2>
-        <p>Get hooks, concepts and CTAs for your next video.</p>
-    </div>
+            <div class="field full">
+              <label>Describe your post</label>
 
-
-    <div class="card">
-
-        <div class="form-grid">
-
-            <div>
-
-                <label>
-                    Niche
-                </label>
-
-                <select id="ideaNiche">
-                    <option>Technology</option>
-                    <option>Cars</option>
-                    <option>Gaming</option>
-                    <option>Fitness</option>
-                    <option>Fashion</option>
-                    <option>Motivation</option>
-                    <option>Education</option>
-                    <option>Travel</option>
-                </select>
-
+              <textarea
+                id="captionDescription"
+                placeholder="Example: Sunset beach photo with a peaceful vibe"
+              ></textarea>
             </div>
 
+            <div class="field">
+              <label>Platform</label>
 
-            <div>
-
-                <label>
-                    Video Type
-                </label>
-
-                <select id="ideaType">
-                    <option>Short Reel</option>
-                    <option>Educational</option>
-                    <option>Storytelling</option>
-                    <option>Funny</option>
-                    <option>List</option>
-                </select>
-
+              <select id="captionPlatform">
+                <option>Instagram</option>
+                <option>TikTok</option>
+                <option>Facebook</option>
+                <option>YouTube</option>
+              </select>
             </div>
+
+            <div class="field">
+              <label>Tone</label>
+
+              <select id="captionTone">
+                <option>Chill</option>
+                <option>Confident</option>
+                <option>Funny</option>
+                <option>Emotional</option>
+                <option>Motivational</option>
+                <option>Mysterious</option>
+              </select>
+            </div>
+
+          </div>
+
+          <button class="btn btn-primary generate" onclick="generateCaptions()">
+            Generate Captions
+          </button>
+
+          <div id="captionResults" class="results"></div>
 
         </div>
 
-
-        <button class="generate" onclick="generateIdeas()">
-            Generate 10 Ideas ⚡
-        </button>
+      </div>
 
 
-        <div id="ideaResults" class="results"></div>
+      <!-- REEL IDEAS -->
 
-    </div>
+      <div id="ideas" class="tool-area">
 
-</section>
+        <div class="back" onclick="closeTools()">
+          ← Back to tools
+        </div>
+
+        <div class="panel">
+
+          <h2>💡 Reel Idea Generator</h2>
+
+          <div class="form-grid">
+
+            <div class="field">
+              <label>Niche</label>
+
+              <input
+                id="ideaNiche"
+                type="text"
+                placeholder="Example: Cars"
+              >
+            </div>
+
+            <div class="field">
+              <label>Video Type</label>
+
+              <select id="ideaType">
+                <option>Educational</option>
+                <option>Funny</option>
+                <option>Storytelling</option>
+                <option>List</option>
+                <option>Comparison</option>
+                <option>Motivational</option>
+                <option>Trend</option>
+              </select>
+            </div>
+
+          </div>
+
+          <button class="btn btn-primary generate" onclick="generateIdeas()">
+            Generate Ideas
+          </button>
+
+          <div id="ideaResults" class="results"></div>
+
+        </div>
+
+      </div>
 
 
-<!-- PLANNER -->
+      <!-- CONTENT PLANNER -->
 
-<section id="planner" class="section">
+      <div id="planner" class="tool-area">
 
-    <div class="section-title">
+        <div class="back" onclick="closeTools()">
+          ← Back to tools
+        </div>
 
-        <h2>📊 Content Planner</h2>
+        <div class="panel">
 
-        <p>
-            Plan your content and keep track of your posts.
-            Your plans are saved in this browser.
-        </p>
+          <h2>📊 Content Planner</h2>
 
-    </div>
-
-
-    <div class="card">
-
-        <div class="stats">
+          <div class="planner-stats">
 
             <div class="stat">
-
-                <div
-                    class="stat-number"
-                    id="totalPlans"
-                >
-                    0
-                </div>
-
-                <div class="stat-label">
-                    Total Content
-                </div>
-
+              <strong id="totalPlans">0</strong>
+              <span>Total</span>
             </div>
-
 
             <div class="stat">
-
-                <div
-                    class="stat-number"
-                    id="plannedCount"
-                >
-                    0
-                </div>
-
-                <div class="stat-label">
-                    Planned
-                </div>
-
+              <strong id="plannedPlans">0</strong>
+              <span>Planned</span>
             </div>
-
 
             <div class="stat">
-
-                <div
-                    class="stat-number"
-                    id="postedCount"
-                >
-                    0
-                </div>
-
-                <div class="stat-label">
-                    Posted
-                </div>
-
+              <strong id="postedPlans">0</strong>
+              <span>Posted</span>
             </div>
 
-        </div>
+          </div>
 
 
-        <div class="planner-inputs">
+          <div class="form-grid">
 
-            <input
+            <div class="field">
+              <label>Date</label>
+
+              <input
                 id="planDate"
                 type="date"
-            >
+              >
+            </div>
 
+            <div class="field">
+              <label>Platform</label>
 
-            <input
-                id="planContent"
-                placeholder="Example: Upload car reel"
-            >
-
-
-            <select id="planPlatform">
-
+              <select id="planPlatform">
                 <option>Instagram</option>
                 <option>TikTok</option>
                 <option>YouTube</option>
+                <option>Facebook</option>
+                <option>Shorts</option>
+              </select>
+            </div>
+
+            <div class="field full">
+
+              <label>Content idea</label>
+
+              <input
+                id="planContent"
+                type="text"
+                placeholder="Example: 5 AI apps nobody knows"
+              >
+
+            </div>
+
+          </div>
+
+          <button class="btn btn-primary generate" onclick="addPlan()">
+            + Add to Planner
+          </button>
+
+          <div id="planList" class="plan-list"></div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ABOUT -->
+
+    <section class="section" id="about">
+
+      <div class="section-title">
+
+        <h2>👋 About Deeezz</h2>
+
+        <p>
+          The creator behind CreatorFlow.
+        </p>
+
+      </div>
+
+
+      <div class="creator-card">
+
+        <div class="avatar">
+          D
+        </div>
+
+        <div>
+
+          <h3>
+            Dihein De Silva
+            <span>(Deeezz)</span>
+          </h3>
+
+          <p>
+            Content creator and the creator of CreatorFlow.
+            Built to make content creation simpler, faster and more organized.
+          </p>
+
+          <a
+            href="https://www.instagram.com/______deeezz___/"
+            target="_blank"
+            rel="noopener"
+            class="btn btn-primary"
+          >
+            📸 Follow Deeezz
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <div>
+      <strong>CreatorFlow</strong> © 2026
+    </div>
+
+    <div class="footer-name">
+      Created by <strong>Dihein De Silva</strong> · aka <strong>Deeezz</strong>
+    </div>
+
+  </footer>
+
+
+  <script>
+
+    /* =========================
+       TOOL NAVIGATION
+    ========================= */
+
+    function openTool(toolId) {
+
+      document.getElementById("toolMenu").style.display = "none";
+
+      document.querySelectorAll(".tool-area").forEach(function(tool) {
+        tool.classList.remove("active");
+      });
+
+      document.getElementById(toolId).classList.add("active");
+
+      window.scrollTo({
+        top: document.getElementById("tools").offsetTop - 80,
+        behavior: "smooth"
+      });
+    }
+
+
+    function closeTools() {
+
+      document.querySelectorAll(".tool-area").forEach(function(tool) {
+        tool.classList.remove("active");
+      });
+
+      document.getElementById("toolMenu").style.display = "grid";
+
+    }
+
+
+    /* =========================
+       COPY FUNCTION
+    ========================= */
+
+    function copyText(text, button) {
+
+      navigator.clipboard.writeText(text).then(function() {
+
+        const oldText = button.innerText;
+
+        button.innerText = "Copied ✓";
+
+        setTimeout(function() {
+          button.innerText = oldText;
+        }, 1200);
+
+      }).catch(function() {
+
+        alert("Copy failed. Please copy the text manually.");
+
+      });
+
+    }
+
+
+    /* =========================
+       TITLE GENERATOR
+    ========================= */
+
+    function generateTitles() {
+
+      const topic =
+        document.getElementById("titleTopic").value.trim() || "This Topic";
+
+      const platform =
+        document.getElementById("titlePlatform").value;
+
+      const style =
+        document.getElementById("titleStyle").value;
+
+      const templates = [
+
+        `You Won't Believe What I Found About ${topic}`,
+
+        `The Truth About ${topic} Nobody Tells You`,
+
+        `${topic}: Everything You Need to Know`,
+
+        `I Tried ${topic} So You Don't Have To`,
+
+        `10 Things You Should Know About ${topic}`,
+
+        `Why Everyone Is Talking About ${topic}`,
+
+        `The Secret Behind ${topic}`,
+
+        `${topic} Explained in the Simplest Way`,
+
+        `Stop Scrolling: You Need to See This About ${topic}`,
+
+        `What Happens When You Try ${topic}?`
+
+      ];
+
+      const results = document.getElementById("titleResults");
+
+      results.innerHTML = "";
+
+      templates.forEach(function(title, index) {
+
+        const div = document.createElement("div");
+
+        div.className = "result";
+
+        div.innerHTML = `
+          <div class="result-text">
+            <strong>${index + 1}. ${style} · ${platform}</strong>
+            <span>${title}</span>
+          </div>
+
+          <button class="copy">
+            Copy
+          </button>
+        `;
+
+        div.querySelector(".copy").onclick = function() {
+          copyText(title, this);
+        };
+
+        results.appendChild(div);
+
+      });
+
+    }
+
+
+    /* =========================
+       CAPTION GENERATOR
+    ========================= */
+
+    function generateCaptions() {
+
+      const description =
+        document.getElementById("captionDescription").value.trim()
+        || "this moment";
+
+      const platform =
+        document.getElementById("captionPlatform").value;
+
+      const tone =
+        document.getElementById("captionTone").value;
+
+      const captions = [
+
+        `${description}. Some moments don't need a long explanation. ✨`,
+
+        `Just enjoying ${description}. That's the whole vibe. 🖤`,
+
+        `A little reminder to enjoy the moment. ${description}.`,
+
+        `POV: you finally found a moment worth remembering. ${description}.`,
+
+        `${description} — simple moment, good memories.`,
+
+        `Not everything needs to be perfect. Sometimes ${description} is enough.`,
+
+        `One moment. One memory. One story. ${description}.`,
+
+        `Keeping this one in the memories. ${description}. 📸`,
+
+        `Life feels better when you slow down and enjoy moments like this.`,
+
+        `${description}. No filter can recreate the feeling.`
+
+      ];
+
+      const results = document.getElementById("captionResults");
+
+      results.innerHTML = "";
+
+      captions.forEach(function(caption, index) {
+
+        const div = document.createElement("div");
+
+        div.className = "result";
+
+        div.innerHTML = `
+          <div class="result-text">
+            <strong>${index + 1}. ${tone} · ${platform}</strong>
+            <span>${caption}</span>
+          </div>
+
+          <button class="copy">
+            Copy
+          </button>
+        `;
+
+        div.querySelector(".copy").onclick = function() {
+          copyText(caption, this);
+        };
+
+        results.appendChild(div);
+
+      });
+
+    }
+
+
+    /* =========================
+       REEL IDEA GENERATOR
+    ========================= */
+
+    function generateIdeas() {
+
+      const niche =
+        document.getElementById("ideaNiche").value.trim()
+        || "your niche";
+
+      const type =
+        document.getElementById("ideaType").value;
+
+      const ideas = [
+
+        {
+          hook: `Nobody tells you this about ${niche}...`,
+          concept: `Create a short ${type.toLowerCase()} video explaining one surprising thing about ${niche}.`,
+          cta: "Follow for more."
+        },
+
+        {
+          hook: `I wish I knew this before getting into ${niche}.`,
+          concept: `Share a useful lesson or mistake beginners often make in ${niche}.`,
+          cta: "Save this for later."
+        },
+
+        {
+          hook: `3 things about ${niche} you probably didn't know.`,
+          concept: `Show three quick facts, tips or examples using fast cuts.`,
+          cta: "Which one surprised you?"
+        },
+
+        {
+          hook: `Stop doing this if you're interested in ${niche}.`,
+          concept: `Show a common mistake and then demonstrate a better alternative.`,
+          cta: "Send this to someone who needs it."
+        },
+
+        {
+          hook: `The easiest way to understand ${niche}.`,
+          concept: `Explain a complicated idea using a simple real-life example.`,
+          cta: "Follow for simple explanations."
+        },
+
+        {
+          hook: `What nobody tells beginners about ${niche}.`,
+          concept: `Make a beginner-friendly video covering the most important first step.`,
+          cta: "Save this before you start."
+        },
+
+        {
+          hook: `I tested this so you don't have to.`,
+          concept: `Test a popular idea, method or trend connected to ${niche}.`,
+          cta: "Would you try it?"
+        },
+
+        {
+          hook: `Before you start ${niche}, watch this.`,
+          concept: `Give viewers three quick things they should know before beginning.`,
+          cta: "Share this with a beginner."
+        },
+
+        {
+          hook: `The underrated side of ${niche}.`,
+          concept: `Show an overlooked feature, technique, place or fact related to the niche.`,
+          cta: "Follow for more hidden gems."
+        },
+
+        {
+          hook: `If you like ${niche}, you need to see this.`,
+          concept: `Create a visually interesting short with a strong reveal at the end.`,
+          cta: "Comment your opinion."
+
+        }
+
+      ];
+
+      const results = document.getElementById("ideaResults");
+
+      results.innerHTML = "";
+
+      ideas.forEach(function(idea, index) {
+
+        const fullText =
+          `${idea.hook}\n\n` +
+          `Concept: ${idea.concept}\n\n` +
+          `CTA: ${idea.cta}`;
+
+        const div = document.createElement("div");
+
+        div.className = "result";
+
+        div.innerHTML = `
+          <div class="result-text">
+            <strong>${index + 1}. ${type} Reel</strong>
+
+            <span>
+              <b>Hook:</b> ${idea.hook}<br>
+              <b>Concept:</b> ${idea.concept}<br>
+              <b>CTA:</b> ${idea.cta}
+            </span>
+          </div>
+
+          <button class="copy">
+            Copy
+          </button>
+        `;
+
+        div.querySelector(".copy").onclick = function() {
+          copyText(fullText, this);
+        };
+
+        results.appendChild(div);
+
+      });
+
+    }
+
+
+    /* =========================
+       CONTENT PLANNER
+    ========================= */
+
+    let plans =
+      JSON.parse(localStorage.getItem("creatorFlowPlans")) || [];
+
+
+    function savePlans() {
+
+      localStorage.setItem(
+        "creatorFlowPlans",
+        JSON.stringify(plans)
+      );
+
+    }
+
+
+    function addPlan() {
+
+      const date =
+        document.getElementById("planDate").value;
+
+      const platform =
+        document.getElementById("planPlatform").value;
+
+      const content =
+        document.getElementById("planContent").value.trim();
+
+
+      if (!date || !content) {
+
+        alert("Please enter a date and content idea.");
+
+        return;
+
+      }
+
+
+      const plan = {
+
+        id: Date.now(),
+
+        date: date,
+
+        platform: platform,
+
+        content: content,
+
+        status: "Idea"
+
+      };
+
+
+      plans.push(plan);
+
+      savePlans();
+
+      document.getElementById("planContent").value = "";
+
+      renderPlans();
+
+    }
+
+
+    function updatePlanStatus(id, status) {
+
+      plans = plans.map(function(plan) {
+
+        if (plan.id === id) {
+          plan.status = status;
+        }
+
+        return plan;
+
+      });
+
+      savePlans();
+
+      renderPlans();
+
+    }
+
+
+    function deletePlan(id) {
+
+      plans = plans.filter(function(plan) {
+        return plan.id !== id;
+      });
+
+      savePlans();
+
+      renderPlans();
+
+    }
+
+
+    function renderPlans() {
+
+      const list =
+        document.getElementById("planList");
+
+      list.innerHTML = "";
+
+
+      if (plans.length === 0) {
+
+        list.innerHTML = `
+          <div class="empty">
+            No content planned yet. Add your first idea above 🚀
+          </div>
+        `;
+
+      } else {
+
+        const sortedPlans =
+          [...plans].sort(function(a, b) {
+            return a.date.localeCompare(b.date);
+          });
+
+
+        sortedPlans.forEach(function(plan) {
+
+          const item =
+            document.createElement("div");
+
+          item.className = "plan-item";
+
+          item.innerHTML = `
+
+            <div class="plan-info">
+
+              <strong>
+                ${plan.content}
+              </strong>
+
+              <small>
+                ${plan.date} · ${plan.platform}
+              </small>
+
+            </div>
+
+
+            <select class="status">
+
+              <option ${plan.status === "Idea" ? "selected" : ""}>
+                Idea
+              </option>
+
+              <option ${plan.status === "Planned" ? "selected" : ""}>
+                Planned
+              </option>
+
+              <option ${plan.status === "Posted" ? "selected" : ""}>
+                Posted
+              </option>
 
             </select>
 
 
-            <button
-                class="add-btn"
-                onclick="addPlan()"
-            >
-                + Add
+            <button class="delete">
+              Delete
             </button>
 
-        </div>
-
-
-        <div id="plans" class="plans"></div>
-
-    </div>
-
-</section>
-
-</main>
-
-
-<footer>
-
-    CreatorFlow © 2026 — Built for creators 🚀
-
-</footer>
-
-
-<script>
-
-/* =========================
-   NAVIGATION
-========================= */
-
-function showSection(id, clickedButton) {
-
-    document
-        .querySelectorAll(".section")
-        .forEach(section => {
-            section.classList.remove("active");
-        });
-
-
-    document
-        .getElementById(id)
-        .classList.add("active");
-
-
-    document
-        .querySelectorAll("nav button")
-        .forEach(button => {
-            button.classList.remove("active");
-        });
-
-
-    if (clickedButton) {
-        clickedButton.classList.add("active");
-    }
-
-
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
-}
-
-
-function openTool(id) {
-
-    const buttons =
-        document.querySelectorAll("nav button");
-
-    let button = null;
-
-    buttons.forEach(b => {
-
-        if (
-            b.innerText
-                .toLowerCase()
-                .includes(
-                    id === "titles"
-                        ? "titles"
-                        : id === "captions"
-                        ? "captions"
-                        : id === "ideas"
-                        ? "ideas"
-                        : "planner"
-                )
-        ) {
-            button = b;
-        }
-
-    });
-
-    showSection(id, button);
-}
-
-
-/* =========================
-   COPY
-========================= */
-
-function copyText(text, button) {
-
-    navigator.clipboard
-        .writeText(text)
-        .then(() => {
-
-            const oldText =
-                button.innerText;
-
-            button.innerText =
-                "Copied ✓";
-
-            setTimeout(() => {
-
-                button.innerText =
-                    oldText;
-
-            }, 1200);
-
-        });
-
-}
-
-
-/* =========================
-   HTML SAFETY
-========================= */
-
-function escapeHTML(text) {
-
-    return text
-        .replaceAll("&", "&amp;")
-        .replaceAll("<", "&lt;")
-        .replaceAll(">", "&gt;")
-        .replaceAll('"', "&quot;")
-        .replaceAll("'", "&#039;");
-}
-
-
-/* =========================
-   TITLE GENERATOR
-========================= */
-
-function generateTitles() {
-
-    const topic =
-        document
-            .getElementById("titleTopic")
-            .value
-            .trim();
-
-
-    const style =
-        document
-            .getElementById("titleStyle")
-            .value;
-
-
-    if (!topic) {
-
-        alert(
-            "Enter your video topic first."
-        );
-
-        return;
-    }
-
-
-    let titles = [];
-
-
-    if (style === "Viral") {
-
-        titles = [
-
-            `You NEED to See This ${topic}`,
-
-            `This Changes Everything About ${topic}`,
-
-            `The ${topic} Everyone Is Talking About`,
-
-            `I Tried ${topic}... Here's What Happened`,
-
-            `Nobody Told Me About ${topic}`,
-
-            `This Might Be the Best ${topic} Ever`,
-
-            `Stop Scrolling — ${topic}`,
-
-            `The Truth About ${topic}`,
-
-            `I Can't Believe This Actually Works`,
-
-            `${topic} You Didn't Know Existed`
-
-        ];
-
-    }
-
-
-    else if (style === "Curiosity") {
-
-        titles = [
-
-            `What Nobody Tells You About ${topic}`,
-
-            `The Secret Behind ${topic}`,
-
-            `There's Something Strange About ${topic}`,
-
-            `Why Is Everyone Talking About ${topic}?`,
-
-            `I Finally Found Out Why`,
-
-            `You Probably Don't Know This About ${topic}`,
-
-            `The Hidden Side of ${topic}`,
-
-            `Wait Until You See This`,
-
-            `This Wasn't Supposed to Happen`,
-
-            `The Real Reason Behind ${topic}`
-
-        ];
-
-    }
-
-
-    else if (style === "Emotional") {
-
-        titles = [
-
-            `I Wish I Knew This Earlier`,
-
-            `Some Things About ${topic} Hit Different`,
-
-            `This One Really Changed Me`,
-
-            `A Moment I'll Never Forget`,
-
-            `Sometimes You Just Need to Start`,
-
-            `This Means More Than You Think`,
-
-            `One Small Thing Changed Everything`,
-
-            `For Anyone Who Needs This Today`,
-
-            `Maybe Someone Needs to Hear This`,
-
-            `This Is Your Sign`
-
-        ];
-
-    }
-
-
-    else if (style === "Funny") {
-
-        titles = [
-
-            `Me Trying ${topic} for the First Time 💀`,
-
-            `This Was a Terrible Idea 😂`,
-
-            `I Thought This Would Be Easy...`,
-
-            `Bro Really Thought This Would Work 💀`,
-
-            `Things Escalated Quickly 😂`,
-
-            `POV: You Discover ${topic}`,
-
-            `Nobody: Absolutely Nobody: Me:`,
-
-            `Why Did I Even Try This?`,
-
-            `My Last Brain Cell Doing This`,
-
-            `Well... That Went Wrong`
-
-        ];
-
-    }
-
-
-    else {
-
-        titles = [
-
-            `Complete Guide to ${topic}`,
-
-            `${topic}: Everything You Need to Know`,
-
-            `How to Get Started With ${topic}`,
-
-            `${topic} Explained Simply`,
-
-            `A Practical Guide to ${topic}`,
-
-            `The Beginner's Guide to ${topic}`,
-
-            `How ${topic} Actually Works`,
-
-            `5 Things to Know About ${topic}`,
-
-            `${topic}: Tips and Strategies`,
-
-            `Understanding ${topic}`
-
-        ];
-
-    }
-
-
-    displayResults(
-        "titleResults",
-        titles
-    );
-
-}
-
-
-/* =========================
-   CAPTION GENERATOR
-========================= */
-
-function generateCaptions() {
-
-    const topic =
-        document
-            .getElementById("captionTopic")
-            .value
-            .trim();
-
-
-    const tone =
-        document
-            .getElementById("captionTone")
-            .value;
-
-
-    if (!topic) {
-
-        alert(
-            "Describe your content first."
-        );
-
-        return;
-    }
-
-
-    let captions = [];
-
-
-    if (tone === "Cool") {
-
-        captions = [
-
-            `${topic}. That's the vibe. 🔥`,
-
-            `No explanation needed. Just watch. 👀`,
-
-            `Different kind of energy.`,
-
-            `Just another day creating something cool.`,
-
-            `This one deserves a replay.`,
-
-            `POV: You found your new favorite vibe.`,
-
-            `Let the content speak.`,
-
-            `Simple. Clean. Unforgettable.`,
-
-            `Currently obsessed with this.`,
-
-            `Yeah... this one hits different.`
-
-        ];
-
-    }
-
-
-    else if (tone === "Emotional") {
-
-        captions = [
-
-            `Some moments are worth remembering forever. ❤️`,
-
-            `A little moment that means a lot.`,
-
-            `Sometimes the simplest moments become our favorite memories.`,
-
-            `One day we'll look back at this moment.`,
-
-            `Keep the memories, not just the photos.`,
-
-            `Some feelings don't need an explanation.`,
-
-            `This moment will stay with me.`,
-
-            `Life is made of little moments like this.`,
-
-            `Grateful for moments like these.`,
-
-            `Maybe this is what happiness looks like.`
-
-        ];
-
-    }
-
-
-    else if (tone === "Funny") {
-
-        captions = [
-
-            `Well... that happened 😂`,
-
-            `I had a plan. It did not survive.`,
-
-            `Don't ask me how we got here 💀`,
-
-            `Mission failed successfully.`,
-
-            `My brain left the chat.`,
-
-            `I probably shouldn't have done this 😂`,
-
-            `Zero regrets. Maybe one.`,
-
-            `Everything was fine until it wasn't.`,
-
-            `Trust me, it made sense at the time.`,
-
-            `We're not talking about what happened next.`
-
-        ];
-
-    }
-
-
-    else if (tone === "Professional") {
-
-        captions = [
-
-            `Sharing a new perspective on ${topic}.`,
-
-            `Here's what I've learned about ${topic}.`,
-
-            `A closer look at ${topic} and what it means.`,
-
-            `Creating, learning and improving every day.`,
-
-            `Here's a practical look at ${topic}.`,
-
-            `What do you think about this approach?`,
-
-            `Sharing this idea with the community.`,
-
-            `A simple breakdown of something worth understanding.`,
-
-            `Learning through the process.`,
-
-            `Let's build better content together.`
-
-        ];
-
-    }
-
-
-    else {
-
-        captions = [
-
-            `${topic}.`,
-
-            `Just vibes.`,
-
-            `Less talking. More creating.`,
-
-            `Keep it simple.`,
-
-            `One moment.`,
-
-            `Nothing more. Nothing less.`,
-
-            `Create. Post. Repeat.`,
-
-            `That's it. That's the post.`,
-
-            `Simple moments.`,
-
-            `Currently creating.`
-
-        ];
-
-    }
-
-
-    displayResults(
-        "captionResults",
-        captions
-    );
-
-}
-
-
-/* =========================
-   DISPLAY RESULTS
-========================= */
-
-function displayResults(
-    id,
-    items
-) {
-
-    const container =
-        document.getElementById(id);
-
-
-    container.innerHTML = "";
-
-
-    items.forEach(
-        (item, index) => {
-
-            const div =
-                document.createElement("div");
-
-
-            div.className =
-                "result";
-
-
-            div.innerHTML = `
-
-                <div class="result-text">
-
-                    <span class="result-number">
-                        ${index + 1}.
-                    </span>
-
-                    ${escapeHTML(item)}
-
-                </div>
-
-                <button class="copy">
-                    Copy
-                </button>
-
-            `;
-
-
-            const copyButton =
-                div.querySelector(".copy");
-
-
-            copyButton.onclick = function() {
-
-                copyText(
-                    item,
-                    this
-                );
-
+          `;
+
+
+          item.querySelector(".status").onchange =
+            function() {
+              updatePlanStatus(
+                plan.id,
+                this.value
+              );
             };
 
 
-            container.appendChild(div);
+          item.querySelector(".delete").onclick =
+            function() {
+              deletePlan(plan.id);
+            };
 
-        }
-    );
 
-}
+          list.appendChild(item);
 
+        });
 
-/* =========================
-   REEL IDEA GENERATOR
-========================= */
+      }
 
-function generateIdeas() {
 
-    const niche =
-        document
-            .getElementById("ideaNiche")
-            .value;
+      updateStats();
 
-
-    const type =
-        document
-            .getElementById("ideaType")
-            .value;
-
-
-    const ideas = [
-
-        {
-            hook:
-                `Nobody tells you this about ${niche}...`,
-
-            concept:
-                `Share one surprising fact or mistake beginners make.`,
-
-            cta:
-                `Follow for more ${niche} content.`
-        },
-
-
-        {
-            hook:
-                `3 things I wish I knew about ${niche}.`,
-
-            concept:
-                `Give three useful beginner tips.`,
-
-            cta:
-                `Save this for later.`
-        },
-
-
-        {
-            hook:
-                `Stop doing this if you're into ${niche}.`,
-
-            concept:
-                `Show a common mistake and explain a better approach.`,
-
-            cta:
-                `Send this to someone who needs it.`
-        },
-
-
-        {
-            hook:
-                `POV: You just discovered this.`,
-
-            concept:
-                `Reveal an underrated tool, trick or fact related to the niche.`,
-
-            cta:
-                `Would you try this?`
-        },
-
-
-        {
-            hook:
-                `The truth about ${niche}...`,
-
-            concept:
-                `Break down a popular misconception.`,
-
-            cta:
-                `Comment your opinion.`
-        },
-
-
-        {
-            hook:
-                `If I started ${niche} again, I'd do this.`,
-
-            concept:
-                `Share your ideal beginner roadmap.`,
-
-            cta:
-                `Save this roadmap.`
-        },
-
-
-        {
-            hook:
-                `You have 30 seconds. Learn this.`,
-
-            concept:
-                `Teach one highly useful concept quickly.`,
-
-            cta:
-                `Follow for part 2.`
-        },
-
-
-        {
-            hook:
-                `This is seriously underrated.`,
-
-            concept:
-                `Show an underrated idea, technique or resource.`,
-
-            cta:
-                `Tag a friend who should know this.`
-        },
-
-
-        {
-            hook:
-                `Can you guess what happens next?`,
-
-            concept:
-                `Create a curiosity-driven setup and reveal the answer at the end.`,
-
-            cta:
-                `Comment your guess before watching.`
-        },
-
-
-        {
-            hook:
-                `Here's something I learned the hard way.`,
-
-            concept:
-                `Tell a short story about a mistake and the lesson from it.`,
-
-            cta:
-                `Learn from my mistake.`
-        }
-
-    ];
-
-
-    const container =
-        document.getElementById(
-            "ideaResults"
-        );
-
-
-    container.innerHTML = "";
-
-
-    ideas.forEach(
-        (idea, index) => {
-
-            const text =
-
-`Idea ${index + 1}
-
-HOOK:
-${idea.hook}
-
-CONCEPT:
-${idea.concept}
-
-CTA:
-${idea.cta}`;
-
-
-            const div =
-                document.createElement("div");
-
-
-            div.className =
-                "result idea-result";
-
-
-            div.innerHTML = `
-
-                <div class="result-text">
-
-                    <strong>
-                        Idea ${index + 1}
-                    </strong>
-
-                    <br><br>
-
-                    <span class="idea-label">
-                        HOOK
-                    </span>
-
-                    <br>
-
-                    ${escapeHTML(idea.hook)}
-
-                    <br><br>
-
-                    <span class="idea-label">
-                        CONCEPT
-                    </span>
-
-                    <br>
-
-                    ${escapeHTML(idea.concept)}
-
-                    <br><br>
-
-                    <span class="idea-label">
-                        CTA
-                    </span>
-
-                    <br>
-
-                    ${escapeHTML(idea.cta)}
-
-                    <br>
-
-                    <small style="color:#66736b;">
-                        Type: ${escapeHTML(type)}
-                    </small>
-
-                </div>
-
-                <button class="copy">
-                    Copy
-                </button>
-
-            `;
-
-
-            div
-                .querySelector(".copy")
-                .onclick = function() {
-
-                    copyText(
-                        text,
-                        this
-                    );
-
-                };
-
-
-            container.appendChild(div);
-
-        }
-    );
-
-}
-
-
-/* =========================
-   CONTENT PLANNER
-========================= */
-
-let plans =
-    JSON.parse(
-        localStorage.getItem(
-            "creatorFlowPlans"
-        )
-    ) || [];
-
-
-function savePlans() {
-
-    localStorage.setItem(
-        "creatorFlowPlans",
-        JSON.stringify(plans)
-    );
-
-}
-
-
-function addPlan() {
-
-    const date =
-        document
-            .getElementById("planDate")
-            .value;
-
-
-    const content =
-        document
-            .getElementById("planContent")
-            .value
-            .trim();
-
-
-    const platform =
-        document
-            .getElementById("planPlatform")
-            .value;
-
-
-    if (!date || !content) {
-
-        alert(
-            "Choose a date and enter your content."
-        );
-
-        return;
     }
 
 
-    plans.push({
+    function updateStats() {
 
-        date: date,
-
-        content: content,
-
-        platform: platform,
-
-        status: "Planned"
-
-    });
-
-
-    savePlans();
-
-
-    document
-        .getElementById("planContent")
-        .value = "";
-
-
-    renderPlans();
-
-}
-
-
-/* =========================
-   DELETE PLAN
-========================= */
-
-function deletePlan(index) {
-
-    plans.splice(
-        index,
-        1
-    );
-
-
-    savePlans();
-
-    renderPlans();
-
-}
-
-
-/* =========================
-   CHANGE STATUS
-========================= */
-
-function changeStatus(
-    index,
-    value
-) {
-
-    plans[index].status =
-        value;
-
-
-    savePlans();
-
-    renderPlans();
-
-}
-
-
-/* =========================
-   RENDER PLANS
-========================= */
-
-function renderPlans() {
-
-    const container =
-        document.getElementById(
-            "plans"
-        );
-
-
-    container.innerHTML = "";
-
-
-    if (plans.length === 0) {
-
-        container.innerHTML = `
-
-            <div class="empty">
-
-                📅 No content planned yet.
-
-                <br><br>
-
-                Add your first post above.
-
-            </div>
-
-        `;
-
-        updateStats();
-
-        return;
-    }
-
-
-    plans.sort(
-        (a, b) =>
-            new Date(a.date) -
-            new Date(b.date)
-    );
-
-
-    plans.forEach(
-        (plan, index) => {
-
-            const div =
-                document.createElement(
-                    "div"
-                );
-
-
-            div.className =
-                "plan";
-
-
-            div.innerHTML = `
-
-                <div class="plan-date">
-
-                    ${escapeHTML(
-                        formatDate(plan.date)
-                    )}
-
-                </div>
-
-
-                <div class="plan-info">
-
-                    <h4>
-                        ${escapeHTML(
-                            plan.content
-                        )}
-                    </h4>
-
-                    <small>
-                        ${escapeHTML(
-                            plan.platform
-                        )}
-                    </small>
-
-                </div>
-
-
-                <select
-                    class="status"
-                    onchange="changeStatus(${index}, this.value)"
-                >
-
-                    <option
-                        ${plan.status === "Idea"
-                            ? "selected"
-                            : ""}
-                    >
-                        Idea
-                    </option>
-
-
-                    <option
-                        ${plan.status === "Planned"
-                            ? "selected"
-                            : ""}
-                    >
-                        Planned
-                    </option>
-
-
-                    <option
-                        ${plan.status === "Posted"
-                            ? "selected"
-                            : ""}
-                    >
-                        Posted
-                    </option>
-
-                </select>
-
-
-                <button
-                    class="delete"
-                    onclick="deletePlan(${index})"
-                >
-                    🗑
-                </button>
-
-            `;
-
-
-            container.appendChild(div);
-
-        }
-    );
-
-
-    updateStats();
-
-}
-
-
-/* =========================
-   FORMAT DATE
-========================= */
-
-function formatDate(date) {
-
-    const d =
-        new Date(
-            date + "T00:00:00"
-        );
-
-
-    return d.toLocaleDateString(
-        undefined,
-        {
-            day: "2-digit",
-            month: "short",
-            year: "numeric"
-        }
-    );
-
-}
-
-
-/* =========================
-   PLANNER STATS
-========================= */
-
-function updateStats() {
-
-    document.getElementById(
-        "totalPlans"
-    ).innerText =
+      document.getElementById("totalPlans").innerText =
         plans.length;
 
+      document.getElementById("plannedPlans").innerText =
+        plans.filter(function(plan) {
+          return plan.status === "Planned";
+        }).length;
 
-    document.getElementById(
-        "plannedCount"
-    ).innerText =
-        plans.filter(
-            p => p.status === "Planned"
-        ).length;
+      document.getElementById("postedPlans").innerText =
+        plans.filter(function(plan) {
+          return plan.status === "Posted";
+        }).length;
 
-
-    document.getElementById(
-        "postedCount"
-    ).innerText =
-        plans.filter(
-            p => p.status === "Posted"
-        ).length;
-
-}
+    }
 
 
-/* =========================
-   START
-========================= */
+    /* =========================
+       START PLANNER
+    ========================= */
 
-renderPlans();
+    renderPlans();
 
-</script>
+
+    /* =========================
+       DEFAULT DATE
+    ========================= */
+
+    const dateInput =
+      document.getElementById("planDate");
+
+    if (dateInput) {
+
+      const today =
+        new Date().toISOString().split("T")[0];
+
+      dateInput.value = today;
+
+    }
+
+  </script>
 
 </body>
 </html>
