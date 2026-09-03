@@ -10,22 +10,22 @@ content="width=device-width, initial-scale=1.0">
 
 <title>CreatorFlow | Deeezz</title>
 
-<!-- CF LOGO -->
 <link rel="icon"
 type="image/png"
 href="cf-logo.png">
+
 
 <style>
 
 /* =====================================================
    CREATORFLOW
-   DARK / LIGHT / SPIDEY
+   DARK + LIGHT + SPIDEY
 ===================================================== */
 
 
-/* =====================================================
+/* =========================
    RESET
-===================================================== */
+========================= */
 
 *{
     margin:0;
@@ -44,10 +44,6 @@ body{
     Helvetica,
     sans-serif;
 
-    background:#030504;
-
-    color:#f5fff8;
-
     line-height:1.6;
 
     overflow-x:hidden;
@@ -58,9 +54,9 @@ body{
 }
 
 
-/* =====================================================
+/* =========================
    VARIABLES
-===================================================== */
+========================= */
 
 :root{
 
@@ -109,6 +105,15 @@ body.dark{
     --border:
     rgba(57,255,136,.20);
 
+    background:
+    radial-gradient(
+        circle at 50% 0%,
+        rgba(57,255,136,.10),
+        transparent 35%
+    ),
+    #030504;
+
+    color:#f5fff8;
 }
 
 
@@ -135,6 +140,54 @@ body.light{
 
     --border:
     rgba(18,168,92,.22);
+
+    background:#f5f8f6;
+
+    color:#111814;
+}
+
+
+/* LIGHT THEME TEXT FIX */
+
+body.light h1,
+body.light h2,
+body.light h3,
+body.light label,
+body.light .logo,
+body.light .nav-links a,
+body.light .about h3,
+body.light .tool h3,
+body.light .box h2,
+body.light .result,
+body.light .plan,
+body.light .theme-btn{
+
+    color:#111814;
+}
+
+
+/* GREEN ACCENTS */
+
+body.light .neon,
+body.light .logo span,
+body.light .about h3 span{
+
+    color:#12a85c;
+
+}
+
+
+/* MUTED LIGHT TEXT */
+
+body.light .hero p,
+body.light .heading p,
+body.light .tool p,
+body.light .about p,
+body.light footer,
+body.light .stat span,
+body.light .plan small{
+
+    color:#66736b;
 
 }
 
@@ -163,33 +216,6 @@ body.spidey{
     --border:
     rgba(255,38,56,.30);
 
-}
-
-
-/* =====================================================
-   BODY BACKGROUND
-===================================================== */
-
-body{
-
-    background:
-
-    radial-gradient(
-        circle at 50% 0%,
-        var(--accent-soft),
-        transparent 35%
-    ),
-
-    var(--background);
-}
-
-
-/* =====================================================
-   SPIDEY ATMOSPHERE
-===================================================== */
-
-body.spidey{
-
     background:
 
     radial-gradient(
@@ -211,6 +237,7 @@ body.spidey{
         #030303
     );
 
+    color:#ffffff;
 }
 
 
@@ -224,30 +251,30 @@ body.spidey::before{
 
     position:fixed;
 
-    width:500px;
-    height:500px;
+    width:520px;
+    height:520px;
 
-    top:-250px;
-    left:-250px;
+    top:-270px;
+    left:-270px;
 
     pointer-events:none;
 
-    z-index:0;
+    z-index:50;
 
-    opacity:.35;
+    opacity:.32;
 
     background:
 
     repeating-radial-gradient(
         circle,
         transparent 0 34px,
-        rgba(255,30,45,.35) 35px 36px
+        rgba(255,30,45,.40) 35px 36px
     ),
 
     repeating-conic-gradient(
         from 0deg,
         transparent 0deg 14deg,
-        rgba(255,30,45,.25) 15deg 16deg
+        rgba(255,30,45,.28) 15deg 16deg
     );
 
 }
@@ -263,30 +290,30 @@ body.spidey::after{
 
     position:fixed;
 
-    width:430px;
-    height:430px;
+    width:460px;
+    height:460px;
 
-    right:-230px;
-    bottom:-220px;
+    right:-250px;
+    bottom:-240px;
 
     pointer-events:none;
 
-    z-index:0;
+    z-index:50;
 
-    opacity:.28;
+    opacity:.27;
 
     background:
 
     repeating-radial-gradient(
         circle,
         transparent 0 32px,
-        rgba(255,30,45,.35) 33px 34px
+        rgba(255,30,45,.40) 33px 34px
     ),
 
     repeating-conic-gradient(
         from 0deg,
         transparent 0deg 14deg,
-        rgba(255,30,45,.25) 15deg 16deg
+        rgba(255,30,45,.28) 15deg 16deg
     );
 
 }
@@ -305,17 +332,29 @@ nav{
     z-index:1000;
 
     background:
-    color-mix(
-        in srgb,
-        var(--background) 90%,
-        transparent
-    );
+    rgba(3,5,4,.90);
 
     backdrop-filter:
     blur(18px);
 
     border-bottom:
     1px solid var(--border);
+
+}
+
+
+body.light nav{
+
+    background:
+    rgba(255,255,255,.92);
+
+}
+
+
+body.spidey nav{
+
+    background:
+    rgba(3,2,3,.88);
 
 }
 
@@ -338,6 +377,10 @@ nav{
 
 }
 
+
+/* =====================================================
+   LOGO
+===================================================== */
 
 .logo{
 
@@ -416,7 +459,8 @@ nav{
     border:
     1px solid var(--border);
 
-    background:var(--card);
+    background:
+    var(--card);
 
     color:var(--text);
 
@@ -454,6 +498,7 @@ nav{
     color:var(--accent);
 
     text-shadow:
+
     0 0 5px
     var(--accent-soft),
 
@@ -482,6 +527,7 @@ nav{
     to{
 
         text-shadow:
+
         0 0 8px
         var(--accent),
 
@@ -497,25 +543,6 @@ nav{
 
 
 /* =====================================================
-   SPIDEY RED GLOW
-===================================================== */
-
-body.spidey .neon{
-
-    text-shadow:
-    0 0 6px
-    rgba(255,38,56,.6),
-
-    0 0 18px
-    rgba(255,38,56,.45),
-
-    0 0 35px
-    rgba(255,38,56,.20);
-
-}
-
-
-/* =====================================================
    HERO
 ===================================================== */
 
@@ -523,8 +550,7 @@ body.spidey .neon{
 
     max-width:1100px;
 
-    min-height:
-    680px;
+    min-height:680px;
 
     margin:auto;
 
@@ -549,17 +575,49 @@ body.spidey .neon{
 
 
 /* =====================================================
-   HERO SPIDEY CITY ATMOSPHERE
+   SPIDEY HERO BACKGROUND IMAGE
+===================================================== */
+
+body.spidey .hero::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    z-index:-1;
+
+    background-image:
+
+    linear-gradient(
+        rgba(0,0,0,.78),
+        rgba(3,3,4,.94)
+    ),
+
+    url("spidey-bg.jpg");
+
+    background-size:cover;
+
+    background-position:center;
+
+    background-repeat:no-repeat;
+
+    opacity:.95;
+
+}
+
+
+/* =====================================================
+   SPIDEY RED CINEMATIC LIGHT
 ===================================================== */
 
 body.spidey .hero{
 
-    background:
+    box-shadow:
 
-    linear-gradient(
-        rgba(0,0,0,.15),
-        rgba(0,0,0,.55)
-    );
+    inset 0 -150px 120px
+    rgba(255,0,0,.07);
 
 }
 
@@ -572,30 +630,30 @@ body.spidey .hero::before{
 
     inset:0;
 
+    z-index:0;
+
     pointer-events:none;
 
     background:
 
-    linear-gradient(
-        90deg,
-        transparent 5%,
-        rgba(255,0,0,.04) 6%,
-        transparent 7%,
-
-        transparent 25%,
-        rgba(255,0,0,.035) 26%,
-        transparent 27%,
-
-        transparent 55%,
-        rgba(255,0,0,.04) 56%,
-        transparent 57%,
-
-        transparent 80%,
-        rgba(255,0,0,.04) 81%,
-        transparent 82%
+    radial-gradient(
+        circle at 50% 35%,
+        rgba(255,0,0,.16),
+        transparent 42%
     );
 
-    opacity:.8;
+}
+
+
+/* =====================================================
+   HERO CONTENT ABOVE BACKGROUND
+===================================================== */
+
+.hero > *{
+
+    position:relative;
+
+    z-index:3;
 
 }
 
@@ -629,10 +687,6 @@ body.spidey .hero::before{
 
     font-weight:bold;
 
-    position:relative;
-
-    z-index:2;
-
 }
 
 
@@ -645,17 +699,11 @@ body.spidey .hero::before{
     font-size:
     clamp(55px,9vw,105px);
 
-    line-height:
-    .94;
+    line-height:.94;
 
-    letter-spacing:
-    -6px;
+    letter-spacing:-6px;
 
     margin-top:28px;
-
-    position:relative;
-
-    z-index:2;
 
 }
 
@@ -670,10 +718,6 @@ body.spidey .hero::before{
     color:var(--muted);
 
     font-size:18px;
-
-    position:relative;
-
-    z-index:2;
 
 }
 
@@ -698,10 +742,6 @@ body.spidey .hero::before{
     gap:13px;
 
     flex-wrap:wrap;
-
-    position:relative;
-
-    z-index:2;
 
 }
 
@@ -747,8 +787,7 @@ body.spidey .hero::before{
     background:
     var(--accent);
 
-    color:
-    #031007;
+    color:#031007;
 
     box-shadow:
     0 0 20px
@@ -762,8 +801,7 @@ body.spidey .hero::before{
     background:
     var(--card);
 
-    color:
-    var(--text);
+    color:var(--text);
 
     border-color:
     var(--border);
@@ -771,31 +809,15 @@ body.spidey .hero::before{
 }
 
 
-/* =====================================================
-   SPIDEY BUTTONS
-===================================================== */
-
 body.spidey .primary{
 
-    color:white;
-
-    box-shadow:
-    0 0 20px
-    rgba(255,38,56,.22);
-
-}
-
-
-body.spidey .secondary{
-
-    border-color:
-    rgba(255,38,56,.35);
+    color:#ffffff;
 
 }
 
 
 /* =====================================================
-   CONTAINER
+   MAIN CONTAINER
 ===================================================== */
 
 .container{
@@ -809,7 +831,7 @@ body.spidey .secondary{
 
     position:relative;
 
-    z-index:2;
+    z-index:100;
 
 }
 
@@ -839,8 +861,6 @@ section{
 
     font-size:
     clamp(32px,5vw,45px);
-
-    letter-spacing:-1px;
 
 }
 
@@ -947,7 +967,7 @@ body.spidey .tool:hover{
 
     box-shadow:
     0 15px 45px
-    rgba(255,0,0,.12);
+    rgba(255,0,0,.14);
 
 }
 
@@ -1122,8 +1142,6 @@ select{
     outline:none;
 
     font-family:inherit;
-
-    transition:.2s;
 
 }
 
@@ -1378,7 +1396,7 @@ body.spidey .about{
 
 
 /* =====================================================
-   PHOTO
+   DEEEZZ PHOTO
 ===================================================== */
 
 .profile{
@@ -1397,13 +1415,12 @@ body.spidey .about{
     2px solid var(--accent);
 
     box-shadow:
+
     0 0 20px
     var(--accent-soft),
 
     0 0 45px
     var(--accent-soft);
-
-    position:relative;
 
 }
 
@@ -1511,22 +1528,6 @@ footer strong{
 
 
 /* =====================================================
-   SPIDEY FOOTER
-===================================================== */
-
-body.spidey footer{
-
-    background:
-    linear-gradient(
-        to top,
-        rgba(70,0,0,.12),
-        transparent
-    );
-
-}
-
-
-/* =====================================================
    MOBILE
 ===================================================== */
 
@@ -1568,8 +1569,7 @@ body.spidey footer{
 
     .hero{
 
-        min-height:
-        600px;
+        min-height:600px;
 
         padding:
         90px 18px 70px;
@@ -1582,16 +1582,14 @@ body.spidey footer{
         font-size:
         clamp(48px,14vw,75px);
 
-        letter-spacing:
-        -4px;
+        letter-spacing:-4px;
 
     }
 
 
     .hero p{
 
-        font-size:
-        16px;
+        font-size:16px;
 
     }
 
@@ -1629,8 +1627,7 @@ body.spidey footer{
 
     .about{
 
-        flex-direction:
-        column;
+        flex-direction:column;
 
         text-align:center;
 
@@ -1659,11 +1656,9 @@ body.spidey footer{
 
     .result{
 
-        flex-direction:
-        column;
+        flex-direction:column;
 
-        align-items:
-        stretch;
+        align-items:stretch;
 
     }
 
@@ -1677,11 +1672,9 @@ body.spidey footer{
 
     .plan{
 
-        flex-direction:
-        column;
+        flex-direction:column;
 
-        align-items:
-        stretch;
+        align-items:stretch;
 
     }
 
@@ -1699,8 +1692,6 @@ body.spidey footer{
         animation:none !important;
 
         transition:none !important;
-
-        scroll-behavior:auto !important;
 
     }
 
@@ -1874,8 +1865,6 @@ your content.
 <div class="tools">
 
 
-<!-- TITLE -->
-
 <div
 class="tool"
 onclick="openTool('titles')">
@@ -1894,8 +1883,6 @@ Create attention-grabbing titles.
 
 </div>
 
-
-<!-- CAPTION -->
 
 <div
 class="tool"
@@ -1916,8 +1903,6 @@ Create captions for your posts.
 </div>
 
 
-<!-- IDEAS -->
-
 <div
 class="tool"
 onclick="openTool('ideas')">
@@ -1936,8 +1921,6 @@ Generate fresh content ideas.
 
 </div>
 
-
-<!-- PLANNER -->
 
 <div
 class="tool"
@@ -2433,7 +2416,7 @@ id="plans">
 
 
 <!-- =====================================================
-     ABOUT DEEEZZ
+     ABOUT
 ===================================================== -->
 
 <section id="about">
@@ -2456,14 +2439,11 @@ Deeezz
 The creator behind CreatorFlow.
 </p>
 
-
 </div>
 
 
 <div class="about">
 
-
-<!-- YOUR PHOTO -->
 
 <div class="profile">
 
@@ -2560,9 +2540,7 @@ Dihein De Silva — Deeezz
 const themes = [
 
     "dark",
-
     "light",
-
     "spidey"
 
 ];
@@ -2634,7 +2612,9 @@ function changeTheme(){
 }
 
 
-/* LOAD SAVED THEME */
+/* =====================================================
+   LOAD SAVED THEME
+===================================================== */
 
 const savedTheme =
 localStorage.getItem(
@@ -2700,7 +2680,7 @@ function closeTools(){
 
 
 /* =====================================================
-   RESULTS
+   SHOW RESULTS
 ===================================================== */
 
 function showResults(id,items){
@@ -3058,7 +3038,7 @@ function deletePlan(id){
 
 
 /* =====================================================
-   STATUS
+   CHANGE STATUS
 ===================================================== */
 
 function changeStatus(
@@ -3253,7 +3233,7 @@ function renderPlans(){
 
 
 /* =====================================================
-   SECURITY
+   ESCAPE HTML
 ===================================================== */
 
 function escapeHTML(text){
