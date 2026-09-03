@@ -2,18 +2,12 @@
 <html lang="en">
 
 <head>
-
 <meta charset="UTF-8">
-
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>CreatorFlow | Deeezz</title>
 
-<link rel="icon"
-type="image/png"
-href="cf-logo.png">
-
+<link rel="icon" type="image/png" href="cf-logo.png">
 
 <style>
 
@@ -21,11 +15,6 @@ href="cf-logo.png">
    CREATORFLOW
    DARK + LIGHT + SPIDEY
 ===================================================== */
-
-
-/* =========================
-   RESET
-========================= */
 
 *{
     margin:0;
@@ -38,146 +27,87 @@ html{
 }
 
 body{
-
-    font-family:
-    Arial,
-    Helvetica,
-    sans-serif;
-
+    font-family:Arial, Helvetica, sans-serif;
     line-height:1.6;
-
     overflow-x:hidden;
-
     transition:
-    background .4s ease,
-    color .4s ease;
+        background .4s ease,
+        color .4s ease;
 }
 
-
-/* =========================
-   VARIABLES
-========================= */
-
 :root{
-
     --accent:#39ff88;
-
-    --accent-soft:
-    rgba(57,255,136,.18);
-
+    --accent-soft:rgba(57,255,136,.18);
     --background:#030504;
-
     --card:#09110c;
-
     --card2:#050a06;
-
     --text:#f5fff8;
-
     --muted:#9da9a1;
-
-    --border:
-    rgba(57,255,136,.20);
-
+    --border:rgba(57,255,136,.20);
 }
 
 
 /* =====================================================
-   DARK THEME
+   DARK
 ===================================================== */
 
 body.dark{
-
     --accent:#39ff88;
-
-    --accent-soft:
-    rgba(57,255,136,.18);
-
+    --accent-soft:rgba(57,255,136,.18);
     --background:#030504;
-
     --card:#09110c;
-
     --card2:#050a06;
-
     --text:#f5fff8;
-
     --muted:#9da9a1;
-
-    --border:
-    rgba(57,255,136,.20);
+    --border:rgba(57,255,136,.20);
 
     background:
-    radial-gradient(
-        circle at 50% 0%,
-        rgba(57,255,136,.10),
-        transparent 35%
-    ),
-    #030504;
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(57,255,136,.10),
+            transparent 35%
+        ),
+        #030504;
 
-    color:#f5fff8;
+    color:var(--text);
 }
 
 
 /* =====================================================
-   LIGHT THEME
+   LIGHT
 ===================================================== */
 
 body.light{
-
     --accent:#12a85c;
-
-    --accent-soft:
-    rgba(18,168,92,.14);
-
+    --accent-soft:rgba(18,168,92,.14);
     --background:#f5f8f6;
-
     --card:#ffffff;
-
     --card2:#edf3ef;
-
     --text:#111814;
-
     --muted:#66736b;
-
-    --border:
-    rgba(18,168,92,.22);
+    --border:rgba(18,168,92,.22);
 
     background:#f5f8f6;
-
     color:#111814;
 }
-
-
-/* LIGHT THEME TEXT FIX */
 
 body.light h1,
 body.light h2,
 body.light h3,
+body.light h4,
+body.light p,
 body.light label,
 body.light .logo,
 body.light .nav-links a,
-body.light .about h3,
-body.light .tool h3,
-body.light .box h2,
-body.light .result,
-body.light .plan,
-body.light .theme-btn{
-
-    color:#111814;
+body.light .hero p,
+body.light .heading p,
+body.light .tool p,
+body.light .about p,
+body.light footer,
+body.light .stat span,
+body.light .plan small{
+    color:var(--text);
 }
-
-
-/* GREEN ACCENTS */
-
-body.light .neon,
-body.light .logo span,
-body.light .about h3 span{
-
-    color:#12a85c;
-
-}
-
-
-/* MUTED LIGHT TEXT */
 
 body.light .hero p,
 body.light .heading p,
@@ -186,136 +116,91 @@ body.light .about p,
 body.light footer,
 body.light .stat span,
 body.light .plan small{
-
-    color:#66736b;
-
+    color:var(--muted);
 }
 
 
 /* =====================================================
-   SPIDEY THEME
+   SPIDEY
 ===================================================== */
 
 body.spidey{
-
     --accent:#ff2638;
-
-    --accent-soft:
-    rgba(255,38,56,.18);
-
+    --accent-soft:rgba(255,38,56,.18);
     --background:#030304;
-
     --card:#0b0708;
-
     --card2:#080506;
-
     --text:#ffffff;
-
     --muted:#a99c9e;
-
-    --border:
-    rgba(255,38,56,.30);
+    --border:rgba(255,38,56,.30);
 
     background:
+        radial-gradient(
+            circle at 75% 15%,
+            rgba(255,0,0,.18),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 20% 55%,
+            rgba(120,0,0,.12),
+            transparent 30%
+        ),
+        #030304;
 
-    radial-gradient(
-        circle at 75% 15%,
-        rgba(255,0,0,.18),
-        transparent 28%
-    ),
-
-    radial-gradient(
-        circle at 20% 55%,
-        rgba(120,0,0,.12),
-        transparent 30%
-    ),
-
-    linear-gradient(
-        180deg,
-        #020204,
-        #090405 45%,
-        #030303
-    );
-
-    color:#ffffff;
+    color:white;
 }
 
 
 /* =====================================================
-   SPIDEY WEB - TOP LEFT
+   SPIDEY WEBS
 ===================================================== */
 
 body.spidey::before{
-
     content:"";
-
     position:fixed;
-
     width:520px;
     height:520px;
-
     top:-270px;
     left:-270px;
-
     pointer-events:none;
-
     z-index:50;
-
-    opacity:.32;
+    opacity:.28;
 
     background:
-
-    repeating-radial-gradient(
-        circle,
-        transparent 0 34px,
-        rgba(255,30,45,.40) 35px 36px
-    ),
-
-    repeating-conic-gradient(
-        from 0deg,
-        transparent 0deg 14deg,
-        rgba(255,30,45,.28) 15deg 16deg
-    );
-
+        repeating-radial-gradient(
+            circle,
+            transparent 0 34px,
+            rgba(255,30,45,.40) 35px 36px
+        ),
+        repeating-conic-gradient(
+            from 0deg,
+            transparent 0deg 14deg,
+            rgba(255,30,45,.28) 15deg 16deg
+        );
 }
 
-
-/* =====================================================
-   SPIDEY WEB - BOTTOM RIGHT
-===================================================== */
-
 body.spidey::after{
-
     content:"";
-
     position:fixed;
-
     width:460px;
     height:460px;
-
     right:-250px;
     bottom:-240px;
-
     pointer-events:none;
-
     z-index:50;
-
-    opacity:.27;
+    opacity:.23;
 
     background:
-
-    repeating-radial-gradient(
-        circle,
-        transparent 0 32px,
-        rgba(255,30,45,.40) 33px 34px
-    ),
-
-    repeating-conic-gradient(
-        from 0deg,
-        transparent 0deg 14deg,
-        rgba(255,30,45,.28) 15deg 16deg
-    );
-
+        repeating-radial-gradient(
+            circle,
+            transparent 0 32px,
+            rgba(255,30,45,.40) 33px 34px
+        ),
+        repeating-conic-gradient(
+            from 0deg,
+            transparent 0deg 14deg,
+            rgba(255,30,45,.28) 15deg 16deg
+        );
 }
 
 
@@ -324,123 +209,64 @@ body.spidey::after{
 ===================================================== */
 
 nav{
-
     position:sticky;
-
     top:0;
-
     z-index:1000;
 
-    background:
-    rgba(3,5,4,.90);
+    background:rgba(3,5,4,.88);
+    backdrop-filter:blur(18px);
 
-    backdrop-filter:
-    blur(18px);
-
-    border-bottom:
-    1px solid var(--border);
-
+    border-bottom:1px solid var(--border);
 }
-
 
 body.light nav{
-
-    background:
-    rgba(255,255,255,.92);
-
+    background:rgba(255,255,255,.92);
 }
-
 
 body.spidey nav{
-
-    background:
-    rgba(3,2,3,.88);
-
+    background:rgba(3,2,3,.88);
 }
-
 
 .nav{
-
     max-width:1200px;
-
     margin:auto;
-
-    padding:
-    15px 22px;
+    padding:15px 22px;
 
     display:flex;
-
-    justify-content:
-    space-between;
-
+    justify-content:space-between;
     align-items:center;
-
 }
-
-
-/* =====================================================
-   LOGO
-===================================================== */
 
 .logo{
-
     font-size:24px;
-
     font-weight:900;
-
     letter-spacing:-1px;
-
 }
-
 
 .logo span{
-
     color:var(--accent);
-
 }
-
-
-/* =====================================================
-   NAV LINKS
-===================================================== */
 
 .nav-right{
-
     display:flex;
-
     align-items:center;
-
     gap:24px;
-
 }
-
 
 .nav-links{
-
     display:flex;
-
     gap:28px;
-
 }
-
 
 .nav-links a{
-
     color:var(--muted);
-
     text-decoration:none;
-
-    font-weight:500;
-
+    font-weight:600;
     transition:.25s;
-
 }
 
-
 .nav-links a:hover{
-
     color:var(--accent);
-
 }
 
 
@@ -449,158 +275,104 @@ body.spidey nav{
 ===================================================== */
 
 .theme-btn{
-
     width:43px;
-
     height:43px;
-
     border-radius:50%;
 
-    border:
-    1px solid var(--border);
-
-    background:
-    var(--card);
+    border:1px solid var(--border);
+    background:var(--card);
 
     color:var(--text);
-
     font-size:19px;
 
     cursor:pointer;
-
     transition:.3s;
-
 }
 
-
 .theme-btn:hover{
+    transform:scale(1.1) rotate(8deg);
 
-    transform:
-    scale(1.1)
-    rotate(8deg);
-
-    border-color:
-    var(--accent);
+    border-color:var(--accent);
 
     box-shadow:
-    0 0 18px
-    var(--accent-soft);
-
+        0 0 18px var(--accent-soft);
 }
 
 
 /* =====================================================
-   NEON TEXT
+   NEON
 ===================================================== */
 
 .neon{
-
     color:var(--accent);
 
     text-shadow:
-
-    0 0 5px
-    var(--accent-soft),
-
-    0 0 15px
-    var(--accent-soft);
+        0 0 5px var(--accent-soft),
+        0 0 15px var(--accent-soft);
 
     animation:
-    neonPulse
-    2.2s
-    ease-in-out
-    infinite alternate;
-
+        neonPulse 2.2s ease-in-out infinite alternate;
 }
-
 
 @keyframes neonPulse{
 
     from{
-
         text-shadow:
-        0 0 4px
-        var(--accent-soft);
-
+            0 0 4px var(--accent-soft);
     }
 
     to{
-
         text-shadow:
-
-        0 0 8px
-        var(--accent),
-
-        0 0 22px
-        var(--accent-soft),
-
-        0 0 40px
-        var(--accent-soft);
-
+            0 0 8px var(--accent),
+            0 0 22px var(--accent-soft),
+            0 0 40px var(--accent-soft);
     }
-
 }
 
 
 /* =====================================================
-   HERO
+   HOME HERO
 ===================================================== */
 
 .hero{
-
-    max-width:1100px;
-
-    min-height:680px;
-
+    min-height:720px;
+    max-width:1200px;
     margin:auto;
 
-    padding:
-    120px 20px 100px;
+    padding:110px 22px 90px;
 
     display:flex;
-
     flex-direction:column;
-
     justify-content:center;
-
     align-items:center;
 
     text-align:center;
 
     position:relative;
-
     z-index:1;
-
 }
 
 
-/* =====================================================
-   SPIDEY HERO BACKGROUND IMAGE
-===================================================== */
+/* SPIDEY HERO BACKGROUND */
 
 body.spidey .hero::after{
 
     content:"";
 
     position:absolute;
-
     inset:0;
 
     z-index:-1;
 
     background-image:
-
-    linear-gradient(
-        rgba(0,0,0,.78),
-        rgba(3,3,4,.94)
-    ),
-
-    url("spidey-bg.jpg");
+        linear-gradient(
+            rgba(0,0,0,.78),
+            rgba(3,3,4,.94)
+        ),
+        url("spidey-bg.jpg");
 
     background-size:cover;
-
     background-position:center;
-
     background-repeat:no-repeat;
 
     opacity:.95;
@@ -608,26 +380,13 @@ body.spidey .hero::after{
 }
 
 
-/* =====================================================
-   SPIDEY RED CINEMATIC LIGHT
-===================================================== */
-
-body.spidey .hero{
-
-    box-shadow:
-
-    inset 0 -150px 120px
-    rgba(255,0,0,.07);
-
-}
-
+/* RED LIGHT */
 
 body.spidey .hero::before{
 
     content:"";
 
     position:absolute;
-
     inset:0;
 
     z-index:0;
@@ -635,69 +394,52 @@ body.spidey .hero::before{
     pointer-events:none;
 
     background:
-
-    radial-gradient(
-        circle at 50% 35%,
-        rgba(255,0,0,.16),
-        transparent 42%
-    );
-
+        radial-gradient(
+            circle at 50% 35%,
+            rgba(255,0,0,.17),
+            transparent 42%
+        );
 }
 
 
-/* =====================================================
-   HERO CONTENT ABOVE BACKGROUND
-===================================================== */
+/* HERO CONTENT */
 
 .hero > *{
-
     position:relative;
-
     z-index:3;
-
 }
 
 
-/* =====================================================
-   BADGE
-===================================================== */
+/* BADGE */
 
 .badge{
-
     display:inline-flex;
-
     align-items:center;
-
     gap:8px;
 
-    padding:
-    9px 17px;
+    padding:9px 17px;
 
-    border:
-    1px solid var(--border);
-
+    border:1px solid var(--border);
     border-radius:30px;
 
     color:var(--accent);
 
-    background:
-    var(--accent-soft);
+    background:var(--accent-soft);
 
     font-size:14px;
-
     font-weight:bold;
 
+    animation:
+        fadeUp .8s ease both;
 }
 
 
-/* =====================================================
-   HERO TITLE
-===================================================== */
+/* HERO TITLE */
 
 .hero h1{
 
     font-size:
-    clamp(55px,9vw,105px);
+        clamp(55px,9vw,105px);
 
     line-height:.94;
 
@@ -705,59 +447,56 @@ body.spidey .hero::before{
 
     margin-top:28px;
 
+    animation:
+        fadeUp .9s ease .1s both;
 }
-
 
 .hero p{
 
     max-width:760px;
 
-    margin:
-    30px auto;
+    margin:30px auto;
 
     color:var(--muted);
 
     font-size:18px;
 
+    animation:
+        fadeUp 1s ease .2s both;
 }
 
-
 .hero p strong{
-
     color:var(--accent);
-
 }
 
 
 /* =====================================================
-   BUTTONS
+   HERO BUTTONS
 ===================================================== */
 
 .buttons{
 
     display:flex;
-
     justify-content:center;
 
     gap:13px;
 
     flex-wrap:wrap;
 
+    animation:
+        fadeUp 1s ease .3s both;
 }
-
 
 .btn{
 
     display:inline-flex;
 
     align-items:center;
-
     justify-content:center;
 
     gap:8px;
 
-    padding:
-    13px 21px;
+    padding:13px 21px;
 
     border-radius:13px;
 
@@ -770,54 +509,68 @@ body.spidey .hero::before{
     border:1px solid transparent;
 
     transition:.25s;
-
 }
-
 
 .btn:hover{
-
-    transform:
-    translateY(-3px);
-
+    transform:translateY(-3px);
 }
-
 
 .primary{
 
-    background:
-    var(--accent);
+    background:var(--accent);
 
     color:#031007;
 
     box-shadow:
-    0 0 20px
-    var(--accent-soft);
-
+        0 0 20px var(--accent-soft);
 }
-
 
 .secondary{
 
-    background:
-    var(--card);
+    background:var(--card);
 
     color:var(--text);
 
-    border-color:
-    var(--border);
-
+    border-color:var(--border);
 }
 
-
 body.spidey .primary{
-
-    color:#ffffff;
-
+    color:#fff;
 }
 
 
 /* =====================================================
-   MAIN CONTAINER
+   HERO SCROLL
+===================================================== */
+
+.scroll-down{
+
+    margin-top:65px;
+
+    color:var(--muted);
+
+    font-size:13px;
+
+    letter-spacing:2px;
+
+    animation:
+        bounce 1.8s infinite;
+}
+
+@keyframes bounce{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(7px);
+    }
+}
+
+
+/* =====================================================
+   GENERAL
 ===================================================== */
 
 .container{
@@ -826,56 +579,109 @@ body.spidey .primary{
 
     margin:auto;
 
-    padding:
-    0 22px;
+    padding:0 22px;
 
     position:relative;
 
     z-index:100;
-
 }
 
-
 section{
+    padding:85px 0;
+}
 
-    padding:
-    85px 0;
+.heading{
+    text-align:center;
+    margin-bottom:42px;
+}
 
+.heading h2{
+    font-size:
+        clamp(32px,5vw,45px);
+}
+
+.heading p{
+    color:var(--muted);
+    margin-top:7px;
 }
 
 
 /* =====================================================
-   HEADINGS
+   STATS
 ===================================================== */
 
-.heading{
+.stats-home{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:18px;
+
+    margin-top:-20px;
+
+    position:relative;
+
+    z-index:20;
+}
+
+.stat-card{
 
     text-align:center;
 
-    margin-bottom:42px;
+    padding:27px 20px;
 
+    background:
+        linear-gradient(
+            145deg,
+            var(--card),
+            var(--card2)
+        );
+
+    border:1px solid var(--border);
+
+    border-radius:18px;
+
+    transition:.3s;
 }
 
+.stat-card:hover{
 
-.heading h2{
+    transform:translateY(-5px);
 
-    font-size:
-    clamp(32px,5vw,45px);
+    border-color:var(--accent);
 
+    box-shadow:
+        0 15px 40px
+        var(--accent-soft);
 }
 
+.stat-card strong{
 
-.heading p{
+    display:block;
+
+    color:var(--accent);
+
+    font-size:34px;
+
+    line-height:1;
+}
+
+.stat-card span{
+
+    display:block;
 
     color:var(--muted);
 
-    margin-top:7px;
+    margin-top:8px;
 
+    font-size:14px;
 }
 
 
 /* =====================================================
-   TOOLS GRID
+   FEATURED TOOLS
 ===================================================== */
 
 .tools{
@@ -883,31 +689,23 @@ section{
     display:grid;
 
     grid-template-columns:
-    repeat(4,1fr);
+        repeat(4,1fr);
 
     gap:18px;
-
 }
-
-
-/* =====================================================
-   TOOL CARD
-===================================================== */
 
 .tool{
 
     min-height:220px;
 
     background:
+        linear-gradient(
+            145deg,
+            var(--card),
+            var(--card2)
+        );
 
-    linear-gradient(
-        145deg,
-        var(--card),
-        var(--card2)
-    );
-
-    border:
-    1px solid var(--border);
+    border:1px solid var(--border);
 
     border-radius:20px;
 
@@ -920,9 +718,7 @@ section{
     overflow:hidden;
 
     transition:.3s;
-
 }
-
 
 .tool::before{
 
@@ -931,89 +727,272 @@ section{
     position:absolute;
 
     width:120px;
-
     height:120px;
 
     right:-60px;
-
     top:-60px;
 
-    background:
-    var(--accent-soft);
+    background:var(--accent-soft);
 
     border-radius:50%;
 
     filter:blur(25px);
-
 }
-
 
 .tool:hover{
 
-    transform:
-    translateY(-8px);
+    transform:translateY(-8px);
 
-    border-color:
-    var(--accent);
+    border-color:var(--accent);
 
     box-shadow:
-    0 15px 45px
-    rgba(0,0,0,.25);
-
+        0 15px 45px
+        rgba(0,0,0,.25);
 }
-
 
 body.spidey .tool:hover{
 
     box-shadow:
-    0 15px 45px
-    rgba(255,0,0,.14);
-
+        0 15px 45px
+        rgba(255,0,0,.16);
 }
-
 
 .icon{
 
     width:55px;
-
     height:55px;
 
     display:flex;
-
     align-items:center;
-
     justify-content:center;
 
     border-radius:50%;
 
-    border:
-    1px solid var(--border);
+    border:1px solid var(--border);
 
-    background:
-    var(--accent-soft);
+    background:var(--accent-soft);
 
     font-size:25px;
-
 }
-
 
 .tool h3{
-
     margin-top:20px;
-
     font-size:20px;
+}
 
+.tool p{
+    color:var(--muted);
+    margin-top:7px;
+    font-size:14px;
 }
 
 
-.tool p{
+/* =====================================================
+   HOW IT WORKS
+===================================================== */
 
-    color:var(--muted);
+.steps{
 
-    margin-top:7px;
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:25px;
+
+    position:relative;
+}
+
+.step{
+
+    text-align:center;
+
+    padding:30px 20px;
+
+    background:
+        linear-gradient(
+            145deg,
+            var(--card),
+            var(--card2)
+        );
+
+    border:
+        1px solid var(--border);
+
+    border-radius:20px;
+
+    transition:.3s;
+}
+
+.step:hover{
+
+    transform:translateY(-6px);
+
+    border-color:var(--accent);
+}
+
+.step-number{
 
     font-size:14px;
 
+    font-weight:bold;
+
+    color:var(--accent);
+
+    letter-spacing:3px;
+}
+
+.step-icon{
+
+    font-size:38px;
+
+    margin:15px 0 10px;
+}
+
+.step h3{
+    margin-bottom:7px;
+}
+
+.step p{
+    color:var(--muted);
+    font-size:14px;
+}
+
+
+/* =====================================================
+   CREATOR FLOW
+===================================================== */
+
+.flow-box{
+
+    padding:45px 25px;
+
+    text-align:center;
+
+    background:
+        linear-gradient(
+            145deg,
+            var(--card),
+            var(--card2)
+        );
+
+    border:
+        1px solid var(--border);
+
+    border-radius:25px;
+
+    overflow:hidden;
+
+    position:relative;
+}
+
+.flow-box::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:300px;
+    height:300px;
+
+    top:-150px;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    background:var(--accent-soft);
+
+    filter:blur(80px);
+
+    border-radius:50%;
+}
+
+.flow-title{
+
+    position:relative;
+
+    font-size:
+        clamp(25px,4vw,40px);
+
+    margin-bottom:35px;
+}
+
+.flow{
+
+    position:relative;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:10px;
+
+    flex-wrap:wrap;
+}
+
+.flow-item{
+
+    min-width:115px;
+
+    padding:18px 15px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius:15px;
+
+    background:var(--card2);
+
+    transition:.3s;
+}
+
+.flow-item:hover{
+
+    transform:scale(1.05);
+
+    border-color:var(--accent);
+
+    box-shadow:
+        0 0 25px var(--accent-soft);
+}
+
+.flow-item span{
+
+    display:block;
+
+    font-size:27px;
+
+    margin-bottom:5px;
+}
+
+.flow-item small{
+
+    color:var(--muted);
+
+    font-weight:bold;
+}
+
+.flow-arrow{
+
+    color:var(--accent);
+
+    font-size:25px;
+
+    animation:
+        arrowPulse 1.5s infinite;
+}
+
+@keyframes arrowPulse{
+
+    0%,100%{
+        opacity:.4;
+    }
+
+    50%{
+        opacity:1;
+    }
 }
 
 
@@ -1022,51 +1001,38 @@ body.spidey .tool:hover{
 ===================================================== */
 
 .panel{
-
     display:none;
-
     margin-top:35px;
-
 }
-
 
 .panel.active{
-
     display:block;
-
 }
-
 
 .box{
 
     background:
-
-    linear-gradient(
-        145deg,
-        var(--card),
-        var(--card2)
-    );
+        linear-gradient(
+            145deg,
+            var(--card),
+            var(--card2)
+        );
 
     border:
-    1px solid var(--border);
+        1px solid var(--border);
 
     border-radius:22px;
 
     padding:30px;
 
     box-shadow:
-    0 15px 50px
-    rgba(0,0,0,.12);
-
+        0 15px 50px
+        rgba(0,0,0,.12);
 }
-
 
 .box h2{
-
     margin-bottom:22px;
-
 }
-
 
 .back{
 
@@ -1079,7 +1045,6 @@ body.spidey .tool:hover{
     margin-bottom:15px;
 
     font-weight:bold;
-
 }
 
 
@@ -1092,33 +1057,21 @@ body.spidey .tool:hover{
     display:grid;
 
     grid-template-columns:
-    1fr 1fr;
+        1fr 1fr;
 
     gap:16px;
-
 }
-
 
 .full{
-
-    grid-column:
-    1 / -1;
-
+    grid-column:1/-1;
 }
-
 
 label{
-
     display:block;
-
     margin-bottom:7px;
-
     font-size:14px;
-
     font-weight:bold;
-
 }
-
 
 input,
 textarea,
@@ -1126,14 +1079,11 @@ select{
 
     width:100%;
 
-    background:
-    var(--background);
+    background:var(--background);
 
-    color:
-    var(--text);
+    color:var(--text);
 
-    border:
-    1px solid var(--border);
+    border:1px solid var(--border);
 
     border-radius:11px;
 
@@ -1142,37 +1092,25 @@ select{
     outline:none;
 
     font-family:inherit;
-
 }
-
 
 input:focus,
 textarea:focus,
 select:focus{
 
-    border-color:
-    var(--accent);
+    border-color:var(--accent);
 
     box-shadow:
-    0 0 12px
-    var(--accent-soft);
-
+        0 0 12px var(--accent-soft);
 }
-
 
 textarea{
-
     min-height:125px;
-
     resize:vertical;
-
 }
 
-
 .generate{
-
     margin-top:20px;
-
 }
 
 
@@ -1187,17 +1125,13 @@ textarea{
     gap:10px;
 
     margin-top:22px;
-
 }
-
 
 .result{
 
-    background:
-    var(--card2);
+    background:var(--card2);
 
-    border:
-    1px solid var(--border);
+    border:1px solid var(--border);
 
     border-radius:12px;
 
@@ -1210,28 +1144,21 @@ textarea{
     align-items:center;
 
     gap:15px;
-
 }
-
 
 .copy{
 
-    background:
-    var(--card);
+    background:var(--card);
 
-    color:
-    var(--accent);
+    color:var(--accent);
 
-    border:
-    1px solid var(--border);
+    border:1px solid var(--border);
 
-    padding:
-    8px 13px;
+    padding:8px 13px;
 
     border-radius:8px;
 
     cursor:pointer;
-
 }
 
 
@@ -1244,29 +1171,23 @@ textarea{
     display:grid;
 
     grid-template-columns:
-    repeat(3,1fr);
+        repeat(3,1fr);
 
     gap:13px;
 
     margin-bottom:20px;
-
 }
-
 
 .stat{
 
-    background:
-    var(--card2);
+    background:var(--card2);
 
-    border:
-    1px solid var(--border);
+    border:1px solid var(--border);
 
     border-radius:14px;
 
     padding:17px;
-
 }
-
 
 .stat strong{
 
@@ -1275,18 +1196,14 @@ textarea{
     color:var(--accent);
 
     font-size:29px;
-
 }
-
 
 .stat span{
 
     color:var(--muted);
 
     font-size:13px;
-
 }
-
 
 .plans{
 
@@ -1295,17 +1212,13 @@ textarea{
     display:grid;
 
     gap:10px;
-
 }
-
 
 .plan{
 
-    background:
-    var(--card2);
+    background:var(--card2);
 
-    border:
-    1px solid var(--border);
+    border:1px solid var(--border);
 
     border-radius:13px;
 
@@ -1318,9 +1231,7 @@ textarea{
     align-items:center;
 
     gap:15px;
-
 }
-
 
 .plan small{
 
@@ -1329,9 +1240,7 @@ textarea{
     color:var(--muted);
 
     margin-top:3px;
-
 }
-
 
 .delete{
 
@@ -1344,12 +1253,11 @@ textarea{
     cursor:pointer;
 
     margin-left:8px;
-
 }
 
 
 /* =====================================================
-   ABOUT
+   ABOUT DEEEZZ
 ===================================================== */
 
 .about{
@@ -1363,46 +1271,34 @@ textarea{
     padding:38px;
 
     background:
+        linear-gradient(
+            145deg,
+            var(--card),
+            var(--card2)
+        );
 
-    linear-gradient(
-        145deg,
-        var(--card),
-        var(--card2)
-    );
-
-    border:
-    1px solid var(--border);
+    border:1px solid var(--border);
 
     border-radius:25px;
 
     position:relative;
 
     overflow:hidden;
-
 }
-
 
 body.spidey .about{
 
     background:
-
-    linear-gradient(
-        145deg,
-        rgba(30,5,8,.95),
-        rgba(7,4,5,.95)
-    );
-
+        linear-gradient(
+            145deg,
+            rgba(30,5,8,.95),
+            rgba(7,4,5,.95)
+        );
 }
-
-
-/* =====================================================
-   DEEEZZ PHOTO
-===================================================== */
 
 .profile{
 
     width:190px;
-
     height:190px;
 
     min-width:190px;
@@ -1411,91 +1307,89 @@ body.spidey .about{
 
     overflow:hidden;
 
-    border:
-    2px solid var(--accent);
+    border:2px solid var(--accent);
 
     box-shadow:
-
-    0 0 20px
-    var(--accent-soft),
-
-    0 0 45px
-    var(--accent-soft);
-
+        0 0 20px var(--accent-soft),
+        0 0 45px var(--accent-soft);
 }
-
 
 .profile img{
 
     width:100%;
-
     height:100%;
 
     object-fit:cover;
 
     display:block;
-
 }
-
 
 .about h3{
-
     font-size:30px;
-
 }
-
 
 .about h3 span{
-
     color:var(--accent);
-
 }
-
 
 .about p{
 
     color:var(--muted);
 
     margin:
-    9px 0 20px;
+        9px 0 20px;
 
     max-width:700px;
-
 }
 
 
 /* =====================================================
-   SPIDEY ABOUT DECORATION
+   FINAL CTA
 ===================================================== */
 
-body.spidey .about::after{
+.final-cta{
 
-    content:"";
+    text-align:center;
 
-    position:absolute;
-
-    right:-50px;
-
-    bottom:-70px;
-
-    width:210px;
-
-    height:210px;
+    padding:
+        80px 25px;
 
     border:
-    2px solid
-    rgba(255,38,56,.15);
+        1px solid var(--border);
 
-    border-radius:50%;
+    border-radius:28px;
 
-    box-shadow:
+    background:
+        radial-gradient(
+            circle at 50% 50%,
+            var(--accent-soft),
+            transparent 60%
+        ),
+        var(--card);
 
-    0 0 0 25px
-    rgba(255,38,56,.04),
+    position:relative;
 
-    0 0 0 50px
-    rgba(255,38,56,.03);
+    overflow:hidden;
+}
 
+.final-cta h2{
+
+    font-size:
+        clamp(35px,6vw,58px);
+
+    line-height:1;
+
+    letter-spacing:-2px;
+}
+
+.final-cta p{
+
+    color:var(--muted);
+
+    max-width:550px;
+
+    margin:
+        20px auto 27px;
 }
 
 
@@ -1505,25 +1399,37 @@ body.spidey .about::after{
 
 footer{
 
-    margin-top:50px;
+    margin-top:80px;
 
-    border-top:
-    1px solid var(--border);
+    border-top:1px solid var(--border);
 
     text-align:center;
 
-    padding:
-    35px 20px;
+    padding:35px 20px;
 
     color:var(--muted);
+}
 
+footer strong{
+    color:var(--accent);
 }
 
 
-footer strong{
+/* =====================================================
+   ANIMATIONS
+===================================================== */
 
-    color:var(--accent);
+@keyframes fadeUp{
 
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
 }
 
 
@@ -1534,10 +1440,11 @@ footer strong{
 @media(max-width:900px){
 
     .tools{
+        grid-template-columns:1fr 1fr;
+    }
 
-        grid-template-columns:
-        1fr 1fr;
-
+    .steps{
+        grid-template-columns:1fr;
     }
 
 }
@@ -1546,84 +1453,57 @@ footer strong{
 @media(max-width:650px){
 
     .nav{
-
-        padding:
-        13px 16px;
-
+        padding:13px 16px;
     }
-
 
     .nav-links{
-
         display:none;
-
     }
-
 
     .nav-right{
-
         gap:10px;
-
     }
-
 
     .hero{
 
-        min-height:600px;
+        min-height:620px;
 
         padding:
-        90px 18px 70px;
-
+            90px 18px 70px;
     }
-
 
     .hero h1{
 
         font-size:
-        clamp(48px,14vw,75px);
+            clamp(48px,14vw,75px);
 
         letter-spacing:-4px;
-
     }
-
 
     .hero p{
-
         font-size:16px;
-
     }
 
+    .stats-home{
+        grid-template-columns:1fr;
+        margin-top:0;
+    }
 
     .tools{
-
-        grid-template-columns:
-        1fr;
-
+        grid-template-columns:1fr;
     }
-
 
     .form{
-
-        grid-template-columns:
-        1fr;
-
+        grid-template-columns:1fr;
     }
-
 
     .full{
-
         grid-column:auto;
-
     }
-
 
     .stats{
-
-        grid-template-columns:
-        1fr;
-
+        grid-template-columns:1fr;
     }
-
 
     .about{
 
@@ -1632,50 +1512,44 @@ footer strong{
         text-align:center;
 
         padding:28px 20px;
-
     }
-
 
     .profile{
 
         width:155px;
-
         height:155px;
 
         min-width:155px;
-
     }
-
 
     .about h3{
-
         font-size:25px;
-
     }
 
+    .flow{
+        flex-direction:column;
+    }
+
+    .flow-arrow{
+        transform:rotate(90deg);
+    }
 
     .result{
 
         flex-direction:column;
 
         align-items:stretch;
-
     }
-
 
     .copy{
-
         width:100%;
-
     }
-
 
     .plan{
 
         flex-direction:column;
 
         align-items:stretch;
-
     }
 
 }
@@ -1688,17 +1562,13 @@ footer strong{
 @media(prefers-reduced-motion:reduce){
 
     *{
-
         animation:none !important;
-
         transition:none !important;
-
     }
 
 }
 
 </style>
-
 </head>
 
 
@@ -1706,40 +1576,27 @@ footer strong{
 
 
 <!-- =====================================================
-     NAVBAR
+     NAVIGATION
 ===================================================== -->
 
 <nav>
 
 <div class="nav">
 
-
 <div class="logo">
-
-Creator<span class="neon">Flow</span>
-
+Creator<span>Flow</span>
 </div>
-
 
 <div class="nav-right">
 
-
 <div class="nav-links">
 
-<a href="#home">
-Home
-</a>
-
-<a href="#tools">
-Tools
-</a>
-
-<a href="#about">
-About
-</a>
+<a href="#home">Home</a>
+<a href="#tools">Tools</a>
+<a href="#how">How It Works</a>
+<a href="#about">About</a>
 
 </div>
-
 
 <button
 class="theme-btn"
@@ -1749,7 +1606,6 @@ onclick="changeTheme()">
 🌙
 
 </button>
-
 
 </div>
 
@@ -1766,11 +1622,8 @@ onclick="changeTheme()">
 class="hero"
 id="home">
 
-
 <div class="badge">
-
 ⚡ BUILT BY DEEEZZ
-
 </div>
 
 
@@ -1788,8 +1641,8 @@ Post smarter.
 <p>
 
 Your simple creator toolkit for
-titles, captions, reel ideas and
-content planning.
+ideas, titles, captions and content
+planning.
 
 Built by
 
@@ -1802,61 +1655,108 @@ Dihein De Silva (Deeezz)
 
 <div class="buttons">
 
-
 <a
 href="#tools"
 class="btn primary">
 
-🚀 Explore Tools
+🚀 Start Creating
 
 </a>
 
 
 <a
-href="https://www.instagram.com/______deeezz___/"
-target="_blank"
+href="#tools"
 class="btn secondary">
 
-📸 Instagram
+Explore Tools →
 
 </a>
-
 
 </div>
 
 
+<div class="scroll-down">
+SCROLL TO EXPLORE ↓
+</div>
+
 </section>
 
-
-<!-- =====================================================
-     MAIN
-===================================================== -->
 
 <main class="container">
 
 
 <!-- =====================================================
-     TOOLS
+     QUICK STATS
+===================================================== -->
+
+<section>
+
+<div class="stats-home">
+
+<div class="stat-card">
+
+<strong>
+10+
+</strong>
+
+<span>
+Creator Tools
+</span>
+
+</div>
+
+
+<div class="stat-card">
+
+<strong>
+100+
+</strong>
+
+<span>
+Creative Ideas
+</span>
+
+</div>
+
+
+<div class="stat-card">
+
+<strong>
+∞
+</strong>
+
+<span>
+Creative Possibilities
+</span>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     FEATURED TOOLS
 ===================================================== -->
 
 <section id="tools">
-
 
 <div class="heading">
 
 <h2>
 
-Creator
+Everything you need
+to
 
 <span class="neon">
-Tools
+create faster.
 </span>
 
 </h2>
 
 <p>
-Everything you need to organize
-your content.
+Simple tools made for modern creators.
 </p>
 
 </div>
@@ -1878,7 +1778,8 @@ Title Generator
 </h3>
 
 <p>
-Create attention-grabbing titles.
+Create attention-grabbing titles
+for your next video.
 </p>
 
 </div>
@@ -1897,7 +1798,8 @@ Caption Generator
 </h3>
 
 <p>
-Create captions for your posts.
+Turn your content into captions
+that fit your vibe.
 </p>
 
 </div>
@@ -1916,7 +1818,8 @@ Reel Ideas
 </h3>
 
 <p>
-Generate fresh content ideas.
+Never run out of ideas
+for your next reel.
 </p>
 
 </div>
@@ -1927,7 +1830,7 @@ class="tool"
 onclick="openTool('planner')">
 
 <div class="icon">
-📊
+📅
 </div>
 
 <h3>
@@ -1935,7 +1838,8 @@ Content Planner
 </h3>
 
 <p>
-Plan your content easily.
+Organize your content
+and stay consistent.
 </p>
 
 </div>
@@ -1951,7 +1855,6 @@ Plan your content easily.
 <div
 class="panel"
 id="titles">
-
 
 <span
 class="back"
@@ -1970,7 +1873,6 @@ onclick="closeTools()">
 
 
 <div class="form">
-
 
 <div>
 
@@ -1993,26 +1895,14 @@ Platform
 
 <select id="titlePlatform">
 
-<option>
-YouTube
-</option>
-
-<option>
-TikTok
-</option>
-
-<option>
-Instagram
-</option>
-
-<option>
-YouTube Shorts
-</option>
+<option>YouTube</option>
+<option>TikTok</option>
+<option>Instagram</option>
+<option>YouTube Shorts</option>
 
 </select>
 
 </div>
-
 
 </div>
 
@@ -2032,7 +1922,6 @@ id="titleResults">
 
 </div>
 
-
 </div>
 
 </div>
@@ -2045,7 +1934,6 @@ id="titleResults">
 <div
 class="panel"
 id="captions">
-
 
 <span
 class="back"
@@ -2064,7 +1952,6 @@ onclick="closeTools()">
 
 
 <div class="form">
-
 
 <div class="full">
 
@@ -2088,17 +1975,9 @@ Platform
 
 <select id="captionPlatform">
 
-<option>
-Instagram
-</option>
-
-<option>
-TikTok
-</option>
-
-<option>
-YouTube
-</option>
+<option>Instagram</option>
+<option>TikTok</option>
+<option>YouTube</option>
 
 </select>
 
@@ -2113,30 +1992,15 @@ Tone
 
 <select id="captionTone">
 
-<option>
-Chill
-</option>
-
-<option>
-Funny
-</option>
-
-<option>
-Emotional
-</option>
-
-<option>
-Motivational
-</option>
-
-<option>
-Professional
-</option>
+<option>Chill</option>
+<option>Funny</option>
+<option>Emotional</option>
+<option>Motivational</option>
+<option>Professional</option>
 
 </select>
 
 </div>
-
 
 </div>
 
@@ -2156,7 +2020,6 @@ id="captionResults">
 
 </div>
 
-
 </div>
 
 </div>
@@ -2169,7 +2032,6 @@ id="captionResults">
 <div
 class="panel"
 id="ideas">
-
 
 <span
 class="back"
@@ -2188,7 +2050,6 @@ onclick="closeTools()">
 
 
 <div class="form">
-
 
 <div>
 
@@ -2211,34 +2072,16 @@ Video Type
 
 <select id="ideaType">
 
-<option>
-Educational
-</option>
-
-<option>
-Funny
-</option>
-
-<option>
-Storytelling
-</option>
-
-<option>
-Facts
-</option>
-
-<option>
-Comparison
-</option>
-
-<option>
-Motivational
-</option>
+<option>Educational</option>
+<option>Funny</option>
+<option>Storytelling</option>
+<option>Facts</option>
+<option>Comparison</option>
+<option>Motivational</option>
 
 </select>
 
 </div>
-
 
 </div>
 
@@ -2258,7 +2101,6 @@ id="ideaResults">
 
 </div>
 
-
 </div>
 
 </div>
@@ -2271,7 +2113,6 @@ id="ideaResults">
 <div
 class="panel"
 id="planner">
-
 
 <span
 class="back"
@@ -2290,7 +2131,6 @@ onclick="closeTools()">
 
 
 <div class="stats">
-
 
 <div class="stat">
 
@@ -2330,12 +2170,10 @@ Posted
 
 </div>
 
-
 </div>
 
 
 <div class="form">
-
 
 <div>
 
@@ -2358,17 +2196,9 @@ Platform
 
 <select id="planPlatform">
 
-<option>
-Instagram
-</option>
-
-<option>
-TikTok
-</option>
-
-<option>
-YouTube
-</option>
+<option>Instagram</option>
+<option>TikTok</option>
+<option>YouTube</option>
 
 </select>
 
@@ -2386,7 +2216,6 @@ id="planContent"
 placeholder="Example: 5 hidden Android apps">
 
 </div>
-
 
 </div>
 
@@ -2406,34 +2235,216 @@ id="plans">
 
 </div>
 
-
 </div>
 
 </div>
-
 
 </section>
 
 
 <!-- =====================================================
-     ABOUT
+     HOW IT WORKS
 ===================================================== -->
 
-<section id="about">
-
+<section id="how">
 
 <div class="heading">
 
 <h2>
 
-About
+How
 
 <span class="neon">
-Deeezz
+CreatorFlow
 </span>
+
+works.
 
 </h2>
 
+<p>
+From idea to post in three simple steps.
+</p>
+
+</div>
+
+
+<div class="steps">
+
+
+<div class="step">
+
+<div class="step-number">
+01
+</div>
+
+<div class="step-icon">
+🧠
+</div>
+
+<h3>
+Choose a tool
+</h3>
+
+<p>
+Pick the tool that matches
+what you're creating.
+</p>
+
+</div>
+
+
+<div class="step">
+
+<div class="step-number">
+02
+</div>
+
+<div class="step-icon">
+⚡
+</div>
+
+<h3>
+Create your content
+</h3>
+
+<p>
+Generate ideas, titles,
+captions and more.
+</p>
+
+</div>
+
+
+<div class="step">
+
+<div class="step-number">
+03
+</div>
+
+<div class="step-icon">
+🚀
+</div>
+
+<h3>
+Post & grow
+</h3>
+
+<p>
+Take your content and
+share it with the world.
+</p>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     CREATOR FLOW
+===================================================== -->
+
+<section>
+
+<div class="flow-box">
+
+<div class="flow-title">
+
+Your content.
+Your <span class="neon">flow.</span>
+
+</div>
+
+
+<div class="flow">
+
+
+<div class="flow-item">
+
+<span>💡</span>
+
+<small>
+IDEA
+</small>
+
+</div>
+
+
+<div class="flow-arrow">
+→
+</div>
+
+
+<div class="flow-item">
+
+<span>🎯</span>
+
+<small>
+TITLE
+</small>
+
+</div>
+
+
+<div class="flow-arrow">
+→
+</div>
+
+
+<div class="flow-item">
+
+<span>✍️</span>
+
+<small>
+CAPTION
+</small>
+
+</div>
+
+
+<div class="flow-arrow">
+→
+</div>
+
+
+<div class="flow-item">
+
+<span>🚀</span>
+
+<small>
+POST
+</small>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     ABOUT DEEEZZ
+===================================================== -->
+
+<section id="about">
+
+<div class="heading">
+
+<h2>
+
+Built by
+
+<span class="neon">
+Deeezz.
+</span>
+
+</h2>
 
 <p>
 The creator behind CreatorFlow.
@@ -2472,9 +2483,9 @@ Dihein De Silva
 Content creator and the creator of
 CreatorFlow.
 
-I built CreatorFlow to make content
-creation simpler, faster and more
-organized.
+CreatorFlow was built to make
+content creation simpler, faster
+and more organized.
 
 </p>
 
@@ -2488,12 +2499,49 @@ class="btn primary">
 
 </a>
 
+</div>
 
 </div>
 
+</section>
+
+
+<!-- =====================================================
+     FINAL CTA
+===================================================== -->
+
+<section>
+
+<div class="final-cta">
+
+<h2>
+
+Ready to
+
+<span class="neon">
+create?
+</span>
+
+</h2>
+
+
+<p>
+
+Turn your next idea into something
+worth posting.
+
+</p>
+
+
+<a
+href="#tools"
+class="btn primary">
+
+🚀 Start Creating
+
+</a>
 
 </div>
-
 
 </section>
 
@@ -2538,13 +2586,10 @@ Dihein De Silva — Deeezz
 ===================================================== */
 
 const themes = [
-
     "dark",
     "light",
     "spidey"
-
 ];
-
 
 const themeIcons = {
 
@@ -2565,62 +2610,50 @@ function applyTheme(theme){
         "spidey"
     );
 
-
     document.body.classList.add(theme);
-
 
     localStorage.setItem(
         "creatorFlowTheme",
         theme
     );
 
-
     document
-    .getElementById("themeButton")
-    .textContent =
-    themeIcons[theme];
-
+        .getElementById("themeButton")
+        .textContent =
+        themeIcons[theme];
 }
 
 
 function changeTheme(){
 
     let current =
-    localStorage.getItem(
-        "creatorFlowTheme"
-    ) || "dark";
-
+        localStorage.getItem(
+            "creatorFlowTheme"
+        ) || "dark";
 
     let index =
-    themes.indexOf(current);
-
+        themes.indexOf(current);
 
     index++;
 
-
     if(index >= themes.length){
-
         index = 0;
-
     }
-
 
     applyTheme(
         themes[index]
     );
-
 }
 
 
 /* =====================================================
-   LOAD SAVED THEME
+   LOAD THEME
 ===================================================== */
 
 const savedTheme =
-localStorage.getItem(
-    "creatorFlowTheme"
-);
-
+    localStorage.getItem(
+        "creatorFlowTheme"
+    );
 
 applyTheme(
     savedTheme || "dark"
@@ -2634,29 +2667,26 @@ applyTheme(
 function openTool(id){
 
     document
-    .querySelectorAll(".panel")
-    .forEach(panel=>{
+        .querySelectorAll(".panel")
+        .forEach(panel => {
 
-        panel.classList.remove(
-            "active"
-        );
+            panel.classList.remove(
+                "active"
+            );
 
-    });
-
-
-    document
-    .getElementById(id)
-    .classList.add("active");
+        });
 
 
     document
-    .getElementById("tools")
-    .scrollIntoView({
+        .getElementById(id)
+        .classList.add("active");
 
-        behavior:"smooth"
 
-    });
-
+    document
+        .getElementById("tools")
+        .scrollIntoView({
+            behavior:"smooth"
+        });
 }
 
 
@@ -2667,96 +2697,90 @@ function openTool(id){
 function closeTools(){
 
     document
-    .querySelectorAll(".panel")
-    .forEach(panel=>{
+        .querySelectorAll(".panel")
+        .forEach(panel => {
 
-        panel.classList.remove(
-            "active"
-        );
+            panel.classList.remove(
+                "active"
+            );
 
-    });
+        });
 
 }
 
 
 /* =====================================================
-   SHOW RESULTS
+   RESULTS
 ===================================================== */
 
 function showResults(id,items){
 
     const box =
-    document.getElementById(id);
-
+        document.getElementById(id);
 
     box.innerHTML="";
 
 
     items.forEach(
-    (text,index)=>{
+        (text,index)=>{
 
-        const row =
-        document.createElement(
-            "div"
-        );
+            const row =
+                document.createElement(
+                    "div"
+                );
 
-
-        row.className="result";
-
-
-        const content =
-        document.createElement(
-            "span"
-        );
+            row.className="result";
 
 
-        content.innerHTML =
+            const content =
+                document.createElement(
+                    "span"
+                );
 
-        `<b class="neon">
-        ${index+1}.
-        </b> ${escapeHTML(text)}`;
-
-
-        const button =
-        document.createElement(
-            "button"
-        );
+            content.innerHTML =
+                `<b class="neon">
+                ${index+1}.
+                </b> ${escapeHTML(text)}`;
 
 
-        button.className="copy";
+            const button =
+                document.createElement(
+                    "button"
+                );
 
-        button.textContent="Copy";
+            button.className="copy";
 
-
-        button.onclick=()=>{
-
-            navigator
-            .clipboard
-            .writeText(text);
+            button.textContent="Copy";
 
 
-            button.textContent =
-            "Copied ✓";
+            button.onclick=()=>{
 
-
-            setTimeout(()=>{
+                navigator.clipboard.writeText(
+                    text
+                );
 
                 button.textContent =
-                "Copy";
-
-            },1200);
-
-        };
+                    "Copied ✓";
 
 
-        row.appendChild(content);
+                setTimeout(()=>{
 
-        row.appendChild(button);
+                    button.textContent =
+                        "Copy";
 
-        box.appendChild(row);
+                },1200);
 
-    });
+            };
 
+
+            row.appendChild(content);
+
+            row.appendChild(button);
+
+            box.appendChild(row);
+
+        }
+    );
 }
 
 
@@ -2767,16 +2791,14 @@ function showResults(id,items){
 function generateTitles(){
 
     let topic =
-    document
-    .getElementById("titleTopic")
-    .value
-    .trim();
+        document
+        .getElementById("titleTopic")
+        .value
+        .trim();
 
 
     if(!topic){
-
         topic="This Topic";
-
     }
 
 
@@ -2809,7 +2831,6 @@ function generateTitles(){
         "titleResults",
         titles
     );
-
 }
 
 
@@ -2820,16 +2841,14 @@ function generateTitles(){
 function generateCaptions(){
 
     let topic =
-    document
-    .getElementById("captionTopic")
-    .value
-    .trim();
+        document
+        .getElementById("captionTopic")
+        .value
+        .trim();
 
 
     if(!topic){
-
         topic="this moment";
-
     }
 
 
@@ -2862,7 +2881,6 @@ function generateCaptions(){
         "captionResults",
         captions
     );
-
 }
 
 
@@ -2873,16 +2891,14 @@ function generateCaptions(){
 function generateIdeas(){
 
     let niche =
-    document
-    .getElementById("ideaNiche")
-    .value
-    .trim();
+        document
+        .getElementById("ideaNiche")
+        .value
+        .trim();
 
 
     if(!niche){
-
         niche="your niche";
-
     }
 
 
@@ -2915,57 +2931,50 @@ function generateIdeas(){
         "ideaResults",
         ideas
     );
-
 }
 
 
 /* =====================================================
-   CONTENT PLANNER
+   PLANNER
 ===================================================== */
 
 let plans =
 
-JSON.parse(
-
-localStorage.getItem(
-"creatorFlowPlans"
-)
-
-) || [];
+    JSON.parse(
+        localStorage.getItem(
+            "creatorFlowPlans"
+        )
+    ) || [];
 
 
 function savePlans(){
 
     localStorage.setItem(
-
         "creatorFlowPlans",
-
         JSON.stringify(plans)
-
     );
-
 }
 
 
 function addPlan(){
 
     const date =
-    document
-    .getElementById("planDate")
-    .value;
+        document
+        .getElementById("planDate")
+        .value;
 
 
     const platform =
-    document
-    .getElementById("planPlatform")
-    .value;
+        document
+        .getElementById("planPlatform")
+        .value;
 
 
     const content =
-    document
-    .getElementById("planContent")
-    .value
-    .trim();
+        document
+        .getElementById("planContent")
+        .value
+        .trim();
 
 
     if(!date){
@@ -2975,7 +2984,6 @@ function addPlan(){
         );
 
         return;
-
     }
 
 
@@ -2986,7 +2994,6 @@ function addPlan(){
         );
 
         return;
-
     }
 
 
@@ -3006,14 +3013,13 @@ function addPlan(){
 
 
     document
-    .getElementById("planContent")
-    .value="";
+        .getElementById("planContent")
+        .value="";
 
 
     savePlans();
 
     renderPlans();
-
 }
 
 
@@ -3024,16 +3030,14 @@ function addPlan(){
 function deletePlan(id){
 
     plans =
-    plans.filter(
-        plan =>
-        plan.id !== id
-    );
-
+        plans.filter(
+            plan =>
+            plan.id !== id
+        );
 
     savePlans();
 
     renderPlans();
-
 }
 
 
@@ -3041,30 +3045,26 @@ function deletePlan(id){
    CHANGE STATUS
 ===================================================== */
 
-function changeStatus(
-    id,
-    status
-){
+function changeStatus(id,status){
 
     plans.forEach(
-    plan=>{
+        plan=>{
 
-        if(
-            plan.id === id
-        ){
+            if(
+                plan.id === id
+            ){
 
-            plan.status =
-            status;
+                plan.status =
+                    status;
+
+            }
 
         }
-
-    });
-
+    );
 
     savePlans();
 
     renderPlans();
-
 }
 
 
@@ -3075,138 +3075,131 @@ function changeStatus(
 function renderPlans(){
 
     const box =
-    document
-    .getElementById("plans");
+        document
+        .getElementById("plans");
 
 
     box.innerHTML="";
 
 
     plans.forEach(
-    plan=>{
+        plan=>{
 
-        const row =
-        document
-        .createElement("div");
+            const row =
+                document.createElement(
+                    "div"
+                );
 
-
-        row.className="plan";
-
-
-        row.innerHTML = `
-
-        <div>
-
-            <strong>
-                ${escapeHTML(
-                    plan.content
-                )}
-            </strong>
-
-            <small>
-
-                ${escapeHTML(
-                    plan.date
-                )}
-
-                ·
-
-                ${escapeHTML(
-                    plan.platform
-                )}
-
-            </small>
-
-        </div>
+            row.className="plan";
 
 
-        <div>
+            row.innerHTML = `
 
-            <select
-            onchange="
-            changeStatus(
-                ${plan.id},
-                this.value
-            )">
+                <div>
 
-                <option
-                ${plan.status === "Idea"
-                ? "selected"
-                : ""}>
+                    <strong>
+                        ${escapeHTML(
+                            plan.content
+                        )}
+                    </strong>
 
-                Idea
+                    <small>
 
-                </option>
+                        ${escapeHTML(
+                            plan.date
+                        )}
 
+                        ·
 
-                <option
-                ${plan.status === "Planned"
-                ? "selected"
-                : ""}>
+                        ${escapeHTML(
+                            plan.platform
+                        )}
 
-                Planned
+                    </small>
 
-                </option>
+                </div>
 
 
-                <option
-                ${plan.status === "Posted"
-                ? "selected"
-                : ""}>
+                <div>
 
-                Posted
+                    <select
+                    onchange="
+                    changeStatus(
+                        ${plan.id},
+                        this.value
+                    )">
 
-                </option>
+                        <option
+                        ${plan.status === "Idea"
+                        ? "selected"
+                        : ""}>
+                        Idea
+                        </option>
 
-            </select>
+                        <option
+                        ${plan.status === "Planned"
+                        ? "selected"
+                        : ""}>
+                        Planned
+                        </option>
+
+                        <option
+                        ${plan.status === "Posted"
+                        ? "selected"
+                        : ""}>
+                        Posted
+                        </option>
+
+                    </select>
 
 
-            <button
-            class="delete"
-            onclick="
-            deletePlan(
-                ${plan.id}
-            )
-            ">
+                    <button
+                    class="delete"
+                    onclick="
+                    deletePlan(
+                        ${plan.id}
+                    )
+                    ">
 
-            Delete
+                    Delete
 
-            </button>
+                    </button>
 
-        </div>
+                </div>
 
-        `;
+            `;
 
 
-        box.appendChild(row);
+            box.appendChild(row);
 
-    });
+        }
+    );
 
 
     document
-    .getElementById("total")
-    .textContent =
-    plans.length;
+        .getElementById("total")
+        .textContent =
+        plans.length;
 
 
     document
-    .getElementById("planned")
-    .textContent =
+        .getElementById("planned")
+        .textContent =
 
-    plans.filter(
-        p =>
-        p.status === "Planned"
-    ).length;
+        plans.filter(
+            p =>
+            p.status === "Planned"
+        ).length;
 
 
     document
-    .getElementById("posted")
-    .textContent =
+        .getElementById("posted")
+        .textContent =
 
-    plans.filter(
-        p =>
-        p.status === "Posted"
-    ).length;
+        plans.filter(
+            p =>
+            p.status === "Posted"
+        ).length;
 
 
     if(
@@ -3215,20 +3208,18 @@ function renderPlans(){
 
         box.innerHTML = `
 
-        <p style="
-        color:var(--muted);
-        text-align:center;
-        padding:20px;
-        ">
+            <p style="
+                color:var(--muted);
+                text-align:center;
+                padding:20px;
+            ">
 
-        No content planned yet 🚀
+            No content planned yet 🚀
 
-        </p>
+            </p>
 
         `;
-
     }
-
 }
 
 
@@ -3239,16 +3230,13 @@ function renderPlans(){
 function escapeHTML(text){
 
     const div =
-    document.createElement(
-        "div"
-    );
+        document.createElement(
+            "div"
+        );
 
-
-    div.textContent = text;
-
+    div.textContent=text;
 
     return div.innerHTML;
-
 }
 
 
@@ -3257,23 +3245,21 @@ function escapeHTML(text){
 ===================================================== */
 
 document
-.getElementById("planDate")
-.value =
+    .getElementById("planDate")
+    .value =
 
-new Date()
-.toISOString()
-.split("T")[0];
+    new Date()
+    .toISOString()
+    .split("T")[0];
 
 
 /* =====================================================
-   START PLANNER
+   START
 ===================================================== */
 
 renderPlans();
 
 </script>
 
-
 </body>
-
 </html>
