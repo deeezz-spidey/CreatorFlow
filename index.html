@@ -1,3627 +1,3347 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
-
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>CreatorFlow | Deeezz</title>
 
-<link rel="icon"
-type="image/png"
-href="cf-logo.png">
-
+<link rel="icon" type="image/png" href="cf-logo.png">
 
 <style>
 
-/* =====================================================
-   CREATORFLOW
-   DARK + LIGHT + SPIDEY
-   VERSION 2
-===================================================== */
+/* =========================================================
+   CREATORFLOW — HERO 2.0
+   ========================================================= */
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+:root {
+    --accent: #39ff88;
+    --accent-soft: rgba(57,255,136,.14);
+    --accent-glow: rgba(57,255,136,.28);
+
+    --bg: #050706;
+    --bg-2: #090d0b;
+    --card: rgba(13,18,15,.78);
+    --card-solid: #0d120f;
+
+    --text: #f5f7f6;
+    --muted: #9da8a1;
+    --border: rgba(255,255,255,.09);
+
+    --shadow: 0 20px 60px rgba(0,0,0,.35);
+
+    --nav-height: 76px;
 }
 
-html{
-    scroll-behavior:smooth;
+/* LIGHT */
+
+body.light {
+    --accent: #10a957;
+    --accent-soft: rgba(16,169,87,.10);
+    --accent-glow: rgba(16,169,87,.20);
+
+    --bg: #f5f8f6;
+    --bg-2: #ffffff;
+    --card: rgba(255,255,255,.82);
+    --card-solid: #ffffff;
+
+    --text: #101512;
+    --muted: #647068;
+    --border: rgba(16,21,18,.10);
+
+    --shadow: 0 20px 60px rgba(20,40,30,.10);
 }
 
-body{
+/* SPIDEY */
+
+body.spidey {
+    --accent: #ff2638;
+    --accent-soft: rgba(255,38,56,.12);
+    --accent-glow: rgba(255,38,56,.30);
+
+    --bg: #050304;
+    --bg-2: #0c0506;
+    --card: rgba(17,7,9,.82);
+    --card-solid: #110709;
+
+    --text: #fff5f6;
+    --muted: #b79da0;
+    --border: rgba(255,38,56,.15);
+
+    --shadow: 0 20px 70px rgba(255,0,30,.12);
+}
+
+/* =========================================================
+   GLOBAL
+   ========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+}
+
+body {
     font-family:
-        Arial,
-        Helvetica,
+        Inter,
+        ui-sans-serif,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
         sans-serif;
 
-    line-height:1.6;
-
-    overflow-x:hidden;
-
-    transition:
-        background .4s ease,
-        color .4s ease;
-}
-
-:root{
-
-    --accent:#39ff88;
-
-    --accent-soft:
-        rgba(57,255,136,.18);
-
-    --background:#030504;
-
-    --card:#09110c;
-
-    --card2:#050a06;
-
-    --text:#f5fff8;
-
-    --muted:#9da9a1;
-
-    --border:
-        rgba(57,255,136,.20);
-}
-
-
-/* =====================================================
-   DARK
-===================================================== */
-
-body.dark{
-
-    --accent:#39ff88;
-
-    --accent-soft:
-        rgba(57,255,136,.18);
-
-    --background:#030504;
-
-    --card:#09110c;
-
-    --card2:#050a06;
-
-    --text:#f5fff8;
-
-    --muted:#9da9a1;
-
-    --border:
-        rgba(57,255,136,.20);
-
     background:
-
         radial-gradient(
-            circle at 50% 0%,
-            rgba(57,255,136,.10),
+            circle at 50% -10%,
+            var(--accent-soft),
             transparent 35%
         ),
+        var(--bg);
 
-        #030504;
-
-    color:var(--text);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+    transition:
+        background .45s ease,
+        color .45s ease;
 }
 
-
-/* =====================================================
-   LIGHT
-===================================================== */
-
-body.light{
-
-    --accent:#12a85c;
-
-    --accent-soft:
-        rgba(18,168,92,.14);
-
-    --background:#f5f8f6;
-
-    --card:#ffffff;
-
-    --card2:#edf3ef;
-
-    --text:#111814;
-
-    --muted:#66736b;
-
-    --border:
-        rgba(18,168,92,.22);
-
-    background:#f5f8f6;
-
-    color:#111814;
+a {
+    color: inherit;
+    text-decoration: none;
 }
 
-body.light h1,
-body.light h2,
-body.light h3,
-body.light h4,
-body.light p,
-body.light label,
-body.light .logo,
-body.light .nav-links a,
-body.light .hero p,
-body.light .heading p,
-body.light .tool p,
-body.light .about p,
-body.light footer,
-body.light .stat span,
-body.light .plan small{
-
-    color:var(--text);
+button,
+input,
+select,
+textarea {
+    font: inherit;
 }
 
-body.light .hero p,
-body.light .heading p,
-body.light .tool p,
-body.light .about p,
-body.light footer,
-body.light .stat span,
-body.light .plan small{
-
-    color:var(--muted);
+button {
+    cursor: pointer;
 }
 
+::selection {
+    background: var(--accent);
+    color: #07100b;
+}
 
-/* =====================================================
-   SPIDEY
-===================================================== */
+/* =========================================================
+   BACKGROUND PARTICLES
+   ========================================================= */
 
-body.spidey{
+.bg-particles {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -2;
+    overflow: hidden;
+}
 
-    --accent:#ff2638;
+.particle {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: var(--accent);
+    opacity: .25;
+    box-shadow: 0 0 12px var(--accent);
+    animation: floatParticle linear infinite;
+}
 
-    --accent-soft:
-        rgba(255,38,56,.18);
+.particle:nth-child(1) {
+    left: 8%;
+    top: 25%;
+    animation-duration: 15s;
+}
 
-    --background:#030304;
+.particle:nth-child(2) {
+    left: 18%;
+    top: 70%;
+    animation-duration: 19s;
+}
 
-    --card:#0b0708;
+.particle:nth-child(3) {
+    left: 32%;
+    top: 20%;
+    animation-duration: 17s;
+}
 
-    --card2:#080506;
+.particle:nth-child(4) {
+    left: 49%;
+    top: 78%;
+    animation-duration: 22s;
+}
 
-    --text:#ffffff;
+.particle:nth-child(5) {
+    left: 63%;
+    top: 25%;
+    animation-duration: 18s;
+}
 
-    --muted:#a99c9e;
+.particle:nth-child(6) {
+    left: 78%;
+    top: 65%;
+    animation-duration: 20s;
+}
 
-    --border:
-        rgba(255,38,56,.30);
+.particle:nth-child(7) {
+    left: 90%;
+    top: 30%;
+    animation-duration: 16s;
+}
+
+@keyframes floatParticle {
+    0%,100% {
+        transform: translateY(0) scale(1);
+    }
+
+    50% {
+        transform: translateY(-35px) scale(1.5);
+    }
+}
+
+/* =========================================================
+   SPIDEY WEB BACKGROUND
+   ========================================================= */
+
+body.spidey::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+
+    opacity: .12;
+
+    background-image:
+        linear-gradient(
+            30deg,
+            transparent 48%,
+            var(--accent) 49%,
+            transparent 51%
+        ),
+        linear-gradient(
+            -30deg,
+            transparent 48%,
+            var(--accent) 49%,
+            transparent 51%
+        );
+
+    background-size: 110px 110px;
+    mask-image: radial-gradient(
+        circle at center,
+        black,
+        transparent 75%
+    );
+}
+
+body.spidey::after {
+    content: "";
+    position: fixed;
+    width: 600px;
+    height: 600px;
+    right: -220px;
+    top: 80px;
+    pointer-events: none;
+    z-index: -1;
 
     background:
-
         radial-gradient(
-            circle at 75% 15%,
-            rgba(255,0,0,.18),
-            transparent 28%
-        ),
-
-        radial-gradient(
-            circle at 20% 55%,
-            rgba(120,0,0,.12),
-            transparent 30%
-        ),
-
-        #030304;
-
-    color:white;
-}
-
-
-/* =====================================================
-   SPIDEY WEBS
-===================================================== */
-
-body.spidey::before{
-
-    content:"";
-
-    position:fixed;
-
-    width:520px;
-    height:520px;
-
-    top:-270px;
-    left:-270px;
-
-    pointer-events:none;
-
-    z-index:50;
-
-    opacity:.28;
-
-    background:
-
-        repeating-radial-gradient(
             circle,
-            transparent 0 34px,
-            rgba(255,30,45,.40) 35px 36px
-        ),
-
-        repeating-conic-gradient(
-            from 0deg,
-            transparent 0deg 14deg,
-            rgba(255,30,45,.28) 15deg 16deg
+            rgba(255,38,56,.18),
+            transparent 65%
         );
 }
 
-body.spidey::after{
+/* =========================================================
+   NAVBAR
+   ========================================================= */
 
-    content:"";
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
 
-    position:fixed;
+    height: var(--nav-height);
 
-    width:460px;
-    height:460px;
+    background: rgba(5,7,6,.72);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
 
-    right:-250px;
-    bottom:-240px;
-
-    pointer-events:none;
-
-    z-index:50;
-
-    opacity:.23;
-
-    background:
-
-        repeating-radial-gradient(
-            circle,
-            transparent 0 32px,
-            rgba(255,30,45,.40) 33px 34px
-        ),
-
-        repeating-conic-gradient(
-            from 0deg,
-            transparent 0deg 14deg,
-            rgba(255,30,45,.28) 15deg 16deg
-        );
-}
-
-
-/* =====================================================
-   PROFESSIONAL NAVBAR
-===================================================== */
-
-nav{
-
-    position:sticky;
-
-    top:0;
-
-    z-index:1000;
-
-    background:
-        rgba(3,5,4,.78);
-
-    backdrop-filter:
-        blur(20px);
-
-    -webkit-backdrop-filter:
-        blur(20px);
-
-    border-bottom:
-        1px solid var(--border);
+    border-bottom: 1px solid transparent;
 
     transition:
         background .3s ease,
-        box-shadow .3s ease;
+        box-shadow .3s ease,
+        border .3s ease;
 }
 
-
-/* SCROLLED NAVBAR */
-
-nav.scrolled{
-
-    background:
-        rgba(3,5,4,.95);
-
-    box-shadow:
-        0 10px 40px
-        rgba(0,0,0,.25);
+body.light nav {
+    background: rgba(255,255,255,.78);
 }
 
-body.light nav{
-
-    background:
-        rgba(255,255,255,.82);
+body.spidey nav {
+    background: rgba(5,3,4,.82);
 }
 
-body.light nav.scrolled{
-
-    background:
-        rgba(255,255,255,.96);
-
-    box-shadow:
-        0 10px 35px
-        rgba(0,0,0,.08);
+nav.scrolled {
+    border-bottom-color: var(--border);
+    box-shadow: 0 10px 40px rgba(0,0,0,.15);
 }
 
-body.spidey nav{
+.nav {
+    width: min(1180px, calc(100% - 40px));
+    height: 100%;
+    margin: auto;
 
-    background:
-        rgba(3,2,3,.82);
-
-    border-bottom-color:
-        rgba(255,38,56,.30);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
-body.spidey nav.scrolled{
-
-    background:
-        rgba(3,2,3,.96);
-
-    box-shadow:
-        0 10px 45px
-        rgba(255,0,0,.12);
+.logo {
+    font-size: 22px;
+    font-weight: 900;
+    letter-spacing: -.8px;
 }
 
-
-/* NAV CONTAINER */
-
-.nav{
-
-    max-width:1200px;
-
-    margin:auto;
-
-    padding:
-        13px 22px;
-
-    min-height:72px;
-
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
+.logo span {
+    color: var(--accent);
 }
 
-
-/* =====================================================
-   LOGO
-===================================================== */
-
-.logo-link{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:10px;
-
-    text-decoration:none;
-
-    color:var(--text);
-
-    transition:.25s;
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 24px;
 }
 
-.logo-link:hover{
-
-    transform:
-        translateY(-1px);
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 28px;
 }
 
-.logo-icon{
+.nav-links a {
+    position: relative;
 
-    width:40px;
-    height:40px;
+    color: var(--muted);
+    font-size: 14px;
+    font-weight: 650;
 
-    border-radius:11px;
-
-    display:flex;
-
-    align-items:center;
-    justify-content:center;
-
-    overflow:hidden;
-
-    border:
-        1px solid var(--border);
-
-    background:var(--card);
-
-    box-shadow:
-        0 0 20px
-        var(--accent-soft);
-}
-
-.logo-icon img{
-
-    width:100%;
-    height:100%;
-
-    object-fit:cover;
-}
-
-.logo-text{
-
-    font-size:23px;
-
-    font-weight:900;
-
-    letter-spacing:-1px;
-}
-
-.logo-text span{
-
-    color:var(--accent);
-
-    text-shadow:
-        0 0 12px
-        var(--accent-soft);
-}
-
-
-/* =====================================================
-   NAV RIGHT
-===================================================== */
-
-.nav-right{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:20px;
-}
-
-
-/* =====================================================
-   DESKTOP LINKS
-===================================================== */
-
-.nav-links{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:5px;
-}
-
-.nav-links a{
-
-    position:relative;
-
-    padding:
-        9px 13px;
-
-    color:var(--muted);
-
-    text-decoration:none;
-
-    font-size:14px;
-
-    font-weight:700;
-
-    border-radius:9px;
+    padding: 8px 0;
 
     transition:
-        color .25s ease,
-        background .25s ease;
+        color .25s ease;
 }
 
-.nav-links a:hover{
+.nav-links a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
 
-    color:var(--accent);
+    height: 2px;
+    border-radius: 10px;
 
-    background:
-        var(--accent-soft);
+    background: var(--accent);
+
+    transform: scaleX(0);
+    transform-origin: center;
+
+    transition: transform .25s ease;
 }
 
-.nav-links a.active{
-
-    color:var(--accent);
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--text);
 }
 
-.nav-links a.active::after{
+.nav-links a:hover::after,
+.nav-links a.active::after {
+    transform: scaleX(1);
+}
 
-    content:"";
+.nav-cta {
+    padding: 10px 16px;
+    border-radius: 11px;
 
-    position:absolute;
+    background: var(--accent);
+    color: #061009;
 
-    left:13px;
-    right:13px;
-
-    bottom:1px;
-
-    height:2px;
-
-    border-radius:10px;
-
-    background:var(--accent);
+    font-size: 13px;
+    font-weight: 850;
 
     box-shadow:
-        0 0 10px
-        var(--accent-soft);
-}
-
-
-/* =====================================================
-   THEME BUTTON
-===================================================== */
-
-.theme-btn{
-
-    width:43px;
-    height:43px;
-
-    border-radius:50%;
-
-    border:
-        1px solid var(--border);
-
-    background:var(--card);
-
-    color:var(--text);
-
-    font-size:18px;
-
-    cursor:pointer;
-
-    transition:.3s;
-}
-
-.theme-btn:hover{
-
-    transform:
-        scale(1.1)
-        rotate(8deg);
-
-    border-color:
-        var(--accent);
-
-    box-shadow:
-        0 0 18px
-        var(--accent-soft);
-}
-
-
-/* =====================================================
-   MOBILE MENU BUTTON
-===================================================== */
-
-.menu-btn{
-
-    display:none;
-
-    width:43px;
-    height:43px;
-
-    border:
-        1px solid var(--border);
-
-    border-radius:12px;
-
-    background:var(--card);
-
-    cursor:pointer;
-
-    padding:9px;
-}
-
-.menu-btn span{
-
-    display:block;
-
-    width:21px;
-    height:2px;
-
-    margin:4px auto;
-
-    border-radius:5px;
-
-    background:var(--text);
+        0 0 0 transparent,
+        0 0 24px var(--accent-glow);
 
     transition:
-        transform .3s ease,
-        opacity .3s ease;
+        transform .2s ease,
+        box-shadow .2s ease;
 }
 
-
-/* HAMBURGER → X */
-
-.menu-btn.open span:nth-child(1){
-
-    transform:
-        translateY(6px)
-        rotate(45deg);
+.nav-cta:hover {
+    transform: translateY(-2px);
+    box-shadow:
+        0 8px 28px var(--accent-glow);
 }
 
-.menu-btn.open span:nth-child(2){
+.theme-btn {
+    width: 42px;
+    height: 42px;
 
-    opacity:0;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+
+    background: var(--card);
+    color: var(--text);
+
+    display: grid;
+    place-items: center;
+
+    font-size: 17px;
+
+    transition:
+        transform .2s ease,
+        border .2s ease;
 }
 
-.menu-btn.open span:nth-child(3){
-
-    transform:
-        translateY(-6px)
-        rotate(-45deg);
+.theme-btn:hover {
+    transform: rotate(8deg) scale(1.05);
+    border-color: var(--accent);
 }
 
+/* HAMBURGER */
 
-/* =====================================================
-   MOBILE MENU
-===================================================== */
+.menu-toggle {
+    display: none;
 
-.mobile-menu{
+    width: 42px;
+    height: 42px;
 
-    display:none;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+
+    background: var(--card);
+    color: var(--text);
+
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
 }
 
+.menu-toggle span {
+    width: 18px;
+    height: 2px;
 
-/* =====================================================
-   NEON
-===================================================== */
+    border-radius: 10px;
+    background: currentColor;
 
-.neon{
-
-    color:var(--accent);
-
-    text-shadow:
-        0 0 5px var(--accent-soft),
-        0 0 15px var(--accent-soft);
-
-    animation:
-        neonPulse 2.2s ease-in-out
-        infinite alternate;
+    transition:
+        transform .25s ease,
+        opacity .25s ease;
 }
 
-@keyframes neonPulse{
-
-    from{
-
-        text-shadow:
-            0 0 4px
-            var(--accent-soft);
-    }
-
-    to{
-
-        text-shadow:
-            0 0 8px
-            var(--accent),
-
-            0 0 22px
-            var(--accent-soft),
-
-            0 0 40px
-            var(--accent-soft);
-    }
+.menu-toggle.open span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
 }
 
+.menu-toggle.open span:nth-child(2) {
+    opacity: 0;
+}
 
-/* =====================================================
+.menu-toggle.open span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+/* MOBILE MENU */
+
+.mobile-menu {
+    display: none;
+}
+
+/* =========================================================
    HERO
-===================================================== */
+   ========================================================= */
 
-.hero{
+.hero {
+    position: relative;
 
-    min-height:720px;
-
-    max-width:1200px;
-
-    margin:auto;
+    min-height: 820px;
 
     padding:
-        110px 22px 90px;
+        calc(var(--nav-height) + 90px)
+        20px
+        90px;
 
-    display:flex;
+    display: flex;
+    align-items: center;
 
-    flex-direction:column;
-
-    justify-content:center;
-
-    align-items:center;
-
-    text-align:center;
-
-    position:relative;
-
-    z-index:1;
+    overflow: hidden;
 }
 
+/* Hero glow */
 
-/* SPIDEY HERO */
+.hero::before {
+    content: "";
+    position: absolute;
 
-body.spidey .hero::after{
+    width: 800px;
+    height: 800px;
 
-    content:"";
-
-    position:absolute;
-
-    inset:0;
-
-    z-index:-1;
-
-    background-image:
-
-        linear-gradient(
-            rgba(0,0,0,.78),
-            rgba(3,3,4,.94)
-        ),
-
-        url("spidey-bg.jpg");
-
-    background-size:cover;
-
-    background-position:center;
-
-    background-repeat:no-repeat;
-
-    opacity:.95;
-}
-
-body.spidey .hero::before{
-
-    content:"";
-
-    position:absolute;
-
-    inset:0;
-
-    z-index:0;
-
-    pointer-events:none;
+    left: -350px;
+    top: 50px;
 
     background:
-
         radial-gradient(
-            circle at 50% 35%,
-            rgba(255,0,0,.17),
-            transparent 42%
+            circle,
+            var(--accent-glow),
+            transparent 68%
         );
+
+    filter: blur(40px);
+    opacity: .55;
+
+    pointer-events: none;
 }
 
-.hero > *{
+.hero::after {
+    content: "";
+    position: absolute;
 
-    position:relative;
+    width: 700px;
+    height: 700px;
 
-    z-index:3;
-}
-
-
-/* BADGE */
-
-.badge{
-
-    display:inline-flex;
-
-    align-items:center;
-
-    gap:8px;
-
-    padding:
-        9px 17px;
-
-    border:
-        1px solid var(--border);
-
-    border-radius:30px;
-
-    color:var(--accent);
+    right: -350px;
+    bottom: -300px;
 
     background:
-        var(--accent-soft);
+        radial-gradient(
+            circle,
+            var(--accent-soft),
+            transparent 68%
+        );
 
-    font-size:14px;
+    filter: blur(30px);
 
-    font-weight:bold;
-
-    animation:
-        fadeUp .8s ease both;
+    pointer-events: none;
 }
 
+.hero-inner {
+    width: min(1180px, 100%);
+    margin: auto;
 
-/* HERO TITLE */
+    display: grid;
+    grid-template-columns: 1.03fr .97fr;
 
-.hero h1{
+    gap: 70px;
+    align-items: center;
 
-    font-size:
-        clamp(55px,9vw,105px);
-
-    line-height:.94;
-
-    letter-spacing:-6px;
-
-    margin-top:28px;
-
-    animation:
-        fadeUp .9s ease .1s both;
+    position: relative;
+    z-index: 2;
 }
 
-.hero p{
+/* HERO COPY */
 
-    max-width:760px;
-
-    margin:30px auto;
-
-    color:var(--muted);
-
-    font-size:18px;
-
-    animation:
-        fadeUp 1s ease .2s both;
+.hero-copy {
+    animation: heroIn .8s ease both;
 }
 
-.hero p strong{
-
-    color:var(--accent);
-}
-
-
-/* =====================================================
-   BUTTONS
-===================================================== */
-
-.buttons{
-
-    display:flex;
-
-    justify-content:center;
-
-    gap:13px;
-
-    flex-wrap:wrap;
-
-    animation:
-        fadeUp 1s ease .3s both;
-}
-
-.btn{
-
-    display:inline-flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    gap:8px;
-
-    padding:
-        13px 21px;
-
-    border-radius:13px;
-
-    text-decoration:none;
-
-    font-weight:bold;
-
-    cursor:pointer;
-
-    border:
-        1px solid transparent;
-
-    transition:.25s;
-}
-
-.btn:hover{
-
-    transform:
-        translateY(-3px);
-}
-
-.primary{
-
-    background:var(--accent);
-
-    color:#031007;
-
-    box-shadow:
-        0 0 20px
-        var(--accent-soft);
-}
-
-.secondary{
-
-    background:var(--card);
-
-    color:var(--text);
-
-    border-color:
-        var(--border);
-}
-
-body.spidey .primary{
-
-    color:#fff;
-}
-
-
-/* =====================================================
-   SCROLL
-===================================================== */
-
-.scroll-down{
-
-    margin-top:65px;
-
-    color:var(--muted);
-
-    font-size:13px;
-
-    letter-spacing:2px;
-
-    animation:
-        bounce 1.8s infinite;
-}
-
-@keyframes bounce{
-
-    0%,100%{
-        transform:translateY(0);
+@keyframes heroIn {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
     }
 
-    50%{
-        transform:translateY(7px);
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
 
-/* =====================================================
-   GENERAL
-===================================================== */
+    padding: 8px 13px;
 
-.container{
+    border: 1px solid var(--border);
+    border-radius: 999px;
 
-    max-width:1200px;
+    background: var(--accent-soft);
 
-    margin:auto;
+    color: var(--accent);
 
-    padding:
-        0 22px;
+    font-size: 11px;
+    font-weight: 850;
+    letter-spacing: 1.1px;
 
-    position:relative;
-
-    z-index:100;
-}
-
-section{
-
-    padding:85px 0;
-
-}
-
-section[id]{
-
-    scroll-margin-top:90px;
-}
-
-.heading{
-
-    text-align:center;
-
-    margin-bottom:42px;
-}
-
-.heading h2{
-
-    font-size:
-        clamp(32px,5vw,45px);
-}
-
-.heading p{
-
-    color:var(--muted);
-
-    margin-top:7px;
-}
-
-
-/* =====================================================
-   STATS
-===================================================== */
-
-.stats-home{
-
-    display:grid;
-
-    grid-template-columns:
-        repeat(3,1fr);
-
-    gap:18px;
-
-    margin-top:-20px;
-
-    position:relative;
-
-    z-index:20;
-}
-
-.stat-card{
-
-    text-align:center;
-
-    padding:
-        27px 20px;
-
-    background:
-
-        linear-gradient(
-            145deg,
-            var(--card),
-            var(--card2)
-        );
-
-    border:
-        1px solid var(--border);
-
-    border-radius:18px;
-
-    transition:.3s;
-}
-
-.stat-card:hover{
-
-    transform:
-        translateY(-5px);
-
-    border-color:
-        var(--accent);
+    margin-bottom: 25px;
 
     box-shadow:
-        0 15px 40px
-        var(--accent-soft);
+        inset 0 0 20px var(--accent-soft);
 }
 
-.stat-card strong{
+.badge-dot {
+    width: 7px;
+    height: 7px;
 
-    display:block;
-
-    color:var(--accent);
-
-    font-size:34px;
-
-    line-height:1;
-}
-
-.stat-card span{
-
-    display:block;
-
-    color:var(--muted);
-
-    margin-top:8px;
-
-    font-size:14px;
-}
-
-
-/* =====================================================
-   TOOLS
-===================================================== */
-
-.tools{
-
-    display:grid;
-
-    grid-template-columns:
-        repeat(4,1fr);
-
-    gap:18px;
-}
-
-.tool{
-
-    min-height:220px;
-
-    background:
-
-        linear-gradient(
-            145deg,
-            var(--card),
-            var(--card2)
-        );
-
-    border:
-        1px solid var(--border);
-
-    border-radius:20px;
-
-    padding:
-        28px 22px;
-
-    cursor:pointer;
-
-    position:relative;
-
-    overflow:hidden;
-
-    transition:.3s;
-}
-
-.tool::before{
-
-    content:"";
-
-    position:absolute;
-
-    width:120px;
-    height:120px;
-
-    right:-60px;
-    top:-60px;
-
-    background:
-        var(--accent-soft);
-
-    border-radius:50%;
-
-    filter:blur(25px);
-}
-
-.tool:hover{
-
-    transform:
-        translateY(-8px);
-
-    border-color:
-        var(--accent);
+    border-radius: 50%;
+    background: var(--accent);
 
     box-shadow:
-        0 15px 45px
-        rgba(0,0,0,.25);
+        0 0 10px var(--accent);
+
+    animation: pulseDot 1.8s ease infinite;
 }
 
-body.spidey .tool:hover{
-
-    box-shadow:
-        0 15px 45px
-        rgba(255,0,0,.16);
-}
-
-.icon{
-
-    width:55px;
-    height:55px;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    border-radius:50%;
-
-    border:
-        1px solid var(--border);
-
-    background:
-        var(--accent-soft);
-
-    font-size:25px;
-}
-
-.tool h3{
-
-    margin-top:20px;
-
-    font-size:20px;
-}
-
-.tool p{
-
-    color:var(--muted);
-
-    margin-top:7px;
-
-    font-size:14px;
-}
-
-
-/* =====================================================
-   HOW IT WORKS
-===================================================== */
-
-.steps{
-
-    display:grid;
-
-    grid-template-columns:
-        repeat(3,1fr);
-
-    gap:25px;
-
-    position:relative;
-}
-
-.step{
-
-    text-align:center;
-
-    padding:
-        30px 20px;
-
-    background:
-
-        linear-gradient(
-            145deg,
-            var(--card),
-            var(--card2)
-        );
-
-    border:
-        1px solid var(--border);
-
-    border-radius:20px;
-
-    transition:.3s;
-}
-
-.step:hover{
-
-    transform:
-        translateY(-6px);
-
-    border-color:
-        var(--accent);
-}
-
-.step-number{
-
-    font-size:14px;
-
-    font-weight:bold;
-
-    color:var(--accent);
-
-    letter-spacing:3px;
-}
-
-.step-icon{
-
-    font-size:38px;
-
-    margin:
-        15px 0 10px;
-}
-
-.step h3{
-
-    margin-bottom:7px;
-}
-
-.step p{
-
-    color:var(--muted);
-
-    font-size:14px;
-}
-
-
-/* =====================================================
-   FLOW
-===================================================== */
-
-.flow-box{
-
-    padding:
-        45px 25px;
-
-    text-align:center;
-
-    background:
-
-        linear-gradient(
-            145deg,
-            var(--card),
-            var(--card2)
-        );
-
-    border:
-        1px solid var(--border);
-
-    border-radius:25px;
-
-    overflow:hidden;
-
-    position:relative;
-}
-
-.flow-box::before{
-
-    content:"";
-
-    position:absolute;
-
-    width:300px;
-    height:300px;
-
-    top:-150px;
-    left:50%;
-
-    transform:
-        translateX(-50%);
-
-    background:
-        var(--accent-soft);
-
-    filter:blur(80px);
-
-    border-radius:50%;
-}
-
-.flow-title{
-
-    position:relative;
-
-    font-size:
-        clamp(25px,4vw,40px);
-
-    margin-bottom:35px;
-}
-
-.flow{
-
-    position:relative;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    gap:10px;
-
-    flex-wrap:wrap;
-}
-
-.flow-item{
-
-    min-width:115px;
-
-    padding:
-        18px 15px;
-
-    border:
-        1px solid var(--border);
-
-    border-radius:15px;
-
-    background:
-        var(--card2);
-
-    transition:.3s;
-}
-
-.flow-item:hover{
-
-    transform:
-        scale(1.05);
-
-    border-color:
-        var(--accent);
-
-    box-shadow:
-        0 0 25px
-        var(--accent-soft);
-}
-
-.flow-item span{
-
-    display:block;
-
-    font-size:27px;
-
-    margin-bottom:5px;
-}
-
-.flow-item small{
-
-    color:var(--muted);
-
-    font-weight:bold;
-}
-
-.flow-arrow{
-
-    color:var(--accent);
-
-    font-size:25px;
-
-    animation:
-        arrowPulse 1.5s infinite;
-}
-
-@keyframes arrowPulse{
-
-    0%,100%{
-        opacity:.4;
+@keyframes pulseDot {
+    0%,100% {
+        transform: scale(1);
+        opacity: 1;
     }
 
-    50%{
-        opacity:1;
+    50% {
+        transform: scale(.65);
+        opacity: .55;
     }
 }
 
+.hero h1 {
+    max-width: 720px;
 
-/* =====================================================
-   PANELS
-===================================================== */
+    font-size: clamp(50px, 6vw, 82px);
+    line-height: .96;
 
-.panel{
+    letter-spacing: -5px;
+    font-weight: 950;
 
-    display:none;
-
-    margin-top:35px;
+    margin-bottom: 27px;
 }
 
-.panel.active{
+.hero h1 .gradient-text {
+    color: var(--accent);
 
-    display:block;
+    text-shadow:
+        0 0 40px var(--accent-glow);
+}
+
+.hero-description {
+    max-width: 610px;
+
+    color: var(--muted);
+
+    font-size: 18px;
+    line-height: 1.7;
+
+    margin-bottom: 30px;
+}
+
+.hero-description strong {
+    color: var(--text);
+}
+
+.hero-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+
+    margin-bottom: 22px;
+}
+
+.btn {
+    border: 0;
+    border-radius: 13px;
+
+    padding: 14px 20px;
+
+    font-size: 14px;
+    font-weight: 850;
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease,
+        background .2s ease;
+}
+
+.btn.primary {
+    background: var(--accent);
+    color: #061009;
+
+    box-shadow:
+        0 10px 35px var(--accent-glow);
+}
+
+.btn.primary:hover {
+    transform: translateY(-3px);
+    box-shadow:
+        0 15px 45px var(--accent-glow);
+}
+
+.btn.secondary {
+    background: var(--card);
+    border: 1px solid var(--border);
+    color: var(--text);
+}
+
+.btn.secondary:hover {
+    transform: translateY(-3px);
+    border-color: var(--accent);
+}
+
+.hero-note {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+/* =========================================================
+   CREATORFLOW PREVIEW
+   ========================================================= */
+
+.hero-preview-wrap {
+    position: relative;
 
     animation:
-        fadeUp .35s ease;
+        previewIn 1s .15s ease both;
 }
 
-.box{
+@keyframes previewIn {
+    from {
+        opacity: 0;
+        transform: translateX(30px) scale(.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+    }
+}
+
+.preview-glow {
+    position: absolute;
+    inset: 8%;
+
+    background: var(--accent-glow);
+    filter: blur(70px);
+
+    opacity: .4;
+    z-index: -1;
+}
+
+.creator-preview {
+    position: relative;
+
+    border: 1px solid var(--border);
+    border-radius: 25px;
 
     background:
-
         linear-gradient(
             145deg,
-            var(--card),
-            var(--card2)
-        );
-
-    border:
-        1px solid var(--border);
-
-    border-radius:22px;
-
-    padding:30px;
-
-    box-shadow:
-        0 15px 50px
-        rgba(0,0,0,.12);
-}
-
-.box h2{
-
-    margin-bottom:22px;
-}
-
-.back{
-
-    color:var(--accent);
-
-    cursor:pointer;
-
-    display:inline-block;
-
-    margin-bottom:15px;
-
-    font-weight:bold;
-}
-
-
-/* =====================================================
-   FORMS
-===================================================== */
-
-.form{
-
-    display:grid;
-
-    grid-template-columns:
-        1fr 1fr;
-
-    gap:16px;
-}
-
-.full{
-
-    grid-column:
-        1/-1;
-}
-
-label{
-
-    display:block;
-
-    margin-bottom:7px;
-
-    font-size:14px;
-
-    font-weight:bold;
-}
-
-input,
-textarea,
-select{
-
-    width:100%;
-
-    background:
-        var(--background);
-
-    color:
-        var(--text);
-
-    border:
-        1px solid var(--border);
-
-    border-radius:11px;
-
-    padding:13px;
-
-    outline:none;
-
-    font-family:inherit;
-}
-
-input:focus,
-textarea:focus,
-select:focus{
-
-    border-color:
-        var(--accent);
-
-    box-shadow:
-        0 0 12px
-        var(--accent-soft);
-}
-
-textarea{
-
-    min-height:125px;
-
-    resize:vertical;
-}
-
-.generate{
-
-    margin-top:20px;
-}
-
-
-/* =====================================================
-   RESULTS
-===================================================== */
-
-.results{
-
-    display:grid;
-
-    gap:10px;
-
-    margin-top:22px;
-}
-
-.result{
-
-    background:
-        var(--card2);
-
-    border:
-        1px solid var(--border);
-
-    border-radius:12px;
-
-    padding:14px;
-
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
-    gap:15px;
-}
-
-.copy{
-
-    background:
+            rgba(255,255,255,.045),
+            transparent 45%
+        ),
         var(--card);
 
-    color:
-        var(--accent);
-
-    border:
-        1px solid var(--border);
-
-    padding:
-        8px 13px;
-
-    border-radius:8px;
-
-    cursor:pointer;
-}
-
-
-/* =====================================================
-   PLANNER
-===================================================== */
-
-.stats{
-
-    display:grid;
-
-    grid-template-columns:
-        repeat(3,1fr);
-
-    gap:13px;
-
-    margin-bottom:20px;
-}
-
-.stat{
-
-    background:
-        var(--card2);
-
-    border:
-        1px solid var(--border);
-
-    border-radius:14px;
-
-    padding:17px;
-}
-
-.stat strong{
-
-    display:block;
-
-    color:var(--accent);
-
-    font-size:29px;
-}
-
-.stat span{
-
-    color:var(--muted);
-
-    font-size:13px;
-}
-
-.plans{
-
-    margin-top:22px;
-
-    display:grid;
-
-    gap:10px;
-}
-
-.plan{
-
-    background:
-        var(--card2);
-
-    border:
-        1px solid var(--border);
-
-    border-radius:13px;
-
-    padding:15px;
-
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
-    gap:15px;
-}
-
-.plan small{
-
-    display:block;
-
-    color:var(--muted);
-
-    margin-top:3px;
-}
-
-.delete{
-
-    color:#ff6666;
-
-    background:none;
-
-    border:0;
-
-    cursor:pointer;
-
-    margin-left:8px;
-}
-
-
-/* =====================================================
-   ABOUT
-===================================================== */
-
-.about{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:38px;
-
-    padding:38px;
-
-    background:
-
-        linear-gradient(
-            145deg,
-            var(--card),
-            var(--card2)
-        );
-
-    border:
-        1px solid var(--border);
-
-    border-radius:25px;
-
-    position:relative;
-
-    overflow:hidden;
-}
-
-body.spidey .about{
-
-    background:
-
-        linear-gradient(
-            145deg,
-            rgba(30,5,8,.95),
-            rgba(7,4,5,.95)
-        );
-}
-
-.profile{
-
-    width:190px;
-    height:190px;
-
-    min-width:190px;
-
-    border-radius:50%;
-
-    overflow:hidden;
-
-    border:
-        2px solid var(--accent);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
 
     box-shadow:
+        var(--shadow),
+        0 0 0 1px var(--accent-soft);
 
-        0 0 20px
-        var(--accent-soft),
+    padding: 19px;
 
-        0 0 45px
-        var(--accent-soft);
+    transform:
+        perspective(1200px)
+        rotateY(-5deg)
+        rotateX(2deg);
+
+    transition:
+        transform .5s ease;
 }
 
-.profile img{
-
-    width:100%;
-    height:100%;
-
-    object-fit:cover;
-
-    display:block;
+.creator-preview:hover {
+    transform:
+        perspective(1200px)
+        rotateY(0deg)
+        rotateX(0deg)
+        translateY(-5px);
 }
 
-.about h3{
+/* Preview top */
 
-    font-size:30px;
+.preview-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
 }
 
-.about h3 span{
-
-    color:var(--accent);
+.preview-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
-.about p{
+.preview-logo {
+    width: 35px;
+    height: 35px;
 
-    color:var(--muted);
+    border-radius: 10px;
 
-    margin:
-        9px 0 20px;
+    display: grid;
+    place-items: center;
 
-    max-width:700px;
+    background: var(--accent);
+    color: #061009;
+
+    font-size: 13px;
+    font-weight: 950;
+
+    box-shadow:
+        0 0 25px var(--accent-glow);
 }
 
+.preview-brand strong {
+    font-size: 14px;
+}
 
-/* =====================================================
-   FINAL CTA
-===================================================== */
+.preview-brand small {
+    display: block;
 
-.final-cta{
+    margin-top: 2px;
 
-    text-align:center;
+    color: var(--muted);
+    font-size: 9px;
+}
 
-    padding:
-        80px 25px;
+.preview-status {
+    display: flex;
+    align-items: center;
+    gap: 6px;
 
-    border:
-        1px solid var(--border);
+    color: var(--accent);
 
-    border-radius:28px;
+    font-size: 10px;
+    font-weight: 800;
+}
+
+.preview-status span {
+    width: 6px;
+    height: 6px;
+
+    border-radius: 50%;
+    background: var(--accent);
+}
+
+/* Preview content */
+
+.preview-content {
+    padding: 22px 5px 5px;
+}
+
+.preview-label {
+    color: var(--muted);
+
+    font-size: 10px;
+    font-weight: 750;
+    letter-spacing: .8px;
+    text-transform: uppercase;
+
+    margin-bottom: 9px;
+}
+
+.preview-question {
+    font-size: 20px;
+    font-weight: 850;
+
+    margin-bottom: 14px;
+}
+
+.preview-input {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 10px;
+
+    padding: 13px 14px;
+
+    border: 1px solid var(--border);
+    border-radius: 12px;
+
+    background: rgba(0,0,0,.15);
+
+    color: var(--text);
+
+    font-size: 12px;
+}
+
+body.light .preview-input {
+    background: rgba(0,0,0,.025);
+}
+
+.preview-input span {
+    color: var(--muted);
+}
+
+.generate-mini {
+    border: 0;
+    border-radius: 8px;
+
+    padding: 8px 11px;
+
+    background: var(--accent);
+    color: #061009;
+
+    font-size: 10px;
+    font-weight: 900;
+}
+
+/* Generated cards */
+
+.generated-title {
+    margin-top: 23px;
+    margin-bottom: 10px;
+
+    font-size: 11px;
+    font-weight: 850;
+}
+
+.generated-items {
+    display: grid;
+    gap: 8px;
+}
+
+.generated-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    padding: 10px 11px;
+
+    border: 1px solid var(--border);
+    border-radius: 11px;
+
+    background: rgba(255,255,255,.025);
+
+    animation: resultFloat 3s ease-in-out infinite;
+}
+
+.generated-item:nth-child(2) {
+    animation-delay: .5s;
+}
+
+.generated-item:nth-child(3) {
+    animation-delay: 1s;
+}
+
+@keyframes resultFloat {
+    0%,100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-2px);
+    }
+}
+
+.generated-icon {
+    width: 28px;
+    height: 28px;
+
+    flex: 0 0 auto;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 8px;
+
+    background: var(--accent-soft);
+
+    font-size: 13px;
+}
+
+.generated-item div:last-child {
+    flex: 1;
+}
+
+.generated-item strong {
+    display: block;
+
+    font-size: 11px;
+}
+
+.generated-item small {
+    display: block;
+
+    margin-top: 2px;
+
+    color: var(--muted);
+    font-size: 9px;
+}
+
+/* Preview bottom */
+
+.preview-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-top: 17px;
+    padding-top: 15px;
+
+    border-top: 1px solid var(--border);
+}
+
+.preview-progress {
+    display: flex;
+    gap: 4px;
+}
+
+.progress-dot {
+    width: 25px;
+    height: 4px;
+
+    border-radius: 99px;
+
+    background: var(--border);
+}
+
+.progress-dot.active {
+    background: var(--accent);
+    box-shadow: 0 0 10px var(--accent-glow);
+}
+
+.preview-powered {
+    color: var(--muted);
+    font-size: 8px;
+}
+
+/* Floating labels */
+
+.floating-card {
+    position: absolute;
+
+    padding: 11px 13px;
+
+    border: 1px solid var(--border);
+    border-radius: 13px;
+
+    background: var(--card);
+
+    backdrop-filter: blur(15px);
+
+    box-shadow: var(--shadow);
+
+    font-size: 10px;
+    font-weight: 800;
+
+    animation: floating 4s ease-in-out infinite;
+}
+
+.floating-card strong {
+    color: var(--accent);
+}
+
+.floating-one {
+    top: 10%;
+    right: -45px;
+}
+
+.floating-two {
+    bottom: 12%;
+    left: -50px;
+
+    animation-delay: 1.2s;
+}
+
+@keyframes floating {
+    0%,100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+/* =========================================================
+   HERO STATS
+   ========================================================= */
+
+.hero-stats {
+    width: min(1180px, 100%);
+    margin: 45px auto 0;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    border-top: 1px solid var(--border);
+
+    position: relative;
+    z-index: 3;
+}
+
+.hero-stat {
+    padding: 22px 20px;
+
+    text-align: center;
+
+    border-right: 1px solid var(--border);
+}
+
+.hero-stat:last-child {
+    border-right: 0;
+}
+
+.hero-stat strong {
+    display: block;
+
+    color: var(--text);
+
+    font-size: 24px;
+    font-weight: 950;
+}
+
+.hero-stat span {
+    display: block;
+
+    margin-top: 3px;
+
+    color: var(--muted);
+
+    font-size: 11px;
+}
+
+/* =========================================================
+   WORKFLOW
+   ========================================================= */
+
+.workflow {
+    width: min(1180px, 100%);
+    margin: 20px auto 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+
+    position: relative;
+    z-index: 3;
+}
+
+.workflow-item {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+
+    color: var(--muted);
+
+    font-size: 10px;
+    font-weight: 850;
+
+    transition:
+        color .3s ease,
+        transform .3s ease;
+}
+
+.workflow-item.active {
+    color: var(--accent);
+    transform: translateY(-2px);
+}
+
+.workflow-arrow {
+    color: var(--border);
+    font-size: 14px;
+}
+
+/* =========================================================
+   SECTION COMMON
+   ========================================================= */
+
+section {
+    width: min(1180px, calc(100% - 40px));
+    margin: auto;
+}
+
+.section-heading {
+    margin-bottom: 35px;
+}
+
+.section-kicker {
+    color: var(--accent);
+
+    font-size: 11px;
+    font-weight: 850;
+    letter-spacing: 1.3px;
+
+    margin-bottom: 8px;
+}
+
+.section-heading h2 {
+    font-size: clamp(32px, 4vw, 48px);
+    letter-spacing: -2px;
+    line-height: 1.05;
+
+    margin-bottom: 12px;
+}
+
+.section-heading p {
+    max-width: 600px;
+
+    color: var(--muted);
+
+    line-height: 1.7;
+}
+
+/* =========================================================
+   TOOLS
+   ========================================================= */
+
+.tools-section {
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+.featured-tools {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 14px;
+
+    margin-bottom: 35px;
+}
+
+.tool-card {
+    padding: 22px;
+
+    border: 1px solid var(--border);
+    border-radius: 18px;
+
+    background: var(--card);
+
+    cursor: pointer;
+
+    transition:
+        transform .25s ease,
+        border .25s ease,
+        box-shadow .25s ease;
+}
+
+.tool-card:hover {
+    transform: translateY(-5px);
+
+    border-color: var(--accent);
+
+    box-shadow:
+        0 15px 45px var(--accent-soft);
+}
+
+.tool-icon {
+    width: 43px;
+    height: 43px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 12px;
+
+    background: var(--accent-soft);
+
+    font-size: 19px;
+
+    margin-bottom: 18px;
+}
+
+.tool-card h3 {
+    font-size: 15px;
+    margin-bottom: 6px;
+}
+
+.tool-card p {
+    color: var(--muted);
+
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+/* =========================================================
+   TOOL PANELS
+   ========================================================= */
+
+.tool-panel {
+    display: none;
+
+    padding: 27px;
+
+    border: 1px solid var(--border);
+    border-radius: 20px;
+
+    background: var(--card);
+
+    box-shadow: var(--shadow);
+
+    animation: panelIn .35s ease;
+}
+
+.tool-panel.active {
+    display: block;
+}
+
+@keyframes panelIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    margin-bottom: 22px;
+}
+
+.panel-header h3 {
+    font-size: 21px;
+}
+
+.close-panel {
+    width: 34px;
+    height: 34px;
+
+    border: 1px solid var(--border);
+    border-radius: 9px;
+
+    background: transparent;
+    color: var(--muted);
+}
+
+.close-panel:hover {
+    color: var(--text);
+    border-color: var(--accent);
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 12px;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.field.full {
+    grid-column: 1 / -1;
+}
+
+.field label {
+    color: var(--muted);
+
+    font-size: 11px;
+    font-weight: 750;
+}
+
+.field input,
+.field select,
+.field textarea {
+    width: 100%;
+
+    padding: 12px 13px;
+
+    border: 1px solid var(--border);
+    border-radius: 10px;
+
+    background: rgba(255,255,255,.025);
+    color: var(--text);
+
+    outline: none;
+
+    transition: border .2s ease;
+}
+
+body.light .field input,
+body.light .field select,
+body.light .field textarea {
+    background: rgba(0,0,0,.025);
+}
+
+.field textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+    border-color: var(--accent);
+}
+
+.generate-btn {
+    margin-top: 14px;
+}
+
+/* Results */
+
+.results {
+    display: grid;
+    gap: 8px;
+
+    margin-top: 20px;
+}
+
+.result-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    padding: 12px;
+
+    border: 1px solid var(--border);
+    border-radius: 11px;
+
+    background: rgba(255,255,255,.02);
+}
+
+.result-number {
+    color: var(--accent);
+
+    font-size: 11px;
+    font-weight: 900;
+
+    min-width: 25px;
+}
+
+.result-text {
+    flex: 1;
+
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.copy-btn {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+
+    padding: 7px 10px;
+
+    background: transparent;
+    color: var(--muted);
+
+    font-size: 10px;
+    font-weight: 750;
+}
+
+.copy-btn:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+}
+
+/* =========================================================
+   PLANNER
+   ========================================================= */
+
+.planner-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 10px;
+
+    margin: 20px 0;
+}
+
+.planner-stat {
+    padding: 17px;
+
+    border: 1px solid var(--border);
+    border-radius: 13px;
+
+    background: rgba(255,255,255,.02);
+}
+
+.planner-stat strong {
+    display: block;
+    font-size: 23px;
+}
+
+.planner-stat span {
+    color: var(--muted);
+    font-size: 10px;
+}
+
+.plan-list {
+    display: grid;
+    gap: 9px;
+}
+
+.plan-item {
+    display: grid;
+    grid-template-columns: 100px 1fr auto auto;
+
+    gap: 12px;
+    align-items: center;
+
+    padding: 13px;
+
+    border: 1px solid var(--border);
+    border-radius: 11px;
+}
+
+.plan-date {
+    color: var(--accent);
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.plan-content strong {
+    display: block;
+    font-size: 12px;
+}
+
+.plan-content small {
+    color: var(--muted);
+    font-size: 10px;
+}
+
+.status-select {
+    padding: 7px 9px;
+
+    border: 1px solid var(--border);
+    border-radius: 8px;
+
+    background: var(--card-solid);
+    color: var(--text);
+
+    font-size: 10px;
+}
+
+.delete-btn {
+    border: 0;
+    background: transparent;
+
+    color: #ff5664;
+
+    font-size: 14px;
+}
+
+/* =========================================================
+   HOW IT WORKS
+   ========================================================= */
+
+.how-section {
+    padding-top: 30px;
+    padding-bottom: 100px;
+}
+
+.steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 14px;
+}
+
+.step {
+    padding: 25px;
+
+    border: 1px solid var(--border);
+    border-radius: 18px;
+
+    background: var(--card);
+}
+
+.step-number {
+    color: var(--accent);
+
+    font-size: 11px;
+    font-weight: 900;
+
+    margin-bottom: 25px;
+}
+
+.step h3 {
+    font-size: 17px;
+    margin-bottom: 8px;
+}
+
+.step p {
+    color: var(--muted);
+
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+/* =========================================================
+   FLOW
+   ========================================================= */
+
+.flow-section {
+    padding-bottom: 100px;
+}
+
+.flow-box {
+    padding: 35px;
+
+    border: 1px solid var(--border);
+    border-radius: 22px;
 
     background:
-
         radial-gradient(
-            circle at 50% 50%,
+            circle at center,
+            var(--accent-soft),
+            transparent 55%
+        ),
+        var(--card);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 16px;
+}
+
+.flow-node {
+    min-width: 120px;
+
+    padding: 18px;
+
+    text-align: center;
+
+    border: 1px solid var(--border);
+    border-radius: 14px;
+
+    background: rgba(255,255,255,.025);
+
+    transition:
+        border .3s ease,
+        transform .3s ease;
+}
+
+.flow-node.active {
+    border-color: var(--accent);
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 10px 35px var(--accent-soft);
+}
+
+.flow-node strong {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.flow-node small {
+    color: var(--muted);
+    font-size: 9px;
+}
+
+.flow-arrow {
+    color: var(--accent);
+    font-weight: 900;
+}
+
+/* =========================================================
+   ABOUT
+   ========================================================= */
+
+.about-section {
+    padding-bottom: 100px;
+}
+
+.about-box {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+
+    gap: 30px;
+    align-items: center;
+
+    padding: 30px;
+
+    border: 1px solid var(--border);
+    border-radius: 22px;
+
+    background: var(--card);
+}
+
+.about-image {
+    width: 150px;
+    height: 150px;
+
+    border-radius: 22px;
+
+    object-fit: cover;
+
+    border: 1px solid var(--border);
+
+    box-shadow:
+        0 15px 40px var(--accent-soft);
+}
+
+.about-content h2 {
+    font-size: 28px;
+    letter-spacing: -1px;
+
+    margin-bottom: 9px;
+}
+
+.about-content p {
+    color: var(--muted);
+
+    line-height: 1.7;
+    font-size: 13px;
+
+    max-width: 700px;
+
+    margin-bottom: 18px;
+}
+
+.instagram-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 10px 14px;
+
+    border: 1px solid var(--border);
+    border-radius: 10px;
+
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.instagram-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+/* =========================================================
+   CTA
+   ========================================================= */
+
+.final-cta {
+    padding-bottom: 100px;
+}
+
+.cta-box {
+    position: relative;
+    overflow: hidden;
+
+    padding: 65px 30px;
+
+    text-align: center;
+
+    border: 1px solid var(--border);
+    border-radius: 25px;
+
+    background:
+        radial-gradient(
+            circle at center,
             var(--accent-soft),
             transparent 60%
         ),
-
         var(--card);
-
-    position:relative;
-
-    overflow:hidden;
 }
 
-.final-cta h2{
+.cta-box h2 {
+    font-size: clamp(32px, 5vw, 55px);
+    letter-spacing: -2px;
 
-    font-size:
-        clamp(35px,6vw,58px);
-
-    line-height:1;
-
-    letter-spacing:-2px;
+    margin-bottom: 13px;
 }
 
-.final-cta p{
+.cta-box p {
+    color: var(--muted);
 
-    color:var(--muted);
+    max-width: 550px;
 
-    max-width:550px;
+    margin: 0 auto 25px;
 
-    margin:
-        20px auto 27px;
+    line-height: 1.7;
 }
 
-
-/* =====================================================
+/* =========================================================
    FOOTER
-===================================================== */
+   ========================================================= */
 
-footer{
+footer {
+    width: min(1180px, calc(100% - 40px));
 
-    margin-top:80px;
+    margin: auto;
 
-    border-top:
-        1px solid var(--border);
+    padding: 25px 0 35px;
 
-    text-align:center;
+    border-top: 1px solid var(--border);
 
-    padding:
-        35px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
-    color:var(--muted);
+    color: var(--muted);
+
+    font-size: 10px;
 }
 
-footer strong{
-
-    color:var(--accent);
+.footer-logo {
+    color: var(--text);
+    font-weight: 900;
 }
 
-
-/* =====================================================
-   ANIMATIONS
-===================================================== */
-
-@keyframes fadeUp{
-
-    from{
-
-        opacity:0;
-
-        transform:
-            translateY(20px);
-    }
-
-    to{
-
-        opacity:1;
-
-        transform:
-            translateY(0);
-    }
+.footer-logo span {
+    color: var(--accent);
 }
 
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
 
-/* =====================================================
-   MOBILE
-===================================================== */
+@media (max-width: 1050px) {
 
-@media(max-width:900px){
-
-    .tools{
-
-        grid-template-columns:
-            1fr 1fr;
+    .hero-inner {
+        grid-template-columns: 1fr .9fr;
+        gap: 40px;
     }
 
-    .steps{
+    .floating-one {
+        right: -15px;
+    }
 
-        grid-template-columns:
-            1fr;
+    .floating-two {
+        left: -15px;
+    }
+
+    .featured-tools {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
+@media (max-width: 850px) {
 
-@media(max-width:650px){
-
-    nav{
-
-        position:sticky;
-
-        top:0;
+    .nav-links,
+    .nav-cta {
+        display: none;
     }
 
-    .nav{
-
-        padding:
-            11px 15px;
-
-        min-height:66px;
+    .menu-toggle {
+        display: flex;
     }
 
-    .nav-links{
-
-        display:none;
+    .nav-right {
+        gap: 8px;
     }
 
-    .nav-right{
+    .mobile-menu {
+        display: block;
 
-        gap:8px;
-    }
+        position: absolute;
 
-    .theme-btn{
+        top: var(--nav-height);
+        left: 0;
+        right: 0;
 
-        display:none;
-    }
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
 
-    .menu-btn{
+        pointer-events: none;
 
-        display:block;
-    }
+        background: rgba(5,7,6,.95);
 
+        border-bottom: 1px solid transparent;
 
-    /* MOBILE DROPDOWN */
+        backdrop-filter: blur(20px);
 
-    .mobile-menu{
-
-        position:absolute;
-
-        top:66px;
-
-        left:12px;
-        right:12px;
-
-        display:flex;
-
-        flex-direction:column;
-
-        gap:4px;
-
-        padding:10px;
-
-        background:
-
-            rgba(7,9,8,.97);
-
-        backdrop-filter:
-            blur(25px);
-
-        -webkit-backdrop-filter:
-            blur(25px);
-
-        border:
-            1px solid var(--border);
-
-        border-radius:18px;
-
-        box-shadow:
-
-            0 20px 60px
-            rgba(0,0,0,.45);
-
-        opacity:0;
-
-        visibility:hidden;
-
-        transform:
-            translateY(-12px)
-            scale(.98);
+        transform: translateY(-8px);
 
         transition:
-
+            max-height .35s ease,
             opacity .25s ease,
-
             transform .25s ease,
-
-            visibility .25s ease;
+            border .25s ease;
     }
 
-    .mobile-menu.open{
-
-        opacity:1;
-
-        visibility:visible;
-
-        transform:
-            translateY(0)
-            scale(1);
+    body.light .mobile-menu {
+        background: rgba(255,255,255,.97);
     }
 
-
-    body.light .mobile-menu{
-
-        background:
-            rgba(255,255,255,.97);
+    body.spidey .mobile-menu {
+        background: rgba(7,3,4,.97);
     }
 
+    .mobile-menu.open {
+        max-height: 430px;
+        opacity: 1;
 
-    body.spidey .mobile-menu{
+        pointer-events: auto;
 
-        background:
-            rgba(12,4,6,.97);
+        transform: translateY(0);
 
-        border-color:
-            rgba(255,38,56,.30);
-
-        box-shadow:
-            0 20px 70px
-            rgba(255,0,0,.12);
+        border-bottom-color: var(--border);
     }
 
+    .mobile-menu-inner {
+        width: min(100% - 40px, 1180px);
+        margin: auto;
 
-    .mobile-link{
+        padding: 15px 0 20px;
 
-        display:flex;
-
-        align-items:center;
-
-        gap:13px;
-
-        padding:14px;
-
-        border-radius:12px;
-
-        color:var(--muted);
-
-        text-decoration:none;
-
-        font-size:15px;
-
-        font-weight:700;
-
-        transition:.2s;
+        display: grid;
+        gap: 4px;
     }
 
-    .mobile-link:hover,
-    .mobile-link.active{
+    .mobile-menu a {
+        padding: 13px 12px;
 
-        color:var(--accent);
+        border-radius: 10px;
 
-        background:
-            var(--accent-soft);
+        color: var(--muted);
+
+        font-size: 14px;
+        font-weight: 750;
     }
 
-    .mobile-link.active{
-
-        border-left:
-            3px solid
-            var(--accent);
+    .mobile-menu a:hover,
+    .mobile-menu a.active {
+        color: var(--accent);
+        background: var(--accent-soft);
     }
 
-    .mobile-divider{
+    .mobile-menu .mobile-cta {
+        margin-top: 8px;
 
-        height:1px;
+        text-align: center;
 
-        margin:
-            7px 5px;
-
-        background:
-            var(--border);
+        background: var(--accent);
+        color: #061009;
     }
 
-    .mobile-theme{
-
-        display:flex;
-
-        align-items:center;
-
-        gap:13px;
-
-        width:100%;
-
-        padding:14px;
-
-        border:0;
-
-        border-radius:12px;
-
-        background:transparent;
-
-        color:var(--muted);
-
-        font-size:15px;
-
-        font-weight:700;
-
-        text-align:left;
-
-        cursor:pointer;
+    .hero {
+        min-height: auto;
+        padding-top: 130px;
     }
 
-    .mobile-theme:hover{
-
-        color:var(--accent);
-
-        background:
-            var(--accent-soft);
+    .hero-inner {
+        grid-template-columns: 1fr;
     }
 
-
-    /* LOGO */
-
-    .logo-icon{
-
-        width:36px;
-        height:36px;
+    .hero-copy {
+        text-align: center;
     }
 
-    .logo-text{
-
-        font-size:20px;
+    .hero-description {
+        margin-left: auto;
+        margin-right: auto;
     }
 
-
-    /* HERO */
-
-    .hero{
-
-        min-height:620px;
-
-        padding:
-            90px 18px 70px;
+    .hero-buttons {
+        justify-content: center;
     }
 
-    .hero h1{
-
-        font-size:
-            clamp(48px,14vw,75px);
-
-        letter-spacing:-4px;
+    .hero-preview-wrap {
+        max-width: 650px;
+        width: 100%;
+        margin: auto;
     }
 
-    .hero p{
-
-        font-size:16px;
+    .creator-preview {
+        transform: none;
     }
 
-
-    /* STATS */
-
-    .stats-home{
-
-        grid-template-columns:1fr;
-
-        margin-top:0;
+    .creator-preview:hover {
+        transform: translateY(-4px);
     }
 
-
-    /* TOOLS */
-
-    .tools{
-
-        grid-template-columns:1fr;
+    .hero-stats {
+        margin-top: 45px;
     }
 
-
-    /* FORMS */
-
-    .form{
-
-        grid-template-columns:1fr;
+    .form-grid {
+        grid-template-columns: 1fr 1fr;
     }
 
-    .full{
-
-        grid-column:auto;
-    }
-
-
-    /* PLANNER */
-
-    .stats{
-
-        grid-template-columns:1fr;
-    }
-
-
-    /* ABOUT */
-
-    .about{
-
-        flex-direction:column;
-
-        text-align:center;
-
-        padding:
-            28px 20px;
-    }
-
-    .profile{
-
-        width:155px;
-        height:155px;
-
-        min-width:155px;
-    }
-
-    .about h3{
-
-        font-size:25px;
-    }
-
-
-    /* FLOW */
-
-    .flow{
-
-        flex-direction:column;
-    }
-
-    .flow-arrow{
-
-        transform:
-            rotate(90deg);
-    }
-
-
-    /* RESULTS */
-
-    .result{
-
-        flex-direction:column;
-
-        align-items:stretch;
-    }
-
-    .copy{
-
-        width:100%;
-    }
-
-
-    /* PLANS */
-
-    .plan{
-
-        flex-direction:column;
-
-        align-items:stretch;
-    }
-
-}
-
-
-/* =====================================================
-   SMALL MOBILE
-===================================================== */
-
-@media(max-width:400px){
-
-    .logo-text{
-
-        font-size:18px;
-    }
-
-    .hero h1{
-
-        font-size:46px;
+    .steps {
+        grid-template-columns: 1fr;
     }
 }
 
+@media (max-width: 650px) {
 
-/* =====================================================
+    .nav {
+        width: min(100% - 25px, 1180px);
+    }
+
+    section,
+    footer {
+        width: min(100% - 25px, 1180px);
+    }
+
+    .hero {
+        padding:
+            115px
+            12px
+            55px;
+    }
+
+    .hero h1 {
+        font-size: clamp(43px, 14vw, 65px);
+        letter-spacing: -3.5px;
+    }
+
+    .hero-description {
+        font-size: 15px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .hero-buttons .btn {
+        width: 100%;
+    }
+
+    .hero-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-stat {
+        border-right: 0;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .hero-stat:last-child {
+        border-bottom: 0;
+    }
+
+    .workflow {
+        flex-wrap: wrap;
+        gap: 6px;
+    }
+
+    .workflow-arrow {
+        font-size: 11px;
+    }
+
+    .floating-card {
+        display: none;
+    }
+
+    .creator-preview {
+        padding: 13px;
+        border-radius: 18px;
+    }
+
+    .preview-question {
+        font-size: 17px;
+    }
+
+    .featured-tools {
+        grid-template-columns: 1fr;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .field.full {
+        grid-column: auto;
+    }
+
+    .tool-panel {
+        padding: 18px;
+    }
+
+    .planner-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .plan-item {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    .status-select {
+        width: 100%;
+    }
+
+    .flow-box {
+        flex-direction: column;
+    }
+
+    .flow-arrow {
+        transform: rotate(90deg);
+    }
+
+    .about-box {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .about-image {
+        margin: auto;
+    }
+
+    .about-content p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    footer {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+}
+
+/* =========================================================
    REDUCED MOTION
-===================================================== */
+   ========================================================= */
 
-@media(prefers-reduced-motion:reduce){
+@media (prefers-reduced-motion: reduce) {
 
-    *{
-
-        animation:none !important;
-
-        transition:none !important;
+    *,
+    *::before,
+    *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
     }
 }
 
 </style>
-
 </head>
-
 
 <body class="dark">
 
+<!-- =======================================================
+     BACKGROUND
+     ======================================================= -->
 
-<!-- =====================================================
-     NAVIGATION
-===================================================== -->
-
-<nav id="mainNav">
-
-<div class="nav">
-
-
-<!-- LOGO -->
-
-<a
-href="#home"
-class="logo-link">
-
-<div class="logo-icon">
-
-<img
-src="cf-logo.png"
-alt="CreatorFlow">
-
-</div>
-
-<div class="logo-text">
-
-Creator<span>Flow</span>
-
-</div>
-
-</a>
-
-
-<!-- DESKTOP -->
-
-<div class="nav-right">
-
-
-<div class="nav-links">
-
-<a
-href="#home"
-class="active">
-
-Home
-
-</a>
-
-
-<a
-href="#tools">
-
-Tools
-
-</a>
-
-
-<a
-href="#how">
-
-How It Works
-
-</a>
-
-
-<a
-href="#about">
-
-About
-
-</a>
-
+<div class="bg-particles" aria-hidden="true">
+    <span class="particle"></span>
+    <span class="particle"></span>
+    <span class="particle"></span>
+    <span class="particle"></span>
+    <span class="particle"></span>
+    <span class="particle"></span>
+    <span class="particle"></span>
 </div>
 
 
-<button
-class="theme-btn"
-id="themeButton"
-onclick="changeTheme()"
-aria-label="Change theme">
+<!-- =======================================================
+     NAVBAR
+     ======================================================= -->
 
-🌙
+<nav id="navbar">
 
-</button>
+    <div class="nav">
 
+        <a href="#home" class="logo">
+            Creator<span>Flow</span>
+        </a>
 
-<!-- MOBILE BUTTON -->
+        <div class="nav-right">
 
-<button
-class="menu-btn"
-id="menuButton"
-onclick="toggleMobileMenu()"
-aria-label="Open menu"
-aria-expanded="false">
+            <div class="nav-links">
 
-<span></span>
-<span></span>
-<span></span>
+                <a href="#home" class="active">Home</a>
 
-</button>
+                <a href="#tools">Tools</a>
 
-</div>
+                <a href="#how">How It Works</a>
 
-</div>
+                <a href="#about">About</a>
 
+            </div>
 
-<!-- =====================================================
-     MOBILE MENU
-===================================================== -->
+            <a href="#tools" class="nav-cta">
+                Start Creating
+            </a>
 
-<div
-class="mobile-menu"
-id="mobileMenu">
+            <button
+                class="theme-btn"
+                id="themeButton"
+                onclick="changeTheme()"
+                aria-label="Change theme"
+                title="Change theme"
+            >
+                🌙
+            </button>
 
+            <button
+                class="menu-toggle"
+                id="menuToggle"
+                onclick="toggleMobileMenu()"
+                aria-label="Open menu"
+                aria-expanded="false"
+                aria-controls="mobileMenu"
+            >
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
 
-<a
-href="#home"
-class="mobile-link active">
+        </div>
 
-🏠
-
-<span>
-Home
-</span>
-
-</a>
-
-
-<a
-href="#tools"
-class="mobile-link">
-
-🛠️
-
-<span>
-Tools
-</span>
-
-</a>
+    </div>
 
 
-<a
-href="#how"
-class="mobile-link">
+    <!-- MOBILE MENU -->
 
-⚡
+    <div class="mobile-menu" id="mobileMenu">
 
-<span>
-How It Works
-</span>
+        <div class="mobile-menu-inner">
 
-</a>
+            <a href="#home" class="mobile-link active">
+                Home
+            </a>
 
+            <a href="#tools" class="mobile-link">
+                Tools
+            </a>
 
-<a
-href="#about"
-class="mobile-link">
+            <a href="#how" class="mobile-link">
+                How It Works
+            </a>
 
-👤
+            <a href="#about" class="mobile-link">
+                About
+            </a>
 
-<span>
-About
-</span>
+            <a href="#tools" class="mobile-link mobile-cta">
+                🚀 Start Creating
+            </a>
 
-</a>
+        </div>
 
-
-<div class="mobile-divider"></div>
-
-
-<button
-class="mobile-theme"
-onclick="changeThemeFromMobile()">
-
-🎨
-
-<span>
-Change Theme
-</span>
-
-</button>
-
-
-</div>
+    </div>
 
 </nav>
 
 
-
-<!-- =====================================================
+<!-- =======================================================
      HERO
-===================================================== -->
+     ======================================================= -->
+
+<section class="hero" id="home">
+
+    <div class="hero-inner">
+
+        <!-- LEFT -->
+
+        <div class="hero-copy">
+
+            <div class="hero-badge">
+
+                <span class="badge-dot"></span>
+
+                ✦ AI-POWERED CREATOR WORKSPACE
+
+            </div>
+
+
+            <h1>
+
+                Create.
+                Plan.
+                <span class="gradient-text">Post.</span>
+                Grow.
+
+            </h1>
+
+
+            <p class="hero-description">
+
+                Everything you need to turn your ideas into
+                <strong>better content</strong> —
+                from titles and captions to reel ideas and
+                content planning.
+
+            </p>
+
+
+            <div class="hero-buttons">
+
+                <button
+                    class="btn primary"
+                    onclick="document.getElementById('tools').scrollIntoView({behavior:'smooth'})"
+                >
+                    🚀 Start Creating
+                </button>
+
+                <button
+                    class="btn secondary"
+                    onclick="document.getElementById('tools').scrollIntoView({behavior:'smooth'})"
+                >
+                    View Tools ↓
+                </button>
+
+            </div>
+
+
+            <div class="hero-note">
+
+                ✦ Free to use &nbsp; • &nbsp;
+                ⚡ Instant ideas &nbsp; • &nbsp;
+                🎯 Built for creators
+
+            </div>
+
+        </div>
+
+
+        <!-- RIGHT PREVIEW -->
+
+        <div class="hero-preview-wrap">
+
+            <div class="preview-glow"></div>
+
+
+            <div class="creator-preview">
+
+                <!-- Preview header -->
+
+                <div class="preview-top">
+
+                    <div class="preview-brand">
+
+                        <div class="preview-logo">
+                            CF
+                        </div>
+
+                        <div>
+                            <strong>CreatorFlow</strong>
+
+                            <small>
+                                Creator workspace
+                            </small>
+                        </div>
+
+                    </div>
+
+                    <div class="preview-status">
+
+                        <span></span>
+
+                        AI READY
+
+                    </div>
+
+                </div>
+
+
+                <!-- Preview body -->
+
+                <div class="preview-content">
+
+                    <div class="preview-label">
+                        CREATE SOMETHING
+                    </div>
+
+                    <div class="preview-question">
+                        What's your next idea?
+                    </div>
+
+
+                    <div class="preview-input">
+
+                        <span>
+                            Travel reel for this weekend...
+                        </span>
+
+                        <button
+                            class="generate-mini"
+                            onclick="demoGenerate()"
+                        >
+                            Generate
+                        </button>
+
+                    </div>
+
+
+                    <div class="generated-title">
+                        ✨ Suggested content
+                    </div>
+
+
+                    <div class="generated-items" id="previewResults">
+
+                        <div class="generated-item">
+
+                            <div class="generated-icon">
+                                💡
+                            </div>
+
+                            <div>
+
+                                <strong>
+                                    5 Reel Ideas
+                                </strong>
+
+                                <small>
+                                    Fresh ideas for your niche
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="generated-item">
+
+                            <div class="generated-icon">
+                                ✍️
+                            </div>
+
+                            <div>
+
+                                <strong>
+                                    10 Titles
+                                </strong>
+
+                                <small>
+                                    Scroll-stopping hooks
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="generated-item">
+
+                            <div class="generated-icon">
+                                📝
+                            </div>
+
+                            <div>
+
+                                <strong>
+                                    10 Captions
+                                </strong>
+
+                                <small>
+                                    Ready for your next post
+                                </small>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="preview-bottom">
+
+                        <div class="preview-progress">
+
+                            <span class="progress-dot active"></span>
+                            <span class="progress-dot"></span>
+                            <span class="progress-dot"></span>
+                            <span class="progress-dot"></span>
+
+                        </div>
+
+                        <div class="preview-powered">
+                            BUILT BY DEEEZZ
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Floating cards -->
+
+            <div class="floating-card floating-one">
+                ⚡ <strong>Instant</strong> ideas
+            </div>
+
+            <div class="floating-card floating-two">
+                ✦ <strong>10+</strong> creator tools
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- STATS -->
+
+    <div class="hero-stats">
+
+        <div class="hero-stat">
+
+            <strong>10+</strong>
+
+            <span>
+                Creator Tools
+            </span>
+
+        </div>
+
+        <div class="hero-stat">
+
+            <strong>100+</strong>
+
+            <span>
+                Creative Ideas
+            </span>
+
+        </div>
+
+        <div class="hero-stat">
+
+            <strong>∞</strong>
+
+            <span>
+                Creative Possibilities
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <!-- WORKFLOW -->
+
+    <div class="workflow" id="heroWorkflow">
+
+        <div class="workflow-item active">
+            💡 IDEA
+        </div>
+
+        <div class="workflow-arrow">
+            →
+        </div>
+
+        <div class="workflow-item">
+            ✍️ TITLE
+        </div>
+
+        <div class="workflow-arrow">
+            →
+        </div>
+
+        <div class="workflow-item">
+            📝 CAPTION
+        </div>
+
+        <div class="workflow-arrow">
+            →
+        </div>
+
+        <div class="workflow-item">
+            🚀 POST
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =======================================================
+     TOOLS
+     ======================================================= -->
+
+<section class="tools-section" id="tools">
+
+    <div class="section-heading">
+
+        <div class="section-kicker">
+            YOUR CREATOR TOOLKIT
+        </div>
+
+        <h2>
+            Everything starts with an idea.
+        </h2>
+
+        <p>
+            Turn that idea into content with simple tools
+            designed to make your workflow faster.
+        </p>
+
+    </div>
+
+
+    <!-- FEATURED -->
+
+    <div class="featured-tools">
+
+        <div
+            class="tool-card"
+            onclick="openTool('titles')"
+        >
+
+            <div class="tool-icon">
+                ✍️
+            </div>
+
+            <h3>
+                Title Generator
+            </h3>
+
+            <p>
+                Create scroll-stopping titles and hooks.
+            </p>
+
+        </div>
+
+
+        <div
+            class="tool-card"
+            onclick="openTool('captions')"
+        >
+
+            <div class="tool-icon">
+                📝
+            </div>
+
+            <h3>
+                Caption Generator
+            </h3>
+
+            <p>
+                Generate captions that fit your content.
+            </p>
+
+        </div>
+
+
+        <div
+            class="tool-card"
+            onclick="openTool('ideas')"
+        >
+
+            <div class="tool-icon">
+                💡
+            </div>
+
+            <h3>
+                Reel Ideas
+            </h3>
+
+            <p>
+                Never run out of ideas for your next reel.
+            </p>
+
+        </div>
+
+
+        <div
+            class="tool-card"
+            onclick="openTool('planner')"
+        >
+
+            <div class="tool-icon">
+                📅
+            </div>
+
+            <h3>
+                Content Planner
+            </h3>
+
+            <p>
+                Organize your upcoming content in one place.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- TITLE PANEL -->
+
+    <div
+        class="tool-panel"
+        id="panel-titles"
+    >
+
+        <div class="panel-header">
+
+            <div>
+                <h3>✍️ Title Generator</h3>
+            </div>
+
+            <button
+                class="close-panel"
+                onclick="closeTools()"
+            >
+                ✕
+            </button>
+
+        </div>
+
+
+        <div class="form-grid">
+
+            <div class="field">
+
+                <label>
+                    Topic
+                </label>
+
+                <input
+                    id="titleTopic"
+                    placeholder="e.g. Streetwear"
+                >
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    Platform
+                </label>
+
+                <select id="titlePlatform">
+
+                    <option>TikTok</option>
+                    <option>Instagram</option>
+                    <option>YouTube</option>
+                    <option>Facebook</option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+
+        <button
+            class="btn primary generate-btn"
+            onclick="generateTitles()"
+        >
+            ✨ Generate 10 Titles
+        </button>
+
+
+        <div
+            class="results"
+            id="titleResults"
+        ></div>
+
+    </div>
+
+
+    <!-- CAPTION PANEL -->
+
+    <div
+        class="tool-panel"
+        id="panel-captions"
+    >
+
+        <div class="panel-header">
+
+            <div>
+                <h3>📝 Caption Generator</h3>
+            </div>
+
+            <button
+                class="close-panel"
+                onclick="closeTools()"
+            >
+                ✕
+            </button>
+
+        </div>
+
+
+        <div class="form-grid">
+
+            <div class="field full">
+
+                <label>
+                    Describe your content
+                </label>
+
+                <textarea
+                    id="captionDescription"
+                    placeholder="Describe your photo or video..."
+                ></textarea>
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    Platform
+                </label>
+
+                <select id="captionPlatform">
+
+                    <option>Instagram</option>
+                    <option>TikTok</option>
+                    <option>YouTube</option>
+                    <option>Facebook</option>
+
+                </select>
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    Tone
+                </label>
+
+                <select id="captionTone">
+
+                    <option>Cool</option>
+                    <option>Funny</option>
+                    <option>Professional</option>
+                    <option>Motivational</option>
+                    <option>Minimal</option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+
+        <button
+            class="btn primary generate-btn"
+            onclick="generateCaptions()"
+        >
+            ✨ Generate Captions
+        </button>
+
+
+        <div
+            class="results"
+            id="captionResults"
+        ></div>
+
+    </div>
+
+
+    <!-- IDEA PANEL -->
+
+    <div
+        class="tool-panel"
+        id="panel-ideas"
+    >
+
+        <div class="panel-header">
+
+            <div>
+                <h3>💡 Reel Idea Generator</h3>
+            </div>
+
+            <button
+                class="close-panel"
+                onclick="closeTools()"
+            >
+                ✕
+            </button>
+
+        </div>
+
+
+        <div class="form-grid">
+
+            <div class="field">
+
+                <label>
+                    Niche
+                </label>
+
+                <input
+                    id="ideaNiche"
+                    placeholder="e.g. Cars"
+                >
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    Content type
+                </label>
+
+                <select id="ideaType">
+
+                    <option>Educational</option>
+                    <option>Entertainment</option>
+                    <option>Storytelling</option>
+                    <option>Trending</option>
+                    <option>Behind the scenes</option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+
+        <button
+            class="btn primary generate-btn"
+            onclick="generateIdeas()"
+        >
+            ✨ Generate 10 Ideas
+        </button>
+
+
+        <div
+            class="results"
+            id="ideaResults"
+        ></div>
+
+    </div>
+
+
+    <!-- PLANNER PANEL -->
+
+    <div
+        class="tool-panel"
+        id="panel-planner"
+    >
+
+        <div class="panel-header">
+
+            <div>
+                <h3>📅 Content Planner</h3>
+            </div>
+
+            <button
+                class="close-panel"
+                onclick="closeTools()"
+            >
+                ✕
+            </button>
+
+        </div>
+
+
+        <div class="form-grid">
+
+            <div class="field">
+
+                <label>
+                    Date
+                </label>
+
+                <input
+                    type="date"
+                    id="planDate"
+                >
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    Platform
+                </label>
+
+                <select id="planPlatform">
+
+                    <option>Instagram</option>
+                    <option>TikTok</option>
+                    <option>YouTube</option>
+                    <option>Facebook</option>
+
+                </select>
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    Content idea
+                </label>
+
+                <input
+                    id="planIdea"
+                    placeholder="e.g. New car reel"
+                >
+
+            </div>
+
+        </div>
+
+
+        <button
+            class="btn primary generate-btn"
+            onclick="addPlan()"
+        >
+            + Add to Planner
+        </button>
+
+
+        <div class="planner-stats">
+
+            <div class="planner-stat">
+
+                <strong id="totalPlans">
+                    0
+                </strong>
+
+                <span>
+                    Total
+                </span>
+
+            </div>
+
+
+            <div class="planner-stat">
+
+                <strong id="plannedCount">
+                    0
+                </strong>
+
+                <span>
+                    Planned
+                </span>
+
+            </div>
+
+
+            <div class="planner-stat">
+
+                <strong id="postedCount">
+                    0
+                </strong>
+
+                <span>
+                    Posted
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div
+            class="plan-list"
+            id="planList"
+        ></div>
+
+    </div>
+
+</section>
+
+
+<!-- =======================================================
+     HOW IT WORKS
+     ======================================================= -->
 
 <section
-class="hero"
-id="home">
+    class="how-section"
+    id="how"
+>
+
+    <div class="section-heading">
+
+        <div class="section-kicker">
+            SIMPLE WORKFLOW
+        </div>
+
+        <h2>
+            From idea to post.
+        </h2>
+
+        <p>
+            CreatorFlow keeps your creative process simple,
+            fast and organized.
+        </p>
+
+    </div>
 
 
-<div class="badge">
+    <div class="steps">
 
-⚡ BUILT BY DEEEZZ
+        <div class="step">
 
-</div>
+            <div class="step-number">
+                01 / IDEA
+            </div>
 
+            <h3>
+                Start with an idea
+            </h3>
 
-<h1>
+            <p>
+                Enter your niche, topic or content concept
+                and let CreatorFlow help you develop it.
+            </p>
 
-Create better.<br>
-
-<span class="neon">
-
-Post smarter.
-
-</span>
-
-</h1>
-
-
-<p>
-
-Your simple creator toolkit for
-ideas, titles, captions and content
-planning.
-
-Built by
-
-<strong>
-Dihein De Silva (Deeezz)
-</strong>.
-
-</p>
+        </div>
 
 
-<div class="buttons">
+        <div class="step">
+
+            <div class="step-number">
+                02 / CREATE
+            </div>
+
+            <h3>
+                Build your content
+            </h3>
+
+            <p>
+                Generate titles, captions and reel ideas
+                that fit your content style.
+            </p>
+
+        </div>
 
 
-<a
-href="#tools"
-class="btn primary">
+        <div class="step">
 
-🚀 Start Creating
+            <div class="step-number">
+                03 / POST
+            </div>
 
-</a>
+            <h3>
+                Plan and publish
+            </h3>
 
+            <p>
+                Organize your content and keep your posting
+                workflow moving.
+            </p>
 
-<a
-href="#tools"
-class="btn secondary">
+        </div>
 
-Explore Tools →
-
-</a>
-
-
-</div>
-
-
-<div class="scroll-down">
-
-SCROLL TO EXPLORE ↓
-
-</div>
-
-
-</section>
-
-
-
-<main class="container">
-
-
-<!-- =====================================================
-     QUICK STATS
-===================================================== -->
-
-<section>
-
-
-<div class="stats-home">
-
-
-<div class="stat-card">
-
-<strong>
-10+
-</strong>
-
-<span>
-Creator Tools
-</span>
-
-</div>
-
-
-<div class="stat-card">
-
-<strong>
-100+
-</strong>
-
-<span>
-Creative Ideas
-</span>
-
-</div>
-
-
-<div class="stat-card">
-
-<strong>
-∞
-</strong>
-
-<span>
-Creative Possibilities
-</span>
-
-</div>
-
-
-</div>
+    </div>
 
 </section>
 
 
+<!-- =======================================================
+     FLOW
+     ======================================================= -->
 
-<!-- =====================================================
-     TOOLS
-===================================================== -->
+<section class="flow-section">
 
-<section id="tools">
+    <div class="flow-box">
 
+        <div class="flow-node active">
 
-<div class="heading">
+            <strong>
+                💡 IDEA
+            </strong>
 
-<h2>
+            <small>
+                Think
+            </small>
 
-Everything you need
-to
+        </div>
 
-<span class="neon">
-create faster.
-</span>
 
-</h2>
+        <div class="flow-arrow">
+            →
+        </div>
 
 
-<p>
+        <div class="flow-node">
 
-Simple tools made for modern creators.
+            <strong>
+                ✍️ TITLE
+            </strong>
 
-</p>
+            <small>
+                Hook
+            </small>
 
-</div>
+        </div>
 
 
-<div class="tools">
+        <div class="flow-arrow">
+            →
+        </div>
 
 
-<div
-class="tool"
-onclick="openTool('titles')">
+        <div class="flow-node">
 
-<div class="icon">
-🎯
-</div>
+            <strong>
+                📝 CAPTION
+            </strong>
 
-<h3>
-Title Generator
-</h3>
+            <small>
+                Connect
+            </small>
 
-<p>
+        </div>
 
-Create attention-grabbing titles
-for your next video.
 
-</p>
+        <div class="flow-arrow">
+            →
+        </div>
 
-</div>
 
+        <div class="flow-node">
 
+            <strong>
+                🚀 POST
+            </strong>
 
-<div
-class="tool"
-onclick="openTool('captions')">
+            <small>
+                Publish
+            </small>
 
-<div class="icon">
-✍️
-</div>
+        </div>
 
-<h3>
-Caption Generator
-</h3>
-
-<p>
-
-Turn your content into captions
-that fit your vibe.
-
-</p>
-
-</div>
-
-
-
-<div
-class="tool"
-onclick="openTool('ideas')">
-
-<div class="icon">
-💡
-</div>
-
-<h3>
-Reel Ideas
-</h3>
-
-<p>
-
-Never run out of ideas
-for your next reel.
-
-</p>
-
-</div>
-
-
-
-<div
-class="tool"
-onclick="openTool('planner')">
-
-<div class="icon">
-📅
-</div>
-
-<h3>
-Content Planner
-</h3>
-
-<p>
-
-Organize your content
-and stay consistent.
-
-</p>
-
-</div>
-
-
-</div>
-
-
-
-<!-- =====================================================
-     TITLE GENERATOR
-===================================================== -->
-
-<div
-class="panel"
-id="titles">
-
-<span
-class="back"
-onclick="closeTools()">
-
-← Back to Tools
-
-</span>
-
-
-<div class="box">
-
-<h2>
-🎯 Title Generator
-</h2>
-
-
-<div class="form">
-
-
-<div>
-
-<label>
-Topic
-</label>
-
-<input
-id="titleTopic"
-placeholder="Example: AI apps">
-
-</div>
-
-
-<div>
-
-<label>
-Platform
-</label>
-
-<select id="titlePlatform">
-
-<option>YouTube</option>
-
-<option>TikTok</option>
-
-<option>Instagram</option>
-
-<option>YouTube Shorts</option>
-
-</select>
-
-</div>
-
-
-</div>
-
-
-<button
-class="btn primary generate"
-onclick="generateTitles()">
-
-Generate Titles 🚀
-
-</button>
-
-
-<div
-class="results"
-id="titleResults">
-
-</div>
-
-
-</div>
-
-</div>
-
-
-
-<!-- =====================================================
-     CAPTION GENERATOR
-===================================================== -->
-
-<div
-class="panel"
-id="captions">
-
-<span
-class="back"
-onclick="closeTools()">
-
-← Back to Tools
-
-</span>
-
-
-<div class="box">
-
-<h2>
-✍️ Caption Generator
-</h2>
-
-
-<div class="form">
-
-
-<div class="full">
-
-<label>
-Describe your content
-</label>
-
-<textarea
-id="captionTopic"
-placeholder="Example: Cinematic beach sunset">
-</textarea>
-
-</div>
-
-
-<div>
-
-<label>
-Platform
-</label>
-
-<select id="captionPlatform">
-
-<option>Instagram</option>
-
-<option>TikTok</option>
-
-<option>YouTube</option>
-
-</select>
-
-</div>
-
-
-<div>
-
-<label>
-Tone
-</label>
-
-<select id="captionTone">
-
-<option>Chill</option>
-
-<option>Funny</option>
-
-<option>Emotional</option>
-
-<option>Motivational</option>
-
-<option>Professional</option>
-
-</select>
-
-</div>
-
-
-</div>
-
-
-<button
-class="btn primary generate"
-onclick="generateCaptions()">
-
-Generate Captions ✍️
-
-</button>
-
-
-<div
-class="results"
-id="captionResults">
-
-</div>
-
-
-</div>
-
-</div>
-
-
-
-<!-- =====================================================
-     REEL IDEAS
-===================================================== -->
-
-<div
-class="panel"
-id="ideas">
-
-<span
-class="back"
-onclick="closeTools()">
-
-← Back to Tools
-
-</span>
-
-
-<div class="box">
-
-<h2>
-💡 Reel Idea Generator
-</h2>
-
-
-<div class="form">
-
-
-<div>
-
-<label>
-Niche
-</label>
-
-<input
-id="ideaNiche"
-placeholder="Example: Cars">
-
-</div>
-
-
-<div>
-
-<label>
-Video Type
-</label>
-
-<select id="ideaType">
-
-<option>Educational</option>
-
-<option>Funny</option>
-
-<option>Storytelling</option>
-
-<option>Facts</option>
-
-<option>Comparison</option>
-
-<option>Motivational</option>
-
-</select>
-
-</div>
-
-
-</div>
-
-
-<button
-class="btn primary generate"
-onclick="generateIdeas()">
-
-Generate 10 Ideas 💡
-
-</button>
-
-
-<div
-class="results"
-id="ideaResults">
-
-</div>
-
-
-</div>
-
-</div>
-
-
-
-<!-- =====================================================
-     PLANNER
-===================================================== -->
-
-<div
-class="panel"
-id="planner">
-
-<span
-class="back"
-onclick="closeTools()">
-
-← Back to Tools
-
-</span>
-
-
-<div class="box">
-
-<h2>
-📊 Content Planner
-</h2>
-
-
-<div class="stats">
-
-
-<div class="stat">
-
-<strong id="total">
-0
-</strong>
-
-<span>
-Total Content
-</span>
-
-</div>
-
-
-<div class="stat">
-
-<strong id="planned">
-0
-</strong>
-
-<span>
-Planned
-</span>
-
-</div>
-
-
-<div class="stat">
-
-<strong id="posted">
-0
-</strong>
-
-<span>
-Posted
-</span>
-
-</div>
-
-
-</div>
-
-
-<div class="form">
-
-
-<div>
-
-<label>
-Date
-</label>
-
-<input
-type="date"
-id="planDate">
-
-</div>
-
-
-<div>
-
-<label>
-Platform
-</label>
-
-<select id="planPlatform">
-
-<option>
-Instagram
-</option>
-
-<option>
-TikTok
-</option>
-
-<option>
-YouTube
-</option>
-
-</select>
-
-</div>
-
-
-<div class="full">
-
-<label>
-Content Idea
-</label>
-
-<input
-id="planContent"
-placeholder="Example: 5 hidden Android apps">
-
-</div>
-
-
-</div>
-
-
-<button
-class="btn primary generate"
-onclick="addPlan()">
-
-+ Add Content
-
-</button>
-
-
-<div
-class="plans"
-id="plans">
-
-</div>
-
-
-</div>
-
-</div>
-
+    </div>
 
 </section>
 
 
-
-<!-- =====================================================
-     HOW IT WORKS
-===================================================== -->
-
-<section id="how">
-
-
-<div class="heading">
-
-<h2>
-
-How
-
-<span class="neon">
-CreatorFlow
-</span>
-
-works.
-
-</h2>
-
-
-<p>
-
-From idea to post in three simple steps.
-
-</p>
-
-</div>
-
-
-<div class="steps">
-
-
-<div class="step">
-
-<div class="step-number">
-01
-</div>
-
-<div class="step-icon">
-🧠
-</div>
-
-<h3>
-Choose a tool
-</h3>
-
-<p>
-
-Pick the tool that matches
-what you're creating.
-
-</p>
-
-</div>
-
-
-<div class="step">
-
-<div class="step-number">
-02
-</div>
-
-<div class="step-icon">
-⚡
-</div>
-
-<h3>
-Create your content
-</h3>
-
-<p>
-
-Generate ideas, titles,
-captions and more.
-
-</p>
-
-</div>
-
-
-<div class="step">
-
-<div class="step-number">
-03
-</div>
-
-<div class="step-icon">
-🚀
-</div>
-
-<h3>
-Post & grow
-</h3>
-
-<p>
-
-Take your content and
-share it with the world.
-
-</p>
-
-</div>
-
-
-</div>
-
-</section>
-
-
-
-<!-- =====================================================
-     CREATOR FLOW
-===================================================== -->
-
-<section>
-
-
-<div class="flow-box">
-
-
-<div class="flow-title">
-
-Your content.
-Your
-
-<span class="neon">
-flow.
-</span>
-
-</div>
-
-
-<div class="flow">
-
-
-<div class="flow-item">
-
-<span>
-💡
-</span>
-
-<small>
-IDEA
-</small>
-
-</div>
-
-
-<div class="flow-arrow">
-→
-</div>
-
-
-<div class="flow-item">
-
-<span>
-🎯
-</span>
-
-<small>
-TITLE
-</small>
-
-</div>
-
-
-<div class="flow-arrow">
-→
-</div>
-
-
-<div class="flow-item">
-
-<span>
-✍️
-</span>
-
-<small>
-CAPTION
-</small>
-
-</div>
-
-
-<div class="flow-arrow">
-→
-</div>
-
-
-<div class="flow-item">
-
-<span>
-🚀
-</span>
-
-<small>
-POST
-</small>
-
-</div>
-
-
-</div>
-
-</div>
-
-</section>
-
-
-
-<!-- =====================================================
+<!-- =======================================================
      ABOUT
-===================================================== -->
+     ======================================================= -->
 
-<section id="about">
+<section
+    class="about-section"
+    id="about"
+>
 
+    <div class="about-box">
 
-<div class="heading">
-
-<h2>
-
-Built by
-
-<span class="neon">
-Deeezz.
-</span>
-
-</h2>
+        <img
+            src="deeezz.jpg"
+            alt="Dihein De Silva"
+            class="about-image"
+        >
 
 
-<p>
-The creator behind CreatorFlow.
-</p>
+        <div class="about-content">
 
-</div>
+            <div class="section-kicker">
+                BUILT BY A CREATOR
+            </div>
 
+            <h2>
+                Dihein De Silva
+                <span style="color:var(--accent)">
+                    (Deeezz)
+                </span>
+            </h2>
 
-<div class="about">
-
-
-<div class="profile">
-
-<img
-src="deeezz.jpg"
-alt="Deeezz">
-
-</div>
-
-
-<div>
-
-
-<h3>
-
-Dihein De Silva
-
-<span>
-(Deeezz)
-</span>
-
-</h3>
+            <p>
+                CreatorFlow was built to make content creation
+                simpler. Instead of jumping between different
+                tools, you can generate ideas, create titles,
+                write captions and organize your content
+                from one simple workspace.
+            </p>
 
 
-<p>
+            <a
+                href="https://www.instagram.com/______deeezz___/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="instagram-btn"
+            >
+                📸 Follow on Instagram
+            </a>
 
-Content creator and the creator of
-CreatorFlow.
+        </div>
 
-CreatorFlow was built to make
-content creation simpler, faster
-and more organized.
-
-</p>
-
-
-<a
-href="https://www.instagram.com/______deeezz___/"
-target="_blank"
-rel="noopener noreferrer"
-class="btn primary">
-
-📸 Follow Deeezz
-
-</a>
-
-
-</div>
-
-
-</div>
+    </div>
 
 </section>
 
 
-
-<!-- =====================================================
+<!-- =======================================================
      FINAL CTA
-===================================================== -->
+     ======================================================= -->
 
-<section>
+<section class="final-cta">
 
+    <div class="cta-box">
 
-<div class="final-cta">
+        <div class="section-kicker">
+            YOUR NEXT POST STARTS HERE
+        </div>
 
+        <h2>
+            Got an idea?
+            <br>
+            Let's create.
+        </h2>
 
-<h2>
+        <p>
+            Turn your next thought into something worth posting.
+        </p>
 
-Ready to
+        <button
+            class="btn primary"
+            onclick="document.getElementById('tools').scrollIntoView({behavior:'smooth'})"
+        >
+            🚀 Start Creating
+        </button>
 
-<span class="neon">
-create?
-</span>
-
-</h2>
-
-
-<p>
-
-Turn your next idea into something
-worth posting.
-
-</p>
-
-
-<a
-href="#tools"
-class="btn primary">
-
-🚀 Start Creating
-
-</a>
-
-
-</div>
+    </div>
 
 </section>
 
 
-</main>
-
-
-
-<!-- =====================================================
+<!-- =======================================================
      FOOTER
-===================================================== -->
+     ======================================================= -->
 
 <footer>
 
+    <div>
+        © 2026
+        <span class="footer-logo">
+            Creator<span>Flow</span>
+        </span>
+        · Built by Deeezz
+    </div>
 
-<p>
-
-<strong>
-CreatorFlow
-</strong>
-
-© 2026
-
-</p>
-
-
-<p>
-
-Created by
-
-<strong>
-Dihein De Silva — Deeezz
-</strong>
-
-</p>
-
+    <div>
+        Create better. Post smarter.
+    </div>
 
 </footer>
 
 
-
 <script>
 
-/* =====================================================
+/* =========================================================
    THEME SYSTEM
-===================================================== */
+   ========================================================= */
 
 const themes = [
     "dark",
@@ -3629,19 +3349,23 @@ const themes = [
     "spidey"
 ];
 
-
 const themeIcons = {
-
-    dark:"🌙",
-
-    light:"☀️",
-
-    spidey:"🕷️"
-
+    dark: "🌙",
+    light: "☀️",
+    spidey: "🕷️"
 };
 
+const themeNames = {
+    dark: "Dark",
+    light: "Light",
+    spidey: "Spidey"
+};
 
-function applyTheme(theme){
+const themeButton =
+    document.getElementById("themeButton");
+
+
+function applyTheme(theme) {
 
     document.body.classList.remove(
         "dark",
@@ -3651,139 +3375,114 @@ function applyTheme(theme){
 
     document.body.classList.add(theme);
 
+    themeButton.textContent =
+        themeIcons[theme];
+
+    themeButton.setAttribute(
+        "aria-label",
+        `Current theme: ${themeNames[theme]}. Click to change theme.`
+    );
+
+    themeButton.title =
+        `Theme: ${themeNames[theme]}`;
+
     localStorage.setItem(
         "creatorFlowTheme",
         theme
     );
-
-    document
-        .getElementById("themeButton")
-        .textContent =
-        themeIcons[theme];
-
 }
 
 
-/* =====================================================
-   CHANGE THEME
-===================================================== */
+function changeTheme() {
 
-function changeTheme(){
+    const current =
+        localStorage.getItem("creatorFlowTheme")
+        || "dark";
 
-    let current =
-        localStorage.getItem(
-            "creatorFlowTheme"
-        ) || "dark";
-
-
-    let index =
+    const index =
         themes.indexOf(current);
 
+    const next =
+        themes[(index + 1) % themes.length];
 
-    index++;
-
-
-    if(index >= themes.length){
-
-        index = 0;
-
-    }
-
-
-    applyTheme(
-        themes[index]
-    );
-
+    applyTheme(next);
 }
 
-
-/* =====================================================
-   MOBILE THEME
-===================================================== */
-
-function changeThemeFromMobile(){
-
-    changeTheme();
-
-    closeMobileMenu();
-
-}
-
-
-/* =====================================================
-   LOAD THEME
-===================================================== */
 
 const savedTheme =
-    localStorage.getItem(
-        "creatorFlowTheme"
-    );
+    localStorage.getItem("creatorFlowTheme")
+    || "dark";
+
+applyTheme(savedTheme);
 
 
-applyTheme(
-    savedTheme || "dark"
+/* =========================================================
+   NAVBAR
+   ========================================================= */
+
+const navbar =
+    document.getElementById("navbar");
+
+window.addEventListener(
+    "scroll",
+    () => {
+
+        navbar.classList.toggle(
+            "scrolled",
+            window.scrollY > 10
+        );
+
+    },
+    { passive: true }
 );
 
 
-/* =====================================================
+/* =========================================================
    MOBILE MENU
-===================================================== */
+   ========================================================= */
+
+const menuToggle =
+    document.getElementById("menuToggle");
 
 const mobileMenu =
-    document.getElementById(
-        "mobileMenu"
-    );
+    document.getElementById("mobileMenu");
 
 
-const menuButton =
-    document.getElementById(
-        "menuButton"
-    );
+function toggleMobileMenu(force) {
 
+    const shouldOpen =
+        typeof force === "boolean"
+            ? force
+            : !mobileMenu.classList.contains("open");
 
-function toggleMobileMenu(){
-
-    const open =
-        mobileMenu.classList.toggle(
-            "open"
-        );
-
-
-    menuButton.classList.toggle(
+    mobileMenu.classList.toggle(
         "open",
-        open
+        shouldOpen
     );
 
+    menuToggle.classList.toggle(
+        "open",
+        shouldOpen
+    );
 
-    menuButton.setAttribute(
+    menuToggle.setAttribute(
         "aria-expanded",
-        open
+        shouldOpen
     );
 
+    menuToggle.setAttribute(
+        "aria-label",
+        shouldOpen
+            ? "Close menu"
+            : "Open menu"
+    );
 }
 
 
-function closeMobileMenu(){
-
-    mobileMenu.classList.remove(
-        "open"
-    );
-
-    menuButton.classList.remove(
-        "open"
-    );
-
-    menuButton.setAttribute(
-        "aria-expanded",
-        "false"
-    );
-
+function closeMobileMenu() {
+    toggleMobileMenu(false);
 }
 
-
-/* =====================================================
-   MOBILE LINKS
-===================================================== */
 
 document
     .querySelectorAll(".mobile-link")
@@ -3791,211 +3490,121 @@ document
 
         link.addEventListener(
             "click",
-            () => {
-
-                closeMobileMenu();
-
-            }
+            () => closeMobileMenu()
         );
 
     });
 
-
-/* =====================================================
-   CLOSE MENU OUTSIDE
-===================================================== */
-
-document.addEventListener(
-    "click",
-    event => {
-
-        if(
-
-            !mobileMenu.contains(
-                event.target
-            )
-
-            &&
-
-            !menuButton.contains(
-                event.target
-            )
-
-        ){
-
-            closeMobileMenu();
-
-        }
-
-    }
-);
-
-
-/* =====================================================
-   ESCAPE KEY
-===================================================== */
 
 document.addEventListener(
     "keydown",
     event => {
 
-        if(
-            event.key === "Escape"
-        ){
-
+        if (event.key === "Escape") {
             closeMobileMenu();
-
         }
 
     }
 );
 
 
-/* =====================================================
-   NAVBAR SCROLL EFFECT
-===================================================== */
+document.addEventListener(
+    "click",
+    event => {
 
-const mainNav =
-    document.getElementById(
-        "mainNav"
-    );
+        if (
+            mobileMenu.classList.contains("open") &&
+            !navbar.contains(event.target)
+        ) {
+            closeMobileMenu();
+        }
+
+    }
+);
 
 
 window.addEventListener(
-    "scroll",
+    "resize",
     () => {
 
-        if(
-            window.scrollY > 20
-        ){
-
-            mainNav.classList.add(
-                "scrolled"
-            );
-
-        }else{
-
-            mainNav.classList.remove(
-                "scrolled"
-            );
-
+        if (window.innerWidth > 850) {
+            closeMobileMenu();
         }
 
     }
 );
 
 
-/* =====================================================
-   ACTIVE NAVIGATION
-===================================================== */
+/* =========================================================
+   ACTIVE NAV LINKS
+   ========================================================= */
 
-const pageSections =
+const navLinks =
     document.querySelectorAll(
-        "section[id]"
+        ".nav-links a, .mobile-link"
+    );
+
+const sections =
+    document.querySelectorAll(
+        "#home, #tools, #how, #about"
     );
 
 
-const desktopNavLinks =
-    document.querySelectorAll(
-        ".nav-links a"
-    );
+const sectionObserver =
+    new IntersectionObserver(
+        entries => {
 
+            entries.forEach(entry => {
 
-const mobileNavLinks =
-    document.querySelectorAll(
-        ".mobile-link"
-    );
+                if (!entry.isIntersecting) {
+                    return;
+                }
 
+                navLinks.forEach(link => {
 
-function updateActiveNavigation(){
+                    link.classList.remove(
+                        "active"
+                    );
 
-    let current = "home";
+                });
 
+                document
+                    .querySelectorAll(
+                        `a[href="#${entry.target.id}"]`
+                    )
+                    .forEach(link => {
 
-    pageSections.forEach(
-        section => {
+                        link.classList.add(
+                            "active"
+                        );
 
-            const top =
-                section.offsetTop - 180;
+                    });
 
+            });
 
-            if(
-                window.scrollY >= top
-            ){
+        },
+        {
+            rootMargin:
+                "-30% 0px -55% 0px",
 
-                current =
-                    section.id;
-
-            }
-
+            threshold: 0
         }
     );
 
 
-    desktopNavLinks.forEach(
-        link => {
-
-            link.classList.remove(
-                "active"
-            );
+sections.forEach(section => {
+    sectionObserver.observe(section);
+});
 
 
-            if(
-                link.getAttribute(
-                    "href"
-                ) === "#" + current
-            ){
+/* =========================================================
+   TOOL SYSTEM
+   ========================================================= */
 
-                link.classList.add(
-                    "active"
-                );
-
-            }
-
-        }
-    );
-
-
-    mobileNavLinks.forEach(
-        link => {
-
-            link.classList.remove(
-                "active"
-            );
-
-
-            if(
-                link.getAttribute(
-                    "href"
-                ) === "#" + current
-            ){
-
-                link.classList.add(
-                    "active"
-                );
-
-            }
-
-        }
-    );
-
-}
-
-
-window.addEventListener(
-    "scroll",
-    updateActiveNavigation
-);
-
-
-/* =====================================================
-   OPEN TOOL
-===================================================== */
-
-function openTool(id){
+function openTool(id) {
 
     document
-        .querySelectorAll(".panel")
+        .querySelectorAll(".tool-panel")
         .forEach(panel => {
 
             panel.classList.remove(
@@ -4004,33 +3613,29 @@ function openTool(id){
 
         });
 
-
-    document
-        .getElementById(id)
-        .classList.add(
-            "active"
+    const panel =
+        document.getElementById(
+            `panel-${id}`
         );
 
+    if (!panel) return;
+
+    panel.classList.add("active");
 
     document
         .getElementById("tools")
         .scrollIntoView({
-
-            behavior:"smooth"
-
+            behavior: "smooth",
+            block: "start"
         });
 
 }
 
 
-/* =====================================================
-   CLOSE TOOLS
-===================================================== */
-
-function closeTools(){
+function closeTools() {
 
     document
-        .querySelectorAll(".panel")
+        .querySelectorAll(".tool-panel")
         .forEach(panel => {
 
             panel.classList.remove(
@@ -4042,100 +3647,53 @@ function closeTools(){
 }
 
 
-/* =====================================================
-   SHOW RESULTS
-===================================================== */
+/* =========================================================
+   RESULTS
+   ========================================================= */
 
-function showResults(id,items){
+function showResults(
+    containerId,
+    items
+) {
 
-    const box =
-        document.getElementById(id);
+    const container =
+        document.getElementById(
+            containerId
+        );
 
-
-    box.innerHTML = "";
-
+    container.innerHTML = "";
 
     items.forEach(
-        (text,index) => {
-
+        (item, index) => {
 
             const row =
                 document.createElement(
                     "div"
                 );
 
-
             row.className =
-                "result";
+                "result-item";
 
+            row.innerHTML = `
 
-            const content =
-                document.createElement(
-                    "span"
-                );
+                <div class="result-number">
+                    ${String(index + 1).padStart(2, "0")}
+                </div>
 
+                <div class="result-text">
+                    ${escapeHTML(item)}
+                </div>
 
-            content.innerHTML =
+                <button
+                    class="copy-btn"
+                    onclick="copyText(this, ${JSON.stringify(item)})"
+                >
+                    Copy
+                </button>
 
-                `<b class="neon">
+            `;
 
-                    ${index + 1}.
-
-                </b>
-
-                ${escapeHTML(text)}`;
-
-
-            const button =
-                document.createElement(
-                    "button"
-                );
-
-
-            button.className =
-                "copy";
-
-
-            button.textContent =
-                "Copy";
-
-
-            button.onclick = () => {
-
-                navigator.clipboard
-                    .writeText(text);
-
-
-                button.textContent =
-                    "Copied ✓";
-
-
-                setTimeout(
-                    () => {
-
-                        button.textContent =
-                            "Copy";
-
-                    },
-                    1200
-                );
-
-            };
-
-
-            row.appendChild(
-                content
-            );
-
-
-            row.appendChild(
-                button
-            );
-
-
-            box.appendChild(
-                row
-            );
+            container.appendChild(row);
 
         }
     );
@@ -4143,566 +3701,695 @@ function showResults(id,items){
 }
 
 
-/* =====================================================
-   TITLE GENERATOR
-===================================================== */
+async function copyText(
+    button,
+    text
+) {
 
-function generateTitles(){
+    try {
 
-    let topic =
-        document
-        .getElementById(
-            "titleTopic"
-        )
-        .value
-        .trim();
+        await navigator.clipboard.writeText(
+            text
+        );
 
+        const oldText =
+            button.textContent;
 
-    if(!topic){
+        button.textContent =
+            "Copied ✓";
 
-        topic =
-            "This Topic";
+        setTimeout(() => {
+
+            button.textContent =
+                oldText;
+
+        }, 1300);
+
+    } catch {
+
+        button.textContent =
+            "Copy failed";
 
     }
 
+}
+
+
+/* =========================================================
+   TITLE GENERATOR
+   ========================================================= */
+
+function generateTitles() {
+
+    const topic =
+        document.getElementById(
+            "titleTopic"
+        ).value.trim();
+
+    const platform =
+        document.getElementById(
+            "titlePlatform"
+        ).value;
+
+    if (!topic) {
+
+        alert(
+            "Enter a topic first."
+        );
+
+        return;
+
+    }
 
     const titles = [
 
-        `Nobody Talks About ${topic}`,
+        `Nobody talks about this ${topic} trick...`,
 
-        `The Truth About ${topic}`,
+        `The ${topic} mistake everyone makes`,
 
-        `10 Things You Need To Know About ${topic}`,
+        `I tried ${topic} so you don't have to`,
 
-        `I Tried ${topic} So You Don't Have To`,
+        `5 things you need to know about ${topic}`,
 
-        `Why Everyone Is Talking About ${topic}`,
+        `This changed how I see ${topic}`,
 
-        `The Secret Behind ${topic}`,
+        `The truth about ${topic}`,
 
-        `Stop Scrolling — Watch This`,
+        `You are probably doing ${topic} wrong`,
 
-        `${topic} Explained In Simple Words`,
+        `${topic}: What nobody tells you`,
 
-        `What Nobody Tells You About ${topic}`,
+        `Save this before trying ${topic}`,
 
-        `Before You Try ${topic}, Watch This`
+        `The easiest way to understand ${topic}`
 
     ];
-
 
     showResults(
         "titleResults",
-        titles
+        titles.map(
+            title =>
+                `${title} · ${platform}`
+        )
     );
 
 }
 
 
-/* =====================================================
+/* =========================================================
    CAPTION GENERATOR
-===================================================== */
+   ========================================================= */
 
-function generateCaptions(){
+function generateCaptions() {
 
-    let topic =
+    const description =
         document
-        .getElementById(
-            "captionTopic"
-        )
-        .value
-        .trim();
+            .getElementById(
+                "captionDescription"
+            )
+            .value
+            .trim();
 
+    const platform =
+        document.getElementById(
+            "captionPlatform"
+        ).value;
 
-    if(!topic){
+    const tone =
+        document.getElementById(
+            "captionTone"
+        ).value;
 
-        topic =
-            "this moment";
+    if (!description) {
+
+        alert(
+            "Describe your content first."
+        );
+
+        return;
 
     }
-
 
     const captions = [
 
-        `${topic}. Sometimes the simple moments are the best ones. ✨`,
+        `Just another moment worth remembering. ✨`,
 
-        `Just enjoying ${topic}. That's the whole vibe. 🖤`,
+        `Some moments don't need a long explanation.`,
 
-        `One moment. One memory. One story.`,
+        `This one felt different. 🔥`,
 
-        `Keeping this one in the memories. 📸`,
+        `Simple moment. Big energy.`,
 
-        `Life feels better when you slow down and enjoy moments like this.`,
+        `Keeping this one in the memories.`,
 
-        `${topic}. Simple moment, good memories.`,
+        `POV: you finally captured the moment.`,
 
-        `No words needed. Just this moment.`,
+        `A little reminder to enjoy the process.`,
 
-        `Sometimes the simple moments become the best memories.`,
+        `Made for the timeline. 🚀`,
 
-        `A moment worth remembering. ✨`,
+        `No perfect plan. Just create.`,
 
-        `Just creating, living and enjoying the moment.`
+        `One post. One moment. One memory.`
 
     ];
-
 
     showResults(
         "captionResults",
-        captions
+        captions.map(
+            caption =>
+                `${caption} · ${tone} · ${platform}`
+        )
     );
 
 }
 
 
-/* =====================================================
-   REEL IDEAS
-===================================================== */
+/* =========================================================
+   IDEA GENERATOR
+   ========================================================= */
 
-function generateIdeas(){
+function generateIdeas() {
 
-    let niche =
+    const niche =
         document
-        .getElementById(
-            "ideaNiche"
-        )
-        .value
-        .trim();
+            .getElementById(
+                "ideaNiche"
+            )
+            .value
+            .trim();
 
+    const type =
+        document.getElementById(
+            "ideaType"
+        ).value;
 
-    if(!niche){
+    if (!niche) {
 
-        niche =
-            "your niche";
+        alert(
+            "Enter your niche first."
+        );
+
+        return;
 
     }
-
 
     const ideas = [
 
-        `Nobody tells you this about ${niche}...`,
+        `3 things beginners should know about ${niche}`,
 
-        `3 things about ${niche} you didn't know.`,
+        `I tried the most popular ${niche} idea`,
 
-        `Stop doing this if you're interested in ${niche}.`,
+        `The biggest ${niche} mistake`,
 
-        `The easiest way to understand ${niche}.`,
+        `Things I wish I knew before starting ${niche}`,
 
-        `What beginners get wrong about ${niche}.`,
+        `A day in the life of a ${niche} creator`,
 
-        `I tested this so you don't have to.`,
+        `5 underrated ${niche} tips`,
 
-        `Before you start ${niche}, watch this.`,
+        `The truth about ${niche}`,
 
-        `The underrated side of ${niche}.`,
+        `Reacting to ${niche} trends`,
 
-        `Things I wish I knew about ${niche}.`,
+        `Before vs after: ${niche}`,
 
-        `If you like ${niche}, you need to see this.`
+        `What nobody tells you about ${niche}`
 
     ];
 
-
     showResults(
         "ideaResults",
-        ideas
+        ideas.map(
+            idea =>
+                `${idea} · ${type}`
+        )
     );
 
 }
 
 
-/* =====================================================
+/* =========================================================
    PLANNER
-===================================================== */
+   ========================================================= */
 
-let plans =
-
-    JSON.parse(
-
-        localStorage.getItem(
-            "creatorFlowPlans"
-        )
-
-    ) || [];
+const PLAN_KEY =
+    "creatorFlowPlans";
 
 
-function savePlans(){
+function getPlans() {
+
+    try {
+
+        return JSON.parse(
+            localStorage.getItem(
+                PLAN_KEY
+            ) || "[]"
+        );
+
+    } catch {
+
+        return [];
+
+    }
+
+}
+
+
+function savePlans(plans) {
 
     localStorage.setItem(
-
-        "creatorFlowPlans",
-
+        PLAN_KEY,
         JSON.stringify(plans)
-
     );
 
 }
 
 
-function addPlan(){
+function addPlan() {
 
     const date =
-        document
-        .getElementById(
+        document.getElementById(
             "planDate"
-        )
-        .value;
-
+        ).value;
 
     const platform =
-        document
-        .getElementById(
+        document.getElementById(
             "planPlatform"
-        )
-        .value;
+        ).value;
 
+    const idea =
+        document.getElementById(
+            "planIdea"
+        ).value.trim();
 
-    const content =
-        document
-        .getElementById(
-            "planContent"
-        )
-        .value
-        .trim();
-
-
-    if(!date){
+    if (!date || !idea) {
 
         alert(
-            "Please select a date."
+            "Choose a date and enter a content idea."
         );
 
         return;
 
     }
 
-
-    if(!content){
-
-        alert(
-            "Please enter a content idea."
-        );
-
-        return;
-
-    }
-
+    const plans =
+        getPlans();
 
     plans.push({
 
-        id:Date.now(),
+        id:
+            Date.now(),
 
-        date:date,
+        date,
 
-        platform:platform,
+        platform,
 
-        content:content,
+        idea,
 
-        status:"Planned"
+        status:
+            "Planned"
 
     });
 
+    savePlans(plans);
 
-    document
-        .getElementById(
-            "planContent"
-        )
-        .value = "";
-
-
-    savePlans();
+    document.getElementById(
+        "planIdea"
+    ).value = "";
 
     renderPlans();
 
 }
 
 
-/* =====================================================
-   DELETE PLAN
-===================================================== */
+function deletePlan(id) {
 
-function deletePlan(id){
-
-    plans =
-        plans.filter(
+    const plans =
+        getPlans().filter(
             plan =>
-            plan.id !== id
+                plan.id !== id
         );
 
-
-    savePlans();
+    savePlans(plans);
 
     renderPlans();
 
 }
 
-
-/* =====================================================
-   STATUS
-===================================================== */
 
 function changeStatus(
     id,
     status
-){
+) {
 
-    plans.forEach(
-        plan => {
+    const plans =
+        getPlans();
 
-            if(
-                plan.id === id
-            ){
+    const plan =
+        plans.find(
+            item =>
+                item.id === id
+        );
 
-                plan.status =
-                    status;
+    if (!plan) return;
 
-            }
+    plan.status =
+        status;
 
-        }
-    );
-
-
-    savePlans();
+    savePlans(plans);
 
     renderPlans();
 
 }
 
 
-/* =====================================================
-   RENDER PLANS
-===================================================== */
+function renderPlans() {
 
-function renderPlans(){
+    const plans =
+        getPlans();
 
-    const box =
-        document
-        .getElementById(
-            "plans"
+    const list =
+        document.getElementById(
+            "planList"
         );
 
+    list.innerHTML = "";
 
-    box.innerHTML = "";
+    const planned =
+        plans.filter(
+            plan =>
+                plan.status === "Planned"
+        ).length;
+
+    const posted =
+        plans.filter(
+            plan =>
+                plan.status === "Posted"
+        ).length;
+
+    document.getElementById(
+        "totalPlans"
+    ).textContent =
+        plans.length;
+
+    document.getElementById(
+        "plannedCount"
+    ).textContent =
+        planned;
+
+    document.getElementById(
+        "postedCount"
+    ).textContent =
+        posted;
 
 
-    plans.forEach(
-        plan => {
+    if (!plans.length) {
+
+        list.innerHTML = `
+
+            <div
+                style="
+                    padding:25px;
+                    text-align:center;
+                    color:var(--muted);
+                    border:1px dashed var(--border);
+                    border-radius:12px;
+                    font-size:12px;
+                "
+            >
+                No content planned yet.
+                Add your first idea above ✨
+            </div>
+
+        `;
+
+        return;
+
+    }
 
 
-            const row =
+    plans
+        .sort(
+            (a,b) =>
+                a.date.localeCompare(b.date)
+        )
+        .forEach(plan => {
+
+            const item =
                 document.createElement(
                     "div"
                 );
 
+            item.className =
+                "plan-item";
 
-            row.className =
-                "plan";
+            item.innerHTML = `
 
+                <div class="plan-date">
+                    ${escapeHTML(plan.date)}
+                </div>
 
-            row.innerHTML = `
-
-                <div>
+                <div class="plan-content">
 
                     <strong>
-
-                        ${escapeHTML(
-                            plan.content
-                        )}
-
+                        ${escapeHTML(plan.idea)}
                     </strong>
 
-
                     <small>
-
-                        ${escapeHTML(
-                            plan.date
-                        )}
-
-                        ·
-
-                        ${escapeHTML(
-                            plan.platform
-                        )}
-
+                        ${escapeHTML(plan.platform)}
                     </small>
 
                 </div>
 
+                <select
+                    class="status-select"
+                    onchange="changeStatus(${plan.id}, this.value)"
+                >
 
-                <div>
-
-                    <select
-
-                    onchange="
-                    changeStatus(
-                        ${plan.id},
-                        this.value
-                    )">
-
-                        <option
-                        ${plan.status === "Idea"
-                        ? "selected"
-                        : ""}>
-
-                        Idea
-
-                        </option>
-
-
-                        <option
-                        ${plan.status === "Planned"
-                        ? "selected"
-                        : ""}>
-
+                    <option
+                        ${plan.status === "Planned" ? "selected" : ""}
+                    >
                         Planned
+                    </option>
 
-                        </option>
-
-
-                        <option
-                        ${plan.status === "Posted"
-                        ? "selected"
-                        : ""}>
-
+                    <option
+                        ${plan.status === "Posted" ? "selected" : ""}
+                    >
                         Posted
+                    </option>
 
-                        </option>
+                </select>
 
-                    </select>
-
-
-                    <button
-
-                    class="delete"
-
-                    onclick="
-                    deletePlan(
-                        ${plan.id}
-                    )">
-
-                    Delete
-
-                    </button>
-
-                </div>
+                <button
+                    class="delete-btn"
+                    onclick="deletePlan(${plan.id})"
+                    aria-label="Delete plan"
+                >
+                    ✕
+                </button>
 
             `;
 
+            list.appendChild(item);
 
-            box.appendChild(
-                row
-            );
+        });
 
-        }
-    );
+}
 
 
-    document
-        .getElementById(
-            "total"
-        )
-        .textContent =
-        plans.length;
+/* =========================================================
+   SECURITY HELPER
+   ========================================================= */
+
+function escapeHTML(
+    value
+) {
+
+    return String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+
+}
 
 
-    document
-        .getElementById(
-            "planned"
-        )
-        .textContent =
+/* =========================================================
+   DEFAULT DATE
+   ========================================================= */
 
-        plans.filter(
-            p =>
-            p.status ===
-            "Planned"
-        ).length;
-
-
-    document
-        .getElementById(
-            "posted"
-        )
-        .textContent =
-
-        plans.filter(
-            p =>
-            p.status ===
-            "Posted"
-        ).length;
+document.getElementById(
+    "planDate"
+).value =
+    new Date()
+        .toISOString()
+        .split("T")[0];
 
 
-    if(
-        plans.length === 0
-    ){
+/* =========================================================
+   DEMO HERO GENERATOR
+   ========================================================= */
 
-        box.innerHTML = `
+function demoGenerate() {
 
-            <p style="
-                color:var(--muted);
-                text-align:center;
-                padding:20px;
-            ">
+    const results =
+        document.getElementById(
+            "previewResults"
+        );
 
-            No content planned yet 🚀
+    results.style.opacity = ".35";
 
-            </p>
+    setTimeout(() => {
+
+        results.innerHTML = `
+
+            <div class="generated-item">
+
+                <div class="generated-icon">
+                    🔥
+                </div>
+
+                <div>
+
+                    <strong>
+                        Weekend Travel Reel
+                    </strong>
+
+                    <small>
+                        Fresh content idea
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="generated-item">
+
+                <div class="generated-icon">
+                    ✍️
+                </div>
+
+                <div>
+
+                    <strong>
+                        10 Viral Hooks
+                    </strong>
+
+                    <small>
+                        Ready to customize
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="generated-item">
+
+                <div class="generated-icon">
+                    🚀
+                </div>
+
+                <div>
+
+                    <strong>
+                        Content Ready
+                    </strong>
+
+                    <small>
+                        Time to create
+                    </small>
+
+                </div>
+
+            </div>
 
         `;
 
+        results.style.opacity = "1";
+
+    }, 350);
+
+}
+
+
+/* =========================================================
+   HERO WORKFLOW ANIMATION
+   ========================================================= */
+
+const workflowItems =
+    document.querySelectorAll(
+        "#heroWorkflow .workflow-item"
+    );
+
+const flowNodes =
+    document.querySelectorAll(
+        ".flow-node"
+    );
+
+let workflowIndex = 0;
+
+
+function animateWorkflow() {
+
+    workflowItems.forEach(
+        item =>
+            item.classList.remove(
+                "active"
+            )
+    );
+
+    flowNodes.forEach(
+        node =>
+            node.classList.remove(
+                "active"
+            )
+    );
+
+    workflowItems[
+        workflowIndex
+    ].classList.add(
+        "active"
+    );
+
+    if (flowNodes[workflowIndex]) {
+
+        flowNodes[
+            workflowIndex
+        ].classList.add(
+            "active"
+        );
+
+    }
+
+    workflowIndex++;
+
+    if (
+        workflowIndex >=
+        workflowItems.length
+    ) {
+        workflowIndex = 0;
     }
 
 }
 
 
-/* =====================================================
-   ESCAPE HTML
-===================================================== */
-
-function escapeHTML(text){
-
-    const div =
-        document.createElement(
-            "div"
-        );
+setInterval(
+    animateWorkflow,
+    1700
+);
 
 
-    div.textContent =
-        text;
-
-
-    return div.innerHTML;
-
-}
-
-
-/* =====================================================
-   DEFAULT DATE
-===================================================== */
-
-document
-    .getElementById(
-        "planDate"
-    )
-    .value =
-
-    new Date()
-    .toISOString()
-    .split("T")[0];
-
-
-/* =====================================================
-   START
-===================================================== */
+/* =========================================================
+   INITIALIZE
+   ========================================================= */
 
 renderPlans();
 
-updateActiveNavigation();
-
-
 </script>
 
-
 </body>
-
 </html>
-```
