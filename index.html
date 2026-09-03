@@ -9,3064 +9,3339 @@
 <link rel="icon" type="image/png" href="cf-logo.png">
 
 <style>
+
 /* =========================================================
-   CREATORFLOW 2.0
-   PERSONAL CREATOR WORKSPACE
-========================================================= */
+   CREATORFLOW — HERO 2.0
+   ========================================================= */
 
-:root{
-    --bg:#080b0a;
-    --bg2:#0d1210;
-    --card:rgba(18,24,21,.78);
-    --card2:rgba(24,31,27,.9);
-    --text:#f5fff9;
-    --muted:#9aa9a1;
-    --accent:#39ff88;
-    --accent2:#16c968;
-    --border:rgba(255,255,255,.09);
-    --shadow:0 20px 60px rgba(0,0,0,.35);
-    --danger:#ff4654;
-    --radius:22px;
+:root {
+    --accent: #39ff88;
+    --accent-soft: rgba(57,255,136,.14);
+    --accent-glow: rgba(57,255,136,.28);
+
+    --bg: #050706;
+    --bg-2: #090d0b;
+    --card: rgba(13,18,15,.78);
+    --card-solid: #0d120f;
+
+    --text: #f5f7f6;
+    --muted: #9da8a1;
+    --border: rgba(255,255,255,.09);
+
+    --shadow: 0 20px 60px rgba(0,0,0,.35);
+
+    --nav-height: 76px;
 }
 
-body.light{
-    --bg:#f5f8f6;
-    --bg2:#ffffff;
-    --card:rgba(255,255,255,.78);
-    --card2:#ffffff;
-    --text:#101713;
-    --muted:#68746d;
-    --accent:#10a957;
-    --accent2:#078942;
-    --border:rgba(0,0,0,.08);
-    --shadow:0 20px 50px rgba(0,0,0,.09);
+/* LIGHT */
+
+body.light {
+    --accent: #10a957;
+    --accent-soft: rgba(16,169,87,.10);
+    --accent-glow: rgba(16,169,87,.20);
+
+    --bg: #f5f8f6;
+    --bg-2: #ffffff;
+    --card: rgba(255,255,255,.82);
+    --card-solid: #ffffff;
+
+    --text: #101512;
+    --muted: #647068;
+    --border: rgba(16,21,18,.10);
+
+    --shadow: 0 20px 60px rgba(20,40,30,.10);
 }
 
-body.spidey{
-    --bg:#070708;
-    --bg2:#0d090a;
-    --card:rgba(20,11,13,.84);
-    --card2:rgba(28,12,15,.94);
-    --text:#fff7f7;
-    --muted:#b49da0;
-    --accent:#ff2638;
-    --accent2:#d80f20;
-    --border:rgba(255,38,56,.16);
-    --shadow:0 20px 70px rgba(255,0,30,.13);
+/* SPIDEY */
+
+body.spidey {
+    --accent: #ff2638;
+    --accent-soft: rgba(255,38,56,.12);
+    --accent-glow: rgba(255,38,56,.30);
+
+    --bg: #050304;
+    --bg-2: #0c0506;
+    --card: rgba(17,7,9,.82);
+    --card-solid: #110709;
+
+    --text: #fff5f6;
+    --muted: #b79da0;
+    --border: rgba(255,38,56,.15);
+
+    --shadow: 0 20px 70px rgba(255,0,30,.12);
 }
 
-/* RESET */
+/* =========================================================
+   GLOBAL
+   ========================================================= */
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-html{
-    scroll-behavior:smooth;
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
 }
 
-body{
-    font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+body {
+    font-family:
+        Inter,
+        ui-sans-serif,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
     background:
-        radial-gradient(circle at 10% 10%,rgba(57,255,136,.06),transparent 30%),
-        radial-gradient(circle at 90% 20%,rgba(57,255,136,.04),transparent 30%),
+        radial-gradient(
+            circle at 50% -10%,
+            var(--accent-soft),
+            transparent 35%
+        ),
         var(--bg);
-    color:var(--text);
-    min-height:100vh;
-    transition:.35s ease;
+
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+    transition:
+        background .45s ease,
+        color .45s ease;
 }
 
-body.spidey{
-    background:
-        radial-gradient(circle at 15% 10%,rgba(255,38,56,.12),transparent 30%),
-        radial-gradient(circle at 85% 20%,rgba(255,0,30,.08),transparent 30%),
-        var(--bg);
-}
-
-body.spidey::before{
-    content:"";
-    position:fixed;
-    inset:0;
-    pointer-events:none;
-    opacity:.13;
-    background-image:
-        linear-gradient(30deg,transparent 49%,var(--accent) 50%,transparent 51%),
-        linear-gradient(150deg,transparent 49%,var(--accent) 50%,transparent 51%);
-    background-size:90px 90px;
-    mask-image:linear-gradient(to bottom,black,transparent 80%);
-    z-index:-1;
-}
-
-a{
-    color:inherit;
-    text-decoration:none;
+a {
+    color: inherit;
+    text-decoration: none;
 }
 
 button,
 input,
-textarea,
-select{
-    font:inherit;
+select,
+textarea {
+    font: inherit;
 }
 
-button{
-    cursor:pointer;
+button {
+    cursor: pointer;
 }
 
-.container{
-    width:min(1180px,92%);
-    margin:auto;
+::selection {
+    background: var(--accent);
+    color: #07100b;
+}
+
+/* =========================================================
+   BACKGROUND PARTICLES
+   ========================================================= */
+
+.bg-particles {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -2;
+    overflow: hidden;
+}
+
+.particle {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: var(--accent);
+    opacity: .25;
+    box-shadow: 0 0 12px var(--accent);
+    animation: floatParticle linear infinite;
+}
+
+.particle:nth-child(1) {
+    left: 8%;
+    top: 25%;
+    animation-duration: 15s;
+}
+
+.particle:nth-child(2) {
+    left: 18%;
+    top: 70%;
+    animation-duration: 19s;
+}
+
+.particle:nth-child(3) {
+    left: 32%;
+    top: 20%;
+    animation-duration: 17s;
+}
+
+.particle:nth-child(4) {
+    left: 49%;
+    top: 78%;
+    animation-duration: 22s;
+}
+
+.particle:nth-child(5) {
+    left: 63%;
+    top: 25%;
+    animation-duration: 18s;
+}
+
+.particle:nth-child(6) {
+    left: 78%;
+    top: 65%;
+    animation-duration: 20s;
+}
+
+.particle:nth-child(7) {
+    left: 90%;
+    top: 30%;
+    animation-duration: 16s;
+}
+
+@keyframes floatParticle {
+    0%,100% {
+        transform: translateY(0) scale(1);
+    }
+
+    50% {
+        transform: translateY(-35px) scale(1.5);
+    }
+}
+
+/* =========================================================
+   SPIDEY WEB BACKGROUND
+   ========================================================= */
+
+body.spidey::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+
+    opacity: .12;
+
+    background-image:
+        linear-gradient(
+            30deg,
+            transparent 48%,
+            var(--accent) 49%,
+            transparent 51%
+        ),
+        linear-gradient(
+            -30deg,
+            transparent 48%,
+            var(--accent) 49%,
+            transparent 51%
+        );
+
+    background-size: 110px 110px;
+    mask-image: radial-gradient(
+        circle at center,
+        black,
+        transparent 75%
+    );
+}
+
+body.spidey::after {
+    content: "";
+    position: fixed;
+    width: 600px;
+    height: 600px;
+    right: -220px;
+    top: 80px;
+    pointer-events: none;
+    z-index: -1;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,38,56,.18),
+            transparent 65%
+        );
 }
 
 /* =========================================================
    NAVBAR
-========================================================= */
+   ========================================================= */
 
-.navbar{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:76px;
-    z-index:1000;
-    display:flex;
-    align-items:center;
-    background:rgba(8,11,10,.65);
-    backdrop-filter:blur(20px);
-    border-bottom:1px solid var(--border);
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+
+    height: var(--nav-height);
+
+    background: rgba(5,7,6,.72);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    border-bottom: 1px solid transparent;
+
+    transition:
+        background .3s ease,
+        box-shadow .3s ease,
+        border .3s ease;
 }
 
-body.light .navbar{
-    background:rgba(255,255,255,.75);
+body.light nav {
+    background: rgba(255,255,255,.78);
 }
 
-body.spidey .navbar{
-    background:rgba(8,5,6,.78);
+body.spidey nav {
+    background: rgba(5,3,4,.82);
 }
 
-.nav-inner{
-    width:min(1180px,92%);
-    margin:auto;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:25px;
+nav.scrolled {
+    border-bottom-color: var(--border);
+    box-shadow: 0 10px 40px rgba(0,0,0,.15);
 }
 
-.logo{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    font-size:20px;
-    font-weight:900;
-    letter-spacing:-.5px;
+.nav {
+    width: min(1180px, calc(100% - 40px));
+    height: 100%;
+    margin: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
-.logo img{
-    width:38px;
-    height:38px;
-    object-fit:contain;
-    border-radius:11px;
+.logo {
+    font-size: 22px;
+    font-weight: 900;
+    letter-spacing: -.8px;
 }
 
-.logo span{
-    color:var(--accent);
+.logo span {
+    color: var(--accent);
 }
 
-.nav-links{
-    display:flex;
-    align-items:center;
-    gap:27px;
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 24px;
 }
 
-.nav-links a{
-    color:var(--muted);
-    font-size:14px;
-    font-weight:700;
-    transition:.2s;
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+.nav-links a {
+    position: relative;
+
+    color: var(--muted);
+    font-size: 14px;
+    font-weight: 650;
+
+    padding: 8px 0;
+
+    transition:
+        color .25s ease;
+}
+
+.nav-links a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    height: 2px;
+    border-radius: 10px;
+
+    background: var(--accent);
+
+    transform: scaleX(0);
+    transform-origin: center;
+
+    transition: transform .25s ease;
 }
 
 .nav-links a:hover,
-.nav-links a.active{
-    color:var(--accent);
+.nav-links a.active {
+    color: var(--text);
 }
 
-.nav-actions{
-    display:flex;
-    align-items:center;
-    gap:10px;
+.nav-links a:hover::after,
+.nav-links a.active::after {
+    transform: scaleX(1);
 }
 
-.theme-btn,
-.menu-btn{
-    width:42px;
-    height:42px;
-    border-radius:12px;
-    border:1px solid var(--border);
-    background:var(--card);
-    color:var(--text);
+.nav-cta {
+    padding: 10px 16px;
+    border-radius: 11px;
+
+    background: var(--accent);
+    color: #061009;
+
+    font-size: 13px;
+    font-weight: 850;
+
+    box-shadow:
+        0 0 0 transparent,
+        0 0 24px var(--accent-glow);
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease;
 }
 
-.menu-btn{
-    display:none;
+.nav-cta:hover {
+    transform: translateY(-2px);
+    box-shadow:
+        0 8px 28px var(--accent-glow);
 }
 
-.user-pill{
-    display:flex;
-    align-items:center;
-    gap:9px;
-    border:1px solid var(--border);
-    background:var(--card);
-    padding:7px 12px 7px 7px;
-    border-radius:999px;
-    cursor:pointer;
+.theme-btn {
+    width: 42px;
+    height: 42px;
+
+    border: 1px solid var(--border);
+    border-radius: 12px;
+
+    background: var(--card);
+    color: var(--text);
+
+    display: grid;
+    place-items: center;
+
+    font-size: 17px;
+
+    transition:
+        transform .2s ease,
+        border .2s ease;
 }
 
-.user-avatar{
-    width:30px;
-    height:30px;
-    border-radius:50%;
-    display:grid;
-    place-items:center;
-    background:var(--accent);
-    color:#050805;
-    font-size:13px;
-    font-weight:900;
+.theme-btn:hover {
+    transform: rotate(8deg) scale(1.05);
+    border-color: var(--accent);
+}
+
+/* HAMBURGER */
+
+.menu-toggle {
+    display: none;
+
+    width: 42px;
+    height: 42px;
+
+    border: 1px solid var(--border);
+    border-radius: 12px;
+
+    background: var(--card);
+    color: var(--text);
+
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+.menu-toggle span {
+    width: 18px;
+    height: 2px;
+
+    border-radius: 10px;
+    background: currentColor;
+
+    transition:
+        transform .25s ease,
+        opacity .25s ease;
+}
+
+.menu-toggle.open span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.menu-toggle.open span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.open span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+/* MOBILE MENU */
+
+.mobile-menu {
+    display: none;
 }
 
 /* =========================================================
-   BUTTONS
-========================================================= */
+   HERO
+   ========================================================= */
 
-.btn{
-    border:0;
-    border-radius:13px;
-    padding:12px 18px;
-    font-weight:800;
-    transition:.25s;
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    gap:8px;
+.hero {
+    position: relative;
+
+    min-height: 820px;
+
+    padding:
+        calc(var(--nav-height) + 90px)
+        20px
+        90px;
+
+    display: flex;
+    align-items: center;
+
+    overflow: hidden;
 }
 
-.btn-primary{
-    background:var(--accent);
-    color:#051007;
-    box-shadow:0 8px 30px rgba(57,255,136,.14);
-}
+/* Hero glow */
 
-body.spidey .btn-primary{
-    color:white;
-    box-shadow:0 8px 30px rgba(255,38,56,.18);
-}
+.hero::before {
+    content: "";
+    position: absolute;
 
-.btn-primary:hover{
-    transform:translateY(-2px);
-    box-shadow:0 12px 35px rgba(57,255,136,.25);
-}
+    width: 800px;
+    height: 800px;
 
-.btn-secondary{
-    color:var(--text);
-    background:var(--card);
-    border:1px solid var(--border);
-}
+    left: -350px;
+    top: 50px;
 
-.btn-secondary:hover{
-    border-color:var(--accent);
-    transform:translateY(-2px);
-}
-
-.btn-small{
-    padding:9px 13px;
-    font-size:12px;
-}
-
-/* =========================================================
-   LOGIN SCREEN
-========================================================= */
-
-.auth-screen{
-    min-height:100vh;
-    display:none;
-    align-items:center;
-    justify-content:center;
-    padding:30px;
-    position:relative;
-    overflow:hidden;
-}
-
-.auth-screen.active{
-    display:flex;
-}
-
-.auth-bg{
-    position:absolute;
-    inset:0;
     background:
-        radial-gradient(circle at 20% 30%,rgba(57,255,136,.12),transparent 28%),
-        radial-gradient(circle at 80% 70%,rgba(57,255,136,.08),transparent 28%);
+        radial-gradient(
+            circle,
+            var(--accent-glow),
+            transparent 68%
+        );
+
+    filter: blur(40px);
+    opacity: .55;
+
+    pointer-events: none;
 }
 
-body.spidey .auth-bg{
+.hero::after {
+    content: "";
+    position: absolute;
+
+    width: 700px;
+    height: 700px;
+
+    right: -350px;
+    bottom: -300px;
+
     background:
-        radial-gradient(circle at 20% 30%,rgba(255,38,56,.18),transparent 30%),
-        radial-gradient(circle at 80% 70%,rgba(255,0,30,.1),transparent 30%),
-        url("spidey-bg.jpg") center/cover;
-    opacity:.45;
+        radial-gradient(
+            circle,
+            var(--accent-soft),
+            transparent 68%
+        );
+
+    filter: blur(30px);
+
+    pointer-events: none;
 }
 
-.auth-box{
-    width:min(430px,100%);
-    position:relative;
-    z-index:2;
-    padding:38px;
-    border:1px solid var(--border);
-    background:var(--card);
-    backdrop-filter:blur(25px);
-    border-radius:28px;
-    box-shadow:var(--shadow);
+.hero-inner {
+    width: min(1180px, 100%);
+    margin: auto;
+
+    display: grid;
+    grid-template-columns: 1.03fr .97fr;
+
+    gap: 70px;
+    align-items: center;
+
+    position: relative;
+    z-index: 2;
 }
 
-.auth-logo{
-    text-align:center;
-    margin-bottom:25px;
+/* HERO COPY */
+
+.hero-copy {
+    animation: heroIn .8s ease both;
 }
 
-.auth-logo img{
-    width:70px;
-    height:70px;
-    border-radius:20px;
-    margin-bottom:14px;
+@keyframes heroIn {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-.auth-logo h1{
-    font-size:28px;
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+
+    padding: 8px 13px;
+
+    border: 1px solid var(--border);
+    border-radius: 999px;
+
+    background: var(--accent-soft);
+
+    color: var(--accent);
+
+    font-size: 11px;
+    font-weight: 850;
+    letter-spacing: 1.1px;
+
+    margin-bottom: 25px;
+
+    box-shadow:
+        inset 0 0 20px var(--accent-soft);
 }
 
-.auth-logo h1 span{
-    color:var(--accent);
+.badge-dot {
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+    background: var(--accent);
+
+    box-shadow:
+        0 0 10px var(--accent);
+
+    animation: pulseDot 1.8s ease infinite;
 }
 
-.auth-logo p{
-    color:var(--muted);
-    font-size:14px;
-    margin-top:7px;
+@keyframes pulseDot {
+    0%,100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(.65);
+        opacity: .55;
+    }
 }
 
-.auth-tabs{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    padding:4px;
-    background:var(--bg2);
-    border-radius:13px;
-    margin-bottom:22px;
+.hero h1 {
+    max-width: 720px;
+
+    font-size: clamp(50px, 6vw, 82px);
+    line-height: .96;
+
+    letter-spacing: -5px;
+    font-weight: 950;
+
+    margin-bottom: 27px;
 }
 
-.auth-tab{
-    border:0;
-    background:transparent;
-    color:var(--muted);
-    padding:10px;
-    border-radius:10px;
-    font-weight:800;
+.hero h1 .gradient-text {
+    color: var(--accent);
+
+    text-shadow:
+        0 0 40px var(--accent-glow);
 }
 
-.auth-tab.active{
-    background:var(--card2);
-    color:var(--accent);
+.hero-description {
+    max-width: 610px;
+
+    color: var(--muted);
+
+    font-size: 18px;
+    line-height: 1.7;
+
+    margin-bottom: 30px;
 }
 
-.form-group{
-    margin-bottom:16px;
+.hero-description strong {
+    color: var(--text);
 }
 
-.form-group label{
-    display:block;
-    font-size:12px;
-    color:var(--muted);
-    font-weight:800;
-    margin-bottom:7px;
+.hero-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+
+    margin-bottom: 22px;
 }
 
-.form-group input,
-.form-group textarea,
-.form-group select{
-    width:100%;
-    border:1px solid var(--border);
-    background:var(--bg2);
-    color:var(--text);
-    padding:13px 14px;
-    border-radius:13px;
-    outline:none;
-    transition:.2s;
+.btn {
+    border: 0;
+    border-radius: 13px;
+
+    padding: 14px 20px;
+
+    font-size: 14px;
+    font-weight: 850;
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease,
+        background .2s ease;
 }
 
-.form-group input:focus,
-.form-group textarea:focus,
-.form-group select:focus{
-    border-color:var(--accent);
-    box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 10%,transparent);
+.btn.primary {
+    background: var(--accent);
+    color: #061009;
+
+    box-shadow:
+        0 10px 35px var(--accent-glow);
 }
 
-.auth-submit{
-    width:100%;
-    margin-top:5px;
+.btn.primary:hover {
+    transform: translateY(-3px);
+    box-shadow:
+        0 15px 45px var(--accent-glow);
 }
 
-.auth-message{
-    min-height:20px;
-    margin-top:13px;
-    text-align:center;
-    font-size:13px;
-    color:var(--danger);
+.btn.secondary {
+    background: var(--card);
+    border: 1px solid var(--border);
+    color: var(--text);
+}
+
+.btn.secondary:hover {
+    transform: translateY(-3px);
+    border-color: var(--accent);
+}
+
+.hero-note {
+    color: var(--muted);
+    font-size: 12px;
 }
 
 /* =========================================================
-   APP
-========================================================= */
+   CREATORFLOW PREVIEW
+   ========================================================= */
 
-.app{
-    display:none;
+.hero-preview-wrap {
+    position: relative;
+
+    animation:
+        previewIn 1s .15s ease both;
 }
 
-.app.active{
-    display:block;
+@keyframes previewIn {
+    from {
+        opacity: 0;
+        transform: translateX(30px) scale(.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+    }
 }
 
-main{
-    padding-top:76px;
+.preview-glow {
+    position: absolute;
+    inset: 8%;
+
+    background: var(--accent-glow);
+    filter: blur(70px);
+
+    opacity: .4;
+    z-index: -1;
 }
 
-.section{
-    padding:85px 0;
-}
+.creator-preview {
+    position: relative;
 
-.section-head{
-    margin-bottom:35px;
-}
+    border: 1px solid var(--border);
+    border-radius: 25px;
 
-.eyebrow{
-    display:inline-flex;
-    align-items:center;
-    gap:7px;
-    color:var(--accent);
-    font-size:12px;
-    font-weight:900;
-    letter-spacing:1.5px;
-    text-transform:uppercase;
-    margin-bottom:12px;
-}
-
-.section-head h2{
-    font-size:clamp(28px,4vw,46px);
-    letter-spacing:-1.8px;
-}
-
-.section-head p{
-    margin-top:10px;
-    max-width:650px;
-    color:var(--muted);
-    line-height:1.7;
-}
-
-/* =========================================================
-   DASHBOARD HERO
-========================================================= */
-
-.dashboard-hero{
-    padding:70px 0 45px;
-}
-
-.dashboard-grid{
-    display:grid;
-    grid-template-columns:1.35fr .65fr;
-    gap:20px;
-}
-
-.welcome-card{
-    min-height:270px;
-    position:relative;
-    overflow:hidden;
-    padding:35px;
-    border:1px solid var(--border);
-    border-radius:28px;
     background:
-        radial-gradient(circle at 80% 20%,color-mix(in srgb,var(--accent) 13%,transparent),transparent 30%),
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.045),
+            transparent 45%
+        ),
         var(--card);
-    box-shadow:var(--shadow);
+
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+
+    box-shadow:
+        var(--shadow),
+        0 0 0 1px var(--accent-soft);
+
+    padding: 19px;
+
+    transform:
+        perspective(1200px)
+        rotateY(-5deg)
+        rotateX(2deg);
+
+    transition:
+        transform .5s ease;
 }
 
-.welcome-card::after{
-    content:"✦";
-    position:absolute;
-    right:35px;
-    bottom:-35px;
-    font-size:180px;
-    color:var(--accent);
-    opacity:.04;
+.creator-preview:hover {
+    transform:
+        perspective(1200px)
+        rotateY(0deg)
+        rotateX(0deg)
+        translateY(-5px);
 }
 
-.welcome-card h1{
-    font-size:clamp(34px,5vw,58px);
-    line-height:1;
-    letter-spacing:-3px;
-    max-width:650px;
+/* Preview top */
+
+.preview-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
 }
 
-.welcome-card h1 span{
-    color:var(--accent);
+.preview-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
-.welcome-card p{
-    color:var(--muted);
-    max-width:600px;
-    margin:17px 0 25px;
-    line-height:1.7;
+.preview-logo {
+    width: 35px;
+    height: 35px;
+
+    border-radius: 10px;
+
+    display: grid;
+    place-items: center;
+
+    background: var(--accent);
+    color: #061009;
+
+    font-size: 13px;
+    font-weight: 950;
+
+    box-shadow:
+        0 0 25px var(--accent-glow);
 }
 
-.quick-actions{
-    display:flex;
-    flex-wrap:wrap;
-    gap:10px;
+.preview-brand strong {
+    font-size: 14px;
 }
 
-.profile-card{
-    padding:27px;
-    border:1px solid var(--border);
-    border-radius:28px;
-    background:var(--card);
-    box-shadow:var(--shadow);
+.preview-brand small {
+    display: block;
+
+    margin-top: 2px;
+
+    color: var(--muted);
+    font-size: 9px;
 }
 
-.profile-top{
-    display:flex;
-    align-items:center;
-    gap:15px;
-    margin-bottom:24px;
+.preview-status {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    color: var(--accent);
+
+    font-size: 10px;
+    font-weight: 800;
 }
 
-.big-avatar{
-    width:60px;
-    height:60px;
-    border-radius:19px;
-    display:grid;
-    place-items:center;
-    background:var(--accent);
-    color:#071009;
-    font-size:23px;
-    font-weight:900;
+.preview-status span {
+    width: 6px;
+    height: 6px;
+
+    border-radius: 50%;
+    background: var(--accent);
 }
 
-body.spidey .big-avatar{
-    color:white;
+/* Preview content */
+
+.preview-content {
+    padding: 22px 5px 5px;
 }
 
-.profile-top h3{
-    font-size:18px;
+.preview-label {
+    color: var(--muted);
+
+    font-size: 10px;
+    font-weight: 750;
+    letter-spacing: .8px;
+    text-transform: uppercase;
+
+    margin-bottom: 9px;
 }
 
-.profile-top p{
-    color:var(--muted);
-    font-size:13px;
-    margin-top:3px;
+.preview-question {
+    font-size: 20px;
+    font-weight: 850;
+
+    margin-bottom: 14px;
 }
 
-.profile-row{
-    display:flex;
-    justify-content:space-between;
-    padding:13px 0;
-    border-top:1px solid var(--border);
-    color:var(--muted);
-    font-size:13px;
+.preview-input {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 10px;
+
+    padding: 13px 14px;
+
+    border: 1px solid var(--border);
+    border-radius: 12px;
+
+    background: rgba(0,0,0,.15);
+
+    color: var(--text);
+
+    font-size: 12px;
 }
 
-.profile-row strong{
-    color:var(--text);
+body.light .preview-input {
+    background: rgba(0,0,0,.025);
 }
 
-/* =========================================================
-   STATS
-========================================================= */
-
-.stats-grid{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:15px;
-    margin-top:20px;
+.preview-input span {
+    color: var(--muted);
 }
 
-.stat-card{
-    padding:23px;
-    border:1px solid var(--border);
-    border-radius:20px;
-    background:var(--card);
-    transition:.25s;
+.generate-mini {
+    border: 0;
+    border-radius: 8px;
+
+    padding: 8px 11px;
+
+    background: var(--accent);
+    color: #061009;
+
+    font-size: 10px;
+    font-weight: 900;
 }
 
-.stat-card:hover{
-    transform:translateY(-4px);
-    border-color:color-mix(in srgb,var(--accent) 35%,var(--border));
+/* Generated cards */
+
+.generated-title {
+    margin-top: 23px;
+    margin-bottom: 10px;
+
+    font-size: 11px;
+    font-weight: 850;
 }
 
-.stat-icon{
-    font-size:21px;
-    margin-bottom:14px;
+.generated-items {
+    display: grid;
+    gap: 8px;
 }
 
-.stat-card h3{
-    font-size:29px;
+.generated-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    padding: 10px 11px;
+
+    border: 1px solid var(--border);
+    border-radius: 11px;
+
+    background: rgba(255,255,255,.025);
+
+    animation: resultFloat 3s ease-in-out infinite;
 }
 
-.stat-card p{
-    color:var(--muted);
-    font-size:12px;
-    margin-top:4px;
+.generated-item:nth-child(2) {
+    animation-delay: .5s;
 }
 
-/* =========================================================
-   TOOLBAR
-========================================================= */
-
-.tools-toolbar{
-    display:flex;
-    justify-content:space-between;
-    gap:15px;
-    flex-wrap:wrap;
-    margin-bottom:25px;
+.generated-item:nth-child(3) {
+    animation-delay: 1s;
 }
 
-.search-box{
-    flex:1;
-    min-width:230px;
-    position:relative;
-}
-
-.search-box input{
-    width:100%;
-    border:1px solid var(--border);
-    background:var(--card);
-    color:var(--text);
-    border-radius:14px;
-    padding:13px 15px 13px 42px;
-    outline:none;
-}
-
-.search-box span{
-    position:absolute;
-    left:15px;
-    top:50%;
-    transform:translateY(-50%);
-    color:var(--muted);
-}
-
-.filters{
-    display:flex;
-    gap:7px;
-    flex-wrap:wrap;
-}
-
-.filter-btn{
-    border:1px solid var(--border);
-    background:var(--card);
-    color:var(--muted);
-    padding:10px 14px;
-    border-radius:12px;
-    font-size:12px;
-    font-weight:800;
-}
-
-.filter-btn.active,
-.filter-btn:hover{
-    color:var(--accent);
-    border-color:var(--accent);
-}
-
-/* =========================================================
-   TOOL CARDS
-========================================================= */
-
-.tools-grid{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:15px;
-}
-
-.tool-card{
-    position:relative;
-    padding:23px;
-    border:1px solid var(--border);
-    border-radius:21px;
-    background:var(--card);
-    cursor:pointer;
-    transition:.28s;
-    overflow:hidden;
-}
-
-.tool-card:hover{
-    transform:translateY(-6px);
-    border-color:color-mix(in srgb,var(--accent) 45%,var(--border));
-    box-shadow:0 15px 40px rgba(0,0,0,.16);
-}
-
-.tool-card.hidden{
-    display:none;
-}
-
-.tool-icon{
-    width:46px;
-    height:46px;
-    display:grid;
-    place-items:center;
-    border-radius:14px;
-    background:color-mix(in srgb,var(--accent) 9%,transparent);
-    border:1px solid color-mix(in srgb,var(--accent) 15%,transparent);
-    font-size:21px;
-    margin-bottom:18px;
-}
-
-.tool-card h3{
-    font-size:16px;
-    margin-bottom:7px;
-}
-
-.tool-card p{
-    color:var(--muted);
-    font-size:12px;
-    line-height:1.55;
-    min-height:38px;
-}
-
-.tool-meta{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    margin-top:18px;
-}
-
-.tool-category{
-    color:var(--muted);
-    font-size:10px;
-    text-transform:uppercase;
-    letter-spacing:1px;
-    font-weight:900;
-}
-
-.tool-badge{
-    color:var(--accent);
-    font-size:9px;
-    font-weight:900;
-    padding:5px 8px;
-    border-radius:999px;
-    background:color-mix(in srgb,var(--accent) 8%,transparent);
-}
-
-/* =========================================================
-   TOOL WORKSPACE
-========================================================= */
-
-.workspace{
-    display:none;
-    margin-top:25px;
-    padding:28px;
-    border:1px solid var(--border);
-    border-radius:25px;
-    background:var(--card);
-    box-shadow:var(--shadow);
-    animation:workspaceIn .3s ease;
-}
-
-.workspace.active{
-    display:block;
-}
-
-@keyframes workspaceIn{
-    from{
-        opacity:0;
-        transform:translateY(10px);
+@keyframes resultFloat {
+    0%,100% {
+        transform: translateY(0);
     }
-    to{
-        opacity:1;
-        transform:translateY(0);
+
+    50% {
+        transform: translateY(-2px);
     }
 }
 
-.workspace-head{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:15px;
-    margin-bottom:24px;
+.generated-icon {
+    width: 28px;
+    height: 28px;
+
+    flex: 0 0 auto;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 8px;
+
+    background: var(--accent-soft);
+
+    font-size: 13px;
 }
 
-.workspace-title{
-    display:flex;
-    align-items:center;
-    gap:12px;
+.generated-item div:last-child {
+    flex: 1;
 }
 
-.workspace-title .tool-icon{
-    margin:0;
+.generated-item strong {
+    display: block;
+
+    font-size: 11px;
 }
 
-.workspace-title h3{
-    font-size:21px;
+.generated-item small {
+    display: block;
+
+    margin-top: 2px;
+
+    color: var(--muted);
+    font-size: 9px;
 }
 
-.workspace-title p{
-    color:var(--muted);
-    font-size:12px;
-    margin-top:3px;
+/* Preview bottom */
+
+.preview-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-top: 17px;
+    padding-top: 15px;
+
+    border-top: 1px solid var(--border);
 }
 
-.close-workspace{
-    width:35px;
-    height:35px;
-    border-radius:10px;
-    border:1px solid var(--border);
-    background:transparent;
-    color:var(--muted);
+.preview-progress {
+    display: flex;
+    gap: 4px;
 }
 
-.workspace-form{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:13px;
+.progress-dot {
+    width: 25px;
+    height: 4px;
+
+    border-radius: 99px;
+
+    background: var(--border);
 }
 
-.workspace-form.full{
-    grid-template-columns:1fr;
+.progress-dot.active {
+    background: var(--accent);
+    box-shadow: 0 0 10px var(--accent-glow);
 }
 
-.workspace-actions{
-    display:flex;
-    gap:10px;
-    margin-top:15px;
-    flex-wrap:wrap;
+.preview-powered {
+    color: var(--muted);
+    font-size: 8px;
 }
 
-.results{
-    margin-top:25px;
+/* Floating labels */
+
+.floating-card {
+    position: absolute;
+
+    padding: 11px 13px;
+
+    border: 1px solid var(--border);
+    border-radius: 13px;
+
+    background: var(--card);
+
+    backdrop-filter: blur(15px);
+
+    box-shadow: var(--shadow);
+
+    font-size: 10px;
+    font-weight: 800;
+
+    animation: floating 4s ease-in-out infinite;
 }
 
-.results-title{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    margin-bottom:12px;
+.floating-card strong {
+    color: var(--accent);
 }
 
-.results-title h4{
-    font-size:14px;
+.floating-one {
+    top: 10%;
+    right: -45px;
 }
 
-.results-title span{
-    color:var(--muted);
-    font-size:11px;
+.floating-two {
+    bottom: 12%;
+    left: -50px;
+
+    animation-delay: 1.2s;
 }
 
-.result-list{
-    display:grid;
-    gap:10px;
-}
+@keyframes floating {
+    0%,100% {
+        transform: translateY(0);
+    }
 
-.result-card{
-    display:flex;
-    align-items:flex-start;
-    justify-content:space-between;
-    gap:15px;
-    padding:17px;
-    border:1px solid var(--border);
-    border-radius:15px;
-    background:var(--bg2);
-}
-
-.result-card p{
-    color:var(--text);
-    line-height:1.55;
-    font-size:13px;
-}
-
-.result-actions{
-    display:flex;
-    gap:7px;
-    flex-shrink:0;
-}
-
-.result-actions button{
-    border:1px solid var(--border);
-    background:var(--card);
-    color:var(--muted);
-    border-radius:9px;
-    padding:7px 9px;
-    font-size:11px;
-    font-weight:800;
-}
-
-.result-actions button:hover{
-    color:var(--accent);
-    border-color:var(--accent);
+    50% {
+        transform: translateY(-8px);
+    }
 }
 
 /* =========================================================
-   MY CONTENT
-========================================================= */
+   HERO STATS
+   ========================================================= */
 
-.content-layout{
-    display:grid;
-    grid-template-columns:1fr;
-    gap:18px;
+.hero-stats {
+    width: min(1180px, 100%);
+    margin: 45px auto 0;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    border-top: 1px solid var(--border);
+
+    position: relative;
+    z-index: 3;
 }
 
-.content-filter{
-    display:flex;
-    gap:8px;
-    flex-wrap:wrap;
-    margin-bottom:15px;
+.hero-stat {
+    padding: 22px 20px;
+
+    text-align: center;
+
+    border-right: 1px solid var(--border);
 }
 
-.content-list{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:12px;
+.hero-stat:last-child {
+    border-right: 0;
 }
 
-.saved-card{
-    border:1px solid var(--border);
-    border-radius:17px;
-    padding:18px;
-    background:var(--card);
+.hero-stat strong {
+    display: block;
+
+    color: var(--text);
+
+    font-size: 24px;
+    font-weight: 950;
 }
 
-.saved-top{
-    display:flex;
-    justify-content:space-between;
-    gap:10px;
-    margin-bottom:12px;
+.hero-stat span {
+    display: block;
+
+    margin-top: 3px;
+
+    color: var(--muted);
+
+    font-size: 11px;
 }
 
-.saved-type{
-    font-size:10px;
-    color:var(--accent);
-    font-weight:900;
-    text-transform:uppercase;
+/* =========================================================
+   WORKFLOW
+   ========================================================= */
+
+.workflow {
+    width: min(1180px, 100%);
+    margin: 20px auto 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+
+    position: relative;
+    z-index: 3;
 }
 
-.saved-date{
-    color:var(--muted);
-    font-size:10px;
+.workflow-item {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+
+    color: var(--muted);
+
+    font-size: 10px;
+    font-weight: 850;
+
+    transition:
+        color .3s ease,
+        transform .3s ease;
 }
 
-.saved-card p{
-    color:var(--text);
-    line-height:1.6;
-    font-size:13px;
+.workflow-item.active {
+    color: var(--accent);
+    transform: translateY(-2px);
 }
 
-.saved-actions{
-    display:flex;
-    gap:7px;
-    margin-top:15px;
+.workflow-arrow {
+    color: var(--border);
+    font-size: 14px;
 }
 
-.empty-state{
-    padding:40px;
-    text-align:center;
-    border:1px dashed var(--border);
-    border-radius:18px;
-    color:var(--muted);
+/* =========================================================
+   SECTION COMMON
+   ========================================================= */
+
+section {
+    width: min(1180px, calc(100% - 40px));
+    margin: auto;
 }
 
-.empty-state strong{
-    display:block;
-    color:var(--text);
-    margin-bottom:5px;
+.section-heading {
+    margin-bottom: 35px;
+}
+
+.section-kicker {
+    color: var(--accent);
+
+    font-size: 11px;
+    font-weight: 850;
+    letter-spacing: 1.3px;
+
+    margin-bottom: 8px;
+}
+
+.section-heading h2 {
+    font-size: clamp(32px, 4vw, 48px);
+    letter-spacing: -2px;
+    line-height: 1.05;
+
+    margin-bottom: 12px;
+}
+
+.section-heading p {
+    max-width: 600px;
+
+    color: var(--muted);
+
+    line-height: 1.7;
+}
+
+/* =========================================================
+   TOOLS
+   ========================================================= */
+
+.tools-section {
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+.featured-tools {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 14px;
+
+    margin-bottom: 35px;
+}
+
+.tool-card {
+    padding: 22px;
+
+    border: 1px solid var(--border);
+    border-radius: 18px;
+
+    background: var(--card);
+
+    cursor: pointer;
+
+    transition:
+        transform .25s ease,
+        border .25s ease,
+        box-shadow .25s ease;
+}
+
+.tool-card:hover {
+    transform: translateY(-5px);
+
+    border-color: var(--accent);
+
+    box-shadow:
+        0 15px 45px var(--accent-soft);
+}
+
+.tool-icon {
+    width: 43px;
+    height: 43px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 12px;
+
+    background: var(--accent-soft);
+
+    font-size: 19px;
+
+    margin-bottom: 18px;
+}
+
+.tool-card h3 {
+    font-size: 15px;
+    margin-bottom: 6px;
+}
+
+.tool-card p {
+    color: var(--muted);
+
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+/* =========================================================
+   TOOL PANELS
+   ========================================================= */
+
+.tool-panel {
+    display: none;
+
+    padding: 27px;
+
+    border: 1px solid var(--border);
+    border-radius: 20px;
+
+    background: var(--card);
+
+    box-shadow: var(--shadow);
+
+    animation: panelIn .35s ease;
+}
+
+.tool-panel.active {
+    display: block;
+}
+
+@keyframes panelIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    margin-bottom: 22px;
+}
+
+.panel-header h3 {
+    font-size: 21px;
+}
+
+.close-panel {
+    width: 34px;
+    height: 34px;
+
+    border: 1px solid var(--border);
+    border-radius: 9px;
+
+    background: transparent;
+    color: var(--muted);
+}
+
+.close-panel:hover {
+    color: var(--text);
+    border-color: var(--accent);
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 12px;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.field.full {
+    grid-column: 1 / -1;
+}
+
+.field label {
+    color: var(--muted);
+
+    font-size: 11px;
+    font-weight: 750;
+}
+
+.field input,
+.field select,
+.field textarea {
+    width: 100%;
+
+    padding: 12px 13px;
+
+    border: 1px solid var(--border);
+    border-radius: 10px;
+
+    background: rgba(255,255,255,.025);
+    color: var(--text);
+
+    outline: none;
+
+    transition: border .2s ease;
+}
+
+body.light .field input,
+body.light .field select,
+body.light .field textarea {
+    background: rgba(0,0,0,.025);
+}
+
+.field textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+    border-color: var(--accent);
+}
+
+.generate-btn {
+    margin-top: 14px;
+}
+
+/* Results */
+
+.results {
+    display: grid;
+    gap: 8px;
+
+    margin-top: 20px;
+}
+
+.result-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    padding: 12px;
+
+    border: 1px solid var(--border);
+    border-radius: 11px;
+
+    background: rgba(255,255,255,.02);
+}
+
+.result-number {
+    color: var(--accent);
+
+    font-size: 11px;
+    font-weight: 900;
+
+    min-width: 25px;
+}
+
+.result-text {
+    flex: 1;
+
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.copy-btn {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+
+    padding: 7px 10px;
+
+    background: transparent;
+    color: var(--muted);
+
+    font-size: 10px;
+    font-weight: 750;
+}
+
+.copy-btn:hover {
+    color: var(--accent);
+    border-color: var(--accent);
 }
 
 /* =========================================================
    PLANNER
-========================================================= */
+   ========================================================= */
 
-.planner-grid{
-    display:grid;
-    grid-template-columns:1fr 1.5fr;
-    gap:18px;
+.planner-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 10px;
+
+    margin: 20px 0;
 }
 
-.planner-form,
-.planner-list-box{
-    padding:23px;
-    border:1px solid var(--border);
-    border-radius:21px;
-    background:var(--card);
+.planner-stat {
+    padding: 17px;
+
+    border: 1px solid var(--border);
+    border-radius: 13px;
+
+    background: rgba(255,255,255,.02);
 }
 
-.planner-list{
-    display:grid;
-    gap:9px;
+.planner-stat strong {
+    display: block;
+    font-size: 23px;
 }
 
-.plan-item{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:12px;
-    padding:14px;
-    border:1px solid var(--border);
-    border-radius:13px;
-    background:var(--bg2);
+.planner-stat span {
+    color: var(--muted);
+    font-size: 10px;
 }
 
-.plan-info strong{
-    display:block;
-    font-size:13px;
+.plan-list {
+    display: grid;
+    gap: 9px;
 }
 
-.plan-info span{
-    display:block;
-    color:var(--muted);
-    font-size:10px;
-    margin-top:4px;
+.plan-item {
+    display: grid;
+    grid-template-columns: 100px 1fr auto auto;
+
+    gap: 12px;
+    align-items: center;
+
+    padding: 13px;
+
+    border: 1px solid var(--border);
+    border-radius: 11px;
 }
 
-.plan-status{
-    padding:6px 9px;
-    border-radius:999px;
-    font-size:9px;
-    font-weight:900;
-    border:1px solid var(--border);
-    color:var(--accent);
-    background:color-mix(in srgb,var(--accent) 7%,transparent);
+.plan-date {
+    color: var(--accent);
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.plan-content strong {
+    display: block;
+    font-size: 12px;
+}
+
+.plan-content small {
+    color: var(--muted);
+    font-size: 10px;
+}
+
+.status-select {
+    padding: 7px 9px;
+
+    border: 1px solid var(--border);
+    border-radius: 8px;
+
+    background: var(--card-solid);
+    color: var(--text);
+
+    font-size: 10px;
+}
+
+.delete-btn {
+    border: 0;
+    background: transparent;
+
+    color: #ff5664;
+
+    font-size: 14px;
 }
 
 /* =========================================================
-   CREATOR SCORE
-========================================================= */
+   HOW IT WORKS
+   ========================================================= */
 
-.score-section{
+.how-section {
+    padding-top: 30px;
+    padding-bottom: 100px;
+}
+
+.steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 14px;
+}
+
+.step {
+    padding: 25px;
+
+    border: 1px solid var(--border);
+    border-radius: 18px;
+
+    background: var(--card);
+}
+
+.step-number {
+    color: var(--accent);
+
+    font-size: 11px;
+    font-weight: 900;
+
+    margin-bottom: 25px;
+}
+
+.step h3 {
+    font-size: 17px;
+    margin-bottom: 8px;
+}
+
+.step p {
+    color: var(--muted);
+
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+/* =========================================================
+   FLOW
+   ========================================================= */
+
+.flow-section {
+    padding-bottom: 100px;
+}
+
+.flow-box {
+    padding: 35px;
+
+    border: 1px solid var(--border);
+    border-radius: 22px;
+
     background:
-        radial-gradient(circle at 80% 50%,color-mix(in srgb,var(--accent) 7%,transparent),transparent 30%),
-        transparent;
+        radial-gradient(
+            circle at center,
+            var(--accent-soft),
+            transparent 55%
+        ),
+        var(--card);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 16px;
 }
 
-.score-card{
-    display:grid;
-    grid-template-columns:220px 1fr;
-    gap:35px;
-    align-items:center;
-    padding:35px;
-    border:1px solid var(--border);
-    border-radius:28px;
-    background:var(--card);
+.flow-node {
+    min-width: 120px;
+
+    padding: 18px;
+
+    text-align: center;
+
+    border: 1px solid var(--border);
+    border-radius: 14px;
+
+    background: rgba(255,255,255,.025);
+
+    transition:
+        border .3s ease,
+        transform .3s ease;
 }
 
-.score-circle{
-    width:180px;
-    height:180px;
-    border-radius:50%;
-    display:grid;
-    place-items:center;
-    margin:auto;
+.flow-node.active {
+    border-color: var(--accent);
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 10px 35px var(--accent-soft);
+}
+
+.flow-node strong {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.flow-node small {
+    color: var(--muted);
+    font-size: 9px;
+}
+
+.flow-arrow {
+    color: var(--accent);
+    font-weight: 900;
+}
+
+/* =========================================================
+   ABOUT
+   ========================================================= */
+
+.about-section {
+    padding-bottom: 100px;
+}
+
+.about-box {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+
+    gap: 30px;
+    align-items: center;
+
+    padding: 30px;
+
+    border: 1px solid var(--border);
+    border-radius: 22px;
+
+    background: var(--card);
+}
+
+.about-image {
+    width: 150px;
+    height: 150px;
+
+    border-radius: 22px;
+
+    object-fit: cover;
+
+    border: 1px solid var(--border);
+
+    box-shadow:
+        0 15px 40px var(--accent-soft);
+}
+
+.about-content h2 {
+    font-size: 28px;
+    letter-spacing: -1px;
+
+    margin-bottom: 9px;
+}
+
+.about-content p {
+    color: var(--muted);
+
+    line-height: 1.7;
+    font-size: 13px;
+
+    max-width: 700px;
+
+    margin-bottom: 18px;
+}
+
+.instagram-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 10px 14px;
+
+    border: 1px solid var(--border);
+    border-radius: 10px;
+
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.instagram-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+/* =========================================================
+   CTA
+   ========================================================= */
+
+.final-cta {
+    padding-bottom: 100px;
+}
+
+.cta-box {
+    position: relative;
+    overflow: hidden;
+
+    padding: 65px 30px;
+
+    text-align: center;
+
+    border: 1px solid var(--border);
+    border-radius: 25px;
+
     background:
-        radial-gradient(circle,var(--bg2) 60%,transparent 61%),
-        conic-gradient(var(--accent) 0deg,var(--accent) 270deg,rgba(255,255,255,.06) 270deg);
-    border:1px solid var(--border);
+        radial-gradient(
+            circle at center,
+            var(--accent-soft),
+            transparent 60%
+        ),
+        var(--card);
 }
 
-.score-number{
-    text-align:center;
+.cta-box h2 {
+    font-size: clamp(32px, 5vw, 55px);
+    letter-spacing: -2px;
+
+    margin-bottom: 13px;
 }
 
-.score-number strong{
-    display:block;
-    font-size:42px;
-}
+.cta-box p {
+    color: var(--muted);
 
-.score-number span{
-    color:var(--muted);
-    font-size:11px;
-}
+    max-width: 550px;
 
-.progress-wrap{
-    margin-top:20px;
-}
+    margin: 0 auto 25px;
 
-.progress-label{
-    display:flex;
-    justify-content:space-between;
-    color:var(--muted);
-    font-size:11px;
-    margin-bottom:7px;
-}
-
-.progress{
-    height:8px;
-    background:var(--bg2);
-    border-radius:999px;
-    overflow:hidden;
-}
-
-.progress div{
-    height:100%;
-    width:75%;
-    background:var(--accent);
-    border-radius:999px;
+    line-height: 1.7;
 }
 
 /* =========================================================
    FOOTER
-========================================================= */
+   ========================================================= */
 
-footer{
-    padding:45px 0;
-    border-top:1px solid var(--border);
+footer {
+    width: min(1180px, calc(100% - 40px));
+
+    margin: auto;
+
+    padding: 25px 0 35px;
+
+    border-top: 1px solid var(--border);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    color: var(--muted);
+
+    font-size: 10px;
 }
 
-.footer-inner{
-    display:flex;
-    justify-content:space-between;
-    gap:20px;
-    align-items:center;
+.footer-logo {
+    color: var(--text);
+    font-weight: 900;
 }
 
-.footer-inner p{
-    color:var(--muted);
-    font-size:12px;
-}
-
-.footer-social{
-    color:var(--accent);
-    font-weight:800;
-    font-size:13px;
-}
-
-/* =========================================================
-   TOAST
-========================================================= */
-
-.toast{
-    position:fixed;
-    right:22px;
-    bottom:22px;
-    z-index:2000;
-    padding:13px 17px;
-    border:1px solid var(--border);
-    border-radius:13px;
-    background:var(--card2);
-    backdrop-filter:blur(15px);
-    box-shadow:var(--shadow);
-    transform:translateY(30px);
-    opacity:0;
-    pointer-events:none;
-    transition:.3s;
-    font-size:12px;
-    font-weight:800;
-}
-
-.toast.show{
-    transform:translateY(0);
-    opacity:1;
-}
-
-.toast span{
-    color:var(--accent);
+.footer-logo span {
+    color: var(--accent);
 }
 
 /* =========================================================
    RESPONSIVE
-========================================================= */
+   ========================================================= */
 
-@media(max-width:1050px){
+@media (max-width: 1050px) {
 
-    .tools-grid{
-        grid-template-columns:repeat(3,1fr);
+    .hero-inner {
+        grid-template-columns: 1fr .9fr;
+        gap: 40px;
     }
 
-    .dashboard-grid{
-        grid-template-columns:1fr;
+    .floating-one {
+        right: -15px;
     }
 
-    .stats-grid{
-        grid-template-columns:repeat(2,1fr);
-    }
-}
-
-@media(max-width:850px){
-
-    .nav-links{
-        position:absolute;
-        top:76px;
-        left:4%;
-        width:92%;
-        display:none;
-        flex-direction:column;
-        align-items:stretch;
-        padding:14px;
-        border:1px solid var(--border);
-        border-radius:17px;
-        background:var(--card2);
-        backdrop-filter:blur(20px);
+    .floating-two {
+        left: -15px;
     }
 
-    .nav-links.open{
-        display:flex;
-    }
-
-    .nav-links a{
-        padding:11px;
-    }
-
-    .menu-btn{
-        display:block;
-    }
-
-    .nav-actions .btn{
-        display:none;
-    }
-
-    .tools-grid{
-        grid-template-columns:repeat(2,1fr);
-    }
-
-    .workspace-form{
-        grid-template-columns:1fr;
-    }
-
-    .planner-grid{
-        grid-template-columns:1fr;
-    }
-
-    .score-card{
-        grid-template-columns:1fr;
+    .featured-tools {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
-@media(max-width:600px){
+@media (max-width: 850px) {
 
-    .section{
-        padding:65px 0;
+    .nav-links,
+    .nav-cta {
+        display: none;
     }
 
-    .dashboard-hero{
-        padding-top:45px;
+    .menu-toggle {
+        display: flex;
     }
 
-    .welcome-card{
-        padding:25px;
+    .nav-right {
+        gap: 8px;
     }
 
-    .welcome-card h1{
-        letter-spacing:-2px;
+    .mobile-menu {
+        display: block;
+
+        position: absolute;
+
+        top: var(--nav-height);
+        left: 0;
+        right: 0;
+
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+
+        pointer-events: none;
+
+        background: rgba(5,7,6,.95);
+
+        border-bottom: 1px solid transparent;
+
+        backdrop-filter: blur(20px);
+
+        transform: translateY(-8px);
+
+        transition:
+            max-height .35s ease,
+            opacity .25s ease,
+            transform .25s ease,
+            border .25s ease;
     }
 
-    .profile-card{
-        padding:22px;
+    body.light .mobile-menu {
+        background: rgba(255,255,255,.97);
     }
 
-    .stats-grid{
-        grid-template-columns:1fr 1fr;
+    body.spidey .mobile-menu {
+        background: rgba(7,3,4,.97);
     }
 
-    .tools-grid{
-        grid-template-columns:1fr;
+    .mobile-menu.open {
+        max-height: 430px;
+        opacity: 1;
+
+        pointer-events: auto;
+
+        transform: translateY(0);
+
+        border-bottom-color: var(--border);
     }
 
-    .content-list{
-        grid-template-columns:1fr;
+    .mobile-menu-inner {
+        width: min(100% - 40px, 1180px);
+        margin: auto;
+
+        padding: 15px 0 20px;
+
+        display: grid;
+        gap: 4px;
     }
 
-    .workspace{
-        padding:20px;
+    .mobile-menu a {
+        padding: 13px 12px;
+
+        border-radius: 10px;
+
+        color: var(--muted);
+
+        font-size: 14px;
+        font-weight: 750;
     }
 
-    .result-card{
-        flex-direction:column;
+    .mobile-menu a:hover,
+    .mobile-menu a.active {
+        color: var(--accent);
+        background: var(--accent-soft);
     }
 
-    .result-actions{
-        width:100%;
+    .mobile-menu .mobile-cta {
+        margin-top: 8px;
+
+        text-align: center;
+
+        background: var(--accent);
+        color: #061009;
     }
 
-    .result-actions button{
-        flex:1;
+    .hero {
+        min-height: auto;
+        padding-top: 130px;
     }
 
-    .footer-inner{
-        flex-direction:column;
-        text-align:center;
+    .hero-inner {
+        grid-template-columns: 1fr;
     }
 
-    .auth-box{
-        padding:27px 20px;
+    .hero-copy {
+        text-align: center;
     }
 
-    .user-pill{
-        display:none;
+    .hero-description {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+    }
+
+    .hero-preview-wrap {
+        max-width: 650px;
+        width: 100%;
+        margin: auto;
+    }
+
+    .creator-preview {
+        transform: none;
+    }
+
+    .creator-preview:hover {
+        transform: translateY(-4px);
+    }
+
+    .hero-stats {
+        margin-top: 45px;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .steps {
+        grid-template-columns: 1fr;
     }
 }
 
-@media(prefers-reduced-motion:reduce){
+@media (max-width: 650px) {
+
+    .nav {
+        width: min(100% - 25px, 1180px);
+    }
+
+    section,
+    footer {
+        width: min(100% - 25px, 1180px);
+    }
+
+    .hero {
+        padding:
+            115px
+            12px
+            55px;
+    }
+
+    .hero h1 {
+        font-size: clamp(43px, 14vw, 65px);
+        letter-spacing: -3.5px;
+    }
+
+    .hero-description {
+        font-size: 15px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .hero-buttons .btn {
+        width: 100%;
+    }
+
+    .hero-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-stat {
+        border-right: 0;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .hero-stat:last-child {
+        border-bottom: 0;
+    }
+
+    .workflow {
+        flex-wrap: wrap;
+        gap: 6px;
+    }
+
+    .workflow-arrow {
+        font-size: 11px;
+    }
+
+    .floating-card {
+        display: none;
+    }
+
+    .creator-preview {
+        padding: 13px;
+        border-radius: 18px;
+    }
+
+    .preview-question {
+        font-size: 17px;
+    }
+
+    .featured-tools {
+        grid-template-columns: 1fr;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .field.full {
+        grid-column: auto;
+    }
+
+    .tool-panel {
+        padding: 18px;
+    }
+
+    .planner-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .plan-item {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    .status-select {
+        width: 100%;
+    }
+
+    .flow-box {
+        flex-direction: column;
+    }
+
+    .flow-arrow {
+        transform: rotate(90deg);
+    }
+
+    .about-box {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .about-image {
+        margin: auto;
+    }
+
+    .about-content p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    footer {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+}
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
 
     *,
     *::before,
-    *::after{
-        scroll-behavior:auto!important;
-        animation:none!important;
-        transition:none!important;
+    *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
     }
 }
+
 </style>
 </head>
 
-<body>
+<body class="dark">
 
-<!-- =========================================================
-     LOGIN
-========================================================= -->
+<!-- =======================================================
+     BACKGROUND
+     ======================================================= -->
 
-<section class="auth-screen active" id="authScreen">
+<div class="bg-particles" aria-hidden="true">
+    <span class="particle"></span>
+    <span class="particle"></span>
+    <span class="particle"></span>
+    <span class="particle"></span>
+    <span class="particle"></span>
+    <span class="particle"></span>
+    <span class="particle"></span>
+</div>
 
-    <div class="auth-bg"></div>
 
-    <div class="auth-box">
+<!-- =======================================================
+     NAVBAR
+     ======================================================= -->
 
-        <div class="auth-logo">
+<nav id="navbar">
 
-            <img src="cf-logo.png" alt="CreatorFlow">
+    <div class="nav">
 
-            <h1>Creator<span>Flow</span></h1>
+        <a href="#home" class="logo">
+            Creator<span>Flow</span>
+        </a>
 
-            <p>Your personal creator workspace.</p>
+        <div class="nav-right">
+
+            <div class="nav-links">
+
+                <a href="#home" class="active">Home</a>
+
+                <a href="#tools">Tools</a>
+
+                <a href="#how">How It Works</a>
+
+                <a href="#about">About</a>
+
+            </div>
+
+            <a href="#tools" class="nav-cta">
+                Start Creating
+            </a>
+
+            <button
+                class="theme-btn"
+                id="themeButton"
+                onclick="changeTheme()"
+                aria-label="Change theme"
+                title="Change theme"
+            >
+                🌙
+            </button>
+
+            <button
+                class="menu-toggle"
+                id="menuToggle"
+                onclick="toggleMobileMenu()"
+                aria-label="Open menu"
+                aria-expanded="false"
+                aria-controls="mobileMenu"
+            >
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
 
         </div>
 
-        <div class="auth-tabs">
+    </div>
 
-            <button class="auth-tab active" id="loginTab">
-                Login
-            </button>
 
-            <button class="auth-tab" id="registerTab">
-                Create Account
-            </button>
+    <!-- MOBILE MENU -->
+
+    <div class="mobile-menu" id="mobileMenu">
+
+        <div class="mobile-menu-inner">
+
+            <a href="#home" class="mobile-link active">
+                Home
+            </a>
+
+            <a href="#tools" class="mobile-link">
+                Tools
+            </a>
+
+            <a href="#how" class="mobile-link">
+                How It Works
+            </a>
+
+            <a href="#about" class="mobile-link">
+                About
+            </a>
+
+            <a href="#tools" class="mobile-link mobile-cta">
+                🚀 Start Creating
+            </a>
 
         </div>
 
-        <form id="authForm">
+    </div>
 
-            <div class="form-group">
-                <label>USERNAME</label>
-                <input
-                    type="text"
-                    id="authUsername"
-                    placeholder="Enter username"
-                    autocomplete="username"
-                    required
-                >
+</nav>
+
+
+<!-- =======================================================
+     HERO
+     ======================================================= -->
+
+<section class="hero" id="home">
+
+    <div class="hero-inner">
+
+        <!-- LEFT -->
+
+        <div class="hero-copy">
+
+            <div class="hero-badge">
+
+                <span class="badge-dot"></span>
+
+                ✦ AI-POWERED CREATOR WORKSPACE
+
             </div>
 
-            <div class="form-group">
-                <label>PASSWORD</label>
-                <input
-                    type="password"
-                    id="authPassword"
-                    placeholder="Enter password"
-                    autocomplete="current-password"
-                    required
+
+            <h1>
+
+                Create.
+                Plan.
+                <span class="gradient-text">Post.</span>
+                Grow.
+
+            </h1>
+
+
+            <p class="hero-description">
+
+                Everything you need to turn your ideas into
+                <strong>better content</strong> —
+                from titles and captions to reel ideas and
+                content planning.
+
+            </p>
+
+
+            <div class="hero-buttons">
+
+                <button
+                    class="btn primary"
+                    onclick="document.getElementById('tools').scrollIntoView({behavior:'smooth'})"
                 >
+                    🚀 Start Creating
+                </button>
+
+                <button
+                    class="btn secondary"
+                    onclick="document.getElementById('tools').scrollIntoView({behavior:'smooth'})"
+                >
+                    View Tools ↓
+                </button>
+
             </div>
 
-            <div class="form-group register-only" style="display:none;">
-                <label>CONFIRM PASSWORD</label>
-                <input
-                    type="password"
-                    id="authConfirm"
-                    placeholder="Confirm password"
-                >
+
+            <div class="hero-note">
+
+                ✦ Free to use &nbsp; • &nbsp;
+                ⚡ Instant ideas &nbsp; • &nbsp;
+                🎯 Built for creators
+
             </div>
 
-            <button class="btn btn-primary auth-submit" type="submit">
-                <span id="authButtonText">🚀 Login to CreatorFlow</span>
-            </button>
+        </div>
 
-            <div class="auth-message" id="authMessage"></div>
 
-        </form>
+        <!-- RIGHT PREVIEW -->
+
+        <div class="hero-preview-wrap">
+
+            <div class="preview-glow"></div>
+
+
+            <div class="creator-preview">
+
+                <!-- Preview header -->
+
+                <div class="preview-top">
+
+                    <div class="preview-brand">
+
+                        <div class="preview-logo">
+                            CF
+                        </div>
+
+                        <div>
+                            <strong>CreatorFlow</strong>
+
+                            <small>
+                                Creator workspace
+                            </small>
+                        </div>
+
+                    </div>
+
+                    <div class="preview-status">
+
+                        <span></span>
+
+                        AI READY
+
+                    </div>
+
+                </div>
+
+
+                <!-- Preview body -->
+
+                <div class="preview-content">
+
+                    <div class="preview-label">
+                        CREATE SOMETHING
+                    </div>
+
+                    <div class="preview-question">
+                        What's your next idea?
+                    </div>
+
+
+                    <div class="preview-input">
+
+                        <span>
+                            Travel reel for this weekend...
+                        </span>
+
+                        <button
+                            class="generate-mini"
+                            onclick="demoGenerate()"
+                        >
+                            Generate
+                        </button>
+
+                    </div>
+
+
+                    <div class="generated-title">
+                        ✨ Suggested content
+                    </div>
+
+
+                    <div class="generated-items" id="previewResults">
+
+                        <div class="generated-item">
+
+                            <div class="generated-icon">
+                                💡
+                            </div>
+
+                            <div>
+
+                                <strong>
+                                    5 Reel Ideas
+                                </strong>
+
+                                <small>
+                                    Fresh ideas for your niche
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="generated-item">
+
+                            <div class="generated-icon">
+                                ✍️
+                            </div>
+
+                            <div>
+
+                                <strong>
+                                    10 Titles
+                                </strong>
+
+                                <small>
+                                    Scroll-stopping hooks
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="generated-item">
+
+                            <div class="generated-icon">
+                                📝
+                            </div>
+
+                            <div>
+
+                                <strong>
+                                    10 Captions
+                                </strong>
+
+                                <small>
+                                    Ready for your next post
+                                </small>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="preview-bottom">
+
+                        <div class="preview-progress">
+
+                            <span class="progress-dot active"></span>
+                            <span class="progress-dot"></span>
+                            <span class="progress-dot"></span>
+                            <span class="progress-dot"></span>
+
+                        </div>
+
+                        <div class="preview-powered">
+                            BUILT BY DEEEZZ
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Floating cards -->
+
+            <div class="floating-card floating-one">
+                ⚡ <strong>Instant</strong> ideas
+            </div>
+
+            <div class="floating-card floating-two">
+                ✦ <strong>10+</strong> creator tools
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- STATS -->
+
+    <div class="hero-stats">
+
+        <div class="hero-stat">
+
+            <strong>10+</strong>
+
+            <span>
+                Creator Tools
+            </span>
+
+        </div>
+
+        <div class="hero-stat">
+
+            <strong>100+</strong>
+
+            <span>
+                Creative Ideas
+            </span>
+
+        </div>
+
+        <div class="hero-stat">
+
+            <strong>∞</strong>
+
+            <span>
+                Creative Possibilities
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <!-- WORKFLOW -->
+
+    <div class="workflow" id="heroWorkflow">
+
+        <div class="workflow-item active">
+            💡 IDEA
+        </div>
+
+        <div class="workflow-arrow">
+            →
+        </div>
+
+        <div class="workflow-item">
+            ✍️ TITLE
+        </div>
+
+        <div class="workflow-arrow">
+            →
+        </div>
+
+        <div class="workflow-item">
+            📝 CAPTION
+        </div>
+
+        <div class="workflow-arrow">
+            →
+        </div>
+
+        <div class="workflow-item">
+            🚀 POST
+        </div>
 
     </div>
 
 </section>
 
 
-<!-- =========================================================
-     MAIN APP
-========================================================= -->
+<!-- =======================================================
+     TOOLS
+     ======================================================= -->
 
-<div class="app" id="app">
+<section class="tools-section" id="tools">
 
-    <!-- NAVBAR -->
+    <div class="section-heading">
 
-    <nav class="navbar">
-
-        <div class="nav-inner">
-
-            <a href="#dashboard" class="logo">
-                <img src="cf-logo.png" alt="CreatorFlow">
-                Creator<span>Flow</span>
-            </a>
-
-            <div class="nav-links" id="navLinks">
-
-                <a href="#dashboard" class="active">Dashboard</a>
-                <a href="#tools">Tools</a>
-                <a href="#content">My Content</a>
-                <a href="#planner">Planner</a>
-
-            </div>
-
-            <div class="nav-actions">
-
-                <button
-                    class="theme-btn"
-                    id="themeBtn"
-                    title="Change theme"
-                >
-                    🌙
-                </button>
-
-                <div class="user-pill" id="userPill">
-
-                    <div class="user-avatar" id="navAvatar">
-                        D
-                    </div>
-
-                    <span id="navUsername">
-                        User
-                    </span>
-
-                </div>
-
-                <button class="menu-btn" id="menuBtn">
-                    ☰
-                </button>
-
-            </div>
-
+        <div class="section-kicker">
+            YOUR CREATOR TOOLKIT
         </div>
 
-    </nav>
+        <h2>
+            Everything starts with an idea.
+        </h2>
+
+        <p>
+            Turn that idea into content with simple tools
+            designed to make your workflow faster.
+        </p>
+
+    </div>
 
 
-    <main>
+    <!-- FEATURED -->
 
-        <!-- =================================================
-             DASHBOARD
-        ================================================= -->
+    <div class="featured-tools">
 
-        <section class="section dashboard-hero" id="dashboard">
+        <div
+            class="tool-card"
+            onclick="openTool('titles')"
+        >
 
-            <div class="container">
-
-                <div class="dashboard-grid">
-
-                    <div class="welcome-card">
-
-                        <div class="eyebrow">
-                            ✦ PERSONAL CREATOR WORKSPACE
-                        </div>
-
-                        <h1>
-                            Welcome back,
-                            <span id="welcomeName">Creator</span>.
-                        </h1>
-
-                        <p>
-                            Your ideas, content and creator tools are all
-                            in one place. Let's make something worth posting.
-                        </p>
-
-                        <div class="quick-actions">
-
-                            <button
-                                class="btn btn-primary"
-                                onclick="openTool('titles')"
-                            >
-                                🎯 Generate Title
-                            </button>
-
-                            <button
-                                class="btn btn-secondary"
-                                onclick="openTool('ideas')"
-                            >
-                                💡 Get Ideas
-                            </button>
-
-                            <button
-                                class="btn btn-secondary"
-                                onclick="document.querySelector('#planner').scrollIntoView({behavior:'smooth'})"
-                            >
-                                📅 Plan Content
-                            </button>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="profile-card">
-
-                        <div class="profile-top">
-
-                            <div class="big-avatar" id="bigAvatar">
-                                D
-                            </div>
-
-                            <div>
-
-                                <h3 id="profileUsername">
-                                    Creator
-                                </h3>
-
-                                <p>
-                                    CreatorFlow member
-                                </p>
-
-                            </div>
-
-                        </div>
-
-                        <div class="profile-row">
-                            <span>Account</span>
-                            <strong>Personal</strong>
-                        </div>
-
-                        <div class="profile-row">
-                            <span>Theme</span>
-                            <strong id="profileTheme">
-                                Dark
-                            </strong>
-                        </div>
-
-                        <div class="profile-row">
-                            <span>Content saved</span>
-                            <strong id="profileSaved">
-                                0
-                            </strong>
-                        </div>
-
-                        <button
-                            class="btn btn-secondary btn-small"
-                            style="width:100%;margin-top:15px;"
-                            onclick="logout()"
-                        >
-                            Log out
-                        </button>
-
-                    </div>
-
-                </div>
-
-
-                <!-- STATS -->
-
-                <div class="stats-grid">
-
-                    <div class="stat-card">
-                        <div class="stat-icon">💡</div>
-                        <h3 id="ideasStat">0</h3>
-                        <p>Ideas created</p>
-                    </div>
-
-                    <div class="stat-card">
-                        <div class="stat-icon">✍️</div>
-                        <h3 id="titlesStat">0</h3>
-                        <p>Titles generated</p>
-                    </div>
-
-                    <div class="stat-card">
-                        <div class="stat-icon">📝</div>
-                        <h3 id="captionsStat">0</h3>
-                        <p>Captions generated</p>
-                    </div>
-
-                    <div class="stat-card">
-                        <div class="stat-icon">🚀</div>
-                        <h3 id="postedStat">0</h3>
-                        <p>Content posted</p>
-                    </div>
-
-                </div>
-
+            <div class="tool-icon">
+                ✍️
             </div>
 
-        </section>
-
-
-        <!-- =================================================
-             TOOLS
-        ================================================= -->
-
-        <section class="section" id="tools">
-
-            <div class="container">
-
-                <div class="section-head">
-
-                    <div class="eyebrow">
-                        🧰 CREATOR TOOLS
-                    </div>
-
-                    <h2>
-                        Everything you need to create.
-                    </h2>
-
-                    <p>
-                        Pick a tool, generate something, then save your
-                        best ideas to your personal workspace.
-                    </p>
-
-                </div>
-
-
-                <div class="tools-toolbar">
-
-                    <div class="search-box">
-
-                        <span>⌕</span>
-
-                        <input
-                            type="text"
-                            id="toolSearch"
-                            placeholder="Search creator tools..."
-                        >
-
-                    </div>
-
-                    <div class="filters">
-
-                        <button
-                            class="filter-btn active"
-                            data-filter="all"
-                        >
-                            All
-                        </button>
-
-                        <button
-                            class="filter-btn"
-                            data-filter="ideas"
-                        >
-                            Ideas
-                        </button>
-
-                        <button
-                            class="filter-btn"
-                            data-filter="writing"
-                        >
-                            Writing
-                        </button>
-
-                        <button
-                            class="filter-btn"
-                            data-filter="social"
-                        >
-                            Social
-                        </button>
-
-                        <button
-                            class="filter-btn"
-                            data-filter="planning"
-                        >
-                            Planning
-                        </button>
-
-                    </div>
-
-                </div>
-
-
-                <!-- TOOL CARDS -->
-
-                <div class="tools-grid" id="toolsGrid">
-
-                    <div
-                        class="tool-card"
-                        data-tool="titles"
-                        data-category="writing"
-                        data-name="title generator"
-                        onclick="openTool('titles')"
-                    >
-
-                        <div class="tool-icon">🎯</div>
-
-                        <h3>Title Generator</h3>
-
-                        <p>
-                            Create scroll-stopping titles for your content.
-                        </p>
-
-                        <div class="tool-meta">
-                            <span class="tool-category">Writing</span>
-                            <span class="tool-badge">FEATURED</span>
-                        </div>
-
-                    </div>
-
-
-                    <div
-                        class="tool-card"
-                        data-tool="captions"
-                        data-category="writing social"
-                        data-name="caption generator"
-                        onclick="openTool('captions')"
-                    >
-
-                        <div class="tool-icon">📝</div>
-
-                        <h3>Caption Generator</h3>
-
-                        <p>
-                            Make captions that match your content and vibe.
-                        </p>
-
-                        <div class="tool-meta">
-                            <span class="tool-category">Social</span>
-                            <span class="tool-badge">FEATURED</span>
-                        </div>
-
-                    </div>
-
-
-                    <div
-                        class="tool-card"
-                        data-tool="ideas"
-                        data-category="ideas"
-                        data-name="reel ideas content ideas"
-                        onclick="openTool('ideas')"
-                    >
-
-                        <div class="tool-icon">💡</div>
-
-                        <h3>Reel Ideas</h3>
-
-                        <p>
-                            Generate fresh ideas for Reels, Shorts and TikToks.
-                        </p>
-
-                        <div class="tool-meta">
-                            <span class="tool-category">Ideas</span>
-                            <span class="tool-badge">FEATURED</span>
-                        </div>
-
-                    </div>
-
-
-                    <div
-                        class="tool-card"
-                        data-tool="planner"
-                        data-category="planning"
-                        data-name="content planner"
-                        onclick="openTool('planner')"
-                    >
-
-                        <div class="tool-icon">📅</div>
-
-                        <h3>Content Planner</h3>
-
-                        <p>
-                            Organize your upcoming content and posting plan.
-                        </p>
-
-                        <div class="tool-meta">
-                            <span class="tool-category">Planning</span>
-                            <span class="tool-badge">FEATURED</span>
-                        </div>
-
-                    </div>
-
-
-                    <div
-                        class="tool-card"
-                        data-tool="hashtags"
-                        data-category="social"
-                        data-name="hashtag generator"
-                        onclick="openTool('hashtags')"
-                    >
-
-                        <div class="tool-icon">#️⃣</div>
-
-                        <h3>Hashtag Generator</h3>
-
-                        <p>
-                            Build a useful hashtag set around your topic.
-                        </p>
-
-                        <div class="tool-meta">
-                            <span class="tool-category">Social</span>
-                            <span class="tool-badge">NEW</span>
-                        </div>
-
-                    </div>
-
-
-                    <div
-                        class="tool-card"
-                        data-tool="hooks"
-                        data-category="writing ideas"
-                        data-name="hook generator"
-                        onclick="openTool('hooks')"
-                    >
-
-                        <div class="tool-icon">🪝</div>
-
-                        <h3>Hook Generator</h3>
-
-                        <p>
-                            Start your videos with stronger opening lines.
-                        </p>
-
-                        <div class="tool-meta">
-                            <span class="tool-category">Writing</span>
-                            <span class="tool-badge">NEW</span>
-                        </div>
-
-                    </div>
-
-
-                    <div
-                        class="tool-card"
-                        data-tool="story"
-                        data-category="writing ideas"
-                        data-name="story generator"
-                        onclick="openTool('story')"
-                    >
-
-                        <div class="tool-icon">📖</div>
-
-                        <h3>Story Generator</h3>
-
-                        <p>
-                            Turn a simple idea into a short content story.
-                        </p>
-
-                        <div class="tool-meta">
-                            <span class="tool-category">Ideas</span>
-                            <span class="tool-badge">NEW</span>
-                        </div>
-
-                    </div>
-
-
-                    <div
-                        class="tool-card"
-                        data-tool="cta"
-                        data-category="writing social"
-                        data-name="cta generator call to action"
-                        onclick="openTool('cta')"
-                    >
-
-                        <div class="tool-icon">📣</div>
-
-                        <h3>CTA Generator</h3>
-
-                        <p>
-                            Generate calls-to-action that fit your post.
-                        </p>
-
-                        <div class="tool-meta">
-                            <span class="tool-category">Social</span>
-                            <span class="tool-badge">NEW</span>
-                        </div>
-
-                    </div>
-
-
-                    <div
-                        class="tool-card"
-                        data-tool="repurpose"
-                        data-category="social writing"
-                        data-name="content repurposer"
-                        onclick="openTool('repurpose')"
-                    >
-
-                        <div class="tool-icon">♻️</div>
-
-                        <h3>Content Repurposer</h3>
-
-                        <p>
-                            Turn one piece of content into multiple formats.
-                        </p>
-
-                        <div class="tool-meta">
-                            <span class="tool-category">Social</span>
-                            <span class="tool-badge">NEW</span>
-                        </div>
-
-                    </div>
-
-
-                    <div
-                        class="tool-card"
-                        data-tool="checklist"
-                        data-category="planning"
-                        data-name="content checklist"
-                        onclick="openTool('checklist')"
-                    >
-
-                        <div class="tool-icon">✅</div>
-
-                        <h3>Content Checklist</h3>
-
-                        <p>
-                            Quickly check your content before publishing.
-                        </p>
-
-                        <div class="tool-meta">
-                            <span class="tool-category">Planning</span>
-                            <span class="tool-badge">NEW</span>
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <!-- =================================================
-                     TITLE WORKSPACE
-                ================================================= -->
-
-                <div class="workspace" id="workspace-titles">
-
-                    <div class="workspace-head">
-
-                        <div class="workspace-title">
-
-                            <div class="tool-icon">🎯</div>
-
-                            <div>
-                                <h3>Title Generator</h3>
-                                <p>Create titles for your next piece of content.</p>
-                            </div>
-
-                        </div>
-
-                        <button
-                            class="close-workspace"
-                            onclick="closeWorkspaces()"
-                        >
-                            ✕
-                        </button>
-
-                    </div>
-
-                    <div class="workspace-form">
-
-                        <div class="form-group">
-                            <label>TOPIC</label>
-                            <input
-                                id="titleTopic"
-                                placeholder="e.g. iPhone tips"
-                            >
-                        </div>
-
-                        <div class="form-group">
-                            <label>PLATFORM</label>
-                            <select id="titlePlatform">
-                                <option>YouTube</option>
-                                <option>Instagram</option>
-                                <option>TikTok</option>
-                                <option>Facebook</option>
-                            </select>
-                        </div>
-
-                    </div>
-
-                    <div class="workspace-actions">
-
-                        <button
-                            class="btn btn-primary"
-                            onclick="generateTitles()"
-                        >
-                            ✨ Generate Titles
-                        </button>
-
-                    </div>
-
-                    <div class="results" id="titleResults"></div>
-
-                </div>
-
-
-                <!-- CAPTION -->
-
-                <div class="workspace" id="workspace-captions">
-
-                    <div class="workspace-head">
-
-                        <div class="workspace-title">
-                            <div class="tool-icon">📝</div>
-                            <div>
-                                <h3>Caption Generator</h3>
-                                <p>Create captions for your social content.</p>
-                            </div>
-                        </div>
-
-                        <button
-                            class="close-workspace"
-                            onclick="closeWorkspaces()"
-                        >
-                            ✕
-                        </button>
-
-                    </div>
-
-                    <div class="workspace-form">
-
-                        <div class="form-group">
-                            <label>TOPIC</label>
-                            <input
-                                id="captionTopic"
-                                placeholder="e.g. sunset beach reel"
-                            >
-                        </div>
-
-                        <div class="form-group">
-                            <label>TONE</label>
-                            <select id="captionTone">
-                                <option>Cinematic</option>
-                                <option>Funny</option>
-                                <option>Simple</option>
-                                <option>Motivational</option>
-                                <option>Confident</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label>PLATFORM</label>
-                            <select id="captionPlatform">
-                                <option>Instagram</option>
-                                <option>TikTok</option>
-                                <option>Facebook</option>
-                            </select>
-                        </div>
-
-                    </div>
-
-                    <div class="workspace-actions">
-
-                        <button
-                            class="btn btn-primary"
-                            onclick="generateCaptions()"
-                        >
-                            ✨ Generate Captions
-                        </button>
-
-                    </div>
-
-                    <div class="results" id="captionResults"></div>
-
-                </div>
-
-
-                <!-- IDEAS -->
-
-                <div class="workspace" id="workspace-ideas">
-
-                    <div class="workspace-head">
-
-                        <div class="workspace-title">
-                            <div class="tool-icon">💡</div>
-                            <div>
-                                <h3>Reel Ideas</h3>
-                                <p>Find your next content idea.</p>
-                            </div>
-                        </div>
-
-                        <button
-                            class="close-workspace"
-                            onclick="closeWorkspaces()"
-                        >
-                            ✕
-                        </button>
-
-                    </div>
-
-                    <div class="workspace-form">
-
-                        <div class="form-group">
-                            <label>NICHE</label>
-                            <input
-                                id="ideaNiche"
-                                placeholder="e.g. cars, gaming, tech"
-                            >
-                        </div>
-
-                        <div class="form-group">
-                            <label>CONTENT TYPE</label>
-                            <select id="ideaType">
-                                <option>Reel</option>
-                                <option>YouTube Short</option>
-                                <option>TikTok</option>
-                            </select>
-                        </div>
-
-                    </div>
-
-                    <div class="workspace-actions">
-
-                        <button
-                            class="btn btn-primary"
-                            onclick="generateIdeas()"
-                        >
-                            💡 Generate Ideas
-                        </button>
-
-                    </div>
-
-                    <div class="results" id="ideaResults"></div>
-
-                </div>
-
-
-                <!-- HASHTAGS -->
-
-                <div class="workspace" id="workspace-hashtags">
-
-                    <div class="workspace-head">
-
-                        <div class="workspace-title">
-                            <div class="tool-icon">#️⃣</div>
-                            <div>
-                                <h3>Hashtag Generator</h3>
-                                <p>Create a hashtag set around your topic.</p>
-                            </div>
-                        </div>
-
-                        <button class="close-workspace" onclick="closeWorkspaces()">✕</button>
-
-                    </div>
-
-                    <div class="workspace-form">
-
-                        <div class="form-group">
-                            <label>TOPIC</label>
-                            <input id="hashtagTopic" placeholder="e.g. car photography">
-                        </div>
-
-                        <div class="form-group">
-                            <label>PLATFORM</label>
-                            <select id="hashtagPlatform">
-                                <option>Instagram</option>
-                                <option>TikTok</option>
-                                <option>YouTube</option>
-                            </select>
-                        </div>
-
-                    </div>
-
-                    <div class="workspace-actions">
-
-                        <button class="btn btn-primary" onclick="generateHashtags()">
-                            #️⃣ Generate Hashtags
-                        </button>
-
-                    </div>
-
-                    <div class="results" id="hashtagResults"></div>
-
-                </div>
-
-
-                <!-- HOOK -->
-
-                <div class="workspace" id="workspace-hooks">
-
-                    <div class="workspace-head">
-
-                        <div class="workspace-title">
-                            <div class="tool-icon">🪝</div>
-                            <div>
-                                <h3>Hook Generator</h3>
-                                <p>Get stronger opening lines for your videos.</p>
-                            </div>
-                        </div>
-
-                        <button class="close-workspace" onclick="closeWorkspaces()">✕</button>
-
-                    </div>
-
-                    <div class="workspace-form">
-
-                        <div class="form-group">
-                            <label>TOPIC</label>
-                            <input id="hookTopic" placeholder="e.g. gaming setup">
-                        </div>
-
-                        <div class="form-group">
-                            <label>STYLE</label>
-                            <select id="hookStyle">
-                                <option>Curiosity</option>
-                                <option>Bold</option>
-                                <option>Story</option>
-                                <option>Question</option>
-                            </select>
-                        </div>
-
-                    </div>
-
-                    <div class="workspace-actions">
-
-                        <button class="btn btn-primary" onclick="generateHooks()">
-                            🪝 Generate Hooks
-                        </button>
-
-                    </div>
-
-                    <div class="results" id="hookResults"></div>
-
-                </div>
-
-
-                <!-- STORY -->
-
-                <div class="workspace" id="workspace-story">
-
-                    <div class="workspace-head">
-
-                        <div class="workspace-title">
-                            <div class="tool-icon">📖</div>
-                            <div>
-                                <h3>Story Generator</h3>
-                                <p>Turn an idea into a short content story.</p>
-                            </div>
-                        </div>
-
-                        <button class="close-workspace" onclick="closeWorkspaces()">✕</button>
-
-                    </div>
-
-                    <div class="workspace-form">
-
-                        <div class="form-group">
-                            <label>IDEA</label>
-                            <input id="storyTopic" placeholder="e.g. first car">
-                        </div>
-
-                        <div class="form-group">
-                            <label>MOOD</label>
-                            <select id="storyMood">
-                                <option>Cinematic</option>
-                                <option>Funny</option>
-                                <option>Emotional</option>
-                                <option>Motivational</option>
-                            </select>
-                        </div>
-
-                    </div>
-
-                    <div class="workspace-actions">
-
-                        <button class="btn btn-primary" onclick="generateStory()">
-                            📖 Generate Story
-                        </button>
-
-                    </div>
-
-                    <div class="results" id="storyResults"></div>
-
-                </div>
-
-
-                <!-- CTA -->
-
-                <div class="workspace" id="workspace-cta">
-
-                    <div class="workspace-head">
-
-                        <div class="workspace-title">
-                            <div class="tool-icon">📣</div>
-                            <div>
-                                <h3>CTA Generator</h3>
-                                <p>Create calls-to-action for your content.</p>
-                            </div>
-                        </div>
-
-                        <button class="close-workspace" onclick="closeWorkspaces()">✕</button>
-
-                    </div>
-
-                    <div class="workspace-form">
-
-                        <div class="form-group">
-                            <label>GOAL</label>
-                            <select id="ctaGoal">
-                                <option>Get comments</option>
-                                <option>Get followers</option>
-                                <option>Get shares</option>
-                                <option>Get saves</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label>PLATFORM</label>
-                            <select id="ctaPlatform">
-                                <option>Instagram</option>
-                                <option>TikTok</option>
-                                <option>YouTube</option>
-                            </select>
-                        </div>
-
-                    </div>
-
-                    <div class="workspace-actions">
-
-                        <button class="btn btn-primary" onclick="generateCTA()">
-                            📣 Generate CTAs
-                        </button>
-
-                    </div>
-
-                    <div class="results" id="ctaResults"></div>
-
-                </div>
-
-
-                <!-- REPURPOSE -->
-
-                <div class="workspace" id="workspace-repurpose">
-
-                    <div class="workspace-head">
-
-                        <div class="workspace-title">
-                            <div class="tool-icon">♻️</div>
-                            <div>
-                                <h3>Content Repurposer</h3>
-                                <p>Turn one idea into different content formats.</p>
-                            </div>
-                        </div>
-
-                        <button class="close-workspace" onclick="closeWorkspaces()">✕</button>
-
-                    </div>
-
-                    <div class="workspace-form full">
-
-                        <div class="form-group">
-
-                            <label>YOUR CONTENT</label>
-
-                            <textarea
-                                id="repurposeText"
-                                rows="5"
-                                placeholder="Paste or write your original content..."
-                            ></textarea>
-
-                        </div>
-
-                    </div>
-
-                    <div class="workspace-actions">
-
-                        <button class="btn btn-primary" onclick="repurposeContent()">
-                            ♻️ Repurpose
-                        </button>
-
-                    </div>
-
-                    <div class="results" id="repurposeResults"></div>
-
-                </div>
-
-
-                <!-- CHECKLIST -->
-
-                <div class="workspace" id="workspace-checklist">
-
-                    <div class="workspace-head">
-
-                        <div class="workspace-title">
-                            <div class="tool-icon">✅</div>
-                            <div>
-                                <h3>Content Checklist</h3>
-                                <p>Check your content before you publish.</p>
-                            </div>
-                        </div>
-
-                        <button class="close-workspace" onclick="closeWorkspaces()">✕</button>
-
-                    </div>
-
-                    <div class="workspace-form">
-
-                        <div class="form-group">
-                            <label>PLATFORM</label>
-                            <select id="checkPlatform">
-                                <option>Instagram</option>
-                                <option>TikTok</option>
-                                <option>YouTube</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label>CONTENT TYPE</label>
-                            <select id="checkType">
-                                <option>Short Video</option>
-                                <option>Post</option>
-                                <option>Carousel</option>
-                                <option>YouTube Video</option>
-                            </select>
-                        </div>
-
-                    </div>
-
-                    <div class="workspace-actions">
-
-                        <button class="btn btn-primary" onclick="generateChecklist()">
-                            ✅ Build Checklist
-                        </button>
-
-                    </div>
-
-                    <div class="results" id="checklistResults"></div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =================================================
-             MY CONTENT
-        ================================================= -->
-
-        <section class="section" id="content">
-
-            <div class="container">
-
-                <div class="section-head">
-
-                    <div class="eyebrow">
-                        💾 YOUR CONTENT
-                    </div>
-
-                    <h2>
-                        My Content.
-                    </h2>
-
-                    <p>
-                        Everything you save from CreatorFlow lives here.
-                    </p>
-
-                </div>
-
-                <div class="content-layout">
-
-                    <div class="content-filter">
-
-                        <button
-                            class="filter-btn active"
-                            onclick="filterSaved('all',this)"
-                        >
-                            All
-                        </button>
-
-                        <button
-                            class="filter-btn"
-                            onclick="filterSaved('title',this)"
-                        >
-                            Titles
-                        </button>
-
-                        <button
-                            class="filter-btn"
-                            onclick="filterSaved('caption',this)"
-                        >
-                            Captions
-                        </button>
-
-                        <button
-                            class="filter-btn"
-                            onclick="filterSaved('idea',this)"
-                        >
-                            Ideas
-                        </button>
-
-                        <button
-                            class="filter-btn"
-                            onclick="filterSaved('hook',this)"
-                        >
-                            Hooks
-                        </button>
-
-                    </div>
-
-                    <div id="contentList" class="content-list"></div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =================================================
-             PLANNER
-        ================================================= -->
-
-        <section class="section" id="planner">
-
-            <div class="container">
-
-                <div class="section-head">
-
-                    <div class="eyebrow">
-                        📅 CONTENT PLANNER
-                    </div>
-
-                    <h2>
-                        Plan before you post.
-                    </h2>
-
-                    <p>
-                        Keep your content organized and move ideas from
-                        planning to publishing.
-                    </p>
-
-                </div>
-
-                <div class="planner-grid">
-
-                    <div class="planner-form">
-
-                        <h3 style="margin-bottom:20px;">
-                            Add Content
-                        </h3>
-
-                        <div class="form-group">
-                            <label>CONTENT TITLE</label>
-                            <input
-                                id="planTitle"
-                                placeholder="e.g. My new car reel"
-                            >
-                        </div>
-
-                        <div class="form-group">
-                            <label>DATE</label>
-                            <input type="date" id="planDate">
-                        </div>
-
-                        <div class="form-group">
-                            <label>PLATFORM</label>
-                            <select id="planPlatform">
-                                <option>Instagram</option>
-                                <option>TikTok</option>
-                                <option>YouTube</option>
-                                <option>Facebook</option>
-                            </select>
-                        </div>
-
-                        <button
-                            class="btn btn-primary"
-                            onclick="addPlan()"
-                        >
-                            ➕ Add to Planner
-                        </button>
-
-                    </div>
-
-
-                    <div class="planner-list-box">
-
-                        <div style="
-                            display:flex;
-                            justify-content:space-between;
-                            align-items:center;
-                            margin-bottom:17px;
-                        ">
-
-                            <h3>
-                                Your Plan
-                            </h3>
-
-                            <span
-                                style="color:var(--muted);font-size:11px;"
-                                id="planCount"
-                            >
-                                0 items
-                            </span>
-
-                        </div>
-
-                        <div
-                            class="planner-list"
-                            id="plannerList"
-                        ></div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =================================================
-             CREATOR SCORE
-        ================================================= -->
-
-        <section class="section score-section">
-
-            <div class="container">
-
-                <div class="section-head">
-
-                    <div class="eyebrow">
-                        📊 CREATOR PROGRESS
-                    </div>
-
-                    <h2>
-                        Keep growing.
-                    </h2>
-
-                    <p>
-                        Your Creator Score gives you a simple picture of
-                        how actively you're using your workspace.
-                    </p>
-
-                </div>
-
-                <div class="score-card">
-
-                    <div class="score-circle">
-
-                        <div class="score-number">
-
-                            <strong id="creatorScore">
-                                75
-                            </strong>
-
-                            <span>
-                                CREATOR SCORE
-                            </span>
-
-                        </div>
-
-                    </div>
-
-
-                    <div>
-
-                        <h3 style="font-size:24px;">
-                            Your creative momentum is building.
-                        </h3>
-
-                        <p style="
-                            color:var(--muted);
-                            line-height:1.7;
-                            margin-top:10px;
-                        ">
-                            Keep creating ideas, planning content and
-                            saving your best work to improve your workspace.
-                        </p>
-
-
-                        <div class="progress-wrap">
-
-                            <div class="progress-label">
-                                <span>Creative activity</span>
-                                <span id="activityPercent">75%</span>
-                            </div>
-
-                            <div class="progress">
-                                <div id="activityBar"></div>
-                            </div>
-
-                        </div>
-
-
-                        <div class="progress-wrap">
-
-                            <div class="progress-label">
-                                <span>Content planning</span>
-                                <span id="planningPercent">50%</span>
-                            </div>
-
-                            <div class="progress">
-                                <div
-                                    id="planningBar"
-                                    style="width:50%"
-                                ></div>
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-    </main>
-
-
-    <!-- FOOTER -->
-
-    <footer>
-
-        <div class="container footer-inner">
+            <h3>
+                Title Generator
+            </h3>
 
             <p>
-                © 2026 CreatorFlow · Built by Deeezz
+                Create scroll-stopping titles and hooks.
             </p>
 
+        </div>
+
+
+        <div
+            class="tool-card"
+            onclick="openTool('captions')"
+        >
+
+            <div class="tool-icon">
+                📝
+            </div>
+
+            <h3>
+                Caption Generator
+            </h3>
+
+            <p>
+                Generate captions that fit your content.
+            </p>
+
+        </div>
+
+
+        <div
+            class="tool-card"
+            onclick="openTool('ideas')"
+        >
+
+            <div class="tool-icon">
+                💡
+            </div>
+
+            <h3>
+                Reel Ideas
+            </h3>
+
+            <p>
+                Never run out of ideas for your next reel.
+            </p>
+
+        </div>
+
+
+        <div
+            class="tool-card"
+            onclick="openTool('planner')"
+        >
+
+            <div class="tool-icon">
+                📅
+            </div>
+
+            <h3>
+                Content Planner
+            </h3>
+
+            <p>
+                Organize your upcoming content in one place.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- TITLE PANEL -->
+
+    <div
+        class="tool-panel"
+        id="panel-titles"
+    >
+
+        <div class="panel-header">
+
+            <div>
+                <h3>✍️ Title Generator</h3>
+            </div>
+
+            <button
+                class="close-panel"
+                onclick="closeTools()"
+            >
+                ✕
+            </button>
+
+        </div>
+
+
+        <div class="form-grid">
+
+            <div class="field">
+
+                <label>
+                    Topic
+                </label>
+
+                <input
+                    id="titleTopic"
+                    placeholder="e.g. Streetwear"
+                >
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    Platform
+                </label>
+
+                <select id="titlePlatform">
+
+                    <option>TikTok</option>
+                    <option>Instagram</option>
+                    <option>YouTube</option>
+                    <option>Facebook</option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+
+        <button
+            class="btn primary generate-btn"
+            onclick="generateTitles()"
+        >
+            ✨ Generate 10 Titles
+        </button>
+
+
+        <div
+            class="results"
+            id="titleResults"
+        ></div>
+
+    </div>
+
+
+    <!-- CAPTION PANEL -->
+
+    <div
+        class="tool-panel"
+        id="panel-captions"
+    >
+
+        <div class="panel-header">
+
+            <div>
+                <h3>📝 Caption Generator</h3>
+            </div>
+
+            <button
+                class="close-panel"
+                onclick="closeTools()"
+            >
+                ✕
+            </button>
+
+        </div>
+
+
+        <div class="form-grid">
+
+            <div class="field full">
+
+                <label>
+                    Describe your content
+                </label>
+
+                <textarea
+                    id="captionDescription"
+                    placeholder="Describe your photo or video..."
+                ></textarea>
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    Platform
+                </label>
+
+                <select id="captionPlatform">
+
+                    <option>Instagram</option>
+                    <option>TikTok</option>
+                    <option>YouTube</option>
+                    <option>Facebook</option>
+
+                </select>
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    Tone
+                </label>
+
+                <select id="captionTone">
+
+                    <option>Cool</option>
+                    <option>Funny</option>
+                    <option>Professional</option>
+                    <option>Motivational</option>
+                    <option>Minimal</option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+
+        <button
+            class="btn primary generate-btn"
+            onclick="generateCaptions()"
+        >
+            ✨ Generate Captions
+        </button>
+
+
+        <div
+            class="results"
+            id="captionResults"
+        ></div>
+
+    </div>
+
+
+    <!-- IDEA PANEL -->
+
+    <div
+        class="tool-panel"
+        id="panel-ideas"
+    >
+
+        <div class="panel-header">
+
+            <div>
+                <h3>💡 Reel Idea Generator</h3>
+            </div>
+
+            <button
+                class="close-panel"
+                onclick="closeTools()"
+            >
+                ✕
+            </button>
+
+        </div>
+
+
+        <div class="form-grid">
+
+            <div class="field">
+
+                <label>
+                    Niche
+                </label>
+
+                <input
+                    id="ideaNiche"
+                    placeholder="e.g. Cars"
+                >
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    Content type
+                </label>
+
+                <select id="ideaType">
+
+                    <option>Educational</option>
+                    <option>Entertainment</option>
+                    <option>Storytelling</option>
+                    <option>Trending</option>
+                    <option>Behind the scenes</option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+
+        <button
+            class="btn primary generate-btn"
+            onclick="generateIdeas()"
+        >
+            ✨ Generate 10 Ideas
+        </button>
+
+
+        <div
+            class="results"
+            id="ideaResults"
+        ></div>
+
+    </div>
+
+
+    <!-- PLANNER PANEL -->
+
+    <div
+        class="tool-panel"
+        id="panel-planner"
+    >
+
+        <div class="panel-header">
+
+            <div>
+                <h3>📅 Content Planner</h3>
+            </div>
+
+            <button
+                class="close-panel"
+                onclick="closeTools()"
+            >
+                ✕
+            </button>
+
+        </div>
+
+
+        <div class="form-grid">
+
+            <div class="field">
+
+                <label>
+                    Date
+                </label>
+
+                <input
+                    type="date"
+                    id="planDate"
+                >
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    Platform
+                </label>
+
+                <select id="planPlatform">
+
+                    <option>Instagram</option>
+                    <option>TikTok</option>
+                    <option>YouTube</option>
+                    <option>Facebook</option>
+
+                </select>
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    Content idea
+                </label>
+
+                <input
+                    id="planIdea"
+                    placeholder="e.g. New car reel"
+                >
+
+            </div>
+
+        </div>
+
+
+        <button
+            class="btn primary generate-btn"
+            onclick="addPlan()"
+        >
+            + Add to Planner
+        </button>
+
+
+        <div class="planner-stats">
+
+            <div class="planner-stat">
+
+                <strong id="totalPlans">
+                    0
+                </strong>
+
+                <span>
+                    Total
+                </span>
+
+            </div>
+
+
+            <div class="planner-stat">
+
+                <strong id="plannedCount">
+                    0
+                </strong>
+
+                <span>
+                    Planned
+                </span>
+
+            </div>
+
+
+            <div class="planner-stat">
+
+                <strong id="postedCount">
+                    0
+                </strong>
+
+                <span>
+                    Posted
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div
+            class="plan-list"
+            id="planList"
+        ></div>
+
+    </div>
+
+</section>
+
+
+<!-- =======================================================
+     HOW IT WORKS
+     ======================================================= -->
+
+<section
+    class="how-section"
+    id="how"
+>
+
+    <div class="section-heading">
+
+        <div class="section-kicker">
+            SIMPLE WORKFLOW
+        </div>
+
+        <h2>
+            From idea to post.
+        </h2>
+
+        <p>
+            CreatorFlow keeps your creative process simple,
+            fast and organized.
+        </p>
+
+    </div>
+
+
+    <div class="steps">
+
+        <div class="step">
+
+            <div class="step-number">
+                01 / IDEA
+            </div>
+
+            <h3>
+                Start with an idea
+            </h3>
+
+            <p>
+                Enter your niche, topic or content concept
+                and let CreatorFlow help you develop it.
+            </p>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="step-number">
+                02 / CREATE
+            </div>
+
+            <h3>
+                Build your content
+            </h3>
+
+            <p>
+                Generate titles, captions and reel ideas
+                that fit your content style.
+            </p>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="step-number">
+                03 / POST
+            </div>
+
+            <h3>
+                Plan and publish
+            </h3>
+
+            <p>
+                Organize your content and keep your posting
+                workflow moving.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =======================================================
+     FLOW
+     ======================================================= -->
+
+<section class="flow-section">
+
+    <div class="flow-box">
+
+        <div class="flow-node active">
+
+            <strong>
+                💡 IDEA
+            </strong>
+
+            <small>
+                Think
+            </small>
+
+        </div>
+
+
+        <div class="flow-arrow">
+            →
+        </div>
+
+
+        <div class="flow-node">
+
+            <strong>
+                ✍️ TITLE
+            </strong>
+
+            <small>
+                Hook
+            </small>
+
+        </div>
+
+
+        <div class="flow-arrow">
+            →
+        </div>
+
+
+        <div class="flow-node">
+
+            <strong>
+                📝 CAPTION
+            </strong>
+
+            <small>
+                Connect
+            </small>
+
+        </div>
+
+
+        <div class="flow-arrow">
+            →
+        </div>
+
+
+        <div class="flow-node">
+
+            <strong>
+                🚀 POST
+            </strong>
+
+            <small>
+                Publish
+            </small>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =======================================================
+     ABOUT
+     ======================================================= -->
+
+<section
+    class="about-section"
+    id="about"
+>
+
+    <div class="about-box">
+
+        <img
+            src="deeezz.jpg"
+            alt="Dihein De Silva"
+            class="about-image"
+        >
+
+
+        <div class="about-content">
+
+            <div class="section-kicker">
+                BUILT BY A CREATOR
+            </div>
+
+            <h2>
+                Dihein De Silva
+                <span style="color:var(--accent)">
+                    (Deeezz)
+                </span>
+            </h2>
+
+            <p>
+                CreatorFlow was built to make content creation
+                simpler. Instead of jumping between different
+                tools, you can generate ideas, create titles,
+                write captions and organize your content
+                from one simple workspace.
+            </p>
+
+
             <a
-                class="footer-social"
                 href="https://www.instagram.com/______deeezz___/"
                 target="_blank"
-                rel="noopener"
+                rel="noopener noreferrer"
+                class="instagram-btn"
             >
-                Instagram ↗
+                📸 Follow on Instagram
             </a>
 
         </div>
 
-    </footer>
+    </div>
 
-</div>
+</section>
 
 
-<!-- TOAST -->
+<!-- =======================================================
+     FINAL CTA
+     ======================================================= -->
 
-<div class="toast" id="toast">
-    <span>✓</span>&nbsp;
-    <span id="toastText">Saved</span>
-</div>
+<section class="final-cta">
+
+    <div class="cta-box">
+
+        <div class="section-kicker">
+            YOUR NEXT POST STARTS HERE
+        </div>
+
+        <h2>
+            Got an idea?
+            <br>
+            Let's create.
+        </h2>
+
+        <p>
+            Turn your next thought into something worth posting.
+        </p>
+
+        <button
+            class="btn primary"
+            onclick="document.getElementById('tools').scrollIntoView({behavior:'smooth'})"
+        >
+            🚀 Start Creating
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =======================================================
+     FOOTER
+     ======================================================= -->
+
+<footer>
+
+    <div>
+        © 2026
+        <span class="footer-logo">
+            Creator<span>Flow</span>
+        </span>
+        · Built by Deeezz
+    </div>
+
+    <div>
+        Create better. Post smarter.
+    </div>
+
+</footer>
 
 
 <script>
 
 /* =========================================================
-   STORAGE
-========================================================= */
-
-const USERS_KEY = "creatorFlowUsers";
-const CURRENT_USER_KEY = "creatorFlowCurrentUser";
-
-function getUsers(){
-    return JSON.parse(localStorage.getItem(USERS_KEY) || "{}");
-}
-
-function saveUsers(users){
-    localStorage.setItem(USERS_KEY, JSON.stringify(users));
-}
-
-function getCurrentUser(){
-    return localStorage.getItem(CURRENT_USER_KEY);
-}
-
-function userKey(){
-    const username = getCurrentUser();
-
-    if(!username){
-        return "guest";
-    }
-
-    return username.toLowerCase();
-}
-
-function getUserData(){
-
-    const key = "creatorFlowData_" + userKey();
-
-    return JSON.parse(
-        localStorage.getItem(key) ||
-        JSON.stringify({
-            saved:[],
-            plans:[],
-            stats:{
-                ideas:0,
-                titles:0,
-                captions:0,
-                posted:0
-            }
-        })
-    );
-}
-
-function saveUserData(data){
-
-    const key = "creatorFlowData_" + userKey();
-
-    localStorage.setItem(
-        key,
-        JSON.stringify(data)
-    );
-}
-
-
-/* =========================================================
-   AUTH
-========================================================= */
-
-let authMode = "login";
-
-const authScreen = document.getElementById("authScreen");
-const app = document.getElementById("app");
-
-const loginTab = document.getElementById("loginTab");
-const registerTab = document.getElementById("registerTab");
-
-const authForm = document.getElementById("authForm");
-const authMessage = document.getElementById("authMessage");
-
-const registerOnly =
-    document.querySelector(".register-only");
-
-const authButtonText =
-    document.getElementById("authButtonText");
-
-
-loginTab.addEventListener("click",()=>{
-
-    authMode = "login";
-
-    loginTab.classList.add("active");
-    registerTab.classList.remove("active");
-
-    registerOnly.style.display = "none";
-
-    authButtonText.textContent =
-        "🚀 Login to CreatorFlow";
-
-    authMessage.textContent = "";
-
-});
-
-
-registerTab.addEventListener("click",()=>{
-
-    authMode = "register";
-
-    registerTab.classList.add("active");
-    loginTab.classList.remove("active");
-
-    registerOnly.style.display = "block";
-
-    authButtonText.textContent =
-        "✨ Create My Workspace";
-
-    authMessage.textContent = "";
-
-});
-
-
-authForm.addEventListener("submit",(e)=>{
-
-    e.preventDefault();
-
-    const username =
-        document.getElementById("authUsername").value.trim();
-
-    const password =
-        document.getElementById("authPassword").value;
-
-    const confirm =
-        document.getElementById("authConfirm").value;
-
-    if(username.length < 3){
-
-        authMessage.textContent =
-            "Username must be at least 3 characters.";
-
-        return;
-    }
-
-    if(password.length < 4){
-
-        authMessage.textContent =
-            "Password must be at least 4 characters.";
-
-        return;
-    }
-
-
-    const users = getUsers();
-
-
-    if(authMode === "register"){
-
-        if(users[username.toLowerCase()]){
-
-            authMessage.textContent =
-                "That username already exists.";
-
-            return;
-        }
-
-        if(password !== confirm){
-
-            authMessage.textContent =
-                "Passwords do not match.";
-
-            return;
-        }
-
-
-        users[username.toLowerCase()] = {
-            username:username,
-            password:password
-        };
-
-        saveUsers(users);
-
-        localStorage.setItem(
-            CURRENT_USER_KEY,
-            username
-        );
-
-        createDefaultUserData();
-
-        showApp();
-
-        showToast("Account created successfully.");
-
-    }else{
-
-        const account =
-            users[username.toLowerCase()];
-
-        if(!account){
-
-            authMessage.textContent =
-                "Account not found.";
-
-            return;
-        }
-
-        if(account.password !== password){
-
-            authMessage.textContent =
-                "Incorrect password.";
-
-            return;
-        }
-
-        localStorage.setItem(
-            CURRENT_USER_KEY,
-            account.username
-        );
-
-        showApp();
-
-        showToast("Welcome back, " + account.username + "!");
-
-    }
-
-});
-
-
-function createDefaultUserData(){
-
-    const data = {
-        saved:[],
-        plans:[],
-        stats:{
-            ideas:0,
-            titles:0,
-            captions:0,
-            posted:0
-        }
-    };
-
-    saveUserData(data);
-}
-
-
-function showApp(){
-
-    authScreen.classList.remove("active");
-    app.classList.add("active");
-
-    updateUserUI();
-    renderContent();
-    renderPlanner();
-    updateStats();
-    updateScore();
-
-}
-
-
-function logout(){
-
-    localStorage.removeItem(CURRENT_USER_KEY);
-
-    app.classList.remove("active");
-    authScreen.classList.add("active");
-
-    document.getElementById("authForm").reset();
-
-    showToast("Logged out.");
-}
-
-
-/* =========================================================
-   USER UI
-========================================================= */
-
-function updateUserUI(){
-
-    const username = getCurrentUser() || "Creator";
-
-    const initial =
-        username.charAt(0).toUpperCase();
-
-    document.getElementById("welcomeName")
-        .textContent = username;
-
-    document.getElementById("profileUsername")
-        .textContent = username;
-
-    document.getElementById("navUsername")
-        .textContent = username;
-
-    document.getElementById("navAvatar")
-        .textContent = initial;
-
-    document.getElementById("bigAvatar")
-        .textContent = initial;
-
-    const data = getUserData();
-
-    document.getElementById("profileSaved")
-        .textContent = data.saved.length;
-
-    updateThemeName();
-
-}
-
-
-/* =========================================================
-   AUTO LOGIN
-========================================================= */
-
-if(getCurrentUser()){
-
-    showApp();
-
-}
-
-
-/* =========================================================
-   THEME
-========================================================= */
-
-const themeBtn =
-    document.getElementById("themeBtn");
+   THEME SYSTEM
+   ========================================================= */
 
 const themes = [
     "dark",
@@ -3074,381 +3349,448 @@ const themes = [
     "spidey"
 ];
 
-let currentTheme =
-    localStorage.getItem("creatorFlowTheme") || "dark";
+const themeIcons = {
+    dark: "🌙",
+    light: "☀️",
+    spidey: "🕷️"
+};
+
+const themeNames = {
+    dark: "Dark",
+    light: "Light",
+    spidey: "Spidey"
+};
+
+const themeButton =
+    document.getElementById("themeButton");
 
 
-function applyTheme(){
+function applyTheme(theme) {
 
     document.body.classList.remove(
+        "dark",
         "light",
         "spidey"
     );
 
-    if(currentTheme === "light"){
-        document.body.classList.add("light");
-        themeBtn.textContent = "☀️";
-    }
+    document.body.classList.add(theme);
 
-    else if(currentTheme === "spidey"){
-        document.body.classList.add("spidey");
-        themeBtn.textContent = "🕷️";
-    }
+    themeButton.textContent =
+        themeIcons[theme];
 
-    else{
-        themeBtn.textContent = "🌙";
-    }
+    themeButton.setAttribute(
+        "aria-label",
+        `Current theme: ${themeNames[theme]}. Click to change theme.`
+    );
+
+    themeButton.title =
+        `Theme: ${themeNames[theme]}`;
 
     localStorage.setItem(
         "creatorFlowTheme",
-        currentTheme
+        theme
     );
-
-    updateThemeName();
-
 }
 
 
-function updateThemeName(){
+function changeTheme() {
 
-    const name =
-        currentTheme.charAt(0).toUpperCase() +
-        currentTheme.slice(1);
+    const current =
+        localStorage.getItem("creatorFlowTheme")
+        || "dark";
 
-    const el =
-        document.getElementById("profileTheme");
+    const index =
+        themes.indexOf(current);
 
-    if(el){
-        el.textContent = name;
-    }
+    const next =
+        themes[(index + 1) % themes.length];
 
+    applyTheme(next);
 }
 
 
-themeBtn.addEventListener("click",()=>{
+const savedTheme =
+    localStorage.getItem("creatorFlowTheme")
+    || "dark";
 
-    let index =
-        themes.indexOf(currentTheme);
-
-    index =
-        (index + 1) % themes.length;
-
-    currentTheme =
-        themes[index];
-
-    applyTheme();
-
-    showToast(
-        "Theme changed to " +
-        currentTheme
-    );
-
-});
+applyTheme(savedTheme);
 
 
-applyTheme();
+/* =========================================================
+   NAVBAR
+   ========================================================= */
+
+const navbar =
+    document.getElementById("navbar");
+
+window.addEventListener(
+    "scroll",
+    () => {
+
+        navbar.classList.toggle(
+            "scrolled",
+            window.scrollY > 10
+        );
+
+    },
+    { passive: true }
+);
 
 
 /* =========================================================
    MOBILE MENU
-========================================================= */
+   ========================================================= */
 
-const menuBtn =
-    document.getElementById("menuBtn");
+const menuToggle =
+    document.getElementById("menuToggle");
 
-const navLinks =
-    document.getElementById("navLinks");
-
-
-menuBtn.addEventListener("click",()=>{
-
-    navLinks.classList.toggle("open");
-
-});
+const mobileMenu =
+    document.getElementById("mobileMenu");
 
 
-document.querySelectorAll(".nav-links a")
-.forEach(link=>{
+function toggleMobileMenu(force) {
 
-    link.addEventListener("click",()=>{
-        navLinks.classList.remove("open");
+    const shouldOpen =
+        typeof force === "boolean"
+            ? force
+            : !mobileMenu.classList.contains("open");
+
+    mobileMenu.classList.toggle(
+        "open",
+        shouldOpen
+    );
+
+    menuToggle.classList.toggle(
+        "open",
+        shouldOpen
+    );
+
+    menuToggle.setAttribute(
+        "aria-expanded",
+        shouldOpen
+    );
+
+    menuToggle.setAttribute(
+        "aria-label",
+        shouldOpen
+            ? "Close menu"
+            : "Open menu"
+    );
+}
+
+
+function closeMobileMenu() {
+    toggleMobileMenu(false);
+}
+
+
+document
+    .querySelectorAll(".mobile-link")
+    .forEach(link => {
+
+        link.addEventListener(
+            "click",
+            () => closeMobileMenu()
+        );
+
     });
 
-});
+
+document.addEventListener(
+    "keydown",
+    event => {
+
+        if (event.key === "Escape") {
+            closeMobileMenu();
+        }
+
+    }
+);
+
+
+document.addEventListener(
+    "click",
+    event => {
+
+        if (
+            mobileMenu.classList.contains("open") &&
+            !navbar.contains(event.target)
+        ) {
+            closeMobileMenu();
+        }
+
+    }
+);
+
+
+window.addEventListener(
+    "resize",
+    () => {
+
+        if (window.innerWidth > 850) {
+            closeMobileMenu();
+        }
+
+    }
+);
 
 
 /* =========================================================
-   TOOLS
-========================================================= */
+   ACTIVE NAV LINKS
+   ========================================================= */
 
-function closeWorkspaces(){
+const navLinks =
+    document.querySelectorAll(
+        ".nav-links a, .mobile-link"
+    );
 
-    document
-        .querySelectorAll(".workspace")
-        .forEach(w=>{
-            w.classList.remove("active");
-        });
-
-}
-
-
-function openTool(tool){
-
-    closeWorkspaces();
-
-    const workspace =
-        document.getElementById(
-            "workspace-" + tool
-        );
-
-    if(workspace){
-
-        workspace.classList.add("active");
-
-        setTimeout(()=>{
-
-            workspace.scrollIntoView({
-                behavior:"smooth",
-                block:"center"
-            });
-
-        },50);
-
-    }
-
-}
+const sections =
+    document.querySelectorAll(
+        "#home, #tools, #how, #about"
+    );
 
 
-document.querySelectorAll(".filter-btn[data-filter]")
-.forEach(btn=>{
+const sectionObserver =
+    new IntersectionObserver(
+        entries => {
 
-    btn.addEventListener("click",()=>{
+            entries.forEach(entry => {
 
-        document
-            .querySelectorAll(".filter-btn[data-filter]")
-            .forEach(b=>b.classList.remove("active"));
-
-        btn.classList.add("active");
-
-        const filter =
-            btn.dataset.filter;
-
-        document
-            .querySelectorAll(".tool-card")
-            .forEach(card=>{
-
-                if(filter === "all"){
-                    card.classList.remove("hidden");
+                if (!entry.isIntersecting) {
                     return;
                 }
 
-                const categories =
-                    card.dataset.category.split(" ");
+                navLinks.forEach(link => {
 
-                if(categories.includes(filter)){
-                    card.classList.remove("hidden");
-                }else{
-                    card.classList.add("hidden");
-                }
+                    link.classList.remove(
+                        "active"
+                    );
+
+                });
+
+                document
+                    .querySelectorAll(
+                        `a[href="#${entry.target.id}"]`
+                    )
+                    .forEach(link => {
+
+                        link.classList.add(
+                            "active"
+                        );
+
+                    });
 
             });
 
-    });
+        },
+        {
+            rootMargin:
+                "-30% 0px -55% 0px",
 
+            threshold: 0
+        }
+    );
+
+
+sections.forEach(section => {
+    sectionObserver.observe(section);
 });
 
 
-/* SEARCH */
-
-document
-    .getElementById("toolSearch")
-    .addEventListener("input",(e)=>{
-
-        const query =
-            e.target.value.toLowerCase().trim();
-
-        document
-            .querySelectorAll(".tool-card")
-            .forEach(card=>{
-
-                const name =
-                    card.dataset.name || "";
-
-                if(name.includes(query)){
-                    card.classList.remove("hidden");
-                }else{
-                    card.classList.add("hidden");
-                }
-
-            });
-
-    });
-
-
 /* =========================================================
-   RESULT HELPERS
-========================================================= */
+   TOOL SYSTEM
+   ========================================================= */
 
-function escapeHTML(text){
+function openTool(id) {
 
-    return String(text)
-        .replaceAll("&","&amp;")
-        .replaceAll("<","&lt;")
-        .replaceAll(">","&gt;")
-        .replaceAll('"',"&quot;")
-        .replaceAll("'","&#039;");
+    document
+        .querySelectorAll(".tool-panel")
+        .forEach(panel => {
 
-}
+            panel.classList.remove(
+                "active"
+            );
 
+        });
 
-function renderResults(containerId,items,type){
+    const panel =
+        document.getElementById(
+            `panel-${id}`
+        );
 
-    const container =
-        document.getElementById(containerId);
+    if (!panel) return;
 
-    container.innerHTML = `
+    panel.classList.add("active");
 
-        <div class="results-title">
-
-            <h4>Generated Results</h4>
-
-            <span>${items.length} results</span>
-
-        </div>
-
-        <div class="result-list">
-
-            ${items.map((item,index)=>`
-
-                <div class="result-card">
-
-                    <p>
-                        ${escapeHTML(item)}
-                    </p>
-
-                    <div class="result-actions">
-
-                        <button
-                            onclick="copyText(${JSON.stringify(item)})"
-                        >
-                            Copy
-                        </button>
-
-                        <button
-                            onclick="saveContent(${JSON.stringify(item)},'${type}')"
-                        >
-                            Save
-                        </button>
-
-                    </div>
-
-                </div>
-
-            `).join("")}
-
-        </div>
-    `;
-
-}
-
-
-function copyText(text){
-
-    navigator.clipboard.writeText(text)
-        .then(()=>{
-            showToast("Copied to clipboard.");
-        })
-        .catch(()=>{
-            showToast("Copy failed.");
+    document
+        .getElementById("tools")
+        .scrollIntoView({
+            behavior: "smooth",
+            block: "start"
         });
 
 }
 
 
-function saveContent(text,type){
+function closeTools() {
 
-    const data = getUserData();
+    document
+        .querySelectorAll(".tool-panel")
+        .forEach(panel => {
 
-    data.saved.unshift({
+            panel.classList.remove(
+                "active"
+            );
 
-        id:Date.now(),
+        });
 
-        text:text,
+}
 
-        type:type,
 
-        date:new Date().toLocaleDateString()
+/* =========================================================
+   RESULTS
+   ========================================================= */
 
-    });
+function showResults(
+    containerId,
+    items
+) {
 
-    saveUserData(data);
+    const container =
+        document.getElementById(
+            containerId
+        );
 
-    renderContent();
-    updateStats();
-    updateScore();
+    container.innerHTML = "";
 
-    showToast("Saved to My Content.");
+    items.forEach(
+        (item, index) => {
+
+            const row =
+                document.createElement(
+                    "div"
+                );
+
+            row.className =
+                "result-item";
+
+            row.innerHTML = `
+
+                <div class="result-number">
+                    ${String(index + 1).padStart(2, "0")}
+                </div>
+
+                <div class="result-text">
+                    ${escapeHTML(item)}
+                </div>
+
+                <button
+                    class="copy-btn"
+                    onclick="copyText(this, ${JSON.stringify(item)})"
+                >
+                    Copy
+                </button>
+
+            `;
+
+            container.appendChild(row);
+
+        }
+    );
+
+}
+
+
+async function copyText(
+    button,
+    text
+) {
+
+    try {
+
+        await navigator.clipboard.writeText(
+            text
+        );
+
+        const oldText =
+            button.textContent;
+
+        button.textContent =
+            "Copied ✓";
+
+        setTimeout(() => {
+
+            button.textContent =
+                oldText;
+
+        }, 1300);
+
+    } catch {
+
+        button.textContent =
+            "Copy failed";
+
+    }
 
 }
 
 
 /* =========================================================
    TITLE GENERATOR
-========================================================= */
+   ========================================================= */
 
-function generateTitles(){
+function generateTitles() {
 
     const topic =
-        document.getElementById("titleTopic")
-            .value.trim() || "your topic";
+        document.getElementById(
+            "titleTopic"
+        ).value.trim();
 
     const platform =
-        document.getElementById("titlePlatform")
-            .value;
+        document.getElementById(
+            "titlePlatform"
+        ).value;
 
+    if (!topic) {
+
+        alert(
+            "Enter a topic first."
+        );
+
+        return;
+
+    }
 
     const titles = [
 
-        `Nobody Talks About ${topic} Like This`,
+        `Nobody talks about this ${topic} trick...`,
 
-        `I Tried ${topic} — Here's What Happened`,
+        `The ${topic} mistake everyone makes`,
 
-        `The Truth About ${topic}`,
+        `I tried ${topic} so you don't have to`,
 
-        `5 Things You Need To Know About ${topic}`,
+        `5 things you need to know about ${topic}`,
 
-        `${topic}: What Beginners Get Wrong`,
+        `This changed how I see ${topic}`,
 
-        `I Wish I Knew This About ${topic}`,
+        `The truth about ${topic}`,
 
-        `This Changed The Way I Think About ${topic}`,
+        `You are probably doing ${topic} wrong`,
 
-        `The Ultimate ${topic} Guide`,
+        `${topic}: What nobody tells you`,
 
-        `Don't Start ${topic} Before Watching This`,
+        `Save this before trying ${topic}`,
 
-        `The Simple ${topic} Trick Everyone Should Know`
+        `The easiest way to understand ${topic}`
 
     ];
 
-
-    const data = getUserData();
-
-    data.stats.titles += titles.length;
-
-    saveUserData(data);
-
-    renderResults(
+    showResults(
         "titleResults",
-        titles,
-        "title"
-    );
-
-    updateStats();
-    updateScore();
-
-    showToast(
-        "Titles generated for " + platform
+        titles.map(
+            title =>
+                `${title} · ${platform}`
+        )
     );
 
 }
@@ -3456,57 +3798,68 @@ function generateTitles(){
 
 /* =========================================================
    CAPTION GENERATOR
-========================================================= */
+   ========================================================= */
 
-function generateCaptions(){
+function generateCaptions() {
 
-    const topic =
-        document.getElementById("captionTopic")
-            .value.trim() || "this moment";
+    const description =
+        document
+            .getElementById(
+                "captionDescription"
+            )
+            .value
+            .trim();
+
+    const platform =
+        document.getElementById(
+            "captionPlatform"
+        ).value;
 
     const tone =
-        document.getElementById("captionTone")
-            .value;
+        document.getElementById(
+            "captionTone"
+        ).value;
 
+    if (!description) {
+
+        alert(
+            "Describe your content first."
+        );
+
+        return;
+
+    }
 
     const captions = [
 
-        `${topic}. Sometimes the simplest moments become the ones you remember.`,
+        `Just another moment worth remembering. ✨`,
 
-        `POV: you finally found a moment worth posting. ${topic}.`,
+        `Some moments don't need a long explanation.`,
 
-        `No perfect setup. No perfect timing. Just ${topic}.`,
+        `This one felt different. 🔥`,
 
-        `One moment. One memory. ${topic}.`,
+        `Simple moment. Big energy.`,
 
-        `If you know, you know. ${topic}.`,
+        `Keeping this one in the memories.`,
 
-        `A little reminder to slow down and enjoy ${topic}.`,
+        `POV: you finally captured the moment.`,
 
-        `This one felt different. ${topic}.`,
+        `A little reminder to enjoy the process.`,
 
-        `Creating memories, one moment at a time. ${topic}.`
+        `Made for the timeline. 🚀`,
+
+        `No perfect plan. Just create.`,
+
+        `One post. One moment. One memory.`
 
     ];
 
-
-    const data = getUserData();
-
-    data.stats.captions += captions.length;
-
-    saveUserData(data);
-
-    renderResults(
+    showResults(
         "captionResults",
-        captions,
-        "caption"
-    );
-
-    updateStats();
-    updateScore();
-
-    showToast(
-        tone + " captions generated."
+        captions.map(
+            caption =>
+                `${caption} · ${tone} · ${platform}`
+        )
     );
 
 }
@@ -3514,934 +3867,527 @@ function generateCaptions(){
 
 /* =========================================================
    IDEA GENERATOR
-========================================================= */
+   ========================================================= */
 
-function generateIdeas(){
+function generateIdeas() {
 
     const niche =
-        document.getElementById("ideaNiche")
-            .value.trim() || "your niche";
+        document
+            .getElementById(
+                "ideaNiche"
+            )
+            .value
+            .trim();
 
     const type =
-        document.getElementById("ideaType")
-            .value;
+        document.getElementById(
+            "ideaType"
+        ).value;
 
+    if (!niche) {
+
+        alert(
+            "Enter your niche first."
+        );
+
+        return;
+
+    }
 
     const ideas = [
 
-        `3 things beginners don't know about ${niche}`,
+        `3 things beginners should know about ${niche}`,
 
-        `I tested the most popular ${niche} tip`,
+        `I tried the most popular ${niche} idea`,
 
-        `The biggest mistake people make with ${niche}`,
+        `The biggest ${niche} mistake`,
 
-        `Things I wish I knew before getting into ${niche}`,
+        `Things I wish I knew before starting ${niche}`,
 
-        `A beginner's guide to ${niche}`,
+        `A day in the life of a ${niche} creator`,
 
-        `Rate these ${niche} setups from 1–10`,
+        `5 underrated ${niche} tips`,
 
-        `The unpopular opinion about ${niche}`,
+        `The truth about ${niche}`,
+
+        `Reacting to ${niche} trends`,
 
         `Before vs after: ${niche}`,
 
-        `5 quick facts about ${niche}`,
-
-        `Behind the scenes of creating ${niche} content`
+        `What nobody tells you about ${niche}`
 
     ];
 
-
-    const data = getUserData();
-
-    data.stats.ideas += ideas.length;
-
-    saveUserData(data);
-
-    renderResults(
+    showResults(
         "ideaResults",
-        ideas,
-        "idea"
+        ideas.map(
+            idea =>
+                `${idea} · ${type}`
+        )
     );
-
-    updateStats();
-    updateScore();
-
-    showToast(
-        type + " ideas generated."
-    );
-
-}
-
-
-/* =========================================================
-   HASHTAGS
-========================================================= */
-
-function generateHashtags(){
-
-    const topic =
-        document.getElementById("hashtagTopic")
-            .value.trim() || "creator";
-
-    const clean =
-        topic
-            .toLowerCase()
-            .replace(/[^a-z0-9 ]/g,"")
-            .trim()
-            .replace(/\s+/g,"");
-
-
-    const hashtags = [
-
-        `#${clean}`,
-
-        `#${clean}tips`,
-
-        `#${clean}content`,
-
-        `#${clean}creator`,
-
-        `#contentcreator`,
-
-        `#creator`,
-
-        `#contentideas`,
-
-        `#reelideas`,
-
-        `#shortformcontent`,
-
-        `#digitalcreator`,
-
-        `#creativecontent`,
-
-        `#contentstrategy`,
-
-        `#socialmedia`,
-
-        `#growoninstagram`,
-
-        `#creatortips`
-
-    ];
-
-
-    renderResults(
-        "hashtagResults",
-        [hashtags.join(" ")],
-        "hashtag"
-    );
-
-    showToast("Hashtag set generated.");
-
-}
-
-
-/* =========================================================
-   HOOKS
-========================================================= */
-
-function generateHooks(){
-
-    const topic =
-        document.getElementById("hookTopic")
-            .value.trim() || "this topic";
-
-    const style =
-        document.getElementById("hookStyle")
-            .value;
-
-
-    const hooks = [
-
-        `Wait — you need to see this before you try ${topic}.`,
-
-        `Nobody tells you this about ${topic}.`,
-
-        `I wish someone told me this about ${topic}.`,
-
-        `Here's what happened when I finally tried ${topic}.`,
-
-        `If you're interested in ${topic}, stop scrolling.`,
-
-        `This might completely change how you see ${topic}.`,
-
-        `The biggest mistake I made with ${topic} was this.`,
-
-        `Before you start ${topic}, watch this.`
-
-    ];
-
-
-    renderResults(
-        "hookResults",
-        hooks,
-        "hook"
-    );
-
-    showToast(
-        style + " hooks generated."
-    );
-
-}
-
-
-/* =========================================================
-   STORY
-========================================================= */
-
-function generateStory(){
-
-    const topic =
-        document.getElementById("storyTopic")
-            .value.trim() || "a new idea";
-
-    const mood =
-        document.getElementById("storyMood")
-            .value;
-
-
-    const stories = [
-
-        `Scene 1 — Start with the moment: "${topic}" begins with a simple situation that feels completely normal.
-
-Scene 2 — Something changes. A small decision creates a new direction.
-
-Scene 3 — The main character realizes something they didn't expect.
-
-Scene 4 — End with a simple line that makes the audience think.
-
-Mood: ${mood}.`,
-
-        `Open with a close-up and a question about ${topic}.
-
-Then reveal the problem.
-
-Show the journey.
-
-Finish with the result.
-
-Keep the pacing quick and visual.
-
-Mood: ${mood}.`
-
-    ];
-
-
-    renderResults(
-        "storyResults",
-        stories,
-        "story"
-    );
-
-    showToast("Story generated.");
-
-}
-
-
-/* =========================================================
-   CTA
-========================================================= */
-
-function generateCTA(){
-
-    const goal =
-        document.getElementById("ctaGoal")
-            .value;
-
-    const platform =
-        document.getElementById("ctaPlatform")
-            .value;
-
-
-    const ctas = [
-
-        `What do you think? Tell me in the comments.`,
-
-        `Save this so you can come back to it later.`,
-
-        `Send this to someone who needs to see it.`,
-
-        `Follow for more content like this.`,
-
-        `Which one would you choose?`,
-
-        `Comment your answer below.`,
-
-        `Share this with a creator friend.`,
-
-        `Follow for the next part.`
-
-    ];
-
-
-    renderResults(
-        "ctaResults",
-        ctas,
-        "cta"
-    );
-
-    showToast(
-        "CTA ideas generated for " + platform
-    );
-
-}
-
-
-/* =========================================================
-   REPURPOSE
-========================================================= */
-
-function repurposeContent(){
-
-    const text =
-        document.getElementById("repurposeText")
-            .value.trim();
-
-
-    if(!text){
-
-        showToast("Add some content first.");
-
-        return;
-    }
-
-
-    const outputs = [
-
-        `Instagram Caption:\n${text}`,
-
-        `Short Video Hook:\n"Here's something you should know..."`,
-
-        `Carousel Idea:\nTurn the main points of this content into 5 slides.`,
-
-        `Story Idea:\nBreak this into a 3-part story sequence.`,
-
-        `YouTube Short:\nTurn the main idea into a 30–45 second explanation.`
-
-    ];
-
-
-    renderResults(
-        "repurposeResults",
-        outputs,
-        "repurpose"
-    );
-
-    showToast("Content repurposed.");
-
-}
-
-
-/* =========================================================
-   CHECKLIST
-========================================================= */
-
-function generateChecklist(){
-
-    const platform =
-        document.getElementById("checkPlatform")
-            .value;
-
-    const type =
-        document.getElementById("checkType")
-            .value;
-
-
-    const checklist = [
-
-        "✓ Strong hook in the first few seconds",
-
-        "✓ Clear main message",
-
-        "✓ Easy-to-read text",
-
-        "✓ Good lighting / visual quality",
-
-        "✓ Audio is clear",
-
-        "✓ Caption is ready",
-
-        "✓ CTA is included",
-
-        "✓ Cover / thumbnail looks clear",
-
-        "✓ Spelling and grammar checked",
-
-        `✓ Optimized for ${platform}`,
-
-        `✓ Content format: ${type}`
-
-    ];
-
-
-    renderResults(
-        "checklistResults",
-        checklist,
-        "checklist"
-    );
-
-    showToast("Checklist created.");
-
-}
-
-
-/* =========================================================
-   MY CONTENT
-========================================================= */
-
-function renderContent(filter="all"){
-
-    const container =
-        document.getElementById("contentList");
-
-    const data =
-        getUserData();
-
-    let items =
-        data.saved || [];
-
-
-    if(filter !== "all"){
-
-        items =
-            items.filter(
-                item => item.type === filter
-            );
-
-    }
-
-
-    if(items.length === 0){
-
-        container.innerHTML = `
-
-            <div class="empty-state"
-                 style="grid-column:1/-1;">
-
-                <strong>
-                    Nothing saved yet.
-                </strong>
-
-                Generate something from the tools
-                and press Save.
-
-            </div>
-
-        `;
-
-        return;
-    }
-
-
-    container.innerHTML =
-        items.map(item=>`
-
-            <div
-                class="saved-card"
-                data-saved-type="${escapeHTML(item.type)}"
-            >
-
-                <div class="saved-top">
-
-                    <span class="saved-type">
-                        ${escapeHTML(item.type)}
-                    </span>
-
-                    <span class="saved-date">
-                        ${escapeHTML(item.date)}
-                    </span>
-
-                </div>
-
-                <p>
-                    ${escapeHTML(item.text)}
-                </p>
-
-                <div class="saved-actions">
-
-                    <button
-                        class="btn btn-secondary btn-small"
-                        onclick="copyText(${JSON.stringify(item.text)})"
-                    >
-                        Copy
-                    </button>
-
-                    <button
-                        class="btn btn-secondary btn-small"
-                        onclick="deleteSaved(${item.id})"
-                    >
-                        Delete
-                    </button>
-
-                </div>
-
-            </div>
-
-        `).join("");
-
-}
-
-
-function filterSaved(type,button){
-
-    document
-        .querySelectorAll(".content-filter .filter-btn")
-        .forEach(btn=>{
-            btn.classList.remove("active");
-        });
-
-    button.classList.add("active");
-
-    renderContent(type);
-
-}
-
-
-function deleteSaved(id){
-
-    const data =
-        getUserData();
-
-    data.saved =
-        data.saved.filter(
-            item => item.id !== id
-        );
-
-    saveUserData(data);
-
-    renderContent();
-    updateUserUI();
-    updateStats();
-    updateScore();
-
-    showToast("Content deleted.");
 
 }
 
 
 /* =========================================================
    PLANNER
-========================================================= */
+   ========================================================= */
 
-function addPlan(){
-
-    const title =
-        document.getElementById("planTitle")
-            .value.trim();
-
-    const date =
-        document.getElementById("planDate")
-            .value;
-
-    const platform =
-        document.getElementById("planPlatform")
-            .value;
+const PLAN_KEY =
+    "creatorFlowPlans";
 
 
-    if(!title || !date){
+function getPlans() {
 
-        showToast("Add a title and date.");
+    try {
 
-        return;
+        return JSON.parse(
+            localStorage.getItem(
+                PLAN_KEY
+            ) || "[]"
+        );
+
+    } catch {
+
+        return [];
+
     }
-
-
-    const data =
-        getUserData();
-
-
-    data.plans.push({
-
-        id:Date.now(),
-
-        title:title,
-
-        date:date,
-
-        platform:platform,
-
-        status:"Planned"
-
-    });
-
-
-    data.plans.sort(
-        (a,b)=>
-            new Date(a.date) -
-            new Date(b.date)
-    );
-
-
-    saveUserData(data);
-
-
-    document.getElementById("planTitle").value = "";
-
-    renderPlanner();
-    updateScore();
-
-    showToast("Added to your planner.");
 
 }
 
 
-function renderPlanner(){
+function savePlans(plans) {
 
-    const list =
-        document.getElementById("plannerList");
+    localStorage.setItem(
+        PLAN_KEY,
+        JSON.stringify(plans)
+    );
 
-    const data =
-        getUserData();
+}
+
+
+function addPlan() {
+
+    const date =
+        document.getElementById(
+            "planDate"
+        ).value;
+
+    const platform =
+        document.getElementById(
+            "planPlatform"
+        ).value;
+
+    const idea =
+        document.getElementById(
+            "planIdea"
+        ).value.trim();
+
+    if (!date || !idea) {
+
+        alert(
+            "Choose a date and enter a content idea."
+        );
+
+        return;
+
+    }
 
     const plans =
-        data.plans || [];
+        getPlans();
+
+    plans.push({
+
+        id:
+            Date.now(),
+
+        date,
+
+        platform,
+
+        idea,
+
+        status:
+            "Planned"
+
+    });
+
+    savePlans(plans);
+
+    document.getElementById(
+        "planIdea"
+    ).value = "";
+
+    renderPlans();
+
+}
 
 
-    document.getElementById("planCount")
-        .textContent =
-        plans.length +
-        (plans.length === 1 ? " item" : " items");
+function deletePlan(id) {
+
+    const plans =
+        getPlans().filter(
+            plan =>
+                plan.id !== id
+        );
+
+    savePlans(plans);
+
+    renderPlans();
+
+}
 
 
-    if(plans.length === 0){
+function changeStatus(
+    id,
+    status
+) {
+
+    const plans =
+        getPlans();
+
+    const plan =
+        plans.find(
+            item =>
+                item.id === id
+        );
+
+    if (!plan) return;
+
+    plan.status =
+        status;
+
+    savePlans(plans);
+
+    renderPlans();
+
+}
+
+
+function renderPlans() {
+
+    const plans =
+        getPlans();
+
+    const list =
+        document.getElementById(
+            "planList"
+        );
+
+    list.innerHTML = "";
+
+    const planned =
+        plans.filter(
+            plan =>
+                plan.status === "Planned"
+        ).length;
+
+    const posted =
+        plans.filter(
+            plan =>
+                plan.status === "Posted"
+        ).length;
+
+    document.getElementById(
+        "totalPlans"
+    ).textContent =
+        plans.length;
+
+    document.getElementById(
+        "plannedCount"
+    ).textContent =
+        planned;
+
+    document.getElementById(
+        "postedCount"
+    ).textContent =
+        posted;
+
+
+    if (!plans.length) {
 
         list.innerHTML = `
 
-            <div class="empty-state">
-
-                <strong>
-                    Your planner is empty.
-                </strong>
-
-                Add your next post above.
-
+            <div
+                style="
+                    padding:25px;
+                    text-align:center;
+                    color:var(--muted);
+                    border:1px dashed var(--border);
+                    border-radius:12px;
+                    font-size:12px;
+                "
+            >
+                No content planned yet.
+                Add your first idea above ✨
             </div>
 
         `;
 
         return;
+
     }
 
 
-    list.innerHTML =
-        plans.map(plan=>`
+    plans
+        .sort(
+            (a,b) =>
+                a.date.localeCompare(b.date)
+        )
+        .forEach(plan => {
 
-            <div class="plan-item">
+            const item =
+                document.createElement(
+                    "div"
+                );
 
-                <div class="plan-info">
+            item.className =
+                "plan-item";
+
+            item.innerHTML = `
+
+                <div class="plan-date">
+                    ${escapeHTML(plan.date)}
+                </div>
+
+                <div class="plan-content">
 
                     <strong>
-                        ${escapeHTML(plan.title)}
+                        ${escapeHTML(plan.idea)}
                     </strong>
 
-                    <span>
+                    <small>
                         ${escapeHTML(plan.platform)}
-                        ·
-                        ${escapeHTML(plan.date)}
-                    </span>
+                    </small>
 
                 </div>
 
+                <select
+                    class="status-select"
+                    onchange="changeStatus(${plan.id}, this.value)"
+                >
 
-                <div style="
-                    display:flex;
-                    align-items:center;
-                    gap:7px;
-                ">
-
-                    <button
-                        class="plan-status"
-                        onclick="togglePlan(${plan.id})"
-                        title="Change status"
+                    <option
+                        ${plan.status === "Planned" ? "selected" : ""}
                     >
-                        ${escapeHTML(plan.status)}
-                    </button>
+                        Planned
+                    </option>
 
-                    <button
-                        onclick="deletePlan(${plan.id})"
-                        style="
-                            border:0;
-                            background:transparent;
-                            color:var(--muted);
-                        "
+                    <option
+                        ${plan.status === "Posted" ? "selected" : ""}
                     >
-                        ✕
-                    </button>
+                        Posted
+                    </option>
+
+                </select>
+
+                <button
+                    class="delete-btn"
+                    onclick="deletePlan(${plan.id})"
+                    aria-label="Delete plan"
+                >
+                    ✕
+                </button>
+
+            `;
+
+            list.appendChild(item);
+
+        });
+
+}
+
+
+/* =========================================================
+   SECURITY HELPER
+   ========================================================= */
+
+function escapeHTML(
+    value
+) {
+
+    return String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+
+}
+
+
+/* =========================================================
+   DEFAULT DATE
+   ========================================================= */
+
+document.getElementById(
+    "planDate"
+).value =
+    new Date()
+        .toISOString()
+        .split("T")[0];
+
+
+/* =========================================================
+   DEMO HERO GENERATOR
+   ========================================================= */
+
+function demoGenerate() {
+
+    const results =
+        document.getElementById(
+            "previewResults"
+        );
+
+    results.style.opacity = ".35";
+
+    setTimeout(() => {
+
+        results.innerHTML = `
+
+            <div class="generated-item">
+
+                <div class="generated-icon">
+                    🔥
+                </div>
+
+                <div>
+
+                    <strong>
+                        Weekend Travel Reel
+                    </strong>
+
+                    <small>
+                        Fresh content idea
+                    </small>
 
                 </div>
 
             </div>
 
-        `).join("");
+
+            <div class="generated-item">
+
+                <div class="generated-icon">
+                    ✍️
+                </div>
+
+                <div>
+
+                    <strong>
+                        10 Viral Hooks
+                    </strong>
+
+                    <small>
+                        Ready to customize
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="generated-item">
+
+                <div class="generated-icon">
+                    🚀
+                </div>
+
+                <div>
+
+                    <strong>
+                        Content Ready
+                    </strong>
+
+                    <small>
+                        Time to create
+                    </small>
+
+                </div>
+
+            </div>
+
+        `;
+
+        results.style.opacity = "1";
+
+    }, 350);
 
 }
 
 
-function togglePlan(id){
+/* =========================================================
+   HERO WORKFLOW ANIMATION
+   ========================================================= */
 
-    const data =
-        getUserData();
+const workflowItems =
+    document.querySelectorAll(
+        "#heroWorkflow .workflow-item"
+    );
 
-    const plan =
-        data.plans.find(
-            item => item.id === id
+const flowNodes =
+    document.querySelectorAll(
+        ".flow-node"
+    );
+
+let workflowIndex = 0;
+
+
+function animateWorkflow() {
+
+    workflowItems.forEach(
+        item =>
+            item.classList.remove(
+                "active"
+            )
+    );
+
+    flowNodes.forEach(
+        node =>
+            node.classList.remove(
+                "active"
+            )
+    );
+
+    workflowItems[
+        workflowIndex
+    ].classList.add(
+        "active"
+    );
+
+    if (flowNodes[workflowIndex]) {
+
+        flowNodes[
+            workflowIndex
+        ].classList.add(
+            "active"
         );
-
-    if(!plan) return;
-
-
-    if(plan.status === "Planned"){
-
-        plan.status = "Posted";
-
-        data.stats.posted++;
-
-    }else{
-
-        plan.status = "Planned";
-
-        if(data.stats.posted > 0){
-            data.stats.posted--;
-        }
 
     }
 
+    workflowIndex++;
 
-    saveUserData(data);
-
-    renderPlanner();
-    updateStats();
-    updateScore();
-
-    showToast(
-        plan.status === "Posted"
-            ? "Marked as posted."
-            : "Moved back to planned."
-    );
+    if (
+        workflowIndex >=
+        workflowItems.length
+    ) {
+        workflowIndex = 0;
+    }
 
 }
 
 
-function deletePlan(id){
-
-    const data =
-        getUserData();
-
-    data.plans =
-        data.plans.filter(
-            item => item.id !== id
-        );
-
-    saveUserData(data);
-
-    renderPlanner();
-    updateScore();
-
-    showToast("Planner item deleted.");
-
-}
+setInterval(
+    animateWorkflow,
+    1700
+);
 
 
 /* =========================================================
-   STATS
-========================================================= */
+   INITIALIZE
+   ========================================================= */
 
-function updateStats(){
-
-    const data =
-        getUserData();
-
-    document.getElementById("ideasStat")
-        .textContent =
-        data.stats.ideas;
-
-    document.getElementById("titlesStat")
-        .textContent =
-        data.stats.titles;
-
-    document.getElementById("captionsStat")
-        .textContent =
-        data.stats.captions;
-
-    document.getElementById("postedStat")
-        .textContent =
-        data.stats.posted;
-
-    document.getElementById("profileSaved")
-        .textContent =
-        data.saved.length;
-
-}
-
-
-/* =========================================================
-   CREATOR SCORE
-========================================================= */
-
-function updateScore(){
-
-    const data =
-        getUserData();
-
-    const total =
-        data.stats.ideas +
-        data.stats.titles +
-        data.stats.captions +
-        data.saved.length +
-        data.plans.length * 2;
-
-    const score =
-        Math.min(
-            100,
-            Math.max(
-                10,
-                Math.round(
-                    20 + total * 0.8
-                )
-            )
-        );
-
-
-    document.getElementById("creatorScore")
-        .textContent = score;
-
-    document.getElementById("activityPercent")
-        .textContent = score + "%";
-
-    document.getElementById("activityBar")
-        .style.width = score + "%";
-
-
-    const planning =
-        Math.min(
-            100,
-            data.plans.length * 15
-        );
-
-    document.getElementById("planningPercent")
-        .textContent =
-        planning + "%";
-
-    document.getElementById("planningBar")
-        .style.width =
-        planning + "%";
-
-}
-
-
-/* =========================================================
-   TOAST
-========================================================= */
-
-let toastTimer;
-
-function showToast(message){
-
-    const toast =
-        document.getElementById("toast");
-
-    const text =
-        document.getElementById("toastText");
-
-    text.textContent =
-        message;
-
-    toast.classList.add("show");
-
-    clearTimeout(toastTimer);
-
-    toastTimer =
-        setTimeout(()=>{
-            toast.classList.remove("show");
-        },2500);
-
-}
-
-
-/* =========================================================
-   NAV ACTIVE STATE
-========================================================= */
-
-const sections =
-    document.querySelectorAll(
-        "main section[id]"
-    );
-
-const navItems =
-    document.querySelectorAll(
-        ".nav-links a"
-    );
-
-
-const observer =
-    new IntersectionObserver(
-        entries=>{
-
-            entries.forEach(entry=>{
-
-                if(entry.isIntersecting){
-
-                    navItems.forEach(link=>{
-                        link.classList.remove("active");
-                    });
-
-                    const active =
-                        document.querySelector(
-                            `.nav-links a[href="#${entry.target.id}"]`
-                        );
-
-                    if(active){
-                        active.classList.add("active");
-                    }
-
-                }
-
-            });
-
-        },
-        {
-            rootMargin:"-35% 0px -55% 0px"
-        }
-    );
-
-
-sections.forEach(section=>{
-    observer.observe(section);
-});
-
-
-/* =========================================================
-   DEFAULT DATE
-========================================================= */
-
-const planDate =
-    document.getElementById("planDate");
-
-if(planDate){
-
-    const tomorrow =
-        new Date();
-
-    tomorrow.setDate(
-        tomorrow.getDate() + 1
-    );
-
-    planDate.value =
-        tomorrow.toISOString()
-            .split("T")[0];
-
-}
-
-
-/* =========================================================
-   INITIAL
-========================================================= */
-
-updateStats();
-
-updateScore();
+renderPlans();
 
 </script>
 
