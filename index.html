@@ -2137,7 +2137,104 @@ footer {
     }
 }
 
+
+/* =========================================================
+   V3.1 PREMIUM HOME + ADVANCED TOOLS
+   ========================================================= */
+.hero-mini-chip {
+    position:absolute; left:50%; bottom:-18px; transform:translateX(-50%);
+    padding:8px 12px; border:1px solid var(--border); border-radius:999px;
+    background:var(--card); backdrop-filter:blur(15px); color:var(--muted);
+    font-size:9px; font-weight:900; letter-spacing:.8px; box-shadow:var(--shadow);
+    white-space:nowrap; animation:floating 4s 1.8s ease-in-out infinite;
+}
+.hero-mini-chip span { color:var(--accent); text-shadow:0 0 10px var(--accent); }
+.tools-toolbar { display:flex; align-items:center; justify-content:space-between; gap:18px; margin:0 0 12px; padding:14px; border:1px solid var(--border); border-radius:17px; background:var(--card); }
+.tools-search-wrap { flex:1; max-width:430px; display:flex; align-items:center; gap:9px; padding:0 13px; border:1px solid var(--border); border-radius:11px; background:rgba(255,255,255,.025); }
+.tools-search-wrap span { color:var(--accent); font-size:19px; }
+.tools-search-wrap input { width:100%; padding:11px 0; border:0; outline:0; background:transparent; color:var(--text); font-size:12px; }
+.tool-filter-pills { display:flex; gap:6px; flex-wrap:wrap; }
+.tool-filter { padding:8px 11px; border:1px solid var(--border); border-radius:9px; background:transparent; color:var(--muted); font-size:10px; font-weight:800; }
+.tool-filter:hover, .tool-filter.active { border-color:var(--accent); background:var(--accent-soft); color:var(--accent); }
+.tool-count-row { display:flex; justify-content:space-between; align-items:center; margin:0 2px 15px; color:var(--muted); font-size:10px; }
+.tool-count-row strong { color:var(--text); }
+.tool-tip { opacity:.75; }
+.featured-tools { grid-template-columns:repeat(5,1fr); }
+.tool-card { position:relative; min-height:190px; display:flex; flex-direction:column; }
+.tool-card h3 { margin-bottom:7px; }
+.tool-card p { margin-bottom:18px; }
+.tool-open { margin-top:auto; color:var(--accent); font-size:10px; font-weight:850; opacity:.7; transition:.2s ease; }
+.tool-card:hover .tool-open { opacity:1; transform:translateX(3px); }
+.tool-badge { position:absolute; top:13px; right:13px; padding:4px 7px; border-radius:999px; background:var(--accent-soft); color:var(--accent); font-size:7px; font-weight:950; letter-spacing:.6px; }
+.tool-card.is-hidden { display:none; }
+.panel-subtitle { color:var(--muted); font-size:11px; margin-top:5px; }
+.tool-panel.active { scroll-margin-top:95px; }
+@media (max-width:1050px) { .featured-tools { grid-template-columns:repeat(3,1fr); } }
+@media (max-width:850px) { .tools-toolbar { flex-direction:column; align-items:stretch; } .tools-search-wrap { max-width:none; } .tool-filter-pills { justify-content:center; } .featured-tools { grid-template-columns:repeat(2,1fr); } .hero-mini-chip { bottom:-14px; } }
+@media (max-width:650px) { .featured-tools { grid-template-columns:1fr; } .tool-card { min-height:170px; } .tool-count-row { gap:10px; align-items:flex-start; flex-direction:column; } .tool-tip { display:none; } .hero-mini-chip { font-size:8px; } }
+
+
+/* =========================================================
+   ADVANCED TOOL EXPERIENCE
+   ========================================================= */
+.tools-toolbar-advanced{margin-top:10px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.tool-utility{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.tool-utility-btn{border:1px solid var(--border);background:var(--card);color:var(--muted);padding:8px 11px;border-radius:10px;font-size:10px;font-weight:850;cursor:pointer;transition:.2s}
+.tool-utility-btn:hover,.tool-utility-btn.active{border-color:var(--accent);color:var(--accent);background:var(--accent-soft)}
+.recent-tools{display:flex;gap:7px;flex-wrap:wrap;margin:0 0 18px;min-height:28px}
+.recent-tool{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--border);background:var(--card);color:var(--muted);border-radius:999px;padding:7px 10px;font-size:9px;font-weight:800;cursor:pointer}
+.recent-tool:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-1px)}
+.tool-card .favorite-tool{position:absolute;top:12px;left:12px;width:28px;height:28px;border:1px solid var(--border);border-radius:9px;background:rgba(0,0,0,.12);color:var(--muted);display:grid;place-items:center;font-size:13px;cursor:pointer;z-index:3;transition:.2s}
+body.light .tool-card .favorite-tool{background:rgba(255,255,255,.65)}
+.tool-card .favorite-tool:hover,.tool-card .favorite-tool.active{color:var(--accent);border-color:var(--accent);background:var(--accent-soft)}
+.tool-card .tool-badge{right:13px}
+.result-toolbar{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:20px;padding:10px 0 0;border-top:1px solid var(--border);flex-wrap:wrap}
+.result-meta{color:var(--muted);font-size:9px;font-weight:750}
+.result-actions{display:flex;gap:6px;flex-wrap:wrap}
+.result-action{border:1px solid var(--border);background:transparent;color:var(--muted);padding:7px 9px;border-radius:8px;font-size:9px;font-weight:800;cursor:pointer}
+.result-action:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-soft)}
+.result-item{transition:.2s ease}
+.result-item:hover{border-color:var(--accent);transform:translateX(2px)}
+.result-item.saved{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent-soft)}
+.tool-history-panel{display:none;margin:0 0 18px;padding:14px;border:1px solid var(--border);border-radius:15px;background:var(--card);box-shadow:var(--shadow)}
+.tool-history-panel.open{display:block;animation:panelIn .25s ease}
+.history-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:10px}
+.history-head strong{font-size:11px}
+.history-list{display:grid;gap:6px;max-height:220px;overflow:auto}
+.history-entry{display:flex;align-items:center;gap:10px;padding:9px;border:1px solid var(--border);border-radius:9px}
+.history-entry span{flex:1;color:var(--muted);font-size:9px;line-height:1.5}
+.history-entry button{border:0;background:transparent;color:var(--accent);font-size:9px;font-weight:800;cursor:pointer}
+.no-history{padding:10px;color:var(--muted);font-size:9px;text-align:center}
+
 </style>
+
+<style id="creatorflow-v4-styles">
+/* ================= CREATORFLOW V4 WORKSPACE ================= */
+.cf4-section{padding:90px 0;position:relative}
+.cf4-wrap{width:min(1180px,92%);margin:auto}
+.cf4-kicker{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);font-weight:800;margin-bottom:10px}
+.cf4-title{font-size:clamp(28px,4vw,48px);line-height:1.05;margin:0 0 12px}
+.cf4-sub{color:var(--muted);max-width:720px;line-height:1.7;margin:0 0 30px}
+.cf4-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.cf4-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:20px;box-shadow:0 12px 35px rgba(0,0,0,.06)}
+.cf4-card h3{margin:8px 0 6px;font-size:16px}.cf4-card p{margin:0;color:var(--muted);font-size:12px;line-height:1.6}
+.cf4-icon{font-size:26px}.cf4-stat{font-size:30px;font-weight:900;margin-top:6px}.cf4-label{font-size:11px;color:var(--muted)}
+.cf4-actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:15px}.cf4-btn{border:1px solid var(--border);background:var(--card);color:var(--text);border-radius:11px;padding:10px 13px;font-weight:800;font-size:11px;cursor:pointer}.cf4-btn.primary{background:var(--accent);color:#fff;border-color:var(--accent)}.cf4-btn.danger{color:#c33}
+.cf4-dashboard{display:grid;grid-template-columns:1.45fr .9fr;gap:18px;margin-top:25px}.cf4-panel{background:var(--card);border:1px solid var(--border);border-radius:22px;padding:22px}.cf4-panel-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px}.cf4-panel-head h3{margin:0;font-size:17px}.cf4-mini{font-size:10px;color:var(--muted)}
+.cf4-profile-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.cf4-field label{display:block;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:6px}.cf4-field input,.cf4-field select,.cf4-field textarea{width:100%;box-sizing:border-box;background:var(--bg);color:var(--text);border:1px solid var(--border);border-radius:10px;padding:11px;font:inherit;outline:none}.cf4-field textarea{min-height:90px;resize:vertical}.cf4-field.full{grid-column:1/-1}
+.cf4-output{display:grid;gap:9px}.cf4-output-item{padding:13px;border:1px solid var(--border);border-radius:13px;background:rgba(255,255,255,.02);font-size:12px;line-height:1.6}.cf4-output-item strong{display:block;font-size:10px;color:var(--accent);text-transform:uppercase;letter-spacing:.08em;margin-bottom:5px}
+.cf4-score{display:flex;align-items:center;gap:18px}.cf4-score-ring{width:92px;height:92px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--accent) var(--score,87%),rgba(127,127,127,.14) 0);position:relative}.cf4-score-ring:after{content:"";position:absolute;inset:9px;border-radius:50%;background:var(--card)}.cf4-score-ring b{position:relative;z-index:1;font-size:23px}.cf4-bars{flex:1;display:grid;gap:8px}.cf4-bar{display:grid;grid-template-columns:80px 1fr 32px;align-items:center;gap:7px;font-size:10px}.cf4-bar span:last-child{text-align:right}.cf4-track{height:6px;background:rgba(127,127,127,.16);border-radius:99px;overflow:hidden}.cf4-track i{display:block;height:100%;background:var(--accent);border-radius:99px}
+.cf4-library{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.cf4-library-item{border:1px solid var(--border);border-radius:15px;padding:14px;background:var(--bg)}.cf4-library-item .type{font-size:9px;color:var(--accent);font-weight:900;text-transform:uppercase}.cf4-library-item p{font-size:12px;line-height:1.55;margin:8px 0;color:var(--text)}
+.cf4-tabs{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:16px}.cf4-tab{border:1px solid var(--border);background:var(--card);color:var(--muted);padding:9px 12px;border-radius:10px;font-size:10px;font-weight:800;cursor:pointer}.cf4-tab.active{color:var(--text);border-color:var(--accent);background:rgba(127,127,127,.06)}
+.cf4-calendar{display:grid;grid-template-columns:repeat(7,1fr);gap:7px}.cf4-day{min-height:105px;border:1px solid var(--border);border-radius:12px;padding:9px;background:var(--bg)}.cf4-day b{font-size:10px}.cf4-day small{display:block;color:var(--muted);margin-top:5px}.cf4-event{margin-top:8px;padding:6px;border-radius:8px;background:rgba(127,127,127,.10);font-size:9px;line-height:1.3}
+.cf4-progress{height:10px;border-radius:99px;background:rgba(127,127,127,.15);overflow:hidden}.cf4-progress i{display:block;height:100%;background:var(--accent);width:0}
+.cf4-command{display:grid;grid-template-columns:1.1fr .9fr;gap:18px;margin-top:18px}.cf4-quick{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.cf4-quick button{text-align:left;padding:16px;border:1px solid var(--border);border-radius:15px;background:var(--bg);color:var(--text);cursor:pointer}.cf4-quick b{display:block;margin-bottom:4px}.cf4-quick span{font-size:10px;color:var(--muted)}
+.cf4-modal{position:fixed;inset:0;background:rgba(0,0,0,.62);z-index:9999;display:none;align-items:center;justify-content:center;padding:20px}.cf4-modal.open{display:flex}.cf4-modal-box{width:min(760px,100%);max-height:90vh;overflow:auto;background:var(--card);border:1px solid var(--border);border-radius:24px;padding:24px}.cf4-modal-head{display:flex;justify-content:space-between;gap:12px;align-items:center}.cf4-modal-head h3{margin:0}.cf4-close{border:0;background:transparent;color:var(--text);font-size:22px;cursor:pointer}
+.cf4-pipeline{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.cf4-step{padding:9px 11px;border:1px solid var(--border);border-radius:10px;background:var(--bg);font-size:10px}.cf4-arrow{color:var(--accent)}
+@media(max-width:1000px){.cf4-grid{grid-template-columns:repeat(2,1fr)}.cf4-dashboard,.cf4-command{grid-template-columns:1fr}.cf4-library{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:650px){.cf4-section{padding:65px 0}.cf4-grid,.cf4-profile-grid,.cf4-library,.cf4-quick{grid-template-columns:1fr}.cf4-calendar{grid-template-columns:repeat(2,1fr)}.cf4-day{min-height:90px}.cf4-panel{padding:16px}}
+</style>
+
 </head>
 
 <body class="dark">
@@ -2281,10 +2378,9 @@ footer {
 
             <p class="hero-description">
 
-                Everything you need to turn your ideas into
-                <strong>better content</strong> —
-                from titles and captions to reel ideas and
-                content planning.
+                One focused workspace to turn a rough thought into
+                <strong>content worth posting</strong> — from ideas and hooks
+                to captions, scripts, planning and everything in between.
 
             </p>
 
@@ -2310,9 +2406,9 @@ footer {
 
             <div class="hero-note">
 
-                ✦ Free to use &nbsp; • &nbsp;
-                ⚡ Instant ideas &nbsp; • &nbsp;
-                🎯 Built for creators
+                ✦ No complicated setup &nbsp; • &nbsp;
+                ⚡ Fast creator workflow &nbsp; • &nbsp;
+                🎯 Built for short-form content
 
             </div>
 
@@ -2368,14 +2464,14 @@ footer {
                     </div>
 
                     <div class="preview-question">
-                        What's your next idea?
+                        Build your next post in one flow.
                     </div>
 
 
                     <div class="preview-input">
 
                         <span>
-                            Travel reel for this weekend...
+                            A cinematic car reel for this weekend...
                         </span>
 
                         <button
@@ -2485,11 +2581,15 @@ footer {
             <!-- Floating cards -->
 
             <div class="floating-card floating-one">
-                ⚡ <strong>Instant</strong> ideas
+                ⚡ <strong>Fast</strong> workflow
             </div>
 
             <div class="floating-card floating-two">
-                ✦ <strong>10+</strong> creator tools
+                ✦ <strong>10+</strong> tools in one place
+            </div>
+
+            <div class="hero-mini-chip">
+                <span>●</span> WORKSPACE READY
             </div>
 
         </div>
@@ -2513,20 +2613,20 @@ footer {
 
         <div class="hero-stat">
 
-            <strong>100+</strong>
+            <strong>10K+</strong>
 
             <span>
-                Creative Ideas
+                Content Combinations
             </span>
 
         </div>
 
         <div class="hero-stat">
 
-            <strong>∞</strong>
+            <strong>1</strong>
 
             <span>
-                Creative Possibilities
+                Focused Workspace
             </span>
 
         </div>
@@ -2595,87 +2695,118 @@ footer {
     </div>
 
 
+    <div class="tools-toolbar">
+        <div class="tools-search-wrap">
+            <span>⌕</span>
+            <input id="toolSearch" type="search" placeholder="Search creator tools..." oninput="filterTools(this.value)">
+        </div>
+        <div class="tool-filter-pills" role="tablist" aria-label="Tool categories">
+            <button class="tool-filter active" onclick="filterToolCategory('all', this)">All</button>
+            <button class="tool-filter" onclick="filterToolCategory('create', this)">Create</button>
+            <button class="tool-filter" onclick="filterToolCategory('write', this)">Write</button>
+            <button class="tool-filter" onclick="filterToolCategory('plan', this)">Plan</button>
+        </div>
+    </div>
+
+    <div class="tool-count-row">
+        <span><strong id="visibleToolCount">10</strong> tools available</span>
+        <span class="tool-tip">Click any tool to open its workspace ↗</span>
+    </div>
+
+    <div class="tools-toolbar-advanced">
+        <div class="tool-utility">
+            <button class="tool-utility-btn" id="favoritesToggle" onclick="toggleFavoritesView()">☆ Favorites</button>
+            <button class="tool-utility-btn" id="historyToggle" onclick="toggleToolHistory()">◷ History</button>
+        </div>
+        <div class="tool-utility">
+            <button class="tool-utility-btn" onclick="clearToolResults()">Clear results</button>
+        </div>
+    </div>
+
+    <div class="recent-tools" id="recentTools" aria-label="Recently used tools"></div>
+
+    <div class="tool-history-panel" id="toolHistoryPanel">
+        <div class="history-head">
+            <strong>Recent generations</strong>
+            <button class="tool-utility-btn" onclick="clearGenerationHistory()">Clear history</button>
+        </div>
+        <div class="history-list" id="generationHistory"></div>
+    </div>
+
     <!-- FEATURED -->
 
     <div class="featured-tools">
 
-        <div
-            class="tool-card"
-            onclick="openTool('titles')"
-        >
-
-            <div class="tool-icon">
-                ✍️
-            </div>
-
-            <h3>
-                Title Generator
-            </h3>
-
-            <p>
-                Create scroll-stopping titles and hooks.
-            </p>
-
+        <div class="tool-card tool-card-featured" data-tool="titles" data-category="write" onclick="openTool('titles')">
+            <span class="tool-badge">POPULAR</span>
+            <div class="tool-icon">✍️</div>
+            <h3>Title Generator</h3>
+            <p>Create scroll-stopping titles and hooks.</p>
+            <span class="tool-open">Open tool →</span>
         </div>
 
-
-        <div
-            class="tool-card"
-            onclick="openTool('captions')"
-        >
-
-            <div class="tool-icon">
-                📝
-            </div>
-
-            <h3>
-                Caption Generator
-            </h3>
-
-            <p>
-                Generate captions that fit your content.
-            </p>
-
+        <div class="tool-card tool-card-featured" data-tool="captions" data-category="write" onclick="openTool('captions')">
+            <span class="tool-badge">POPULAR</span>
+            <div class="tool-icon">📝</div>
+            <h3>Caption Generator</h3>
+            <p>Generate captions that fit your content.</p>
+            <span class="tool-open">Open tool →</span>
         </div>
 
-
-        <div
-            class="tool-card"
-            onclick="openTool('ideas')"
-        >
-
-            <div class="tool-icon">
-                💡
-            </div>
-
-            <h3>
-                Reel Ideas
-            </h3>
-
-            <p>
-                Never run out of ideas for your next reel.
-            </p>
-
+        <div class="tool-card" data-tool="ideas" data-category="create" onclick="openTool('ideas')">
+            <div class="tool-icon">💡</div>
+            <h3>Reel Ideas</h3>
+            <p>Never run out of ideas for your next reel.</p>
+            <span class="tool-open">Open tool →</span>
         </div>
 
+        <div class="tool-card" data-tool="planner" data-category="plan" onclick="openTool('planner')">
+            <div class="tool-icon">📅</div>
+            <h3>Content Planner</h3>
+            <p>Organize upcoming content in one place.</p>
+            <span class="tool-open">Open tool →</span>
+        </div>
 
-        <div
-            class="tool-card"
-            onclick="openTool('planner')"
-        >
+        <div class="tool-card" data-tool="hooks" data-category="write" onclick="openTool('hooks')">
+            <div class="tool-icon">🎯</div>
+            <h3>Hook Generator</h3>
+            <p>Open with lines designed to stop the scroll.</p>
+            <span class="tool-open">Open tool →</span>
+        </div>
 
-            <div class="tool-icon">
-                📅
-            </div>
+        <div class="tool-card" data-tool="hashtags" data-category="create" onclick="openTool('hashtags')">
+            <div class="tool-icon">#️⃣</div>
+            <h3>Hashtag Generator</h3>
+            <p>Build a balanced hashtag set for your niche.</p>
+            <span class="tool-open">Open tool →</span>
+        </div>
 
-            <h3>
-                Content Planner
-            </h3>
+        <div class="tool-card" data-tool="scripts" data-category="create" onclick="openTool('scripts')">
+            <div class="tool-icon">🎬</div>
+            <h3>Script Builder</h3>
+            <p>Turn a simple idea into a short-form script.</p>
+            <span class="tool-open">Open tool →</span>
+        </div>
 
-            <p>
-                Organize your upcoming content in one place.
-            </p>
+        <div class="tool-card" data-tool="bio" data-category="write" onclick="openTool('bio')">
+            <div class="tool-icon">👤</div>
+            <h3>Bio Generator</h3>
+            <p>Create clean bios for your creator profile.</p>
+            <span class="tool-open">Open tool →</span>
+        </div>
 
+        <div class="tool-card" data-tool="comments" data-category="write" onclick="openTool('comments')">
+            <div class="tool-icon">💬</div>
+            <h3>Reply Generator</h3>
+            <p>Generate natural replies for comments and DMs.</p>
+            <span class="tool-open">Open tool →</span>
+        </div>
+
+        <div class="tool-card" data-tool="repurpose" data-category="create" onclick="openTool('repurpose')">
+            <div class="tool-icon">🔄</div>
+            <h3>Content Repurposer</h3>
+            <p>Turn one content idea into multiple formats.</p>
+            <span class="tool-open">Open tool →</span>
         </div>
 
     </div>
@@ -3060,6 +3191,66 @@ footer {
 </section>
 
 
+<!-- EXTRA CREATOR TOOLS -->
+
+    <div class="tool-panel" id="panel-hooks">
+        <div class="panel-header"><div><h3>🎯 Hook Generator</h3><p class="panel-subtitle">Create strong opening lines for short-form content.</p></div><button class="close-panel" onclick="closeTools()">✕</button></div>
+        <div class="form-grid">
+            <div class="field full"><label>Topic</label><input id="hookTopic" placeholder="e.g. Fitness, cars, study tips"></div>
+            <div class="field"><label>Style</label><select id="hookStyle"><option>Curiosity</option><option>Bold</option><option>Story</option><option>Problem / solution</option></select></div>
+            <div class="field"><label>Platform</label><select id="hookPlatform"><option>TikTok</option><option>Instagram</option><option>YouTube Shorts</option></select></div>
+        </div>
+        <button class="btn primary generate-btn" onclick="generateHooks()">✨ Generate Hooks</button><div class="results" id="hookResults"></div>
+    </div>
+
+    <div class="tool-panel" id="panel-hashtags">
+        <div class="panel-header"><div><h3>#️⃣ Hashtag Generator</h3><p class="panel-subtitle">Get a mix of broad, niche and community hashtags.</p></div><button class="close-panel" onclick="closeTools()">✕</button></div>
+        <div class="form-grid">
+            <div class="field"><label>Niche</label><input id="hashtagNiche" placeholder="e.g. photography"></div>
+            <div class="field"><label>Platform</label><select id="hashtagPlatform"><option>Instagram</option><option>TikTok</option><option>YouTube</option></select></div>
+            <div class="field"><label>Style</label><select id="hashtagStyle"><option>Balanced</option><option>Niche focused</option><option>Broad reach</option></select></div>
+        </div>
+        <button class="btn primary generate-btn" onclick="generateHashtags()">✨ Generate Hashtags</button><div class="results" id="hashtagResults"></div>
+    </div>
+
+    <div class="tool-panel" id="panel-scripts">
+        <div class="panel-header"><div><h3>🎬 Script Builder</h3><p class="panel-subtitle">Build a simple short-form script structure.</p></div><button class="close-panel" onclick="closeTools()">✕</button></div>
+        <div class="form-grid">
+            <div class="field full"><label>Video idea</label><textarea id="scriptIdea" placeholder="Describe what your video is about..."></textarea></div>
+            <div class="field"><label>Length</label><select id="scriptLength"><option>15 seconds</option><option>30 seconds</option><option>60 seconds</option></select></div>
+            <div class="field"><label>Style</label><select id="scriptStyle"><option>Fast-paced</option><option>Storytelling</option><option>Educational</option><option>Cinematic</option></select></div>
+        </div>
+        <button class="btn primary generate-btn" onclick="generateScript()">✨ Build Script</button><div class="results" id="scriptResults"></div>
+    </div>
+
+    <div class="tool-panel" id="panel-bio">
+        <div class="panel-header"><div><h3>👤 Bio Generator</h3><p class="panel-subtitle">Create short, clear creator bios.</p></div><button class="close-panel" onclick="closeTools()">✕</button></div>
+        <div class="form-grid">
+            <div class="field"><label>What you create</label><input id="bioNiche" placeholder="e.g. Car content"></div>
+            <div class="field"><label>Personality</label><select id="bioTone"><option>Clean</option><option>Cool</option><option>Funny</option><option>Professional</option></select></div>
+            <div class="field"><label>Goal</label><select id="bioGoal"><option>Grow audience</option><option>Show expertise</option><option>Get collaborations</option></select></div>
+        </div>
+        <button class="btn primary generate-btn" onclick="generateBio()">✨ Generate Bios</button><div class="results" id="bioResults"></div>
+    </div>
+
+    <div class="tool-panel" id="panel-comments">
+        <div class="panel-header"><div><h3>💬 Reply Generator</h3><p class="panel-subtitle">Create natural replies without overthinking every comment.</p></div><button class="close-panel" onclick="closeTools()">✕</button></div>
+        <div class="form-grid">
+            <div class="field full"><label>Comment</label><textarea id="commentText" placeholder="Paste the comment you want to reply to..."></textarea></div>
+            <div class="field"><label>Tone</label><select id="commentTone"><option>Friendly</option><option>Funny</option><option>Confident</option><option>Professional</option></select></div>
+        </div>
+        <button class="btn primary generate-btn" onclick="generateReplies()">✨ Generate Replies</button><div class="results" id="commentResults"></div>
+    </div>
+
+    <div class="tool-panel" id="panel-repurpose">
+        <div class="panel-header"><div><h3>🔄 Content Repurposer</h3><p class="panel-subtitle">Create a mini content system from one original idea.</p></div><button class="close-panel" onclick="closeTools()">✕</button></div>
+        <div class="form-grid">
+            <div class="field full"><label>Original content idea</label><textarea id="repurposeIdea" placeholder="e.g. I made a video about 5 beginner camera mistakes..."></textarea></div>
+            <div class="field"><label>Original format</label><select id="repurposeFormat"><option>Reel / Short</option><option>Long video</option><option>Photo post</option><option>Article</option></select></div>
+        </div>
+        <button class="btn primary generate-btn" onclick="generateRepurpose()">✨ Repurpose Content</button><div class="results" id="repurposeResults"></div>
+    </div>
+
 <!-- =======================================================
      HOW IT WORKS
      ======================================================= -->
@@ -3150,6 +3341,100 @@ footer {
 <!-- =======================================================
      FLOW
      ======================================================= -->
+
+
+<!-- ================= CREATORFLOW V4 COMMAND CENTER ================= -->
+<section class="cf4-section" id="creator-workspace">
+  <div class="cf4-wrap">
+    <div class="cf4-kicker">CREATORFLOW V4</div>
+    <h2 class="cf4-title">Your creator workspace, connected.</h2>
+    <p class="cf4-sub">Plan, generate, score, save, repurpose and track your content from one place. Everything below works locally in your browser, so your creator data stays with you.</p>
+
+    <div class="cf4-grid">
+      <div class="cf4-card"><div class="cf4-icon">💡</div><div class="cf4-stat" id="cf4IdeasStat">0</div><div class="cf4-label">Ideas saved</div></div>
+      <div class="cf4-card"><div class="cf4-icon">🗂️</div><div class="cf4-stat" id="cf4LibraryStat">0</div><div class="cf4-label">Library items</div></div>
+      <div class="cf4-card"><div class="cf4-icon">📅</div><div class="cf4-stat" id="cf4PlanStat">0</div><div class="cf4-label">Planned posts</div></div>
+      <div class="cf4-card"><div class="cf4-icon">🔥</div><div class="cf4-stat" id="cf4StreakStat">0</div><div class="cf4-label">Creator streak</div></div>
+    </div>
+
+    <div class="cf4-dashboard">
+      <div class="cf4-panel">
+        <div class="cf4-panel-head"><h3>👤 Creator Profile</h3><button class="cf4-btn" onclick="cf4OpenModal('profile')">Edit profile</button></div>
+        <div id="cf4ProfileSummary" class="cf4-output"></div>
+      </div>
+      <div class="cf4-panel">
+        <div class="cf4-panel-head"><h3>🎯 Weekly Goal</h3><span class="cf4-mini" id="cf4GoalText">0 / 5</span></div>
+        <div class="cf4-progress"><i id="cf4GoalBar"></i></div>
+        <div class="cf4-actions"><button class="cf4-btn primary" onclick="cf4AddGoalProgress()">+ Add progress</button><button class="cf4-btn" onclick="cf4OpenModal('goals')">Set goal</button></div>
+        <p class="cf4-mini" style="margin-top:12px">Build consistency with small, trackable creator goals.</p>
+      </div>
+    </div>
+
+    <div class="cf4-command">
+      <div class="cf4-panel">
+        <div class="cf4-panel-head"><h3>🧭 Creator Command Center</h3><span class="cf4-mini">Quick actions</span></div>
+        <div class="cf4-quick">
+          <button onclick="openTool('ideas')"><b>💡 Generate an idea</b><span>Start a new content concept</span></button>
+          <button onclick="openTool('scripts')"><b>🎬 Build a script</b><span>Turn an idea into a video structure</span></button>
+          <button onclick="cf4OpenModal('repurpose')"><b>♻️ Repurpose content</b><span>Create multiple formats from one idea</span></button>
+          <button onclick="cf4OpenModal('score')"><b>🔥 Score content</b><span>Check hook, clarity and engagement</span></button>
+        </div>
+      </div>
+      <div class="cf4-panel">
+        <div class="cf4-panel-head"><h3>🔗 Connected Workflow</h3></div>
+        <div class="cf4-pipeline"><div class="cf4-step">💡 Idea</div><span class="cf4-arrow">→</span><div class="cf4-step">🎯 Hook</div><span class="cf4-arrow">→</span><div class="cf4-step">🎬 Script</div><span class="cf4-arrow">→</span><div class="cf4-step">📝 Caption</div><span class="cf4-arrow">→</span><div class="cf4-step">#️⃣ Tags</div></div>
+        <div class="cf4-actions"><button class="cf4-btn primary" onclick="cf4OpenModal('pipeline')">Run workflow</button></div>
+      </div>
+    </div>
+
+    <div class="cf4-dashboard">
+      <div class="cf4-panel">
+        <div class="cf4-panel-head"><h3>🗂️ Content Library</h3><div class="cf4-actions" style="margin:0"><button class="cf4-btn" onclick="cf4LibraryFilter('all')">All</button><button class="cf4-btn" onclick="cf4LibraryFilter('saved')">Saved</button><button class="cf4-btn danger" onclick="cf4ClearLibrary()">Clear</button></div></div>
+        <div id="cf4Library" class="cf4-library"></div>
+      </div>
+      <div class="cf4-panel">
+        <div class="cf4-panel-head"><h3>🔥 Content Score</h3><button class="cf4-btn" onclick="cf4OpenModal('score')">Score new</button></div>
+        <div id="cf4ScoreBox"></div>
+      </div>
+    </div>
+
+    <div class="cf4-dashboard">
+      <div class="cf4-panel">
+        <div class="cf4-panel-head"><h3>🎯 Viral Hook Lab</h3><button class="cf4-btn" onclick="cf4OpenModal('hook')">Open lab</button></div>
+        <p class="cf4-sub" style="margin-bottom:10px">Generate hook angles or improve an existing opening line.</p>
+        <div id="cf4HookPreview" class="cf4-output"></div>
+      </div>
+      <div class="cf4-panel">
+        <div class="cf4-panel-head"><h3>🧪 A/B Content Tester</h3><button class="cf4-btn" onclick="cf4OpenModal('ab')">Compare</button></div>
+        <p class="cf4-sub" style="margin-bottom:10px">Compare two titles, hooks or captions using the same scoring rules.</p>
+        <div id="cf4ABPreview" class="cf4-output"></div>
+      </div>
+    </div>
+
+    <div class="cf4-dashboard">
+      <div class="cf4-panel">
+        <div class="cf4-panel-head"><h3>📅 Smart Content Calendar</h3><button class="cf4-btn" onclick="cf4OpenModal('calendar')">Add post</button></div>
+        <div id="cf4Calendar" class="cf4-calendar"></div>
+      </div>
+      <div class="cf4-panel">
+        <div class="cf4-panel-head"><h3>📈 Creator Analytics</h3><button class="cf4-btn" onclick="cf4OpenModal('analytics')">Update stats</button></div>
+        <div id="cf4Analytics" class="cf4-output"></div>
+      </div>
+    </div>
+
+    <div class="cf4-panel" style="margin-top:18px">
+      <div class="cf4-panel-head"><h3>♻️ Repurposing Studio</h3><button class="cf4-btn primary" onclick="cf4OpenModal('repurpose')">Create repurposed content</button></div>
+      <div id="cf4RepurposePreview" class="cf4-output"></div>
+    </div>
+  </div>
+</section>
+
+<div class="cf4-modal" id="cf4Modal" onclick="if(event.target===this)cf4CloseModal()">
+  <div class="cf4-modal-box">
+    <div class="cf4-modal-head"><h3 id="cf4ModalTitle">CreatorFlow</h3><button class="cf4-close" onclick="cf4CloseModal()">✕</button></div>
+    <div id="cf4ModalBody" style="margin-top:18px"></div>
+  </div>
+</div>
 
 <section class="flow-section">
 
@@ -3621,24 +3906,13 @@ function openTool(id) {
     if (!panel) return;
 
     panel.classList.add("active");
+    addRecentTool(id);
 
-    // Scroll to the actual tool panel instead of the top of Tools.
-    requestAnimationFrame(() => {
-        const navHeight = parseInt(
-            getComputedStyle(document.documentElement)
-                .getPropertyValue("--nav-height")
-        ) || 76;
-
-        const panelTop =
-            panel.getBoundingClientRect().top +
-            window.pageYOffset -
-            navHeight - 18;
-
-        window.scrollTo({
-            top: Math.max(0, panelTop),
-            behavior: "smooth"
-        });
-    });
+    setTimeout(() => {
+        const navOffset = 88;
+        const top = panel.getBoundingClientRect().top + window.scrollY - navOffset;
+        window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
+    }, 40);
 
 }
 
@@ -3662,89 +3936,260 @@ function closeTools() {
    RESULTS
    ========================================================= */
 
-function showResults(
-    containerId,
-    items
-) {
+const RESULT_TOOL_IDS = {
+    titleResults: 'titles',
+    captionResults: 'captions',
+    ideaResults: 'ideas',
+    hookResults: 'hooks',
+    hashtagResults: 'hashtags',
+    scriptResults: 'scripts',
+    bioResults: 'bio',
+    commentResults: 'comments',
+    repurposeResults: 'repurpose'
+};
 
-    const container =
-        document.getElementById(
-            containerId
-        );
+const TOOL_GENERATORS = {
+    titleResults: 'generateTitles',
+    captionResults: 'generateCaptions',
+    ideaResults: 'generateIdeas',
+    hookResults: 'generateHooks',
+    hashtagResults: 'generateHashtags',
+    scriptResults: 'generateScript',
+    bioResults: 'generateBio',
+    commentResults: 'generateReplies',
+    repurposeResults: 'generateRepurpose'
+};
 
-    container.innerHTML = "";
+const RESULT_CACHE = {};
+const RECENT_TOOLS_KEY = 'creatorFlowRecentTools';
+const FAVORITE_TOOLS_KEY = 'creatorFlowFavoriteTools';
+const GENERATION_HISTORY_KEY = 'creatorFlowGenerationHistory';
 
-    items.forEach(
-        (item, index) => {
-
-            const row =
-                document.createElement(
-                    "div"
-                );
-
-            row.className =
-                "result-item";
-
-            row.innerHTML = `
-
-                <div class="result-number">
-                    ${String(index + 1).padStart(2, "0")}
-                </div>
-
-                <div class="result-text">
-                    ${escapeHTML(item)}
-                </div>
-
-                <button
-                    class="copy-btn"
-                    onclick="copyText(this, ${JSON.stringify(item)})"
-                >
-                    Copy
-                </button>
-
-            `;
-
-            container.appendChild(row);
-
-        }
-    );
-
+function getStoredJSON(key, fallback) {
+    try { return JSON.parse(localStorage.getItem(key) || JSON.stringify(fallback)); }
+    catch { return fallback; }
 }
 
+function setStoredJSON(key, value) {
+    localStorage.setItem(key, JSON.stringify(value));
+}
 
-async function copyText(
-    button,
-    text
-) {
+function showResults(containerId, items) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    const cleanItems = items.map(String);
+    RESULT_CACHE[containerId] = cleanItems;
+    container.innerHTML = '';
 
+    cleanItems.forEach((item, index) => {
+        const row = document.createElement('div');
+        row.className = 'result-item';
+        row.innerHTML = `
+            <div class="result-number">${String(index + 1).padStart(2, '0')}</div>
+            <div class="result-text">${escapeHTML(item)}</div>
+            <button class="copy-btn" onclick="copyText(this, ${JSON.stringify(item)})">Copy</button>
+        `;
+        container.appendChild(row);
+    });
+
+    const toolbar = document.createElement('div');
+    toolbar.className = 'result-toolbar';
+    toolbar.innerHTML = `
+        <span class="result-meta">${cleanItems.length} results · ready to use</span>
+        <div class="result-actions">
+            <button class="result-action" onclick="copyAllResults('${containerId}')">Copy all</button>
+            <button class="result-action" onclick="saveResults('${containerId}')">Save</button>
+            ${TOOL_GENERATORS[containerId] ? `<button class="result-action" onclick="regenerateResults('${containerId}')">↻ Regenerate</button>` : ''}
+        </div>
+    `;
+    container.appendChild(toolbar);
+
+    saveGenerationHistory(containerId, cleanItems);
+}
+
+async function copyAllResults(containerId) {
+    const items = RESULT_CACHE[containerId] || [];
+    if (!items.length) return;
     try {
+        await navigator.clipboard.writeText(items.join('\n'));
+        const buttons = document.querySelectorAll(`#${containerId} .result-action`);
+        if (buttons[0]) { const old = buttons[0].textContent; buttons[0].textContent = 'Copied ✓'; setTimeout(() => buttons[0].textContent = old, 1300); }
+    } catch { alert('Copy failed.'); }
+}
 
-        await navigator.clipboard.writeText(
-            text
-        );
+function saveResults(containerId) {
+    const items = RESULT_CACHE[containerId] || [];
+    if (!items.length) return;
+    const saved = getStoredJSON('creatorFlowSavedResults', []);
+    saved.unshift({ id: Date.now(), tool: containerId.replace('Results',''), items, date: new Date().toLocaleString() });
+    setStoredJSON('creatorFlowSavedResults', saved.slice(0, 30));
+    document.querySelectorAll(`#${containerId} .result-item`).forEach(row => row.classList.add('saved'));
+    const saveButton = [...document.querySelectorAll(`#${containerId} .result-action`)].find(b => b.textContent === 'Save');
+    if (saveButton) saveButton.textContent = 'Saved ✓';
+}
 
-        const oldText =
-            button.textContent;
+function regenerateResults(containerId) {
+    const fn = window[TOOL_GENERATORS[containerId]];
+    if (typeof fn === 'function') fn();
+}
 
-        button.textContent =
-            "Copied ✓";
+function clearToolResults() {
+    document.querySelectorAll('.results').forEach(el => el.innerHTML = '');
+    Object.keys(RESULT_CACHE).forEach(key => delete RESULT_CACHE[key]);
+}
 
-        setTimeout(() => {
+async function copyText(button, text) {
+    try {
+        await navigator.clipboard.writeText(text);
+        const oldText = button.textContent;
+        button.textContent = 'Copied ✓';
+        setTimeout(() => button.textContent = oldText, 1300);
+    } catch { button.textContent = 'Copy failed'; }
+}
 
-            button.textContent =
-                oldText;
+function saveGenerationHistory(containerId, items) {
+    const history = getStoredJSON(GENERATION_HISTORY_KEY, []);
+    const tool = containerId.replace('Results','');
+    history.unshift({ id: Date.now(), tool, preview: items[0] || '', count: items.length, items });
+    setStoredJSON(GENERATION_HISTORY_KEY, history.slice(0, 20));
+    renderGenerationHistory();
+}
 
-        }, 1300);
+function renderGenerationHistory() {
+    const list = document.getElementById('generationHistory');
+    if (!list) return;
+    const history = getStoredJSON(GENERATION_HISTORY_KEY, []);
+    if (!history.length) { list.innerHTML = '<div class="no-history">Your generated results will appear here.</div>'; return; }
+    list.innerHTML = history.map(entry => `
+        <div class="history-entry">
+            <span><strong>${escapeHTML(entry.tool)}</strong> · ${entry.count} results<br>${escapeHTML(entry.preview)}</span>
+            <button onclick="reopenHistory(${entry.id})">View</button>
+        </div>
+    `).join('');
+}
 
-    } catch {
-
-        button.textContent =
-            "Copy failed";
-
+function reopenHistory(id) {
+    const history = getStoredJSON(GENERATION_HISTORY_KEY, []);
+    const entry = history.find(x => x.id === id);
+    if (!entry || !Array.isArray(entry.items)) {
+        alert('This older history entry cannot be reopened. Generate it again to refresh the history format.');
+        return;
     }
 
+    const containerId = entry.tool + 'Results';
+    const toolId = RESULT_TOOL_IDS[containerId];
+    if (toolId) openTool(toolId);
+
+    const container = document.getElementById(containerId);
+    if (!container) return;
+
+    RESULT_CACHE[containerId] = entry.items.map(String);
+    container.innerHTML = '';
+
+    RESULT_CACHE[containerId].forEach((item, index) => {
+        const row = document.createElement('div');
+        row.className = 'result-item';
+        row.innerHTML = `
+            <div class="result-number">${String(index + 1).padStart(2, '0')}</div>
+            <div class="result-text">${escapeHTML(item)}</div>
+            <button class="copy-btn" onclick="copyText(this, ${JSON.stringify(item)})">Copy</button>
+        `;
+        container.appendChild(row);
+    });
+
+    const toolbar = document.createElement('div');
+    toolbar.className = 'result-toolbar';
+    toolbar.innerHTML = `
+        <span class="result-meta">${RESULT_CACHE[containerId].length} restored results</span>
+        <div class="result-actions">
+            <button class="result-action" onclick="copyAllResults('${containerId}')">Copy all</button>
+            <button class="result-action" onclick="saveResults('${containerId}')">Save</button>
+            ${TOOL_GENERATORS[containerId] ? `<button class="result-action" onclick="regenerateResults('${containerId}')">↻ Regenerate</button>` : ''}
+        </div>
+    `;
+    container.appendChild(toolbar);
 }
 
+function clearGenerationHistory() {
+    localStorage.removeItem(GENERATION_HISTORY_KEY);
+    renderGenerationHistory();
+}
+
+function toggleToolHistory() {
+    const panel = document.getElementById('toolHistoryPanel');
+    panel.classList.toggle('open');
+    if (panel.classList.contains('open')) renderGenerationHistory();
+}
+
+function addRecentTool(id) {
+    const recent = getStoredJSON(RECENT_TOOLS_KEY, []).filter(x => x !== id);
+    recent.unshift(id);
+    setStoredJSON(RECENT_TOOLS_KEY, recent.slice(0, 5));
+    renderRecentTools();
+}
+
+function renderRecentTools() {
+    const wrap = document.getElementById('recentTools');
+    if (!wrap) return;
+    const recent = getStoredJSON(RECENT_TOOLS_KEY, []);
+    const cards = [...document.querySelectorAll('.tool-card')];
+    if (!recent.length) { wrap.innerHTML = ''; return; }
+    wrap.innerHTML = '<span style="align-self:center;color:var(--muted);font-size:9px;font-weight:800">RECENT</span>';
+    recent.forEach(id => {
+        const card = cards.find(c => c.dataset.tool === id);
+        if (!card) return;
+        const name = card.querySelector('h3')?.textContent || id;
+        const icon = card.querySelector('.tool-icon')?.textContent || '✦';
+        const btn = document.createElement('button');
+        btn.className = 'recent-tool';
+        btn.innerHTML = `${icon} ${escapeHTML(name)}`;
+        btn.onclick = () => openTool(id);
+        wrap.appendChild(btn);
+    });
+}
+
+let favoritesOnly = false;
+function toggleFavorite(id, event) {
+    event.stopPropagation();
+    const favorites = getStoredJSON(FAVORITE_TOOLS_KEY, []);
+    const index = favorites.indexOf(id);
+    if (index >= 0) favorites.splice(index, 1); else favorites.push(id);
+    setStoredJSON(FAVORITE_TOOLS_KEY, favorites);
+    syncFavoriteButtons();
+    if (favoritesOnly) applyToolVisibility();
+}
+
+function syncFavoriteButtons() {
+    const favorites = getStoredJSON(FAVORITE_TOOLS_KEY, []);
+    document.querySelectorAll('.tool-card').forEach(card => {
+        const id = card.dataset.tool;
+        const btn = card.querySelector('.favorite-tool');
+        if (!btn) return;
+        const active = favorites.includes(id);
+        btn.classList.toggle('active', active);
+        btn.textContent = active ? '★' : '☆';
+        btn.setAttribute('aria-label', active ? 'Remove from favorites' : 'Add to favorites');
+    });
+}
+
+function toggleFavoritesView() {
+    favoritesOnly = !favoritesOnly;
+    document.getElementById('favoritesToggle')?.classList.toggle('active', favoritesOnly);
+    applyToolVisibility();
+}
+
+function applyToolVisibility() {
+    const q = document.getElementById('toolSearch')?.value.toLowerCase().trim() || '';
+    const favorites = getStoredJSON(FAVORITE_TOOLS_KEY, []);
+    document.querySelectorAll('.tool-card').forEach(card => {
+        const text = card.textContent.toLowerCase();
+        const matchesSearch = !q || text.includes(q);
+        const matchesCategory = activeToolCategory === 'all' || card.dataset.category === activeToolCategory;
+        const matchesFavorite = !favoritesOnly || favorites.includes(card.dataset.tool);
+        card.classList.toggle('is-hidden', !(matchesSearch && matchesCategory && matchesFavorite));
+    });
+    updateVisibleToolCount();
+}
 
 /* =========================================================
    TITLE GENERATOR
@@ -4400,6 +4845,214 @@ setInterval(
 
 renderPlans();
 
+
+
+/* =========================================================
+   ADVANCED TOOL FILTERS
+   ========================================================= */
+let activeToolCategory = "all";
+
+function filterTools(query = "") {
+    applyToolVisibility();
+}
+
+function filterToolCategory(category, button) {
+    activeToolCategory = category;
+    document.querySelectorAll(".tool-filter").forEach(item => item.classList.remove("active"));
+    button.classList.add("active");
+    filterTools(document.getElementById("toolSearch")?.value || "");
+}
+
+function updateVisibleToolCount() {
+    const count = document.querySelectorAll(".tool-card:not(.is-hidden)").length;
+    const el = document.getElementById("visibleToolCount");
+    if (el) el.textContent = count;
+}
+
+function generateHooks() {
+    const topic = document.getElementById("hookTopic").value.trim();
+    const style = document.getElementById("hookStyle").value;
+    const platform = document.getElementById("hookPlatform").value;
+    if (!topic) return alert("Enter a topic first.");
+    const hooks = [
+        `Nobody tells you this about ${topic}...`,
+        `Stop scrolling if you care about ${topic}.`,
+        `I wish I knew this before getting into ${topic}.`,
+        `The ${topic} mistake that wastes the most time.`,
+        `Here's the simple ${topic} trick I'd start with today.`,
+        `This changed the way I approach ${topic}.`,
+        `You are probably overcomplicating ${topic}.`,
+        `Before you try ${topic}, watch this.`,
+        `The fastest way to improve at ${topic}.`,
+        `What if ${topic} could be much easier?`
+    ];
+    showResults("hookResults", hooks.map(x => `${x} · ${style} · ${platform}`));
+}
+
+function generateHashtags() {
+    const niche = document.getElementById("hashtagNiche").value.trim().replace(/\s+/g, "");
+    const platform = document.getElementById("hashtagPlatform").value;
+    const style = document.getElementById("hashtagStyle").value;
+    if (!niche) return alert("Enter your niche first.");
+    const base = niche.toLowerCase();
+    const tags = [
+        `#${base}`, `#${base}creator`, `#${base}content`, `#${base}tips`, `#${base}community`,
+        `#contentcreator`, `#creatortips`, `#shortformcontent`, `#reelscreator`, `#creatorlife`
+    ];
+    showResults("hashtagResults", [`${tags.slice(0,5).join(" ")} · ${style}`, `${tags.slice(5).join(" ")} · ${platform}`, `#viralcontent #contentideas #digitalcreator #growyourcontent #socialmediatips · ${platform}`]);
+}
+
+function generateScript() {
+    const idea = document.getElementById("scriptIdea").value.trim();
+    const length = document.getElementById("scriptLength").value;
+    const style = document.getElementById("scriptStyle").value;
+    if (!idea) return alert("Describe your video idea first.");
+    showResults("scriptResults", [
+        `HOOK — Start with a surprising line about: ${idea}`,
+        `SETUP — Explain the problem or promise in one clear sentence.`,
+        `VALUE — Give 2–3 useful points, examples or visual moments.`,
+        `PAYOFF — Deliver the main result or reveal.`,
+        `CTA — End with a natural reason to follow, save or comment.`,
+        `FORMAT — ${length} · ${style}`
+    ]);
+}
+
+function generateBio() {
+    const niche = document.getElementById("bioNiche").value.trim();
+    const tone = document.getElementById("bioTone").value;
+    const goal = document.getElementById("bioGoal").value;
+    if (!niche) return alert("Tell us what you create first.");
+    showResults("bioResults", [
+        `Creating ${niche} • ${goal} • ${tone}`,
+        `${niche} creator | Sharing ideas, tips & moments worth watching.`,
+        `Making ${niche} content with a simple goal: create better, every day.`,
+        `🎬 ${niche} creator · ⚡ New content · ✦ ${goal}`
+    ]);
+}
+
+function generateReplies() {
+    const comment = document.getElementById("commentText").value.trim();
+    const tone = document.getElementById("commentTone").value;
+    if (!comment) return alert("Enter a comment first.");
+    showResults("commentResults", [
+        `Appreciate you! 🙌 · ${tone}`,
+        `Glad you enjoyed it — thanks for watching! · ${tone}`,
+        `Haha, I had a feeling someone would say this 😂 · ${tone}`,
+        `That's a great point. Thanks for adding to the conversation! · ${tone}`,
+        `More content like this coming soon 👀 · ${tone}`
+    ]);
+}
+
+function generateRepurpose() {
+    const idea = document.getElementById("repurposeIdea").value.trim();
+    const format = document.getElementById("repurposeFormat").value;
+    if (!idea) return alert("Enter your original content idea first.");
+    showResults("repurposeResults", [
+        `SHORT REEL — Turn the strongest point into a 20–30 second video.`,
+        `CAROUSEL — Break the idea into 5–7 simple slides.`,
+        `STORY — Share the problem, process and result behind the idea.`,
+        `TEXT POST — Rewrite the key lesson as a concise post.`,
+        `FOLLOW-UP — Create a part 2 answering the most obvious question.`,
+        `SOURCE FORMAT — ${format}`
+    ]);
+}
+
+document.querySelectorAll('.tool-card').forEach(card => {
+    const id = card.dataset.tool;
+    if (!id || card.querySelector('.favorite-tool')) return;
+    const button = document.createElement('button');
+    button.className = 'favorite-tool';
+    button.type = 'button';
+    button.onclick = event => toggleFavorite(id, event);
+    card.appendChild(button);
+});
+
+syncFavoriteButtons();
+renderRecentTools();
+renderGenerationHistory();
+updateVisibleToolCount();
+
+</script>
+
+
+<script id="creatorflow-v4-script">
+/* ================= CREATORFLOW V4 ENGINE ================= */
+const CF4_KEY='creatorFlowV4';
+const cf4Default={
+ profile:{niche:'',platforms:['Instagram','TikTok'],tone:'Viral',audience:'General audience',goal:'Grow followers',style:'Cinematic'},
+ library:[], goals:{target:5,progress:0}, calendar:[], analytics:{views:0,likes:0,comments:0,followers:0}, score:null, hooks:[], ab:null, repurpose:null
+};
+function cf4Load(){try{return Object.assign({},cf4Default,JSON.parse(localStorage.getItem(CF4_KEY)||'{}'));}catch(e){return {...cf4Default};}}
+let cf4=cf4Load();
+function cf4Save(){localStorage.setItem(CF4_KEY,JSON.stringify(cf4));cf4Render();}
+function cf4Esc(v){return String(v??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));}
+function cf4OpenModal(type){
+ const modal=document.getElementById('cf4Modal'), title=document.getElementById('cf4ModalTitle'), body=document.getElementById('cf4ModalBody');
+ modal.classList.add('open');
+ const p=cf4.profile;
+ if(type==='profile'){
+  title.textContent='👤 Creator Profile'; body.innerHTML=`<div class="cf4-profile-grid">
+  <div class="cf4-field"><label>Niche</label><input id="cf4Niche" value="${cf4Esc(p.niche)}" placeholder="e.g. Automotive"></div>
+  <div class="cf4-field"><label>Audience</label><input id="cf4Audience" value="${cf4Esc(p.audience)}"></div>
+  <div class="cf4-field"><label>Primary platform</label><select id="cf4Platform"><option>YouTube</option><option>Instagram</option><option>TikTok</option><option>Facebook</option></select></div>
+  <div class="cf4-field"><label>Tone</label><select id="cf4Tone"><option>Viral</option><option>Cinematic</option><option>Funny</option><option>Professional</option><option>Educational</option><option>Emotional</option></select></div>
+  <div class="cf4-field"><label>Goal</label><select id="cf4Goal"><option>Grow followers</option><option>Get views</option><option>Increase engagement</option><option>Educate</option><option>Build a brand</option></select></div>
+  <div class="cf4-field"><label>Content style</label><select id="cf4Style"><option>Cinematic</option><option>Viral</option><option>Minimal</option><option>Storytelling</option><option>Professional</option></select></div>
+ </div><div class="cf4-actions"><button class="cf4-btn primary" onclick="cf4SaveProfile()">Save profile</button></div>`;
+  document.getElementById('cf4Platform').value=p.platforms?.[0]||'Instagram';document.getElementById('cf4Tone').value=p.tone||'Viral';document.getElementById('cf4Goal').value=p.goal||'Grow followers';document.getElementById('cf4Style').value=p.style||'Cinematic';
+ }
+ if(type==='goals'){
+  title.textContent='🏆 Creator Goals'; body.innerHTML=`<div class="cf4-profile-grid"><div class="cf4-field"><label>Weekly target</label><input id="cf4GoalTarget" type="number" min="1" max="100" value="${cf4.goals.target}"></div><div class="cf4-field"><label>Current progress</label><input id="cf4GoalProgress" type="number" min="0" max="100" value="${cf4.goals.progress}"></div></div><div class="cf4-actions"><button class="cf4-btn primary" onclick="cf4SaveGoals()">Save goal</button></div>`;
+ }
+ if(type==='score'){
+  title.textContent='🔥 Content Score'; body.innerHTML=`<div class="cf4-field"><label>Content to score</label><textarea id="cf4ScoreText" placeholder="Paste a title, hook, caption or short script..."></textarea></div><div class="cf4-actions"><button class="cf4-btn primary" onclick="cf4ScoreText()">Analyze</button></div><div id="cf4ModalScore" style="margin-top:16px"></div>`;
+ }
+ if(type==='hook'){
+  title.textContent='🎯 Viral Hook Lab'; body.innerHTML=`<div class="cf4-profile-grid"><div class="cf4-field full"><label>Topic</label><input id="cf4HookTopic" placeholder="e.g. budget sports cars"></div><div class="cf4-field"><label>Style</label><select id="cf4HookStyle"><option>Curiosity</option><option>Bold statement</option><option>Question</option><option>Story</option><option>Problem / solution</option><option>Mystery</option></select></div><div class="cf4-field"><label>Improve existing hook</label><input id="cf4OldHook" placeholder="Optional"></div></div><div class="cf4-actions"><button class="cf4-btn primary" onclick="cf4GenerateHooks()">Generate hooks</button></div><div id="cf4ModalHook" class="cf4-output" style="margin-top:16px"></div>`;
+ }
+ if(type==='ab'){
+  title.textContent='🧪 A/B Content Tester'; body.innerHTML=`<div class="cf4-field"><label>Version A</label><textarea id="cf4A"></textarea></div><div class="cf4-field" style="margin-top:12px"><label>Version B</label><textarea id="cf4B"></textarea></div><div class="cf4-actions"><button class="cf4-btn primary" onclick="cf4CompareAB()">Compare</button></div><div id="cf4ModalAB" style="margin-top:16px"></div>`;
+ }
+ if(type==='repurpose'){
+  title.textContent='♻️ Repurposing Studio'; body.innerHTML=`<div class="cf4-field"><label>Original content</label><textarea id="cf4RepurposeInput" placeholder="Paste your idea, caption, script or video summary..."></textarea></div><div class="cf4-actions"><button class="cf4-btn primary" onclick="cf4GenerateRepurpose()">Repurpose it</button></div><div id="cf4ModalRepurpose" class="cf4-output" style="margin-top:16px"></div>`;
+ }
+ if(type==='pipeline'){
+  title.textContent='🔗 Connected Creator Workflow'; body.innerHTML=`<div class="cf4-field"><label>Start with an idea</label><textarea id="cf4PipelineInput" placeholder="e.g. A reel about 5 mistakes new car owners make"></textarea></div><div class="cf4-actions"><button class="cf4-btn primary" onclick="cf4RunPipeline()">Run full workflow</button></div><div id="cf4ModalPipeline" class="cf4-output" style="margin-top:16px"></div>`;
+ }
+ if(type==='calendar'){
+  title.textContent='📅 Add to Content Calendar'; body.innerHTML=`<div class="cf4-profile-grid"><div class="cf4-field"><label>Date</label><input id="cf4CalDate" type="date"></div><div class="cf4-field"><label>Platform</label><select id="cf4CalPlatform"><option>Instagram</option><option>TikTok</option><option>YouTube</option><option>Facebook</option></select></div><div class="cf4-field full"><label>Content</label><input id="cf4CalContent" placeholder="Post title or idea"></div></div><div class="cf4-actions"><button class="cf4-btn primary" onclick="cf4AddCalendar()">Add post</button></div>`;
+ }
+ if(type==='analytics'){
+  title.textContent='📈 Update Creator Analytics'; const a=cf4.analytics; body.innerHTML=`<div class="cf4-profile-grid"><div class="cf4-field"><label>Views</label><input id="cf4Views" type="number" value="${a.views}"></div><div class="cf4-field"><label>Likes</label><input id="cf4Likes" type="number" value="${a.likes}"></div><div class="cf4-field"><label>Comments</label><input id="cf4Comments" type="number" value="${a.comments}"></div><div class="cf4-field"><label>Followers gained</label><input id="cf4Followers" type="number" value="${a.followers}"></div></div><div class="cf4-actions"><button class="cf4-btn primary" onclick="cf4SaveAnalytics()">Save analytics</button></div>`;
+ }
+}
+function cf4CloseModal(){document.getElementById('cf4Modal').classList.remove('open');}
+function cf4SaveProfile(){cf4.profile={niche:document.getElementById('cf4Niche').value.trim(),platforms:[document.getElementById('cf4Platform').value],tone:document.getElementById('cf4Tone').value,audience:document.getElementById('cf4Audience').value.trim()||'General audience',goal:document.getElementById('cf4Goal').value,style:document.getElementById('cf4Style').value};cf4Save();cf4CloseModal();}
+function cf4SaveGoals(){cf4.goals={target:Math.max(1,+document.getElementById('cf4GoalTarget').value||5),progress:Math.max(0,+document.getElementById('cf4GoalProgress').value||0)};cf4Save();cf4CloseModal();}
+function cf4AddGoalProgress(){cf4.goals.progress=Math.min(cf4.goals.target,cf4.goals.progress+1);cf4Save();}
+function cf4AddLibrary(type,text,meta=''){if(!text)return;cf4.library.unshift({id:Date.now()+Math.random(),type,text,meta,savedAt:new Date().toLocaleString()});cf4.library=cf4.library.slice(0,60);cf4Save();}
+function cf4DeleteLibrary(id){cf4.library=cf4.library.filter(x=>x.id!==id);cf4Save();}
+function cf4ClearLibrary(){if(confirm('Clear your CreatorFlow library?')){cf4.library=[];cf4Save();}}
+function cf4LibraryFilter(filter){cf4RenderLibrary(filter);}
+function cf4RenderLibrary(filter='all'){const el=document.getElementById('cf4Library');if(!el)return;let arr=cf4.library;if(filter==='saved')arr=arr.filter(x=>x.meta==='saved');if(!arr.length){el.innerHTML='<div class="cf4-mini">Your saved content will appear here. Use Save on any generated result or save from these V4 tools.</div>';return;}el.innerHTML=arr.slice(0,9).map(x=>`<div class="cf4-library-item"><div class="type">${cf4Esc(x.type)}</div><p>${cf4Esc(x.text)}</p><div class="cf4-actions"><button class="cf4-btn" onclick="navigator.clipboard?.writeText(${JSON.stringify(x.text)})">Copy</button><button class="cf4-btn danger" onclick="cf4DeleteLibrary(${x.id})">Delete</button></div></div>`).join('');}
+function cf4Score(text){const s=String(text||'').trim();if(!s)return null;const len=s.length;const words=s.split(/\s+/).filter(Boolean).length;const hook=/\?|\b(secret|mistake|nobody|before|why|how|stop|truth|best|worst|changed)\b/i.test(s)?92:74;const clarity=Math.max(60,Math.min(96,Math.round(70+Math.min(words,22))));const curiosity=Math.max(58,Math.min(96,Math.round(68+(hook-70)*.55)));const engagement=Math.max(60,Math.min(95,Math.round((hook+clarity+curiosity)/3)));const length=Math.max(60,Math.min(96,Math.round(96-Math.abs(len-85)*.12)));const total=Math.round((hook+clarity+curiosity+engagement+length)/5);return{total,hook,clarity,curiosity,engagement,length};}
+function cf4ScoreHTML(sc){return `<div class="cf4-score"><div class="cf4-score-ring" style="--score:${sc.total}%"><b>${sc.total}</b></div><div class="cf4-bars">${[['Hook',sc.hook],['Clarity',sc.clarity],['Curiosity',sc.curiosity],['Engagement',sc.engagement],['Length',sc.length]].map(r=>`<div class="cf4-bar"><span>${r[0]}</span><div class="cf4-track"><i style="width:${r[1]}%"></i></div><span>${r[1]}</span></div>`).join('')}</div></div><p class="cf4-mini" style="margin-top:12px">${sc.total>=85?'Strong starting point. Test it with your audience.':sc.total>=75?'Good foundation. Strengthen the opening and make the promise more specific.':'Try a sharper hook, clearer promise and a more concrete outcome.'}</p>`;}
+function cf4ScoreText(){const text=document.getElementById('cf4ScoreText').value;const sc=cf4Score(text);if(!sc)return;cf4.score=sc;document.getElementById('cf4ModalScore').innerHTML=cf4ScoreHTML(sc);cf4Save();}
+function cf4GenerateHooks(){const topic=document.getElementById('cf4HookTopic').value.trim()||cf4.profile.niche||'your topic';const style=document.getElementById('cf4HookStyle').value;const old=document.getElementById('cf4OldHook').value.trim();let hooks=[];if(old){hooks=[`You think ${old.toLowerCase()} — but here's what most people miss.`,`Before you believe "${old}", watch this.`,`I tested the idea behind "${old}" so you don't have to.`];}else{const m={Curiosity:[`Nobody tells you this about ${topic}...`,`The part of ${topic} most people completely miss.`,`I wish I knew this before getting into ${topic}.`],'Bold statement':[`${topic} is easier than you think.`,`Stop doing this if you care about ${topic}.`,`This changes the way you should approach ${topic}.`],Question:[`What if you've been doing ${topic} wrong?`,`Why does nobody talk about this side of ${topic}?`,`Would you try this for ${topic}?`],Story:[`I thought I understood ${topic} until this happened.`,`One mistake with ${topic} changed everything.`,`Here's what happened when I finally tried ${topic}.`],'Problem / solution':[`Struggling with ${topic}? Start here.`,`The ${topic} problem has a simpler fix than you think.`,`If ${topic} feels complicated, do this first.`],Mystery:[`There's one detail about ${topic} nobody notices.`,`I found something strange about ${topic}...`,`The hidden reason ${topic} works this way.`]};hooks=m[style]||m.Curiosity;}cf4.hooks=hooks;cf4Save();document.getElementById('cf4ModalHook').innerHTML=hooks.map((h,i)=>`<div class="cf4-output-item"><strong>Hook ${i+1}</strong>${cf4Esc(h)}<div class="cf4-actions"><button class="cf4-btn" onclick='navigator.clipboard?.writeText(${JSON.stringify(h)})'>Copy</button><button class="cf4-btn" onclick='cf4AddLibrary("Hook",${JSON.stringify(h)},"saved");this.textContent="Saved"'>Save</button></div></div>`).join('');}
+function cf4CompareAB(){const a=document.getElementById('cf4A').value,b=document.getElementById('cf4B').value;const sa=cf4Score(a),sb=cf4Score(b);if(!sa||!sb)return;const winner=sa.total===sb.total?'Tie':sa.total>sb.total?'Version A':'Version B';cf4.ab={a,b,sa,sb,winner};cf4Save();document.getElementById('cf4ModalAB').innerHTML=`<div class="cf4-output-item"><strong>Winner</strong>${winner}<br>A: ${sa.total}/100 · B: ${sb.total}/100</div>${cf4ScoreHTML(sa)}${cf4ScoreHTML(sb)}`;}
+function cf4GenerateRepurpose(){const input=document.getElementById('cf4RepurposeInput').value.trim();if(!input)return;const niche=cf4.profile.niche||'this topic';const out=[['Short/Reel Hook',`Stop scrolling — here's the one thing you need to know about ${niche}.`],['Carousel',`Slide 1: The big idea. Slides 2–5: The key points. Final slide: the takeaway.`],['Caption',`${input.slice(0,150)}${input.length>150?'…':''} Save this for later and share it with someone who needs it.`],['Community Post',`What's your experience with ${niche}? Here's the lesson behind this content: ${input.slice(0,180)}${input.length>180?'…':''}`],['Follow-up',`Part 2: answer the biggest question your audience will have after seeing this.`]];cf4.repurpose=out;cf4Save();document.getElementById('cf4ModalRepurpose').innerHTML=out.map(x=>`<div class="cf4-output-item"><strong>${x[0]}</strong>${cf4Esc(x[1])}<div class="cf4-actions"><button class="cf4-btn" onclick='navigator.clipboard?.writeText(${JSON.stringify(x[1])})'>Copy</button><button class="cf4-btn" onclick='cf4AddLibrary(${JSON.stringify(x[0])},${JSON.stringify(x[1])},"saved");this.textContent="Saved"'>Save</button></div></div>`).join('');}
+function cf4RunPipeline(){const idea=document.getElementById('cf4PipelineInput').value.trim()||cf4.profile.niche||'your next content idea';const hook=`Nobody tells you this about ${idea}...`;const script=`HOOK: ${hook}\nSETUP: Explain why this matters.\nVALUE: Give three useful points.\nPAYOFF: Show the clearest takeaway.\nCTA: Ask the viewer to save or follow.`;const caption=`${idea} — here's the simple version. Save this for later.`;const tags=`#${String(cf4.profile.niche||'content').replace(/\s+/g,'').toLowerCase()} #creator #contentcreator #reels #shortform`;cf4AddLibrary('Pipeline',script,'saved');document.getElementById('cf4ModalPipeline').innerHTML=`<div class="cf4-output-item"><strong>🎯 Hook</strong>${cf4Esc(hook)}</div><div class="cf4-output-item"><strong>🎬 Script</strong><pre style="white-space:pre-wrap;font:inherit;margin:0">${cf4Esc(script)}</pre></div><div class="cf4-output-item"><strong>📝 Caption</strong>${cf4Esc(caption)}</div><div class="cf4-output-item"><strong>#️⃣ Hashtags</strong>${cf4Esc(tags)}</div>`;}
+function cf4AddCalendar(){const d=document.getElementById('cf4CalDate').value,c=document.getElementById('cf4CalContent').value.trim(),p=document.getElementById('cf4CalPlatform').value;if(!d||!c)return;cf4.calendar.push({date:d,content:c,platform:p});cf4Save();cf4CloseModal();}
+function cf4SaveAnalytics(){cf4.analytics={views:+document.getElementById('cf4Views').value||0,likes:+document.getElementById('cf4Likes').value||0,comments:+document.getElementById('cf4Comments').value||0,followers:+document.getElementById('cf4Followers').value||0};cf4Save();cf4CloseModal();}
+function cf4RenderProfile(){const p=cf4.profile;document.getElementById('cf4ProfileSummary').innerHTML=`<div class="cf4-output-item"><strong>${cf4Esc(p.niche||'Your niche')}</strong>Audience: ${cf4Esc(p.audience)} · Platform: ${cf4Esc((p.platforms||[]).join(', '))} · Tone: ${cf4Esc(p.tone)} · Goal: ${cf4Esc(p.goal)} · Style: ${cf4Esc(p.style)}</div>`;}
+function cf4RenderScore(){const el=document.getElementById('cf4ScoreBox');el.innerHTML=cf4.score?cf4ScoreHTML(cf4.score):'<p class="cf4-mini">Score a title, hook, caption or script to see your Creator Score here.</p>';}
+function cf4RenderCalendar(){const el=document.getElementById('cf4Calendar');if(!el)return;const now=new Date();const y=now.getFullYear(),m=now.getMonth();const days=new Date(y,m+1,0).getDate();let html='';for(let d=1;d<=Math.min(days,28);d++){const date=`${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;const events=cf4.calendar.filter(x=>x.date===date);html+=`<div class="cf4-day"><b>${d}</b><small>${new Date(y,m,d).toLocaleDateString(undefined,{weekday:'short'})}</small>${events.map(e=>`<div class="cf4-event">${cf4Esc(e.platform)} · ${cf4Esc(e.content)}</div>`).join('')}</div>`;}el.innerHTML=html;}
+function cf4RenderAnalytics(){const a=cf4.analytics;document.getElementById('cf4Analytics').innerHTML=`<div class="cf4-output-item"><strong>Views</strong>${a.views.toLocaleString()}</div><div class="cf4-output-item"><strong>Likes</strong>${a.likes.toLocaleString()}</div><div class="cf4-output-item"><strong>Comments</strong>${a.comments.toLocaleString()}</div><div class="cf4-output-item"><strong>Followers gained</strong>${a.followers.toLocaleString()}</div>`;}
+function cf4RenderRepurpose(){const el=document.getElementById('cf4RepurposePreview');if(!cf4.repurpose?.length){el.innerHTML='<p class="cf4-mini">Your latest repurposing set will appear here.</p>';return;}el.innerHTML=cf4.repurpose.slice(0,4).map(x=>`<div class="cf4-output-item"><strong>${cf4Esc(x[0])}</strong>${cf4Esc(x[1])}</div>`).join('');}
+function cf4RenderHooks(){const el=document.getElementById('cf4HookPreview');if(!cf4.hooks?.length){el.innerHTML='<p class="cf4-mini">Open Hook Lab to create your first hook set.</p>';return;}el.innerHTML=cf4.hooks.slice(0,3).map((h,i)=>`<div class="cf4-output-item"><strong>Hook ${i+1}</strong>${cf4Esc(h)}</div>`).join('');}
+function cf4RenderAB(){const el=document.getElementById('cf4ABPreview');if(!cf4.ab){el.innerHTML='<p class="cf4-mini">Compare two versions to see which scores higher.</p>';return;}el.innerHTML=`<div class="cf4-output-item"><strong>${cf4Esc(cf4.ab.winner)}</strong> A: ${cf4.ab.sa.total}/100 · B: ${cf4.ab.sb.total}/100</div>`;}
+function cf4Render(){const l=cf4.library.length;document.getElementById('cf4IdeasStat').textContent=cf4.library.filter(x=>/idea/i.test(x.type)).length;document.getElementById('cf4LibraryStat').textContent=l;document.getElementById('cf4PlanStat').textContent=cf4.calendar.length;document.getElementById('cf4StreakStat').textContent=Math.min(30,Math.max(0,cf4.goals.progress));document.getElementById('cf4GoalText').textContent=`${cf4.goals.progress} / ${cf4.goals.target}`;document.getElementById('cf4GoalBar').style.width=`${Math.min(100,cf4.goals.progress/cf4.goals.target*100)}%`;cf4RenderProfile();cf4RenderLibrary();cf4RenderScore();cf4RenderCalendar();cf4RenderAnalytics();cf4RenderRepurpose();cf4RenderHooks();cf4RenderAB();}
+window.addEventListener('DOMContentLoaded',()=>{cf4Render();});
 </script>
 
 </body>
